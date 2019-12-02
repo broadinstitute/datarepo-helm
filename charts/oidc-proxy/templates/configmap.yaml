@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "oidc-proxy.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "oidc-proxy.name" . }}
+    chart: {{ template "oidc-proxy.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  site-conf: |
+{{- with .Values.siteConfig }}
+{{ printf "%q" .Values.siteConfig }}
+{{- end }}

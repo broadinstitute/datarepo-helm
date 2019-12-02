@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "oidc-proxy.fullname" . }}
+  labels:
+    {{- include "oidc-proxy.labels" . | nindent 4 }}
+spec:
+  ports:
+  - protocol: TCP
+    name: http
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.port }}
+  type: {{ .Values.service.type }}
+  selector:
+    {{- include "oidc-proxy.selectorLabels" . | nindent 4 }}
