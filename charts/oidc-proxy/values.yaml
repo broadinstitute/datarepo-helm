@@ -81,5 +81,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-siteConf: somesting
