@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: data-repo-ui
+  template:
+    metadata:
+      labels:
+        app: data-repo
+        component: data-repo-ui
+    spec:
+      serviceAccountName: jade-sa
+      containers:
+      - name: data-repo-ui-container
+        image: gcr.io/broad-jade-dev/jade-data-repo-ui:latest
+        ports:
+        - containerPort: 80

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ui-service
+spec:
+  selector:
+    component: data-repo-ui
+  ports:
+  - protocol: TCP
+    name: http
+    port: 80
+    targetPort: 80

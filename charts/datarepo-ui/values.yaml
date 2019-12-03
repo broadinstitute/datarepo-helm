@@ -1,35 +1,12 @@
-# Default values for oidc-proxy.
+# Default values for datarepo-ui.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: broadinstitute/openidc-proxy
-  version: bernick_tcell
+  repository: nginx
   pullPolicy: IfNotPresent
-  containers:
-    port: 80
-
-envRender:
-# environment vars for Deployment
-  - name: PROXY_URL
-    value: #url path
-  - name: PROXY_URL2
-    value: #url path
-  - name: PROXY_URL3
-    value: #url path
-  - name: LOG_LEVEL
-    value: 'debug'
-  - name: SERVER_NAME
-    value: #A/CNAME
-  - name: REMOTE_USER_CLAIM
-    value: 'sub'
-  - name: ENABLE_STACKDRIVER
-    value: 'yes'
-  - name: FILTER2
-    value: #'AddOutputFilterByType DEFLATE application/json text/plain text/html application/javascript application/x-javascript'
-
 
 imagePullSecrets: []
 nameOverride: ""
@@ -37,7 +14,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: false
+  create: true
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
@@ -47,22 +24,33 @@ rbac:
   create: true
   pspEnabled: true
 
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
 
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.global-static-ip-name: "grafana-k8-100"
-    kubernetes.io/ingress.allow-http: "false"
-
-secret:
   enabled: false
-  name: odic-tls-secret
-  tlsKey:
-  tlsCert:
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -81,5 +69,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-siteConf: somesting
