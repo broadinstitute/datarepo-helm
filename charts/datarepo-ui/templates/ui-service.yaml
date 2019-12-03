@@ -1,12 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ui-service
+  name: {{ include "datarepo-ui.fullname" . }}
+  labels:
+    {{- include "datarepo-ui.labels" . | nindent 4 }}
 spec:
-  selector:
-    component: data-repo-ui
+  type: {{ .Values.service.type }}
   ports:
-  - protocol: TCP
-    name: http
-    port: 80
-    targetPort: 80
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "datarepo-ui.selectorLabels" . | nindent 4 }}

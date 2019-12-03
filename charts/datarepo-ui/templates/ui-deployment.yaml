@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ui-deployment
+  name: {{ include "datarepo-ui.fullname" . }}
+  labels:
+    {{- include "datarepo-ui.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      component: data-repo-ui
+      {{- include "datarepo-ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: data-repo
-        component: data-repo-ui
+        {{- include "datarepo-ui.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: jade-sa
+      serviceAccountName: {{ include "datarepo-ui.serviceAccountName" . }}
       containers:
-      - name: data-repo-ui-container
-        image: gcr.io/broad-jade-dev/jade-data-repo-ui:latest
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
         ports:
         - containerPort: 80

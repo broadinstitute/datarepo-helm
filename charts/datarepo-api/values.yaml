@@ -38,7 +38,7 @@ rbac:
 
 service:
   port: 8080
-
+  type: ClusterIP
 # Use an existing secret for the admin user.
 admin:
   existingSecret:

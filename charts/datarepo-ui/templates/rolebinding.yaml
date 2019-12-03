@@ -6,7 +6,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
 subjects:
 - kind: ServiceAccount
-  name: {{ template "datarepo-api.serviceAccountName" . }}
+  name: {{ template "datarepo-ui.serviceAccountName" . }}
 roleRef:
   kind: Role
   name: {{ .Release.Namespace }}-use-pod-security-policy-role
