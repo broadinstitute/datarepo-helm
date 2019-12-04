@@ -4,6 +4,7 @@ metadata:
   name: {{ include "datarepo-ui.fullname" . }}
   labels:
     {{- include "datarepo-ui.labels" . | nindent 4 }}
+    component: {{ include "datarepo-ui.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
