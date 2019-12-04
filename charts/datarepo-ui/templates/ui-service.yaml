@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "datarepo-ui.fullname" . }}
+  labels:
+    {{- include "datarepo-ui.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    component: {{ include "datarepo-ui.fullname" . }}
+    {{- include "datarepo-ui.selectorLabels" . | nindent 4 }}

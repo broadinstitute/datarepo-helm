@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "datarepo-ui.fullname" . }}
+  labels:
+    component: {{ include "datarepo-ui.fullname" . }}
+    {{- include "datarepo-ui.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "datarepo-ui.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "datarepo-ui.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "datarepo-ui.serviceAccountName" . }}
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+        ports:
+        - containerPort: 80

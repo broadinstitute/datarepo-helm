@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "oidc-proxy.fullname" . }}
+  labels:
+    {{- include "oidc-proxy.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      service: {{ include "oidc-proxy.fullname" . }}
+      project: datarepo
+      component: {{ include "oidc-proxy.fullname" . }}
+      {{- include "oidc-proxy.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "oidc-proxy.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ include "oidc-proxy.serviceAccountName" . }}
+      containers:
+      - name: {{ .Chart.Name }}
+        # Based on the latest security review this is the recommended version of the proxy to use.
+        image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: {{ .Values.image.containers.port }}
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: {{ .Values.image.containers.port }}
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        env:
+{{ toYaml .Values.envRender | indent 10 }}
+        volumeMounts:
+          - mountPath: /etc/apache2/sites-available/site.conf
+            name: site-config
+            subPath: site.conf
+      volumes:
+        - name: site-config
+          configMap:
+            name: siteconf
+            items:
+              - key: siteconfig
+                path: site.conf

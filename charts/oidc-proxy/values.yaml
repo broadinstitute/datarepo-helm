@@ -1,0 +1,83 @@
+# Default values for oidc-proxy.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: broadinstitute/openidc-proxy
+  version: bernick_tcell
+  pullPolicy: IfNotPresent
+  containers:
+    port: 80
+
+envRender:
+# environment vars for Deployment
+  - name: PROXY_URL
+    value: #url path
+  - name: PROXY_URL2
+    value: #url path
+  - name: PROXY_URL3
+    value: #url path
+  - name: LOG_LEVEL
+    value: 'debug'
+  - name: SERVER_NAME
+    value: #A/CNAME
+  - name: REMOTE_USER_CLAIM
+    value: 'sub'
+  - name: ENABLE_STACKDRIVER
+    value: 'yes'
+  - name: FILTER2
+    value: #'AddOutputFilterByType DEFLATE application/json text/plain text/html application/javascript application/x-javascript'
+
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+rbac:
+  # Specifies whether a psp should be created
+  create: true
+  pspEnabled: true
+
+
+service:
+  type: NodePort
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "grafana-k8-100"
+    kubernetes.io/ingress.allow-http: "false"
+
+secret:
+  enabled: true
+  name: odic-tls-secret
+  tlsKey:
+  tlsCert:
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

@@ -1,0 +1,9 @@
+# helm cannot create namespaces. Name space must exist
+{{- if .Values.serviceAccount.create }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Release.Namespace }}
+  labels:
+    name: {{ .Release.Namespace }}
+{{- end }}

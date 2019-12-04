@@ -1,0 +1,89 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ include "datarepo-api.fullname" . }}
+  labels:
+    app: {{ include "datarepo-api.fullname" . }}
+    chart: {{ include "datarepo-api.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      component: {{ include "datarepo-api.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "datarepo-api.fullname" . }}
+        component: {{ include "datarepo-api.fullname" . }}
+    spec:
+      serviceAccountName: {{ include "datarepo-api.serviceAccountName" . }}
+      initContainers:
+      - name: check-db-ready
+        image: postgres:9.6.5
+        env:
+          - name: DB_DATAREPO_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "datarepo-api.fullname" . }}
+                key: datarepo-username
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "datarepo-api.fullname" . }}
+                key: datarepo-password
+        command: ["/bin/sh" , "-c", "psql -h {{ .Values.env.dblocation }} -U {{ .Values.env.db_datarepo_username }} -d {{ .Values.env.database }} -c \"CREATE EXTENSION IF NOT EXISTS pgcrypto;\""]
+      volumes:
+        - name: google-cloud-key
+          secret:
+            secretName: {{ template "datarepo-api.fullname" . }}
+            items:
+              - key: credential-file-json
+                path: sa-key.json
+      containers:
+      - name: {{ include "datarepo-api.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: {{ .Values.image.port }}
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 2
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: {{ .Values.image.port }}
+          initialDelaySeconds: 25
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 2
+        volumeMounts:
+        - name: google-cloud-key
+          mountPath: /var/secrets/google/
+        ports:
+        - containerPort: {{ .Values.image.port }}
+        - containerPort: 5005
+        env:
+        - name: GOOGLE_CLOUD_PROJECT
+          value: {{ .Values.env.google_cloud_project }}
+        - name: DB_DATAREPO_USERNAME
+          value: {{ .Values.env.db_datarepo_username }}
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ .Values.env.spring_profiles_active }}
+        - name: DB_STAIRWAY_USERNAME
+          value: {{ .Values.env.db_stairway_username }}
+        - name: DB_DATAREPO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "datarepo-api.fullname" . }}
+              key: datarepo-password
+        - name: DB_STAIRWAY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "datarepo-api.fullname" . }}
+              key: stairway-password
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/sa-key.json

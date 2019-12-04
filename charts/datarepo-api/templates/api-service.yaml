@@ -1,0 +1,20 @@
+{{- if .Values.serviceAccount.create }}
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "datarepo-api.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    component: {{ include "datarepo-api.fullname" . }}
+  ports:
+  - protocol: TCP
+    name: http
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.port }}
+  - protocol: TCP
+    name: remote-debug
+    port: 5005
+    targetPort: 5005
+{{- end }}

@@ -1,0 +1,71 @@
+# Default values for datarepo-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: gcr.io/broad-jade-dev/jade-data-repo
+  version: latest
+  pullPolicy: IfNotPresent
+  port: 8080
+
+datarepo:
+  dblocation: #some ip or k8 dns
+  dbuser: drmanager
+  db: datarepo
+
+env: # environment variables
+  google_cloud_project: # Name of google cloud project
+  db_datarepo_username: # Database username to connect datarepo to
+  spring_profiles_active: # springboard profile
+  db_stairway_username: # Database username to connect stairway to
+  dblocation: # some ip or k8 dns
+  database: datarepo
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+rbac:
+  # Specifies whether a psp should be created
+  create: true
+  pspEnabled: true
+
+service:
+  port: 8080
+  type: ClusterIP
+
+vaultscrets:
+  enable:
+  datarepoPassword:
+  stairwayPassword:
+  credentialfilejson:
+# Use an existing secret for the admin user.
+secrets:
+  existingSecret: false
+  datarepoPassword:
+  stairwayPassword:
+  credentialfilejson: #>
+    #[{"serviceAccountName":"ob1","serviceAccountName":0,"datarepoPassword":"network"},
+    # {"name":"ob2","port_nu...
+    # this is a sample json embed
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
