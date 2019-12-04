@@ -5,7 +5,6 @@ metadata:
   labels:
     {{- include "datarepo-ui.labels" . | nindent 4 }}
 spec:
-    component:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
@@ -13,5 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "datarepo-ui.selectorLabels" . | nindent 4 }}
     component: {{ include "datarepo-ui.fullname" . }}
+    {{- include "datarepo-ui.selectorLabels" . | nindent 4 }}
