@@ -3,6 +3,15 @@ entries:
   datarepo-api:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2019-12-04T15:33:33.400532-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 81d045b374dbd07bbc20cd545ab4422bf01880a9605ec1eaaa3f11d26cb391ad
+    name: datarepo-api
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-api-0.1.1/datarepo-api-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2019-12-03T12:15:59.724589-05:00"
     description: A Helm chart for Kubernetes
     digest: cbba7b713205e8cfe46f8d8d8473c133624e4d504bc31ad916befe20f9896298
@@ -11,6 +20,15 @@ entries:
     - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-api-0.1.0/datarepo-api-0.1.0.tgz
     version: 0.1.0
   datarepo-ui:
+  - apiVersion: v1
+    appVersion: 1.16.0
+    created: "2019-12-04T15:33:33.587012-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 72341845244e10de82fc250e0a8119fdafa10e2c5511f1deeac30102df5c44e8
+    name: datarepo-ui
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-ui-0.1.1/datarepo-ui-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2019-12-03T12:15:59.836939-05:00"
@@ -21,6 +39,15 @@ entries:
     - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-ui-0.1.0/datarepo-ui-0.1.0.tgz
     version: 0.1.0
   oidc-proxy:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2019-12-04T15:33:33.767317-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 6f4a4ecede9919749c1d0c19a2d8b1bfdbb0176cd33be89237d980a9c73ef35e
+    name: oidc-proxy
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/oidc-proxy-0.1.1/oidc-proxy-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2019-12-03T12:15:59.951013-05:00"
