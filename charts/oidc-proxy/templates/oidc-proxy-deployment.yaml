@@ -8,6 +8,9 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
+      service: {{ include "oidc-proxy.fullname" . }}
+      project: datarepo
+      component: {{ include "oidc-proxy.fullname" . }}
       {{- include "oidc-proxy.selectorLabels" . | nindent 6 }}
   template:
     metadata:

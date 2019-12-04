@@ -70,8 +70,8 @@ spec:
         - name: GOOGLE_CLOUD_PROJECT
           value: {{ .Values.env.google_cloud_project }}
         - name: DB_DATAREPO_USERNAME
-          value: {{ .Values.env.db_datarepo_username
-        - name: SPRING_PROFILES_ACTIVE }}
+          value: {{ .Values.env.db_datarepo_username }}
+        - name: SPRING_PROFILES_ACTIVE
           value: {{ .Values.env.spring_profiles_active }}
         - name: DB_STAIRWAY_USERNAME
           value: {{ .Values.env.db_stairway_username }}

@@ -12,4 +12,6 @@ spec:
     targetPort: {{ .Values.service.port }}
   type: {{ .Values.service.type }}
   selector:
+    service: {{ include "oidc-proxy.fullname" . }}
+    project: datarepo
     {{- include "oidc-proxy.selectorLabels" . | nindent 4 }}

@@ -37,7 +37,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: false
+  create: true
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
@@ -59,7 +59,7 @@ ingress:
     kubernetes.io/ingress.allow-http: "false"
 
 secret:
-  enabled: false
+  enabled: true
   name: odic-tls-secret
   tlsKey:
   tlsCert:

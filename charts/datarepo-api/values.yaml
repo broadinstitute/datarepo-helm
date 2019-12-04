@@ -43,13 +43,20 @@ service:
   port: 8080
   type: ClusterIP
 
-# Use an existing secret for the admin user.
-secrets:
-  existingSecret:
+vaultscrets:
+  enable:
   datarepoPassword:
   stairwayPassword:
   credentialfilejson:
-
+# Use an existing secret for the admin user.
+secrets:
+  existingSecret: false
+  datarepoPassword:
+  stairwayPassword:
+  credentialfilejson: #>
+    #[{"serviceAccountName":"ob1","serviceAccountName":0,"datarepoPassword":"network"},
+    # {"name":"ob2","port_nu...
+    # this is a sample json embed
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
