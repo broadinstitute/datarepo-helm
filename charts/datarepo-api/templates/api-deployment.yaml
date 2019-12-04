@@ -33,7 +33,7 @@ spec:
               secretKeyRef:
                 name: {{ template "datarepo-api.fullname" . }}
                 key: datarepo-password
-        command: ["/bin/sh" , "-c", "psql -h {{ .Values.datarepo.dblocation }} -U {{ .Values.datarepo.dbuser }} -d {{ .Values.datarepo.db }} -c \"CREATE EXTENSION IF NOT EXISTS pgcrypto;\""]
+        command: ["/bin/sh" , "-c", "psql -h {{ .Values.env.dblocation }} -U {{ .Values.env.db_datarepo_username }} -d {{ .Values.env.database }} -c \"CREATE EXTENSION IF NOT EXISTS pgcrypto;\""]
       volumes:
         - name: google-cloud-key
           secret:
@@ -67,35 +67,23 @@ spec:
         - containerPort: {{ .Values.image.port }}
         - containerPort: 5005
         env:
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/sa-key.json
         - name: GOOGLE_CLOUD_PROJECT
-          valueFrom:
-            secretKeyRef:
-              name: api-secrets
-              key: google-cloud-project
+          value: {{ .Values.env.google_cloud_project }}
         - name: DB_DATAREPO_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "datarepo-api.fullname" . }}
-              key: datarepo-username
+          value: {{ .Values.env.db_datarepo_username
+        - name: SPRING_PROFILES_ACTIVE }}
+          value: {{ .Values.env.spring_profiles_active }}
+        - name: DB_STAIRWAY_USERNAME
+          value: {{ .Values.env.db_stairway_username }}
         - name: DB_DATAREPO_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ template "datarepo-api.fullname" . }}
               key: datarepo-password
-        - name: DB_STAIRWAY_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "datarepo-api.fullname" . }}
-              key: stairway-username
         - name: DB_STAIRWAY_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ template "datarepo-api.fullname" . }}
               key: stairway-password
-        - name: SPRING_PROFILES_ACTIVE
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "datarepo-api.fullname" . }}
-              key: spring-profiles-active
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/sa-key.json
