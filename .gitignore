@@ -1,1 +1,3 @@
 .deploy
+charts/datarepo/charts/*
+
