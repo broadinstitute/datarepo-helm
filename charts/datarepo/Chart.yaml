@@ -22,7 +22,7 @@ appVersion: 1.16.0
 # dependencies
 dependencies:
 - name: datarepo-api
-  version: 0.1.5
+  version: 0.1.6
   repository: https://broadinstitute.github.io/broad-dsp-helm/
   condition: datarepo-api.enabled
 - name: oidc-proxy
