@@ -10,18 +10,14 @@ image:
   pullPolicy: IfNotPresent
   port: 8080
 
-datarepo:
-  dblocation: #some ip or k8 dns
-  dbuser: drmanager
-  db: datarepo
 
 env: # environment variables
-  google_cloud_project: # Name of google cloud project
-  db_datarepo_username: # Database username to connect datarepo to
-  spring_profiles_active: # springboard profile
-  db_stairway_username: # Database username to connect stairway to
-  dblocation: # some ip or k8 dns
-  database: datarepo
+  googleCloudProject: # Name of google cloud project
+  dbDatarepoUsername: # Database username to connect datarepo to
+  springProfilesActive: # springboard profile
+  dbStairwayUsername: # Database username to connect stairway to
+  dbLocation: # some ip or k8 dns
+  dataBase: datarepo
 
 imagePullSecrets: []
 nameOverride: ""
@@ -53,7 +49,7 @@ secrets:
   existingSecret: false
   datarepoPassword:
   stairwayPassword:
-  credentialfilejson: #>
+  credentialfilejson: ""#>
     #[{"serviceAccountName":"ob1","serviceAccountName":0,"datarepoPassword":"network"},
     # {"name":"ob2","port_nu...
     # this is a sample json embed

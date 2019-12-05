@@ -24,16 +24,13 @@ spec:
         image: postgres:9.6.5
         env:
           - name: DB_DATAREPO_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "datarepo-api.fullname" . }}
-                key: datarepo-username
+            value: {{ .Values.env.dbDatarepoUsername }}
           - name: PGPASSWORD
             valueFrom:
               secretKeyRef:
                 name: {{ template "datarepo-api.fullname" . }}
                 key: datarepo-password
-        command: ["/bin/sh" , "-c", "psql -h {{ .Values.env.dblocation }} -U {{ .Values.env.db_datarepo_username }} -d {{ .Values.env.database }} -c \"CREATE EXTENSION IF NOT EXISTS pgcrypto;\""]
+        command: ["/bin/sh" , "-c", "psql -h {{ .Values.env.dbLocation }} -U {{ .Values.env.dbDatarepoUsername }} -d {{ .Values.env.dataBase }} -c \"CREATE EXTENSION IF NOT EXISTS pgcrypto;\""]
       volumes:
         - name: google-cloud-key
           secret:
@@ -68,13 +65,13 @@ spec:
         - containerPort: 5005
         env:
         - name: GOOGLE_CLOUD_PROJECT
-          value: {{ .Values.env.google_cloud_project }}
+          value: {{ .Values.env.googleCloudProject }}
         - name: DB_DATAREPO_USERNAME
-          value: {{ .Values.env.db_datarepo_username }}
+          value: {{ .Values.env.dbDatarepoUsername }}
         - name: SPRING_PROFILES_ACTIVE
-          value: {{ .Values.env.spring_profiles_active }}
+          value: {{ .Values.env.springProfilesActive }}
         - name: DB_STAIRWAY_USERNAME
-          value: {{ .Values.env.db_stairway_username }}
+          value: {{ .Values.env.dbStairwayUsername }}
         - name: DB_DATAREPO_PASSWORD
           valueFrom:
             secretKeyRef:
