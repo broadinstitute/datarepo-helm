@@ -1,0 +1,18 @@
+dependencies:
+- name: datarepo-api
+  repository: https://broadinstitute.github.io/broad-dsp-helm/
+  version: 0.1.1
+- name: oidc-proxy
+  repository: https://broadinstitute.github.io/broad-dsp-helm/
+  version: 0.1.1
+- name: datarepo-ui
+  repository: https://broadinstitute.github.io/broad-dsp-helm/
+  version: 0.1.1
+- name: gcloud-sqlproxy
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 0.6.1
+- name: postgresql
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 7.7.2
+digest: sha256:2b78c876103d1c653f41a6032fbccdadeaed7b70891fc17c9a05e6765ce6b069
+generated: "2019-12-05T10:31:42.162955-05:00"
