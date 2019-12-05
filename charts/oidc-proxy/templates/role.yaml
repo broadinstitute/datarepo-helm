@@ -2,12 +2,12 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ .Release.Namespace }}-use-pod-security-policy-role
+  name: {{ include "oidc-proxy.fullname" . }}-use-pod-security-policy-role
   namespace: {{ .Release.Namespace }}
 rules:
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']
   verbs: ["use"]
   resourceNames:
-    - {{ .Release.Namespace }}-pod-running-policy
+    - {{ include "oidc-proxy.fullname" . }}-pod-running-policy
 {{- end }}
