@@ -11,10 +11,6 @@ datarepo-api:
     #version: latest
     #pullPolicy: IfNotPresent
     #port: 8080
-  #datarepo:
-    #dblocation: #some ip or k8 dns
-    #dbuser: drmanager
-    #b: datarepo
   #env: # environment variables
     #google_cloud_project: # Name of google cloud project
     #db_datarepo_username: # Database username to connect datarepo to
