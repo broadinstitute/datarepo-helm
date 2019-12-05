@@ -22,6 +22,15 @@ entries:
   datarepo-api:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2019-12-05T14:50:25.437675-05:00"
+    description: A Helm chart for Kubernetes
+    digest: cc9d1d7ed96fba3d8fbe1e5c5ca80ba85b614bdeaca9de92bb748bf04e721a1e
+    name: datarepo-api
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-api-0.1.4/datarepo-api-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2019-12-05T14:24:54.024216-05:00"
     description: A Helm chart for Kubernetes
     digest: 89f6baa58279bcffc45040aa6d5684b662df7cc8a9f79cc7f1cd91b7ef4d23af
@@ -59,6 +68,15 @@ entries:
   datarepo-ui:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2019-12-05T14:50:25.522752-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 00e69581eaaf70619965ab9fb248f8265b593ac77e3d576f2189cb41617f1ba0
+    name: datarepo-ui
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-ui-0.1.4/datarepo-ui-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2019-12-05T14:24:54.106251-05:00"
     description: A Helm chart for Kubernetes
     digest: a2b3f9c21724a2841bb368deaca70e3e61582acd421e248ae83ce1c3d6ebe588
@@ -87,6 +105,15 @@ entries:
   oidc-proxy:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2019-12-05T14:50:25.608458-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 555816436cb19ecadd9c0a99348e49b5eb5c7aea99f8710a1f348c2903e1afa3
+    name: oidc-proxy
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/oidc-proxy-0.1.3/oidc-proxy-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2019-12-05T14:24:54.180552-05:00"
     description: A Helm chart for Kubernetes
     digest: 0133f343a371a08c2cd7a8105a396d10ede5d4204bd3cb07ebe58638681946ff
@@ -113,6 +140,15 @@ entries:
     - https://github.com/broadinstitute/broad-dsp-helm/releases/download/oidc-proxy-0.1.0/oidc-proxy-0.1.0.tgz
     version: 0.1.0
   serviceaccount-psp:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2019-12-05T14:50:25.678942-05:00"
+    description: A Helm chart for Kubernetes
+    digest: d2a5d0a1760b1c4c95570e4dd3eb2c573c289b92714494f541d7fb934c63bead
+    name: serviceaccount-psp
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/serviceaccount-psp-0.1.2/serviceaccount-psp-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2019-12-05T14:24:54.353073-05:00"
