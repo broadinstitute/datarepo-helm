@@ -30,7 +30,7 @@ entries:
     - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-api-0.1.0/datarepo-api-0.1.0.tgz
     version: 0.1.0
   datarepo-ui:
-  - apiVersion: v1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2019-12-04T15:33:33.587012-05:00"
     description: A Helm chart for Kubernetes
