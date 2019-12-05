@@ -1,0 +1,142 @@
+## Required for a full Deployment of a datarepo
+# - datarepo-api
+# - oidc-proxy
+# - datarepo-ui
+# - gcloud-sqlproxy
+# - postgresql
+datarepo-api:
+  enabled: false
+  #image:
+    #repository: gcr.io/broad-jade-dev/jade-data-repo
+    #version: latest
+    #pullPolicy: IfNotPresent
+    #port: 8080
+  #datarepo:
+    #dblocation: #some ip or k8 dns
+    #dbuser: drmanager
+    #b: datarepo
+  #env: # environment variables
+    #google_cloud_project: # Name of google cloud project
+    #db_datarepo_username: # Database username to connect datarepo to
+    #spring_profiles_active: # springboard profile
+    #db_stairway_username: # Database username to connect stairway to
+    #dblocation: # some ip or k8 dns
+    #database: datarepo
+  #serviceAccount:
+    # Specifies whether a service account should be created
+    #create: false
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    #name:
+  #rbac:
+    # Specifies whether a psp should be created
+    #create: true
+    #pspEnabled: true
+  #service:
+    #port: 8080
+    #type: ClusterIP
+  #secrets:
+    #existingSecret: false
+    #datarepoPassword:
+    #stairwayPassword:
+    #credentialfilejson:
+
+oidc-proxy:
+  enabled: false
+  #image:
+    #repository: broadinstitute/openidc-proxy
+    #version: bernick_tcell
+    #pullPolicy: IfNotPresent
+    #containers:
+      #port: 80
+  #envRender:
+  # environment vars for Deployment
+    #- name: PROXY_URL
+      #value: #url path
+    #- name: PROXY_URL2
+      #value: #url path
+    #- name: PROXY_URL3
+      #value: #url path
+    #- name: LOG_LEVEL
+      #value: 'debug'
+    #- name: SERVER_NAME
+      #value: #A/CNAME
+    #- name: REMOTE_USER_CLAIM
+      #value: 'sub'
+    #- name: ENABLE_STACKDRIVER
+      #value: 'yes'
+    #- name: FILTER2
+      #value: #'AddOutputFilterByType DEFLATE application/json text/plain text/html application/javascript application/x-javascript'
+  #serviceAccount:
+    # Specifies whether a service account should be created
+    #create: true
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    #name:
+  #rbac:
+  # Specifies whether a psp should be created
+    #create: true
+    #pspEnabled: true
+  #service:
+    #type: NodePort
+    #port: 80
+  #ingress:
+    #enabled: true
+    #annotations:
+      #kubernetes.io/ingress.global-static-ip-name: "grafana-k8-100"
+      #kubernetes.io/ingress.allow-http: "false"
+  #secret:
+    #enabled: true
+    #name: odic-tls-secret
+    #tlsKey:
+    #tlsCert:
+
+datarepo-ui:
+  enabled: true
+  #image:
+    #repository: gcr.io/broad-jade-dev/jade-data-repo-ui
+    #version: latest
+    #pullPolicy: IfNotPresent
+  #serviceAccount:
+    # Specifies whether a service account should be created
+    #create: true
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    #name:
+  #rbac:
+  # Specifies whether a psp should be created
+    #create: true
+    #pspEnabled: true
+  #service:
+    #type: ClusterIP
+    #port: 80
+
+gcloud-sqlproxy:
+  enabled: false
+  #image: b.gcr.io/cloudsql-docker/gce-proxy
+  #imageTag: "1.11"
+  #serviceAccountKey: ""
+  ### SQL connection settings
+##
+  #cloudsql:
+    ## PostgreSQL/MySQL instances:
+    ## update with your GCP project, the region of your Cloud SQL instance
+    ## and the name of your Cloud SQL instance
+    ## PostgreSQL port 5432 or MySQL port 3306, or other port you set for your SQL instance.
+    ## Use different ports for different instances.
+    #instances:
+    # GCP instance name.
+    #- instance: "instance"
+    # Optional abbreviation used to override the truncated instance name if the
+    # 15 character instance name prefix is not unique for use as a port
+    # identifier.
+      #instanceShortName: ""
+    # GCP project where the instance exists.
+      #project: "project"
+    # GCP region where the instance exists.
+      #region: "region"
+    # Port number for the proxy to expose for this instance.
+      #port: 5432
+
+postgresql: # supply your down sql instance or use this
+  enabled: false
