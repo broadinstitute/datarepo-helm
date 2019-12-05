@@ -2,7 +2,7 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: "{{ template "serviceaccount-psp.name" . }}-pod-running-policy"
+  name: "{{ template "serviceaccount-psp.name" . }}-psp-pod-running-policy"
   namespace: {{ .Release.Namespace }}
   labels:
     name: podsecuritypolicy
