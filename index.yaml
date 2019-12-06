@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   datarepo:
   - apiVersion: v2
+    created: "2019-12-06T09:56:41.47042-05:00"
+    description: A Helm chart to deploy an entire datarepo
+    digest: 4f8eb722306b5a84560ef0720f970f65dcfe7512afea9b6fae6956b2307c306e
+    name: datarepo
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-0.1.7/datarepo-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
     created: "2019-12-05T16:04:12.212865-05:00"
     description: A Helm chart to deploy an entire datarepo
     digest: dbe05dd4ceb7f0ad027fdd8751f1f4d58fbce8a1cad98de378fb4c563dd31ca5
@@ -64,6 +72,15 @@ entries:
     - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-0.1.0/datarepo-0.1.0.tgz
     version: 0.1.0
   datarepo-api:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2019-12-06T09:56:41.565855-05:00"
+    description: A Helm chart for Kubernetes
+    digest: c16011d0bc7ab8574a312fe4621feacba4adbbb595c1c78a9c1ff53a6da51680
+    name: datarepo-api
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-api-0.1.8/datarepo-api-0.1.8.tgz
+    version: 0.1.8
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2019-12-05T16:04:12.341971-05:00"
