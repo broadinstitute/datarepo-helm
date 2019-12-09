@@ -313,6 +313,15 @@ entries:
   oidc-proxy:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2019-12-09T15:01:30.595312-05:00"
+    description: A Helm chart for Kubernetes
+    digest: d120d345e8e744f7ac2205c19b36cbbf7150632b8f42e56be793afc16a72098c
+    name: oidc-proxy
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/oidc-proxy-0.1.7/oidc-proxy-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2019-12-09T10:26:46.394416-05:00"
     description: A Helm chart for Kubernetes
     digest: 8ece0093442442a3f24c2c009fd3db80b228e67f9107de59b3a8e29925a42e02
