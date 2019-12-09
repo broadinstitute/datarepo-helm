@@ -45,14 +45,20 @@ vaultscrets:
   stairwayPassword:
   credentialfilejson:
 # Use an existing secret for the admin user.
-secrets:
-  existingSecret: false
+secretsgeneric:
+  existingSecret: true
   datarepoPassword:
   stairwayPassword:
   credentialFileJson: ""#>
     #[{"serviceAccountName":"ob1","serviceAccountName":0,"datarepoPassword":"network"},
     # {"name":"ob2","port_nu...
     # this is a sample json embed
+secretsvault:
+  existingSecret: false
+  datarepoPassword:
+  stairwayPassword:
+  credentialFileJson: ""#>
+
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
