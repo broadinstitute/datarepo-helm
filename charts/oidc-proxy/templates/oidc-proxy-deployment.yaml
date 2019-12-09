@@ -45,7 +45,22 @@ spec:
           timeoutSeconds: 3
           failureThreshold: 3
         env:
-{{ toYaml .Values.envRender | indent 10 }}
+          - name: PROXY_URL
+            value: {{ .Values.envRender.proxyUrl | quote }}
+          - name: PROXY_URL2
+            value: {{ .Values.envRender.proxyUrl2 | quote }}
+          - name: PROXY_URL3
+            value: {{ .Values.envRender.proxyUrl3 | quote }}
+          - name: LOG_LEVEL
+            value: {{ .Values.envRender.logLevel | quote }}
+          - name: SERVER_NAME
+            value: {{ .Values.envRender.serverName | quote }}
+          - name: REMOTE_USER_CLAIM
+            value: {{ .Values.envRender.remoteUserClaim | quote }}
+          - name: ENABLE_STACKDRIVER
+            value: {{ .Values.envRender.enableStackdriver | quote }}
+          - name: FILTER2
+            value: {{ .Values.envRender.filter2 | quote }}
         volumeMounts:
           - mountPath: /etc/apache2/sites-available/site.conf
             name: site-config

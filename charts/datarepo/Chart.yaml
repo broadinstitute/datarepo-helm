@@ -14,7 +14,7 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.2.3
+version: 0.2.4
 
 # dependencies
 dependencies:
@@ -23,7 +23,7 @@ dependencies:
   repository: https://broadinstitute.github.io/broad-dsp-helm/
   condition: datarepo-api.enabled
 - name: oidc-proxy
-  version: 0.1.6
+  version: 0.1.7
   repository: https://broadinstitute.github.io/broad-dsp-helm/
   condition: oidc-proxy.enabled
 - name: datarepo-ui
