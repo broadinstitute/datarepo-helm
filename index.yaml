@@ -260,6 +260,28 @@ entries:
   gcloud-sqlproxy:
   - apiVersion: v1
     appVersion: "1.16"
+    created: "2019-12-09T14:39:58.648579-05:00"
+    description: Google Cloud SQL Proxy
+    digest: 3c8e93d8d13ae270d1fc291de5974f8a873adb7b4327a1163905c5095833af1d
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: rmocius@gmail.com
+      name: rimusz
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/rimusz/charts
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/gcloud-sqlproxy-0.19.3/gcloud-sqlproxy-0.19.3.tgz
+    version: 0.19.3
+  - apiVersion: v1
+    appVersion: "1.16"
     created: "2019-12-09T11:49:59.990193-05:00"
     description: Google Cloud SQL Proxy
     digest: e34fabdd9d7cff2c7ccbe8fcb8fb135b2038e3a60154c5e14ec48e2ab30d5ef2
