@@ -19,18 +19,6 @@ spec:
         component: {{ include "datarepo-api.fullname" . }}
     spec:
       serviceAccountName: {{ include "datarepo-api.serviceAccountName" . }}
-      initContainers:
-      - name: check-db-ready
-        image: postgres:9.6.5
-        env:
-          - name: DB_DATAREPO_USERNAME
-            value: {{ .Values.env.dbDatarepoUsername }}
-          - name: PGPASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "datarepo-api.fullname" . }}
-                key: datarepo-password
-        command: ["/bin/sh" , "-c", "psql -h {{ .Values.env.dbLocation }} -U {{ .Values.env.dbDatarepoUsername }} -d {{ .Values.env.dataBase }} -c \"CREATE EXTENSION IF NOT EXISTS pgcrypto;\""]
       volumes:
         - name: google-cloud-key
           secret:
