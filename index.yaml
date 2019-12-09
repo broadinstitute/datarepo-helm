@@ -249,6 +249,29 @@ entries:
     urls:
     - https://github.com/broadinstitute/broad-dsp-helm/releases/download/datarepo-ui-0.1.0/datarepo-ui-0.1.0.tgz
     version: 0.1.0
+  gcloud-sqlproxy:
+  - apiVersion: v1
+    appVersion: "1.16"
+    created: "2019-12-09T11:49:59.990193-05:00"
+    description: Google Cloud SQL Proxy
+    digest: e34fabdd9d7cff2c7ccbe8fcb8fb135b2038e3a60154c5e14ec48e2ab30d5ef2
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: rmocius@gmail.com
+      name: rimusz
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/rimusz/charts
+    urls:
+    - https://github.com/broadinstitute/broad-dsp-helm/releases/download/gcloud-sqlproxy-0.19.2/gcloud-sqlproxy-0.19.2.tgz
+    version: 0.19.2
   oidc-proxy:
   - apiVersion: v2
     appVersion: 1.16.0
