@@ -19,4 +19,5 @@ rules:
   resourceNames:
     - {{ include "gcloud-sqlproxy.fullname" . }}
 
+
 {{- end }}
