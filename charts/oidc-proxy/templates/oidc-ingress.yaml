@@ -1,24 +1,19 @@
-{{- if .Values.ingress.enabled -}}
-{{- $fullName := include "oidc-proxy.fullname" . -}}
-{{- $svcPort := .Values.service.port -}}
-{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
-apiVersion: networking.k8s.io/v1beta1
-{{- else -}}
+{{- if .Values.ingress.enabled }}
 apiVersion: extensions/v1beta1
-{{- end }}
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
-  labels:
-    {{- include "oidc-proxy.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
+  name: {{ include "oidc-proxy.fullname" . }}
   annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    kubernetes.io/ingress.global-static-ip-name: {{ .Values.ingress.annotations.globalStaticIpName | quote }}
+    kubernetes.io/ingress.allow-http: {{ .Values.ingress.annotations.ingressAllowHttp | quote }}
 spec:
   tls:
     - secretName: {{ include "oidc-proxy.fullname" . }}
-  backend:
-    serviceName: {{ $fullName }}
-    servicePort: {{ $svcPort }}
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: {{ include "oidc-proxy.fullname" . }}
+          servicePort: {{ .Values.ingress.servicePort }}
 {{- end }}

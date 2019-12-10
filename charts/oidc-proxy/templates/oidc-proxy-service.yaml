@@ -5,13 +5,11 @@ metadata:
   labels:
     {{- include "oidc-proxy.labels" . | nindent 4 }}
 spec:
+  type: {{ .Values.service.type }}
+  selector:
+    component: {{ include "oidc-proxy.fullname" . }}
   ports:
   - protocol: TCP
     name: http
     port: {{ .Values.service.port }}
     targetPort: {{ .Values.service.port }}
-  type: {{ .Values.service.type }}
-  selector:
-    service: {{ include "oidc-proxy.fullname" . }}
-    project: datarepo
-    {{- include "oidc-proxy.selectorLabels" . | nindent 4 }}

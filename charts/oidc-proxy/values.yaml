@@ -11,7 +11,7 @@ image:
   containers:
     port: 80
 
-envRender:
+env:
 # environment vars for Deployment
   proxyUrl: #first url path to proxy
   proxyUrl2: #second url path to proxy
@@ -46,28 +46,11 @@ service:
 ingress:
   enabled: true
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "grafana-k8-100"
-    kubernetes.io/ingress.allow-http: "false"
+    globalStaticIpName:
+    ingressAllowHttp: false
+  servicePort: http
 
 secretsgeneric:
   enabled: true
   tlsKey:
   tlsCert:
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
