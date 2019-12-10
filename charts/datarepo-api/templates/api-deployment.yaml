@@ -19,13 +19,6 @@ spec:
         component: {{ include "datarepo-api.fullname" . }}
     spec:
       serviceAccountName: {{ include "datarepo-api.serviceAccountName" . }}
-      volumes:
-        - name: google-cloud-key
-          secret:
-            secretName: {{ template "datarepo-api.fullname" . }}
-            items:
-              - key: credential-file-json
-                path: sa-key.json
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
@@ -48,6 +41,13 @@ spec:
         volumeMounts:
         - name: google-cloud-key
           mountPath: /var/secrets/google/
+      volumes:
+        - name: google-cloud-key
+          secret:
+            secretName: {{ template "datarepo-api.fullname" . }}
+            items:
+              - key: credential-file-json
+                path: sa-key.json
         ports:
         - containerPort: {{ .Values.image.port }}
         - containerPort: 5005
