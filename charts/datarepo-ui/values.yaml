@@ -9,9 +9,10 @@ image:
   version: latest
   pullPolicy: IfNotPresent
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+ProxyPass:
+  status: #http://api-service.data-repo:8080/status
+  swagger: #http://api-service.data-repo:8080/swagger-ui.html
+  api: #http://api-service.data-repo:8080
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -23,7 +24,6 @@ serviceAccount:
 rbac:
   # Specifies whether a psp should be created
   create: true
-  pspEnabled: true
 
 service:
   type: ClusterIP

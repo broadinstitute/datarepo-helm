@@ -21,3 +21,14 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
         ports:
         - containerPort: 80
+        volumeMounts:
+          - mountPath: /etc/nginx/nginx.conf
+            name: {{ template "daterepo-ui.fullname" . }}
+            subPath: nginx.conf
+      volumes:
+        - name: {{ template "daterepo-ui.fullname" . }}
+          configMap:
+            name: {{ template "daterepo-ui.fullname" . }}
+            items:
+              - key: nginxconf
+                path: nginx.conf

@@ -1,13 +1,13 @@
-{{- if .Values.rbac.create -}}
+{{- if .Values.rbac.create }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{ include "datarepo-ui.fullname" . }}-ui-use-pod-security-policy-role"
+  name: "{{ include "datarepo-ui.fullname" . }}-use-pod-security-policy-role"
   namespace: {{ .Release.Namespace }}
 rules:
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']
   verbs: ["use"]
   resourceNames:
-    - "{{ include "datarepo-ui.fullname" . }}-ui-pod-running-policy"
+    - "{{ include "datarepo-ui.fullname" . }}-pod-running-policy"
 {{- end }}

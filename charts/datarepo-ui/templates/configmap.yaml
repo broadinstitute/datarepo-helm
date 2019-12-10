@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "daterepo-ui.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "daterepo-ui.name" . }}
+    chart: {{ template "daterepo-ui.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  nginxconf: |
+{{ tpl (.Files.Get "conf/nginx.conf") . | nindent 4 }}
