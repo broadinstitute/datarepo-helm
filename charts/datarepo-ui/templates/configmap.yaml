@@ -1,13 +1,36 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "daterepo-ui.fullname" . }}
+  name: {{ template "datarepo-ui.fullname" . }}
   namespace: {{ .Release.Namespace }}
-  labels:
-    app: {{ template "daterepo-ui.name" . }}
-    chart: {{ template "daterepo-ui.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
 data:
-  nginxconf: |
-{{ tpl (.Files.Get "conf/nginx.conf") . | nindent 4 }}
+  nginxconf: |-
+    events {
+      worker_connections  4096;  ## Default: 1024
+    }
+
+    http {
+      server { # simple reverse-proxy
+        listen       80;
+
+        # pass the status check through
+        location /status {
+            proxy_pass {{ .Values.proxyPass.status }};
+        }
+
+        # get swagger working
+        location /swagger-ui.html {
+            proxy_pass {{ .Values.proxyPass.swagger }};
+        }
+
+        location ~ (configuration|ga4gh|webjars|api-docs|swagger-resources) {
+            proxy_pass {{ .Values.proxyPass.api }};
+        }
+
+        # serve static files
+        location / {
+          root /usr/share/nginx/html;
+          try_files $uri /index.html =404;
+        }
+      }
+    }

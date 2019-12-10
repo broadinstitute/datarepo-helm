@@ -17,10 +17,6 @@ spec:
       labels:
         {{- include "oidc-proxy.selectorLabels" . | nindent 8 }}
     spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
       serviceAccountName: {{ include "oidc-proxy.serviceAccountName" . }}
       containers:
       - name: {{ .Chart.Name }}

@@ -9,7 +9,7 @@ image:
   version: latest
   pullPolicy: IfNotPresent
 
-ProxyPass:
+proxyPass:
   status: #http://api-service.data-repo:8080/status
   swagger: #http://api-service.data-repo:8080/swagger-ui.html
   api: #http://api-service.data-repo:8080

@@ -22,13 +22,12 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-          - mountPath: /etc/nginx/nginx.conf
-            name: {{ template "daterepo-ui.fullname" . }}
-            subPath: nginx.conf
+          - name: nginxconf
+            mountPath: /etc/nginx/
       volumes:
-        - name: {{ template "daterepo-ui.fullname" . }}
+        - name: nginxconf
           configMap:
-            name: {{ template "daterepo-ui.fullname" . }}
+            name: {{ include "datarepo-ui.fullname" . }}
             items:
               - key: nginxconf
                 path: nginx.conf

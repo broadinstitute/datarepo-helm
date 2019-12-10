@@ -17,7 +17,7 @@ metadata:
   {{- end }}
 spec:
   tls:
-    - secretName: {{ .Values.secret.name }}
+    - secretName: {{ include "oidc-proxy.fullname" . }}
   backend:
     serviceName: {{ $fullName }}
     servicePort: {{ $svcPort }}
