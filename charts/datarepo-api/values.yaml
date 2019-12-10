@@ -10,14 +10,50 @@ image:
   pullPolicy: IfNotPresent
   port: 8080
 
-
 env: # environment variables
-  googleCloudProject: # Name of google cloud project
-  dbDatarepoUsername: # Database username to connect datarepo to
-  springProfilesActive: # springboard profile
-  dbStairwayUsername: # Database username to connect stairway to
-  dbLocation: # some ip or k8 dns
-  dataBase: datarepo
+  serverContextpath:
+  serverPort:
+  springDatasourceTomcatTestOnBorrow:
+  springDatasourceTomcatValidationQuery:
+  springJacksonSerializationWriteDatesAsTimestamps:
+  springLiquibaseEnabled:
+  springProfilesActive:
+  springfoxDocumentationSwaggerV2Path:
+  dbMigrateDropallonstart:
+  dbMigrateUpdateallonstart:
+  dbDatarepoUri:
+  dbDatarepoUsername:
+  dbDatarepoPassword:
+  dbDatarepoChangesetfile:
+  dbStairwayUri:
+  dbStairwayUsername:
+  dbStairwayPassword:
+  dbStairwayChangesetfile:
+  dbStairwayForceclean:
+  oauthClientid:
+  oauthSchemename:
+  oauthLoginendpoint:
+  oauthScopes:
+  datarepoResourceid:
+  datarepoUseremail:
+  datarepoDnsname:
+  datarepoUserid:
+  datarepoMaxstairwaythreads:
+  datarepoGcsBucket:
+  datarepoGcsRegion:
+  datarepoGcsConnecttimeoutseconds:
+  datarepoGcsReadtimeoutseconds:
+  samBasepath:
+  samStewardsgroupemail:
+  samRetryinitialwaitseconds:
+  samRetrymaximumwaitseconds:
+  samOperationtimeoutseconds:
+  googleProjectid:
+  googleApplicationname:
+  googleProjectcreatetimeoutseconds:
+  googleCorebillingaccount:
+  googleParentresourcetype:
+  googleParentresourceid:
 
 imagePullSecrets: []
 nameOverride: ""
@@ -39,35 +75,14 @@ service:
   port: 8080
   type: ClusterIP
 
-vaultscrets:
-  enable:
-  datarepoPassword:
-  stairwayPassword:
-  credentialfilejson:
-# Use an existing secret for the admin user.
 secretsgeneric:
   existingSecret: true
   datarepoPassword:
   stairwayPassword:
-  credentialFileJson: ""#>
-    #[{"serviceAccountName":"ob1","serviceAccountName":0,"datarepoPassword":"network"},
-    # {"name":"ob2","port_nu...
-    # this is a sample json embed
+  credentialFileJson:
+
 secretsvault:
   existingSecret: false
   datarepoPassword:
   stairwayPassword:
-  credentialFileJson: ""#>
-
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  credentialFileJson:
