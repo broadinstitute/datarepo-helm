@@ -1,138 +1,119 @@
-## Required for a full Deployment of a datarepo
-# - datarepo-api
-# - oidc-proxy
-# - datarepo-ui
-# - gcloud-sqlproxy
-# - postgresql
-datarepo-api:
-  enabled: false
-  #image:
-    #repository: gcr.io/broad-jade-dev/jade-data-repo
-    #version: latest
-    #pullPolicy: IfNotPresent
-    #port: 8080
-  #env: # environment variables
-    #google_cloud_project: # Name of google cloud project
-    #db_datarepo_username: # Database username to connect datarepo to
-    #spring_profiles_active: # springboard profile
-    #db_stairway_username: # Database username to connect stairway to
-    #dblocation: # some ip or k8 dns
-    #database: datarepo
-  #serviceAccount:
-    # Specifies whether a service account should be created
-    #create: false
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template
-    #name:
-  #rbac:
-    # Specifies whether a psp should be created
-    #create: true
-    #pspEnabled: true
-  #service:
-    #port: 8080
-    #type: ClusterIP
-  #secrets:
-    #existingSecret: false
-    #datarepoPassword:
-    #stairwayPassword:
-    #credentialfilejson:
+### ßRequired for a full Deployment of a datarepo
+### - datarepo-api
+### - oidc-proxy
+### - datarepo-ui
+### - gcloud-sqlproxy
+### - postgresql
+gcloud-sqlproxy:
+  enabled: false ## if true uncomment below
+  ##  serviceAccountKey: '{
+  ##  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  ##  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  ##  "client_email": "fake-sa@fake-datarepo.iam.gserviceaccount.com",
+  ##  "client_id": "7584w748w7",
+  ##  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fake-sa%40fake-datarepo.iam.gserviceaccount.com",
+  ##  "private_key": "-----BEGIN PRIVATE KEY-----\fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecer
+  ##  fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecert
+  ##  fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecert
+  ##  fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecert",
+  ##  "project_id": "fake-jade-ms",
+  ##  "token_uri": "https://oauth2.googleapis.com/token",
+  ##  "type": "service_account"
+  ##  }'
+  ##  cloudsql:
+  ##    instances:
+  ##     ### GCP instance name.
+  ##    - instance: "jade-postgres-101-fake"
+  ##     ### GCP project where the instance exists.
+  ##      project: "fake-jade-ms"
+  ##     ### GCP region where the instance exists.
+  ##      region: "us-central1"
+  ##     ### Port number for the proxy to expose for this instance.
+  ##      port: 5432
+  ##  rbac:
+  ##    create: true
+  ##  networkPolicy:
+  ##    enabled: false
 
-oidc-proxy:
-  enabled: false
-  #image:
-    #repository: broadinstitute/openidc-proxy
-    #version: bernick_tcell
-    #pullPolicy: IfNotPresent
-    #containers:
-      #port: 80
-  #envRender:
-  # environment vars for Deployment
-    #- name: PROXY_URL
-      #value: #url path
-    #- name: PROXY_URL2
-      #value: #url path
-    #- name: PROXY_URL3
-      #value: #url path
-    #- name: LOG_LEVEL
-      #value: 'debug'
-    #- name: SERVER_NAME
-      #value: #A/CNAME
-    #- name: REMOTE_USER_CLAIM
-      #value: 'sub'
-    #- name: ENABLE_STACKDRIVER
-      #value: 'yes'
-    #- name: FILTER2
-      #value: #'AddOutputFilterByType DEFLATE application/json text/plain text/html application/javascript application/x-javascript'
-  #serviceAccount:
-    # Specifies whether a service account should be created
-    #create: true
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template
-    #name:
-  #rbac:
-  # Specifies whether a psp should be created
-    #create: true
-    #pspEnabled: true
-  #service:
-    #type: NodePort
-    #port: 80
-  #ingress:
-    #enabled: true
-    #annotations:
-      #kubernetes.io/ingress.global-static-ip-name: "grafana-k8-100"
-      #kubernetes.io/ingress.allow-http: "false"
-  #secret:
-    #enabled: true
-    #name: odic-tls-secret
-    #tlsKey:
-    #tlsCert:
+datarepo-api:
+  enabled: false ## if true uncomment below
+  ##  image:
+  ##    version: fake-jade-ms_2019-12-05_13-20-26
+  ##  env:
+  ##    googleProjectid:  fake-jade-ms
+  ##    dbDatarepoUsername:  fakemanager
+  ##    springProfilesActive:  google,cloudsql,ms
+  ##    dbStairwayUsername:  fakemanager
+  ##    dbStairwayUri: jdbc:postgresql://jade-gcloud-sqlproxy.wholedeploy:5432/datarepo
+  ##    dbDatarepoUri: jdbc:postgresql://jade-gcloud-sqlproxy.wholedeploy:5432/stairway
+  ##  serviceAccount:
+  ##    create: true
+  ##  rbac:
+  ##    create: true
+  ##    pspEnabled: true
+  ##  secretsgeneric:
+  ##    existingSecret: true
+  ##    datarepoPassword: fakedbpassword
+  ##    stairwayPassword: fakedbpassword
+  ##    credentialFileJson: '{
+  ##  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  ##  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  ##  "client_email": "fake-k8-sa@broad-jade-dev.iam.gserviceaccount.com",
+  ##  "client_id": "84e8748w74",
+  ##  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fake-k8-sa%40fake-jade-dev.iam.gserviceaccount.com",
+  ##  "private_key": "-----BEGIN PRIVATE KEY-----\fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecer
+  ##  fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecert
+  ##  fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecert
+  ##  fakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecertfakecert",
+  ##  "project_id": "fake-jade-dev",
+  ##  "token_uri": "https://oauth2.googleapis.com/token",
+  ##  "type": "service_account"
+  ##  }'
 
 datarepo-ui:
-  enabled: true
-  #image:
-    #repository: gcr.io/broad-jade-dev/jade-data-repo-ui
-    #version: latest
-    #pullPolicy: IfNotPresent
-  #serviceAccount:
-    # Specifies whether a service account should be created
-    #create: true
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template
-    #name:
-  #rbac:
-  # Specifies whether a psp should be created
-    #create: true
-    #pspEnabled: true
-  #service:
-    #type: ClusterIP
-    #port: 80
+  enabled: false ## if true uncomment below
+  ##  image:
+  ##    version: fake-jade-ms_2019-12-05_13-23-33
+  ##  proxyPass:
+  ##    status: http://jade-datarepo-api.wholedeploy:8080/status
+  ##    swagger: http://jade-datarepo-api.wholedeploy:8080/swagger-ui.html
+  ##    api: http://jade-datarepo-api.wholedeploy:8080
+  ##  serviceAccount:
+  ##    create: true
+  ##  rbac:
+  ##    create: true
 
-gcloud-sqlproxy:
-  enabled: false
-  #image: b.gcr.io/cloudsql-docker/gce-proxy
-  #imageTag: "1.11"
-  #serviceAccountKey: ""
-  ### SQL connection settings
-##
-  #cloudsql:
-    ## PostgreSQL/MySQL instances:
-    ## update with your GCP project, the region of your Cloud SQL instance
-    ## and the name of your Cloud SQL instance
-    ## PostgreSQL port 5432 or MySQL port 3306, or other port you set for your SQL instance.
-    ## Use different ports for different instances.
-    #instances:
-    # GCP instance name.
-    #- instance: "instance"
-    # Optional abbreviation used to override the truncated instance name if the
-    # 15 character instance name prefix is not unique for use as a port
-    # identifier.
-      #instanceShortName: ""
-    # GCP project where the instance exists.
-      #project: "project"
-    # GCP region where the instance exists.
-      #region: "region"
-    # Port number for the proxy to expose for this instance.
-      #port: 5432
+oidc-proxy:
+  enabled: false ## if true uncomment below
+  ##  env:
+  ##    proxyUrl: http://jade-datarepo-ui.wholedeploy:80/
+  ##    proxyUrl2: http://jade-datarepo-api.wholedeploy:8080/api
+  ##    proxyUrl3: http://jade-datarepo-api.wholedeploy:8080/register
+  ##    logLevel: debug
+  ##    serverName: jade.datarepo-dev.broadinstitute.org
+  ##    remoteUserClaim: sub
+  ##    enableStackdriver: yes
+  ##    filter2: AddOutputFilterByType DEFLATE application/json text/plain text/html application/javascript application/x-javascript
+  ##  ingress:
+  ##    enabled: true
+  ##    annotations:
+  ##      globalStaticIpName: fake-k8-100
+  ##  serviceAccount:
+  ##    create: true
+  ##  rbac:
+  ##    create: true
+  ##    pspEnabled: true
+  ##  secretsgeneric:
+  ##    enabled: true
+  ##    tlsKey: |-
+  ##      -----BEGIN PRIVATE KEY-----
+  ##      faketlscert
+  ##      -----END PRIVATE KEY-----
+  ##    tlsCert: |-
+  ##      -----BEGIN CERTIFICATE-----
+  ##      faketlscert
+  ##      -----END CERTIFICATE-----
 
-postgresql: # supply your down sql instance or use this
+postgresql: # supply your Gcloudsql instance or use this
   enabled: false
+## https://github.com/helm/charts/tree/master/stable/postgresql
