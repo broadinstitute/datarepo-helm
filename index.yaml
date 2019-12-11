@@ -1,0 +1,103 @@
+apiVersion: v1
+entries:
+  datarepo-api:
+  - apiVersion: v2
+    created: "2019-12-11T14:21:19.517737-05:00"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: 891da59304b461f78b862bf9865826688f20cfdaaa00bceab4c65766df080394
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.2/datarepo-api-0.0.2.tgz
+    version: 0.0.2
+  datarepo-ui:
+  - apiVersion: v2
+    created: "2019-12-11T14:21:19.649938-05:00"
+    description: A Helm chart to deploy datarepo ui server for Kubernetes
+    digest: 60785eb3264f3abe5eb352b4724298a3e4f573787b4426782b49201da953a905
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-ui
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.2/datarepo-ui-0.0.2.tgz
+    version: 0.0.2
+  gcloud-sqlproxy:
+  - apiVersion: v1
+    appVersion: "1.16"
+    created: "2019-12-11T14:21:19.75477-05:00"
+    description: Google Cloud SQL Proxy
+    digest: b4ac79465e4b4329d79f0ba3dcb0f533a3ab54c8c22d78edfa7b330c145a1ded
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: rmocius@gmail.com
+      name: rimusz
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/rimusz/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.3/gcloud-sqlproxy-0.19.3.tgz
+    version: 0.19.3
+  oidc-proxy:
+  - apiVersion: v2
+    created: "2019-12-11T14:21:19.874706-05:00"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: f332d90ac1e289f56e3a4eae85fa37600170a2c5558f6559ccf2b7646f7daf0e
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.2/oidc-proxy-0.0.2.tgz
+    version: 0.0.2
+  serviceaccount-psp:
+  - apiVersion: v2
+    created: "2019-12-11T14:21:20.093353-05:00"
+    description: A Helm chart to deploy a service accout and psp roles for Kubernetes
+      namespace
+    digest: ba5394fc9ea8627f8d9eaec7cad357f6803fc16850eb7b1ad10968d61583786d
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: serviceaccount-psp
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/serviceaccount-psp-0.0.2/serviceaccount-psp-0.0.2.tgz
+    version: 0.0.2
+generated: "2019-12-11T14:21:19.24677-05:00"
