@@ -4,12 +4,9 @@ metadata:
   name: {{ template "oidc-proxy.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ template "oidc-proxy.name" . }}
-    chart: {{ template "oidc-proxy.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    {{- include "oidc-proxy.labels" . | nindent 4 }}
 data:
-  site-conf: |-
+  siteconf: |-
     ServerAdmin ${SERVER_ADMIN}
     ServerName ${SERVER_NAME}
     ServerTokens ProductOnly

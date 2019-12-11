@@ -3,6 +3,8 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ include "oidc-proxy.fullname" . }}
+  labels:
+    {{- include "oidc-proxy.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.global-static-ip-name: {{ .Values.ingress.annotations.globalStaticIpName | quote }}
     kubernetes.io/ingress.allow-http: {{ .Values.ingress.annotations.ingressAllowHttp | quote }}

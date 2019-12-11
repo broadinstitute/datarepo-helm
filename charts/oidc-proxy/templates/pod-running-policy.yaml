@@ -5,6 +5,7 @@ metadata:
   name: "{{ include "oidc-proxy.fullname" . }}-oidc-pod-running-policy"
   namespace: {{ .Release.Namespace }}
   labels:
+    {{- include "oidc-proxy.labels" . | nindent 4 }}
     name: podsecuritypolicy
 spec:
   privileged: false
