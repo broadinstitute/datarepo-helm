@@ -1,4 +1,4 @@
-# broad-dsp-helm
+# datarepo-helm
 A helm repo for Datarepo from Broad Data Science Platforms Group
 
 ## How Do I install the repo
