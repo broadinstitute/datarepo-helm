@@ -44,7 +44,7 @@ dependencies:
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: datarepo-ui.enabled
 - name: gcloud-sqlproxy
-  version: 0.19.5
+  version: 0.19.3
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: gcloud-sqlproxy.enabled
 - name: postgresql
