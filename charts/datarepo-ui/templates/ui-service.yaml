@@ -13,4 +13,3 @@ spec:
       name: http
   selector:
     component: {{ include "datarepo-ui.fullname" . }}
-    {{- include "datarepo-ui.selectorLabels" . | nindent 4 }}

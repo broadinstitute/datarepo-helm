@@ -9,10 +9,11 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "datarepo-ui.selectorLabels" . | nindent 6 }}
+      component: {{ include "datarepo-ui.fullname" . }}
   template:
     metadata:
       labels:
+        component: {{ include "datarepo-ui.fullname" . }}
         {{- include "datarepo-ui.selectorLabels" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "datarepo-ui.serviceAccountName" . }}

@@ -1,4 +1,4 @@
-{{- if .Values.rbac.pspEnabled }}
+{{- if .Values.rbac.create }}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
@@ -6,6 +6,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     name: podsecuritypolicy
+    {{- include "datarepo-api.labels" . | nindent 4 }}
 spec:
   privileged: false
   seLinux:

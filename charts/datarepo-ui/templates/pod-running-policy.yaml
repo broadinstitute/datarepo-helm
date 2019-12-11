@@ -6,6 +6,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     name: podsecuritypolicy
+    {{- include "datarepo-ui.labels" . | nindent 4 }}
 spec:
   privileged: false
   seLinux:

@@ -22,6 +22,22 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
         ports:
         - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 80
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 80
+          initialDelaySeconds: 55
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
         env:
           - name: PROXY_URL
             value: {{ .Values.env.proxyUrl | quote }}

@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: {{ template "datarepo-ui.fullname" . }}
   namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "datarepo-ui.labels" . | nindent 4 }}
 data:
   nginxconf: |-
     events {

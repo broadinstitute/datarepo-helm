@@ -3,10 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "datarepo-api.fullname" . }}
   labels:
-    app: {{ include "datarepo-api.fullname" . }}
-    chart: {{ include "datarepo-api.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    {{- include "datarepo-api.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
