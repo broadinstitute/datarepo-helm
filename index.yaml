@@ -21,6 +21,24 @@ entries:
     version: 0.0.2
   datarepo-api:
   - apiVersion: v2
+    created: "2019-12-17T12:26:27.824286-05:00"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: 97b736addc9507e89203b8e55724819076a2f40674952869ca8d69290284cf36
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.3/datarepo-api-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2019-12-11T14:21:19.517737-05:00"
     description: A Helm chart to deploy datarepo api server for Kubernetes
     digest: 891da59304b461f78b862bf9865826688f20cfdaaa00bceab4c65766df080394
@@ -82,6 +100,24 @@ entries:
     version: 0.19.3
   oidc-proxy:
   - apiVersion: v2
+    created: "2019-12-17T12:26:27.950053-05:00"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: 25999cc254e51eab1e62bd114ae9aefd9aa017a057bb5b742e41ef60f4e1350f
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.3/oidc-proxy-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2019-12-11T14:21:19.874706-05:00"
     description: A Helm chart to deploy datarepo oidc server for Kubernetes
     digest: f332d90ac1e289f56e3a4eae85fa37600170a2c5558f6559ccf2b7646f7daf0e
@@ -119,4 +155,24 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/serviceaccount-psp-0.0.2/serviceaccount-psp-0.0.2.tgz
     version: 0.0.2
+  vault-secrets:
+  - apiVersion: v2
+    created: "2019-12-17T12:26:28.079803-05:00"
+    description: A Helm chart to deploy datarepo ui server for Kubernetes
+    digest: e876ff6a2414da0ab7783474627376be198036dd5ef22d83b54400e4abc909e6
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - vault
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: vault-secrets
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
+    version: 0.0.1
 generated: "2019-12-11T14:21:19.24677-05:00"
