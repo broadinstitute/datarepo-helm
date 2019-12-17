@@ -1,4 +1,5 @@
 {{- if .Values.ingress.enabled }}
+{{- $hasCredentials := include "oidc-proxy.hasCredentials" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -9,8 +10,10 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: {{ .Values.ingress.annotations.globalStaticIpName | quote }}
     kubernetes.io/ingress.allow-http: {{ .Values.ingress.annotations.ingressAllowHttp | quote }}
 spec:
+  {{ if $hasCredentials -}}
   tls:
-    - secretName: {{ include "oidc-proxy.fullname" . }}
+    - secretName: {{ include "oidc-proxy.secretName" . }}
+  {{ end -}}
   rules:
   - http:
       paths:

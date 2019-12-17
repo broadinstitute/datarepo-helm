@@ -61,3 +61,18 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+
+{{/*
+Generate the secret name
+*/}}
+{{- define "oidc-proxy.secretName" -}}
+{{ default (include "oidc-proxy.fullname" .) .Values.existingTlsSecret }}
+{{- end -}}
+
+{{/*
+Check if any type of credentials are defined
+*/}}
+{{- define "oidc-proxy.hasCredentials" -}}
+{{ .Values.existingTlsSecret -}}
+{{- end -}}

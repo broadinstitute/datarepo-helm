@@ -50,7 +50,11 @@ ingress:
     ingressAllowHttp: false
   servicePort: http
 
+## create a new sceret and key for TLs cert and key
 secretsgeneric:
-  enabled: true
   tlsKey:
   tlsCert:
+
+## Specify an existing secret holding the cloud-sql service account credentials
+## keys must be named tls.key and tls.cert
+existingTlsSecret:
