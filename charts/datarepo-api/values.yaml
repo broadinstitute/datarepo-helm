@@ -74,14 +74,17 @@ service:
   port: 8080
   type: ClusterIP
 
+## create new secrets
 secretsgeneric:
-  existingSecret: true
   datarepoPassword:
   stairwayPassword:
-  credentialFileJson:
+  serivceAccountCredentialFileJson:
 
-secretsvault:
-  existingSecret: false
-  datarepoPassword:
-  stairwayPassword:
-  credentialFileJson:
+## Specify an existing secret holding the cloud-sql service account credentials
+existingSecret: ""
+## The key in the existing secret that stores the Datarepo DB credentials
+existingDatarepoDbSecretKey: ""
+## The key in the existing secret that stores the stairway DB credentials
+existingStairwayDbSecretKey: ""
+## The key in the existing secret that stores the GCP Service account credentials
+existingServiceAccountSecretKey: ""

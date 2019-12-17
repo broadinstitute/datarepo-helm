@@ -1,3 +1,4 @@
+{{- $hasCredentials := include "datarepo-api.hasCredentials" . -}}
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -17,12 +18,14 @@ spec:
     spec:
       serviceAccountName: {{ include "datarepo-api.serviceAccountName" . }}
       volumes:
+        {{- if $hasCredentials }}
         - name: google-cloud-key
           secret:
-            secretName: {{ template "datarepo-api.fullname" . }}
+            secretName: {{ include "datarepo-api.secretName" . }}
             items:
-              - key: credential-file-json
+              - key: {{ include "datarepo-api.secretKeyServiceAccount" . }}
                 path: sa-key.json
+        {{- end }}
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
@@ -43,8 +46,10 @@ spec:
           timeoutSeconds: 3
           failureThreshold: 2
         volumeMounts:
+        {{ if $hasCredentials -}}
         - name: google-cloud-key
           mountPath: /var/secrets/google/
+        {{ end -}}
         ports:
         - containerPort: {{ .Values.image.port }}
         - containerPort: 5005
@@ -221,15 +226,17 @@ spec:
         - name: GOOGLE_PARENTRESOURCEID
           value: {{ .Values.env.googleParentresourceid }}
         {{- end }}
+        {{ if $hasCredentials -}}
         - name: DB_DATAREPO_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ template "datarepo-api.fullname" . }}
-              key: datarepo-password
+              name: {{ include "datarepo-api.secretName" . }}
+              key: {{ include "datarepo-api.secretKeyDatarepoDb" . }}
         - name: DB_STAIRWAY_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ template "datarepo-api.fullname" . }}
-              key: stairway-password
+              name: {{ include "datarepo-api.secretName" . }}
+              key: {{ include "datarepo-api.secretKeyStairwayDb" . }}
+        {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/sa-key.json

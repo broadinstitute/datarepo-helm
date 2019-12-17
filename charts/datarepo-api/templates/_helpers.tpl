@@ -61,3 +61,38 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Generate existingDatarepoDbSecretKey key name in the secret
+*/}}
+{{- define "datarepo-api.secretKeyDatarepoDb" -}}
+{{ default "datarepo-password" .Values.existingDatarepoDbSecretKey }}
+{{- end -}}
+
+{{/*
+Generate existingStairwayDbSecretKey key name in the secret
+*/}}
+{{- define "datarepo-api.secretKeyStairwayDb" -}}
+{{ default "stairway-password" .Values.existingStairwayDbSecretKey }}
+{{- end -}}
+
+{{/*
+Generate existingServiceAccountSecretKey key name in the secret
+*/}}
+{{- define "datarepo-api.secretKeyServiceAccount" -}}
+{{ default "credential-file-json" .Values.existingServiceAccountSecretKey }}
+{{- end -}}
+
+{{/*
+Generate the secret name
+*/}}
+{{- define "datarepo-api.secretName" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingSecret }}
+{{- end -}}
+
+{{/*
+Check if any type of credentials are defined
+*/}}
+{{- define "datarepo-api.hasCredentials" -}}
+{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecret .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey ) -}}
+{{- end -}}
