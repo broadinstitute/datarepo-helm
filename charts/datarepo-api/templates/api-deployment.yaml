@@ -21,7 +21,7 @@ spec:
         {{- if $hasCredentials }}
         - name: google-cloud-key
           secret:
-            secretName: {{ include "datarepo-api.secretName" . }}
+            secretName: {{ include "datarepo-api.secretNameSA" . }}
             items:
               - key: {{ include "datarepo-api.secretKeyServiceAccount" . }}
                 path: sa-key.json
@@ -230,12 +230,12 @@ spec:
         - name: DB_DATAREPO_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ include "datarepo-api.secretName" . }}
+              name: {{ include "datarepo-api.secretNameDB" . }}
               key: {{ include "datarepo-api.secretKeyDatarepoDb" . }}
         - name: DB_STAIRWAY_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ include "datarepo-api.secretName" . }}
+              name: {{ include "datarepo-api.secretNameDB" . }}
               key: {{ include "datarepo-api.secretKeyStairwayDb" . }}
         {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS

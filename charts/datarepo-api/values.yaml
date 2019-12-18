@@ -80,11 +80,14 @@ secretsgeneric:
   stairwayPassword:
   serivceAccountCredentialFileJson:
 
-## Specify an existing secret holding the cloud-sql service account credentials
-existingSecret: ""
+## Specify an existing secret holding the cloud-sql database credentials
+existingSecretDB: ""
 ## The key in the existing secret that stores the Datarepo DB credentials
 existingDatarepoDbSecretKey: ""
 ## The key in the existing secret that stores the stairway DB credentials
 existingStairwayDbSecretKey: ""
+
+## Specify an existing secret holding the cloud-sql service account credentials
+existingSecretSA: ""
 ## The key in the existing secret that stores the GCP Service account credentials
 existingServiceAccountSecretKey: ""
