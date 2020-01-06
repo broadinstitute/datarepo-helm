@@ -1,0 +1,45 @@
+{{- $hasCredentials := include "secrets-manager.hasCredentials" . -}}
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: secrets-manager
+    {{- include "secrets-manager.labels" . | nindent 4 }}
+  name: {{ include "secrets-manager.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secrets-manager
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: secrets-manager
+    spec:
+      serviceAccountName: {{ include "secrets-manager.serviceAccountName" . }}
+      containers:
+      - image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+        imagePullPolicy: IfNotPresent
+        name: {{ .Chart.Name }}
+        args:
+        - "-vault.engine=kv1"
+        - "-log.level=debug"
+        {{ if $hasCredentials -}}
+        env:
+        - name: VAULT_ROLE_ID
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "secrets-manager.secretName" . }}
+              key: {{ include "secrets-manager.secretKeyRoleId" . }}
+        - name: VAULT_SECRET_ID
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "secrets-manager.secretName" . }}
+              key: {{ include "secrets-manager.secretKeySecretId" . }}
+        {{ end -}}
+        - name: VAULT_ADDR
+          value: {{ .Values.vaultLocation }}

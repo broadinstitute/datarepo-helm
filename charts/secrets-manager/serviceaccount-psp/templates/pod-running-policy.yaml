@@ -1,0 +1,21 @@
+{{- if .Values.rbac.pspEnabled }}
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: "{{ template "serviceaccount-psp.name" . }}-psp-pod-running-policy"
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: podsecuritypolicy
+spec:
+  privileged: {{ .Values.PodSecurityPolicy.spec.privileged }}
+  seLinux:
+    rule: {{ .Values.PodSecurityPolicy.spec.seLinux.rule }}
+  supplementalGroups:
+    rule: {{ .Values.PodSecurityPolicy.spec.supplementalGroups.rule }}
+  runAsUser:
+    rule: {{ .Values.PodSecurityPolicy.spec.runAsUser.rule }}
+  fsGroup:
+    rule: {{ .Values.PodSecurityPolicy.spec.fsGroup.rule }}
+  volumes:
+  - '*'
+{{- end }}
