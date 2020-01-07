@@ -25,9 +25,6 @@ spec:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
         imagePullPolicy: IfNotPresent
         name: {{ .Chart.Name }}
-        args:
-        - "-vault.engine=kv1"
-        - "-log.level=debug"
         {{ if $hasCredentials -}}
         env:
         - name: VAULT_ROLE_ID
