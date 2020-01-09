@@ -1,5 +1,26 @@
 apiVersion: v1
 entries:
+  create-secret-manager-secret:
+  - apiVersion: v2
+    created: "2020-01-09T13:04:40.029919-05:00"
+    description: A Helm chart for Kubernetes
+    digest: e6b252e82057111c53439701dae8e7c16c2970a9e31b9bc569fa7aa89c561ff5
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - secrets
+    - secrets-manager
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: create-secret-manager-secret
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/create-secret-manager-secret-0.0.1/create-secret-manager-secret-0.0.1.tgz
+    version: 0.0.1
   datarepo:
   - apiVersion: v2
     created: "2019-12-18T15:51:19.943339-05:00"
@@ -152,6 +173,29 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.3/gcloud-sqlproxy-0.19.3.tgz
     version: 0.19.3
+  install-secrets-manager:
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2020-01-09T13:04:40.139677-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 27992f47b9610eebf7999d097239adc6f926a125cf4913bd39a97b84f796aa88
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - secrets
+    - secrets-manager
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: install-secrets-manager
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    - https://github.com/tuenti/secrets-manager
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/install-secrets-manager-0.0.1/install-secrets-manager-0.0.1.tgz
+    version: 0.0.1
   oidc-proxy:
   - apiVersion: v2
     created: "2019-12-17T12:26:27.950053-05:00"
