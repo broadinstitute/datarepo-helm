@@ -1,6 +1,6 @@
 apiVersion: v2
-name: vault-secrets
-description: A Helm chart to deploy datarepo ui server for Kubernetes
+name: install-secrets-manager
+description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -18,13 +18,15 @@ version: 0.0.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-# appVersion: 1.16.0
+appVersion: 1.0.1
+
 keywords:
 - google
 - cloud
 - datarepo
 - broadinstitute
-- vault
+- secrets
+- secrets-manager
 
 maintainers:
 - email: smark@broadinstitute.org
@@ -32,9 +34,4 @@ maintainers:
 
 sources:
 - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-
-dependencies:
-- name: vault-crd
-  version: 1.3.2
-  repository: https://raw.githubusercontent.com/broadinstitute/vault-crd-helm/master
-  condition: vaultCrd.install
+- https://github.com/tuenti/secrets-manager
