@@ -19,3 +19,19 @@ version: 0.0.1
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
 appVersion: 1.0.1
+
+keywords:
+- google
+- cloud
+- datarepo
+- broadinstitute
+- secrets
+- secrets-manager
+
+maintainers:
+- email: smark@broadinstitute.org
+  name: smark
+
+sources:
+- https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+- https://github.com/tuenti/secrets-manager

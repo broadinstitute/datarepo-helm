@@ -24,6 +24,7 @@ keywords:
 - datarepo
 - broadinstitute
 - secrets
+- secrets-manager
 
 maintainers:
 - email: smark@broadinstitute.org

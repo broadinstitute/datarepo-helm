@@ -1,6 +1,7 @@
+secretName:
 secrets:
 # list of secrets, paths, and types of secrets to be rendered into kube secret
-- name: ## "fakeSecret1"
+- kubeSecretKey: ## "fakeKey1"
   path: ## "secret/fake/path"
-  encoding:
-  key: ## "KEYVALUE" https://vault.koudingspawn.de/supported-secret-types
+  encoding: ## base64
+  vaultKey: ## myVaultKey
