@@ -1,4 +1,4 @@
-{{- $hasCredentials := include "secrets-manager.hasCredentials" . -}}
+{{- $hasCredentials := include "install-secrets-manager.hasCredentials" . -}}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -6,37 +6,39 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   labels:
     app: {{ .Chart.Name }}
-    {{- include "secrets-manager.labels" . | nindent 4 }}
-  name: {{ include "secrets-manager.fullname" . }}
+    {{- include "install-secrets-manager.labels" . | nindent 4 }}
+  name: {{ include "install-secrets-manager.fullname" . }}
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: secrets-manager
+      app: install-secrets-manager
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: secrets-manager
+        app: install-secrets-manager
     spec:
-      serviceAccountName: {{ template "secrets-manager.serviceAccountName" . }}
+      serviceAccountName: {{ template "install-secrets-manager.serviceAccountName" . }}
       containers:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
         imagePullPolicy: IfNotPresent
         name: {{ .Chart.Name }}
+        args:
+        - -vault.engine={{ .Values.vaultVersion }}
         {{ if $hasCredentials -}}
         env:
         - name: VAULT_ROLE_ID
           valueFrom:
             secretKeyRef:
-              name: {{ include "secrets-manager.secretName" . }}
-              key: {{ include "secrets-manager.secretKeyRoleId" . }}
+              name: {{ include "install-secrets-manager.secretName" . }}
+              key: {{ include "install-secrets-manager.secretKeyRoleId" . }}
         - name: VAULT_SECRET_ID
           valueFrom:
             secretKeyRef:
-              name: {{ include "secrets-manager.secretName" . }}
-              key: {{ include "secrets-manager.secretKeySecretId" . }}
+              name: {{ include "install-secrets-manager.secretName" . }}
+              key: {{ include "install-secrets-manager.secretKeySecretId" . }}
         {{ end -}}
         - name: VAULT_ADDR
           value: {{ .Values.vaultLocation }}

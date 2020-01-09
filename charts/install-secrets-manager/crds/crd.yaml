@@ -3,9 +3,9 @@ apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
   creationTimestamp: null
-  name: secretdefinitions.secrets-manager.tuenti.io
+  name: secretdefinitions.install-secrets-manager.tuenti.io
 spec:
-  group: secrets-manager.tuenti.io
+  group: install-secrets-manager.tuenti.io
   names:
     kind: SecretDefinition
     plural: secretdefinitions

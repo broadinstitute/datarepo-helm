@@ -1,6 +1,6 @@
 apiVersion: v2
-name: serviceaccount-psp
-description: A Helm chart to deploy a service accout and psp roles for Kubernetes namespace
+name: create-vault-crd-secrets
+description: A Helm chart to deploy datarepo ui server for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -14,7 +14,7 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.0.2
+version: 0.0.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
@@ -24,6 +24,7 @@ keywords:
 - cloud
 - datarepo
 - broadinstitute
+- vault
 
 maintainers:
 - email: smark@broadinstitute.org
@@ -31,3 +32,9 @@ maintainers:
 
 sources:
 - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+
+dependencies:
+- name: vault-crd
+  version: 1.3.2
+  repository: https://raw.githubusercontent.com/broadinstitute/vault-crd-helm/master
+  condition: vaultCrd.install

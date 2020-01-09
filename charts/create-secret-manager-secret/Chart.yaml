@@ -1,5 +1,5 @@
 apiVersion: v2
-name: secrets-manager
+name: create-secret-manager-secret
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -18,4 +18,16 @@ version: 0.0.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-appVersion: 1.0.1
+keywords:
+- google
+- cloud
+- datarepo
+- broadinstitute
+- secrets
+
+maintainers:
+- email: smark@broadinstitute.org
+  name: smark
+
+sources:
+- https://github.com/broadinstitute/datarepo-helm/tree/master/charts

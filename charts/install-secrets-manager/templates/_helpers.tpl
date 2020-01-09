@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "secrets-manager.name" -}}
+{{- define "install-secrets-manager.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "secrets-manager.fullname" -}}
+{{- define "install-secrets-manager.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "secrets-manager.chart" -}}
+{{- define "install-secrets-manager.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "secrets-manager.labels" -}}
-helm.sh/chart: {{ include "secrets-manager.chart" . }}
-{{ include "secrets-manager.selectorLabels" . }}
+{{- define "install-secrets-manager.labels" -}}
+helm.sh/chart: {{ include "install-secrets-manager.chart" . }}
+{{ include "install-secrets-manager.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "secrets-manager.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "secrets-manager.name" . }}
+{{- define "install-secrets-manager.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "install-secrets-manager.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "secrets-manager.serviceAccountName" -}}
+{{- define "install-secrets-manager.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "secrets-manager.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "install-secrets-manager.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
@@ -64,24 +64,24 @@ Create the name of the service account to use
 {{/*
 Check if any type of credentials are defined
 */}}
-{{- define "secrets-manager.hasCredentials" -}}
+{{- define "install-secrets-manager.hasCredentials" -}}
 {{ or .Values.secretsgeneric.roleId ( or .Values.existingSecret .Values.existingRoleIdKey .Values.existingSecretIdKey ) -}}
 {{- end -}}
 {{/*
 Generate the secret name for secret
 */}}
-{{- define "secrets-manager.secretName" -}}
-{{ default (include "secrets-manager.fullname" .) .Values.existingSecret }}
+{{- define "install-secrets-manager.secretName" -}}
+{{ default (include "install-secrets-manager.fullname" .) .Values.existingSecret }}
 {{- end -}}
 {{/*
 Generate existingRoleIdKey key name in the secret
 */}}
-{{- define "secrets-manager.secretKeyRoleId" -}}
+{{- define "install-secrets-manager.secretKeyRoleId" -}}
 {{ default "role_id" .Values.existingRoleIdKey }}
 {{- end -}}
 {{/*
 Generate existingSecretIdKey key name in the secret
 */}}
-{{- define "secrets-manager.secretKeySecretId" -}}
+{{- define "install-secrets-manager.secretKeySecretId" -}}
 {{ default "secret_id" .Values.existingSecretIdKey }}
 {{- end -}}
