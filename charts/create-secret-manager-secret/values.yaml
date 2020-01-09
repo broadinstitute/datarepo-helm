@@ -1,4 +1,5 @@
-install-secrets-manager: false
+install-secrets-manager:
+  install: false
 
 secretName:
 secrets:

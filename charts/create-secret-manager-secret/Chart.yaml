@@ -37,4 +37,4 @@ dependencies:
 - name: install-secrets-manager
   version: 0.0.1
   repository:  https://broadinstitute.github.io/datarepo-helm/
-  condition: install-secrets-manager
+  condition: install-secrets-manager.install

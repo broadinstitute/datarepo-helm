@@ -1,0 +1,6 @@
+dependencies:
+- name: install-secrets-manager
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  version: 0.0.1
+digest: sha256:0bfd33ad7db97e0091947bd50d2a96f5326555a3639464f76e7a6b0fcc49f74b
+generated: "2020-01-09T15:12:36.529942-05:00"
