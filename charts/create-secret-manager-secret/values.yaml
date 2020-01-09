@@ -1,3 +1,5 @@
+install-secrets-manager: false
+
 secretName:
 secrets:
 # list of secrets, paths, and types of secrets to be rendered into kube secret
