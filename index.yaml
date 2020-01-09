@@ -2,6 +2,27 @@ apiVersion: v1
 entries:
   create-secret-manager-secret:
   - apiVersion: v2
+    created: "2020-01-09T14:37:39.433065-05:00"
+    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager
+      CRD
+    digest: 3c531c6c8e5cd6b1a101de220e2fec7a001d053fe4d417bf7629d624274e6178
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - secrets
+    - secrets-manager
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: create-secret-manager-secret
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/create-secret-manager-secret-0.0.3/create-secret-manager-secret-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2020-01-09T14:26:57.476948-05:00"
     description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager
       CRD
