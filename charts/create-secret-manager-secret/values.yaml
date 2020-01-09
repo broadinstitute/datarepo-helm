@@ -1,10 +1,13 @@
 install-secrets-manager:
   install: false
 
-secretName:
 secrets:
-# list of secrets, paths, and types of secrets to be rendered into kube secret
-- kubeSecretKey: ## "fakeKey1"
-  path: ## "secret/fake/path"
-  encoding: ## base64
-  vaultKey: ## myVaultKey
+- secretName: ## name of kubeSecret
+  vals:
+  - kubeSecretKey:  ## name of kubeSecretKey
+    path:  ## vault path
+    encoding: ## if secret is base64 already use this flagg
+    vaultKey:  ## vault key name
+#  - kubeSecretKey:  ## name of kubeSecretKey
+#    path:  ## vault path
+#    vaultKey:  ## vault key name
