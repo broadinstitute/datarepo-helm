@@ -3,14 +3,14 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: secrets-manager
+  name: {{ include "secrets-manager.fullname" . }}
   labels:
-    app: secrets-manager
+    app: {{ .Chart.Name }}
     {{- include "secrets-manager.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: secrets-manager
+  name: "{{ include "secrets-manager.fullname" . }}-clusterrole"
 subjects:
   - kind: ServiceAccount
     name: {{ template "secrets-manager.serviceAccountName" . }}
@@ -19,16 +19,16 @@ subjects:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{ include "secrets-manager.fullname" . }}-use-pod-security-policy"
+  name: {{ include "secrets-manager.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app: secrets-manager
+    app: {{ .Chart.Name }}
     {{- include "secrets-manager.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
   name: {{ template "secrets-manager.serviceAccountName" . }}
 roleRef:
   kind: Role
-  name: {{ include "secrets-manager.fullname" . }}
+  name: "{{ include "secrets-manager.fullname" . }}-role"
   apiGroup: rbac.authorization.k8s.io
 {{- end }}

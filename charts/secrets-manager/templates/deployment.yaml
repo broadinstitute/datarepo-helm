@@ -5,7 +5,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    app: secrets-manager
+    app: {{ .Chart.Name }}
     {{- include "secrets-manager.labels" . | nindent 4 }}
   name: {{ include "secrets-manager.fullname" . }}
   namespace: {{ .Release.Namespace }}
@@ -20,7 +20,7 @@ spec:
       labels:
         app: secrets-manager
     spec:
-      serviceAccountName: {{ include "secrets-manager.serviceAccountName" . }}
+      serviceAccountName: {{ template "secrets-manager.serviceAccountName" . }}
       containers:
       - image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
         imagePullPolicy: IfNotPresent
