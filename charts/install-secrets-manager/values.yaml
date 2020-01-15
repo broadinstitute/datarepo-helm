@@ -1,3 +1,6 @@
+installcrd:
+  install: false
+
 image:
   repository: gcr.io/broad-jade-dev/secrets-manager
   version: v1.0.2
