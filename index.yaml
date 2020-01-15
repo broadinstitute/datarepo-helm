@@ -238,6 +238,28 @@ entries:
     version: 0.19.3
   install-secrets-manager:
   - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2020-01-15T14:38:56.738896-05:00"
+    description: A Helm chart for Kubernetes
+    digest: cd5d2ea4a59732f1b086cc29a8c675067f80a338f844212925f1f280a5fb4549
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - secrets
+    - secrets-manager
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: install-secrets-manager
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    - https://github.com/tuenti/secrets-manager
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/install-secrets-manager-0.0.2/install-secrets-manager-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: 1.0.1
     created: "2020-01-09T13:04:40.139677-05:00"
     description: A Helm chart for Kubernetes
