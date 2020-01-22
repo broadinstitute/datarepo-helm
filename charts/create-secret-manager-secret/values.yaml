@@ -3,7 +3,7 @@ install-secrets-manager:
 
 secrets:
 - secretName: ## name of kubeSecret
-  nameSpace: ""
+  nameSpace:
   vals:
   - kubeSecretKey:  ## name of kubeSecretKey
     path:  ## vault path
