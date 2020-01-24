@@ -2,14 +2,14 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{ include "travis-ips-auth.fullname" . }}-use-pod-security-policy-role"
+  name: "{{ include "cron-job.fullname" . }}-use-pod-security-policy-role"
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "travis-ips-auth.labels" . | nindent 4 }}
+    {{- include "cron-job.labels" . | nindent 4 }}
 rules:
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']
   verbs: ["use"]
   resourceNames:
-    - "{{ include "travis-ips-auth.fullname" . }}-pod-running-policy"
+    - "{{ include "cron-job.fullname" . }}-pod-running-policy"
 {{- end }}

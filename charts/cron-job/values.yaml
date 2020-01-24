@@ -1,4 +1,8 @@
-GcpSaEmail: 
+schedule: ##  "0 3 * * *"
+image:
+  repository: google/cloud-sdk
+  version: slim
+  pullPolicy: IfNotPresent
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -12,9 +16,12 @@ rbac:
 
 ## create new secrets
 secretsgeneric:
-  serivceAccountCredentialFileJson:
+  newSecret:
 
 ## Specify an existing secret holding the GCP service account credentials
-existingSecretSA: ""
+existingSecret: ""
 ## The key in the existing secret that stores the GCP Service account credentials
-existingServiceAccountSecretKey: ""
+existingSecretKey: ""
+
+script: ##"#!/bin/bash\n
+    ##echo 'this is where the script goes'\n"

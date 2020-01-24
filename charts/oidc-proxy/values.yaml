@@ -5,11 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: broadinstitute/openidc-proxy
-  version: bernick_tcell
+  repository: google/cloud-sdk
+  version: slim
   pullPolicy: IfNotPresent
-  containers:
-    port: 80
+
 
 env:
 # environment vars for Deployment

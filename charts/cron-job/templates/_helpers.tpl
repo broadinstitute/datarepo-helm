@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "travis-ips-auth.name" -}}
+{{- define "cron-job.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "travis-ips-auth.fullname" -}}
+{{- define "cron-job.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "travis-ips-auth.chart" -}}
+{{- define "cron-job.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "travis-ips-auth.labels" -}}
-helm.sh/chart: {{ include "travis-ips-auth.chart" . }}
-{{ include "travis-ips-auth.selectorLabels" . }}
+{{- define "cron-job.labels" -}}
+helm.sh/chart: {{ include "cron-job.chart" . }}
+{{ include "cron-job.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "travis-ips-auth.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "travis-ips-auth.name" . }}
+{{- define "cron-job.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "cron-job.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "travis-ips-auth.serviceAccountName" -}}
+{{- define "cron-job.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "travis-ips-auth.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "cron-job.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
@@ -65,20 +65,20 @@ Create the name of the service account to use
 {{/*
 Generate the secret name for SA
 */}}
-{{- define "travis-ips-auth.secretNameSA" -}}
-{{ default (include "travis-ips-auth.fullname" .) .Values.existingSecretSA }}
+{{- define "cron-job.secretNameSA" -}}
+{{ default (include "cron-job.fullname" .) .Values.existingSecret }}
 {{- end -}}
 
 {{/*
 Check if any type of credentials are defined
 */}}
-{{- define "travis-ips-auth.hasCredentials" -}}
-{{ or .Values.secretsgeneric.serivceAccountCredentialFileJson ( or .Values.existingSecretSA .Values.existingServiceAccountSecretKey ) -}}
+{{- define "cron-job.hasCredentials" -}}
+{{ or .Values.secretsgeneric.newSecret ( or .Values.existingSecret .Values.existingSecretKey ) -}}
 {{- end -}}
 
 {{/*
-Generate existingServiceAccountSecretKey key name in the secret
+Generate existingSecretKey key name in the secret
 */}}
-{{- define "travis-ips-auth.secretKeyServiceAccount" -}}
-{{ default "credential-file-json" .Values.existingServiceAccountSecretKey }}
+{{- define "cron-job.secretKeyServiceAccount" -}}
+{{ default "credential-file-json" .Values.existingSecretKey }}
 {{- end -}}

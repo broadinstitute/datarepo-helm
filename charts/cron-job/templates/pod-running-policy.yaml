@@ -2,11 +2,11 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: "{{ include "travis-ips-auth.fullname" . }}-pod-running-policy"
+  name: "{{ include "cron-job.fullname" . }}-pod-running-policy"
   namespace: {{ .Release.Namespace }}
   labels:
     name: podsecuritypolicy
-    {{- include "travis-ips-auth.labels" . | nindent 4 }}
+    {{- include "cron-job.labels" . | nindent 4 }}
 spec:
   privileged: false
   seLinux:
