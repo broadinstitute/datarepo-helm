@@ -105,6 +105,25 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/create-secret-manager-secret-0.0.1/create-secret-manager-secret-0.0.1.tgz
     version: 0.0.1
+  cron-job:
+  - apiVersion: v2
+    created: "2020-01-24T15:10:26.719909-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 32b6243243f9f65e87c0bc5e6ab052adbf2408ddd92f9264d85aa9f2c7bdf30c
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: cron-job
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/cron-job-0.0.1/cron-job-0.0.1.tgz
+    version: 0.0.1
   datarepo:
   - apiVersion: v2
     created: "2019-12-18T15:51:19.943339-05:00"
