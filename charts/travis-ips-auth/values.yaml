@@ -1,0 +1,20 @@
+GcpSaEmail: 
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+rbac:
+  create: false
+
+## create new secrets
+secretsgeneric:
+  serivceAccountCredentialFileJson:
+
+## Specify an existing secret holding the GCP service account credentials
+existingSecretSA: ""
+## The key in the existing secret that stores the GCP Service account credentials
+existingServiceAccountSecretKey: ""

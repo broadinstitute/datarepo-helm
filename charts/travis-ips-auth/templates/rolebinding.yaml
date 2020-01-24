@@ -1,0 +1,16 @@
+{{- if .Values.rbac.create }}
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: "{{ include "travis-ips-auth.fullname" . }}-use-pod-security-policy"
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "travis-ips-auth.labels" . | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ template "travis-ips-auth.serviceAccountName" . }}
+roleRef:
+  kind: Role
+  name: "{{ include "travis-ips-auth.fullname" . }}-use-pod-security-policy-role"
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}

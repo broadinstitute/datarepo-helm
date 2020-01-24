@@ -1,0 +1,22 @@
+{{- if .Values.rbac.create }}
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: "{{ include "travis-ips-auth.fullname" . }}-pod-running-policy"
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: podsecuritypolicy
+    {{- include "travis-ips-auth.labels" . | nindent 4 }}
+spec:
+  privileged: false
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  runAsUser:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+  volumes:
+  - '*'
+{{- end }}
