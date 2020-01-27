@@ -107,6 +107,24 @@ entries:
     version: 0.0.1
   cron-job:
   - apiVersion: v2
+    created: "2020-01-27T15:22:18.689566-05:00"
+    description: A Helm chart for Kubernetes
+    digest: fb3bd01d2bb3d6d4ae51b04bb4e26cb1bdd0cb1d04927e6375bccd88275f8e31
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: cron-job
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/cron-job-0.0.2/cron-job-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2020-01-24T15:10:26.719909-05:00"
     description: A Helm chart for Kubernetes
     digest: 32b6243243f9f65e87c0bc5e6ab052adbf2408ddd92f9264d85aa9f2c7bdf30c
