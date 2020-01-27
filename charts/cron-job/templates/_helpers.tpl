@@ -65,7 +65,7 @@ Create the name of the service account to use
 {{/*
 Generate the secret name for SA
 */}}
-{{- define "cron-job.secretNameSA" -}}
+{{- define "cron-job.secretName" -}}
 {{ default (include "cron-job.fullname" .) .Values.existingSecret }}
 {{- end -}}
 
@@ -79,6 +79,6 @@ Check if any type of credentials are defined
 {{/*
 Generate existingSecretKey key name in the secret
 */}}
-{{- define "cron-job.secretKeyServiceAccount" -}}
+{{- define "cron-job.secretKey" -}}
 {{ default "credential-file-json" .Values.existingSecretKey }}
 {{- end -}}

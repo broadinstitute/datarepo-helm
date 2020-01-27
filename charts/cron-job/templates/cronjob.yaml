@@ -16,6 +16,14 @@ spec:
           - name: {{ include "cron-job.fullname" . }}
             image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
             command: ["/bin/sh", "-c", "/opt/script/script.sh"]
+          {{ if $hasCredentials -}}
+          env:
+          - name: SECRET
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "cron-job.secretName" . }}
+                key: {{ include "cron-job.secretKey" . }}
+          {{ end -}}
             volumeMounts:
               {{- if $hasCredentials }}
               - name: {{ include "cron-job.fullname" . }}
@@ -29,9 +37,9 @@ spec:
             {{- if $hasCredentials }}
             - name: {{ include "cron-job.fullname" . }}
               secret:
-                secretName: {{ include "cron-job.secretNameSA" . }}
+                secretName: {{ include "cron-job.secretName" . }}
                 items:
-                  - key: {{ include "cron-job.secretKeyServiceAccount" . }}
+                  - key: {{ include "cron-job.secretKey" . }}
                     path: creds.json
             {{- end }}
             - name: script
