@@ -274,6 +274,30 @@ entries:
   gcloud-sqlproxy:
   - apiVersion: v1
     appVersion: "1.16"
+    created: "2020-01-29T18:07:07.5115094Z"
+    description: Google Cloud SQL Proxy
+    digest: be69e7e140c32e00e02d806767fa6b9258082aa5b24d062373708cf21a3fdf7c
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: monster@broadinstitute.org
+      name: Monster
+    - email: jadeteam@broadinstitute.org
+      name: Jade
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.4/gcloud-sqlproxy-0.19.4.tgz
+    version: 0.19.4
+  - apiVersion: v1
+    appVersion: "1.16"
     created: "2019-12-11T14:21:19.75477-05:00"
     description: Google Cloud SQL Proxy
     digest: b4ac79465e4b4329d79f0ba3dcb0f533a3ab54c8c22d78edfa7b330c145a1ded
