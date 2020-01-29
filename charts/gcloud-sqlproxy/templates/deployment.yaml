@@ -46,7 +46,7 @@ spec:
         {{- end }}
         ports:
         {{- range .Values.cloudsql.instances }}
-        - name: {{ .instanceShortName | default (.instance | trunc 15) }}
+        - name: {{ .instanceShortName | default (.instance | trunc 15) | trimSuffix "-" }}
           containerPort: {{ .port }}
         {{- end }}
         volumeMounts:
