@@ -10,9 +10,11 @@ keywords:
 - sql
 - sqlproxy
 maintainers:
-- email: rmocius@gmail.com
-  name: rimusz
+- email: monster@broadinstitute.org
+  name: Monster
+- email: jadeteam@broadinstitute.org
+  name: Jade
 name: gcloud-sqlproxy
 sources:
-- https://github.com/rimusz/charts
-version: 0.19.3
+- https://github.com/broadinstitute/datarepo-helm
+version: 0.19.4
