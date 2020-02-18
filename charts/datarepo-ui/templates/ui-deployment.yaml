@@ -17,7 +17,7 @@ spec:
       serviceAccountName: {{ include "datarepo-ui.serviceAccountName" . }}
       containers:
       - name: {{ .Chart.Name }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: {{ .Values.image.repositoryFull }}
         ports:
         - containerPort: 80
         readinessProbe:

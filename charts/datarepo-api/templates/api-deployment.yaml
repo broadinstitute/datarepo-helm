@@ -28,7 +28,7 @@ spec:
         {{- end }}
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: {{ .Values.image.repositoryFull }}
         readinessProbe:
           httpGet:
             path: /status

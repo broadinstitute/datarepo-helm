@@ -5,8 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/broad-jade-dev/jade-data-repo-ui
-  tag: broad-jade-my_2020-02-14_15-04-11
+  repositoryFull: gcr.io/broad-jade-dev/jade-data-repo-ui:broad-jade-my_2020-02-14_15-04-11
   pullPolicy: IfNotPresent
 
 proxyPass:

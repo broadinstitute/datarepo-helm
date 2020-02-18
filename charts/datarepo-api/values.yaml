@@ -5,8 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/broad-jade-dev/jade-data-repo
-  tag: 8e65464
+  repositoryFull: gcr.io/broad-jade-dev/jade-data-repo:8e65464
   pullPolicy: IfNotPresent
   port: 8080
 
