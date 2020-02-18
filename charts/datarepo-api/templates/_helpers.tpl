@@ -103,3 +103,16 @@ Check if any type of credentials are defined
 {{- define "datarepo-api.hasCredentials" -}}
 {{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey ) -}}
 {{- end -}}
+
+{{/*
+Return the proper image name
+*/}}
+{{- define "datarepo-api.image" -}}
+{{- $registryName := .Values.image.registry -}}
+{{- $repositoryName := .Values.image.repository -}}
+{{- $tag := .Values.image.tag | toString -}}
+
+{{- if .Values.image }}
+  {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
+{{- end -}}
+{{- end -}}

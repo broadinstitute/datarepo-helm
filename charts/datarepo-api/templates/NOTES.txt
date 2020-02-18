@@ -1,0 +1,2 @@
+1. Get the pod deployment by running these commands:
+kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "datarepo-api.name" . }},app.kubernetes.io/instance={{ .Release.Name }}"
