@@ -1,0 +1,18 @@
+dependencies:
+- name: datarepo-api
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  version: 0.0.5
+- name: oidc-proxy
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  version: 0.0.3
+- name: datarepo-ui
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  version: 0.0.3
+- name: gcloud-sqlproxy
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  version: 0.19.4
+- name: postgresql
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 7.7.3
+digest: sha256:1397ab759b1f3f7b65e577ce380256c80e0e927d8c6c7b1be2730fa9689a554f
+generated: "2020-02-18T15:30:49.137248-05:00"
