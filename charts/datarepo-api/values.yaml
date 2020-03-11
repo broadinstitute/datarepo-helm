@@ -54,6 +54,7 @@ env: # environment variables
   googleCorebillingaccount:
   googleParentresourcetype:
   googleParentresourceid:
+  itJadeApiUrl:
 
 imagePullSecrets: []
 nameOverride: ""

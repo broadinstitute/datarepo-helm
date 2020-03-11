@@ -226,6 +226,10 @@ spec:
         - name: GOOGLE_PARENTRESOURCEID
           value: {{ .Values.env.googleParentresourceid | quote }}
         {{- end }}
+        {{- if .Values.env.itJadeApiUrl }}
+        - name: IT_JADE_API_URL
+          value: {{ .Values.env.itJadeApiUrl | quote }}
+        {{- end }}
         {{ if $hasCredentials -}}
         - name: DB_DATAREPO_PASSWORD
           valueFrom:
