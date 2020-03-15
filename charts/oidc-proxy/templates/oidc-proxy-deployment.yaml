@@ -28,7 +28,7 @@ spec:
             port: 80
           initialDelaySeconds: 35
           periodSeconds: 10
-          timeoutSeconds: 3
+          timeoutSeconds: 10
           failureThreshold: 3
         livenessProbe:
           httpGet:
@@ -36,7 +36,7 @@ spec:
             port: 80
           initialDelaySeconds: 45
           periodSeconds: 10
-          timeoutSeconds: 3
+          timeoutSeconds: 10
           failureThreshold: 3
         env:
           - name: PROXY_URL
