@@ -44,12 +44,13 @@ service:
 
 ingress:
   enabled: true
+  timeoutSec: 600
   annotations:
     globalStaticIpName:
     ingressAllowHttp: false
   servicePort: http
 
-## create a new sceret and key for TLs cert and key
+## create a new secret and key for TLs cert and key
 secretsgeneric:
   tlsKey:
   tlsCert:
