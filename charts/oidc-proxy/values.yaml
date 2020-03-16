@@ -5,10 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: google/cloud-sdk
-  version: slim
+  repository: broadinstitute/openidc-proxy
+  version: bernick_tcell
   pullPolicy: IfNotPresent
-
 
 env:
 # environment vars for Deployment
@@ -44,15 +43,16 @@ service:
 
 ingress:
   enabled: true
+  timeoutSec: 600
   annotations:
     globalStaticIpName:
     ingressAllowHttp: false
   servicePort: http
 
-## create a new sceret and key for TLs cert and key
+## create a new secret and key for TLs cert and key
 secretsgeneric:
-  tlsKey:
-  tlsCert:
+  tlsKey: ""
+  tlsCert: ""
 
 ## Specify an existing secret holding the cloud-sql service account credentials
 ## keys must be named tls.key and tls.cert

@@ -1,0 +1,14 @@
+# I did this manually initially by running:
+#
+# gcloud compute backend-services list --project=broad-jade-integration --format=json | jq -r '.[] | .name' | while read -r bs_name ; do
+#   gcloud compute backend-services update $bs_name --timeout=600 --global
+# done
+
+{{- if .Values.ingress.enabled }}
+apiVersion: cloud.google.com/v1beta1
+kind: BackendConfig
+metadata:
+  name: oidc-backend-config
+spec:
+  timeoutSec: {{ .Values.ingress.timeoutSec }}
+{{- end }}
