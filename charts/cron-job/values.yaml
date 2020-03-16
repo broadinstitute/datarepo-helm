@@ -1,4 +1,4 @@
-schedule: ##  "0 3 * * *"
+schedule:   ##  "0 3 * * *"
 image:
   repository: google/cloud-sdk
   version: slim
@@ -16,12 +16,13 @@ rbac:
 
 ## create new secrets
 secretsgeneric:
-  newSecret:
+  newSecret: ""
 
 ## Specify an existing secret holding the GCP service account credentials
 existingSecret: ""
 ## The key in the existing secret that stores the GCP Service account credentials
 existingSecretKey: ""
 
-script: ##"#!/bin/bash\n
-    ##echo 'this is where the script goes'\n"
+script: ""      ##   "#!/bin/bash\n
+
+## echo 'this is where the script goes'\n"

@@ -10,7 +10,7 @@ image:
   pullPolicy: IfNotPresent
   port: 8080
 
-env: # environment variables
+env:  # environment variables
   serverContextpath:
   serverPort:
   springDatasourceTomcatTestOnBorrow:
@@ -78,9 +78,9 @@ service:
 
 ## create new secrets
 secretsgeneric:
-  datarepoPassword:
-  stairwayPassword:
-  serivceAccountCredentialFileJson:
+  datarepoPassword: ""
+  stairwayPassword: ""
+  serivceAccountCredentialFileJson: ""
 
 ## Specify an existing secret holding the cloud-sql database credentials
 existingSecretDB: ""
