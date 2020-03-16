@@ -144,6 +144,24 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    created: "2020-03-16T12:02:19.219573-04:00"
+    description: A Helm chart to deploy an entire datarepo
+    digest: 9bbb73c502bc7a09eaf6443850700eff79d8723f33458aefb21bcd25830ef40f
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.0.8/datarepo-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
     created: "2020-03-10T16:11:45.946565-04:00"
     description: A Helm chart to deploy an entire datarepo
     digest: 3919d5c0df2b79aadf0e2dcc35b47e4e87685637e66469eb041d1f5c4c1cc1fa
