@@ -1,11 +1,11 @@
 secrets:
-- secretName:     ## name of kubeSecret
-  nameSpace:
+- secretName: ""     ## name of kubeSecret
+  nameSpace: ""
   vals:
-  - kubeSecretKey:      ## name of kubeSecretKey
-    path:     ## vault path
-    encoding:     ## if secret is base64 already use this flagg
-    vaultKey:     ## vault key name
+  - kubeSecretKey: ""      ## name of kubeSecretKey
+    path: ""     ## vault path
+    encoding: ""     ## if secret is base64 already use this flagg
+    vaultKey: ""     ## vault key name
 #  - kubeSecretKey:  ## name of kubeSecretKey
 #    path:  ## vault path
 #    vaultKey:  ## vault key name
