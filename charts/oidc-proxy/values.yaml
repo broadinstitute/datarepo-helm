@@ -52,8 +52,8 @@ ingress:
 
 ## create a new secret and key for TLs cert and key
 secretsgeneric:
-  tlsKey:
-  tlsCert:
+  tlsKey: ""
+  tlsCert: ""
 
 ## Specify an existing secret holding the cloud-sql service account credentials
 ## keys must be named tls.key and tls.cert
