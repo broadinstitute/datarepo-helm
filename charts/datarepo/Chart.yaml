@@ -40,7 +40,7 @@ dependencies:
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: oidc-proxy.enabled
 - name: datarepo-ui
-  version: 0.0.3
+  version: 0.0.4
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: datarepo-ui.enabled
 - name: gcloud-sqlproxy
