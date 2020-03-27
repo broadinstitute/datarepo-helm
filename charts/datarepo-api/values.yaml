@@ -55,6 +55,7 @@ env: # environment variables
   googleParentresourcetype:
   googleParentresourceid:
   itJadeApiUrl:
+  datarepoGcsAllowreuseexistingbuckets:
 
 imagePullSecrets: []
 nameOverride: ""
