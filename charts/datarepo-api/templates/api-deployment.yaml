@@ -182,6 +182,10 @@ spec:
         - name: DATAREPO_GCS_READTIMEOUTSECONDS
           value: {{ .Values.env.datarepoGcsReadtimeoutseconds | quote }}
         {{- end }}
+        {{- if .Values.env.datarepoGcsAllowreuseexistingbuckets }}
+        - name: DATAREPO_GCS_ALLOWREUSEEXISTINGBUCKETS
+          value: {{ .Values.env.datarepoGcsAllowreuseexistingbuckets | quote }}
+        {{- end }}
         {{- if .Values.env.samBasepath }}
         - name: SAM_BASEPATH
           value: {{ .Values.env.samBasepath | quote }}
