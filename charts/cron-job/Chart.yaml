@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 version: 0.0.2
-
+appVersion: 0.0.2
 keywords:
 - google
 - cloud
@@ -28,3 +28,5 @@ maintainers:
 
 sources:
 - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+
+home: https://broadinstitute.github.io/datarepo-helm/

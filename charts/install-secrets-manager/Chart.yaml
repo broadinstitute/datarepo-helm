@@ -14,7 +14,7 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.0.4
+version: 0.0.5
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
@@ -35,3 +35,5 @@ maintainers:
 sources:
 - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
 - https://github.com/tuenti/secrets-manager
+
+home: https://broadinstitute.github.io/datarepo-helm/

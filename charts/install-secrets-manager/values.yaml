@@ -2,7 +2,7 @@ image:
   repository: us.gcr.io/broad-dsp-gcr-public/secrets-manager
   version: v1.0.2
 
-vaultLocation: # http://vault:8200
+vaultLocation:      ## http://vault:8200
 vaultVersion: kv2
 
 serviceAccount:
@@ -18,8 +18,8 @@ rbac:
 
 ## create new secrets
 secretsgeneric:
-  roleId:
-  secretId:
+  roleId: ""
+  secretId: ""
 
 ## Specify an existing secret holding the RoleID and SecretId credentials
 existingSecret: ""

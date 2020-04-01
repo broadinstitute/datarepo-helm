@@ -10,9 +10,9 @@ image:
   pullPolicy: IfNotPresent
 
 proxyPass:
-  status: #http://api-service.data-repo:8080/status
-  swagger: #http://api-service.data-repo:8080/swagger-ui.html
-  api: #http://api-service.data-repo:8080
+  status:   # http://api-service.data-repo:8080/status
+  swagger:  # http://api-service.data-repo:8080/swagger-ui.html
+  api:  # http://api-service.data-repo:8080
 
 serviceAccount:
   # Specifies whether a service account should be created

@@ -11,11 +11,11 @@ image:
 
 env:
 # environment vars for Deployment
-  proxyUrl: #first url path to proxy
-  proxyUrl2: #second url path to proxy
-  proxyUrl3: #third url path to proxy
+  proxyUrl:   # first url path to proxy
+  proxyUrl2:  # second url path to proxy
+  proxyUrl3:  # third url path to proxy
   logLevel: debug
-  serverName:  #A/CNAME
+  serverName:   # A/CNAME
   remoteUserClaim: sub
   enableStackdriver: yes
   filter2: AddOutputFilterByType DEFLATE application/json text/plain text/html application/javascript application/x-javascript
