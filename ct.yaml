@@ -4,7 +4,6 @@ charts:
       - charts/datarepo-api
       - charts/datarepo-ui
       - charts/gcloud-sqlproxy
-      - charts/install-secrets-manager
       - charts/oidc-proxy
 namespace: default
 release-label: test
