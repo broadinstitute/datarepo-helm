@@ -12,7 +12,11 @@ spec:
   template:
     metadata:
       labels:
+{{- include "datarepo-ui.labels" . | nindent 8 }}
         component: {{ include "datarepo-ui.fullname" . }}
+##  dynamically populates environment annotations
+      annotations:
+{{ toYaml .Values.podAnnotations | indent 8 }}
     spec:
       serviceAccountName: {{ include "datarepo-ui.serviceAccountName" . }}
       containers:
@@ -20,6 +24,14 @@ spec:
         image: {{ if .Values.imageName }}{{ .Values.imageName }}{{ else }}"{{ .Values.image.repository }}:{{ .Values.image.tag }}"{{ end }}
         ports:
         - containerPort: 80
+##  dynamically populates environment variables
+        env:
+        {{- if .Values.env }}
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
+        {{- end }}
         readinessProbe:
           httpGet:
             path: /status

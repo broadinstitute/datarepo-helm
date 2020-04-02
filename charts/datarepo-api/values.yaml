@@ -10,56 +10,15 @@ image:
   pullPolicy: IfNotPresent
   port: 8080
 
-env:  # environment variables
-  serverContextpath:
-  serverPort:
-  springDatasourceTomcatTestOnBorrow:
-  springDatasourceTomcatValidationQuery:
-  springJacksonSerializationWriteDatesAsTimestamps:
-  springLiquibaseEnabled:
-  springProfilesActive:
-  springfoxDocumentationSwaggerV2Path:
-  dbMigrateDropallonstart:
-  dbMigrateUpdateallonstart:
-  dbDatarepoUri:
-  dbDatarepoUsername:
-  dbDatarepoPassword:
-  dbDatarepoChangesetfile:
-  dbStairwayUri:
-  dbStairwayUsername:
-  dbStairwayPassword:
-  dbStairwayChangesetfile:
-  dbStairwayForceclean:
-  oauthClientid:
-  oauthSchemename:
-  oauthLoginendpoint:
-  oauthScopes:
-  datarepoResourceid:
-  datarepoUseremail:
-  datarepoDnsname:
-  datarepoUserid:
-  datarepoMaxstairwaythreads:
-  datarepoGcsBucket:
-  datarepoGcsRegion:
-  datarepoGcsConnecttimeoutseconds:
-  datarepoGcsReadtimeoutseconds:
-  samBasepath:
-  samStewardsgroupemail:
-  samRetryinitialwaitseconds:
-  samRetrymaximumwaitseconds:
-  samOperationtimeoutseconds:
-  googleProjectid:
-  googleApplicationname:
-  googleProjectcreatetimeoutseconds:
-  googleCorebillingaccount:
-  googleParentresourcetype:
-  googleParentresourceid:
-  itJadeApiUrl:
-  datarepoGcsAllowreuseexistingbuckets:
+## Extra environment variables that will be pass onto deployment pods
+env: {}
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+## Pod annotations
+podAnnotations: {}
 
 serviceAccount:
   # Specifies whether a service account should be created

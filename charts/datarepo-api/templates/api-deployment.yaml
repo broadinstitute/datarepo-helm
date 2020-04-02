@@ -13,8 +13,12 @@ spec:
   template:
     metadata:
       labels:
+{{- include "datarepo-api.labels" . | nindent 8 }}
         app: {{ include "datarepo-api.fullname" . }}
         component: {{ include "datarepo-api.fullname" . }}
+##  dynamically populates environment annotations
+      annotations:
+{{ toYaml .Values.podAnnotations | indent 8 }}
     spec:
       serviceAccountName: {{ include "datarepo-api.serviceAccountName" . }}
       volumes:
@@ -53,186 +57,13 @@ spec:
         ports:
         - containerPort: {{ .Values.image.port }}
         - containerPort: 5005
+##  dynamically populates environment variables
         env:
-        {{- if .Values.env.serverContextpath }}
-        - name: SERVER_CONTEXTPATH
-          value: {{ .Values.env.serverContextpath | quote }}
+        {{- if .Values.env }}
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
         {{- end }}
-        {{- if .Values.env.serverPort }}
-        - name: SERVER_PORT
-          value: {{ .Values.env.serverPort | quote }}
-        {{- end }}
-        {{- if .Values.env.springDatasourceTomcatTestOnBorrow }}
-        - name: SPRING_DATASOURCE_TOMCAT_TEST-ON-BORROW
-          value: {{ .Values.env.springDatasourceTomcatTestOnBorrow | quote }}
-        {{- end }}
-        {{- if .Values.env.springDatasourceTomcatValidationQuery }}
-        - name: SPRING_DATASOURCE_TOMCAT_VALIDATION-QUERY
-          value: {{ .Values.env.springDatasourceTomcatValidationQuery | quote }}
-        {{- end }}
-        {{- if .Values.env.springJacksonSerializationWriteDatesAsTimestamps }}
-        - name: SPRING_JACKSON_SERIALIZATION_WRITE_DATES_AS_TIMESTAMPS
-          value: {{ .Values.env.springJacksonSerializationWriteDatesAsTimestamps | quote }}
-        {{- end }}
-        {{- if .Values.env.springLiquibaseEnabled }}
-        - name: SPRING_LIQUIBASE_ENABLED
-          value: {{ .Values.env.springLiquibaseEnabled | quote }}
-        {{- end }}
-        {{- if .Values.env.springProfilesActive }}
-        - name: SPRING_PROFILES_ACTIVE
-          value: {{ .Values.env.springProfilesActive | quote }}
-        {{- end }}
-        {{- if .Values.env.springfoxDocumentationSwaggerV2Path }}
-        - name: SPRINGFOX_DOCUMENTATION_SWAGGER_V2_PATH
-          value: {{ .Values.env.springfoxDocumentationSwaggerV2Path | quote }}
-        {{- end }}
-        {{- if .Values.env.dbMigrateDropallonstart }}
-        - name: DB_MIGRATE_DROPALLONSTART
-          value: {{ .Values.env.dbMigrateDropallonstart | quote }}
-        {{- end }}
-        {{- if .Values.env.dbMigrateUpdateallonstart | quote }}
-        - name: DB_MIGRATE_UPDATEALLONSTART
-          value: {{ .Values.env.dbMigrateUpdateallonstart | quote }}
-        {{- end }}
-        {{- if .Values.env.dbDatarepoUri }}
-        - name: DB_DATAREPO_URI
-          value: {{ .Values.env.dbDatarepoUri | quote }}
-        {{- end }}
-        {{- if .Values.env.dbDatarepoUsername }}
-        - name: DB_DATAREPO_USERNAME
-          value: {{ .Values.env.dbDatarepoUsername | quote }}
-        {{- end }}
-        {{- if .Values.env.dbDatarepoPassword }}
-        - name: DB_DATAREPO_PASSWORD
-          value: {{ .Values.env.dbDatarepoPassword | quote }}
-        {{- end }}
-        {{- if .Values.env.dbDatarepoChangesetfile }}
-        - name: DB_DATAREPO_CHANGESETFILE
-          value: {{ .Values.env.dbDatarepoChangesetfile | quote }}
-        {{- end }}
-        {{- if .Values.env.dbStairwayUri }}
-        - name: DB_STAIRWAY_URI
-          value: {{ .Values.env.dbStairwayUri | quote }}
-        {{- end }}
-        {{- if .Values.env.dbStairwayUsername }}
-        - name: DB_STAIRWAY_USERNAME
-          value: {{ .Values.env.dbStairwayUsername | quote }}
-        {{- end }}
-        {{- if .Values.env.dbStairwayPassword }}
-        - name: DB_STAIRWAY_PASSWORD
-          value: {{ .Values.env.dbStairwayPassword | quote }}
-        {{- end }}
-        {{- if .Values.env.dbStairwayChangesetfile }}
-        - name: DB_STAIRWAY_CHANGESETFILE
-          value: {{ .Values.env.dbStairwayChangesetfile | quote }}
-        {{- end }}
-        {{- if .Values.env.dbStairwayForceclean }}
-        - name: DB_STAIRWAY_FORCECLEAN
-          value: {{ .Values.env.dbStairwayForceclean | quote }}
-        {{- end }}
-        {{- if .Values.env.oauthClientid }}
-        - name: OAUTH_CLIENTID
-          value: {{ .Values.env.oauthClientid | quote }}
-        {{- end }}
-        {{- if .Values.env.oauthSchemename }}
-        - name: OAUTH_SCHEMENAME
-          value: {{ .Values.env.oauthSchemename | quote }}
-        {{- end }}
-        {{- if .Values.env.oauthLoginendpoint }}
-        - name: OAUTH_LOGINENDPOINT
-          value: {{ .Values.env.oauthLoginendpoint | quote }}
-        {{- end }}
-        {{- if .Values.env.oauthScopes }}
-        - name: OAUTH_SCOPES
-          value: {{ .Values.env.oauthScopes | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoResourceid }}
-        - name: DATAREPO_RESOURCEID
-          value: {{ .Values.env.datarepoResourceid | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoUseremail }}
-        - name: DATAREPO_USEREMAIL
-          value: {{ .Values.env.datarepoUseremail | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoDnsname }}
-        - name: DATAREPO_DNSNAME
-          value: {{ .Values.env.datarepoDnsname | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoUserid }}
-        - name: DATAREPO_USERID
-          value: {{ .Values.env.datarepoUserid | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoMaxstairwaythreads }}
-        - name: DATAREPO_MAXSTAIRWAYTHREADS
-          value: {{ .Values.env.datarepoMaxstairwaythreads | quote}}
-        {{- end }}
-        {{- if .Values.env.datarepoGcsBucket }}
-        - name: DATAREPO_GCS_BUCKET
-          value: {{ .Values.env.datarepoGcsBucket | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoGcsRegion }}
-        - name: DATAREPO_GCS_REGION
-          value: {{ .Values.env.datarepoGcsRegion | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoGcsConnecttimeoutseconds }}
-        - name: DATAREPO_GCS_CONNECTTIMEOUTSECONDS
-          value: {{ .Values.env.datarepoGcsConnecttimeoutseconds | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoGcsReadtimeoutseconds }}
-        - name: DATAREPO_GCS_READTIMEOUTSECONDS
-          value: {{ .Values.env.datarepoGcsReadtimeoutseconds | quote }}
-        {{- end }}
-        {{- if .Values.env.datarepoGcsAllowreuseexistingbuckets }}
-        - name: DATAREPO_GCS_ALLOWREUSEEXISTINGBUCKETS
-          value: {{ .Values.env.datarepoGcsAllowreuseexistingbuckets | quote }}
-        {{- end }}
-        {{- if .Values.env.samBasepath }}
-        - name: SAM_BASEPATH
-          value: {{ .Values.env.samBasepath | quote }}
-        {{- end }}
-        {{- if .Values.env.samStewardsgroupemail }}
-        - name: SAM_STEWARDSGROUPEMAIL
-          value: {{ .Values.env.samStewardsgroupemail | quote }}
-        {{- end }}
-        {{- if .Values.env.samRetryinitialwaitseconds }}
-        - name: SAM_RETRYINITIALWAITSECONDS
-          value: {{ .Values.env.samRetryinitialwaitseconds | quote }}
-        {{- end }}
-        {{- if .Values.env.samRetrymaximumwaitseconds }}
-        - name: SAM_RETRYMAXIMUMWAITSECONDS
-          value: {{ .Values.env.samRetrymaximumwaitseconds | quote }}
-        {{- end }}
-        {{- if .Values.env.samOperationtimeoutseconds }}
-        - name: SAM_OPERATIONTIMEOUTSECONDS
-          value: {{ .Values.env.samOperationtimeoutseconds | quote }}
-        {{- end }}
-        {{- if .Values.env.googleProjectid }}
-        - name: GOOGLE_PROJECTID
-          value: {{ .Values.env.googleProjectid | quote }}
-        {{- end }}
-        {{- if .Values.env.googleApplicationname }}
-        - name: GOOGLE_APPLICATIONNAME
-          value: {{ .Values.env.googleApplicationname | quote }}
-        {{- end }}
-        {{- if .Values.env.googleProjectcreatetimeoutseconds | quote }}
-        - name: GOOGLE_PROJECTCREATETIMEOUTSECONDS
-          value: {{ .Values.env.googleProjectcreatetimeoutseconds | quote }}
-        {{- end }}
-        {{- if .Values.env.googleCorebillingaccount }}
-        - name: GOOGLE_COREBILLINGACCOUNT
-          value: {{ .Values.env.googleCorebillingaccount | quote }}
-        {{- end }}
-        {{- if .Values.env.googleParentresourcetype }}
-        - name: GOOGLE_PARENTRESOURCETYPE
-          value: {{ .Values.env.googleParentresourcetype | quote }}
-        {{- end }}
-        {{- if .Values.env.googleParentresourceid }}
-        - name: GOOGLE_PARENTRESOURCEID
-          value: {{ .Values.env.googleParentresourceid | quote }}
-        {{- end }}
-        {{- if .Values.env.itJadeApiUrl }}
-        - name: IT_JADE_API_URL
-          value: {{ .Values.env.itJadeApiUrl | quote }}
         {{- end }}
         {{ if $hasCredentials -}}
         - name: DB_DATAREPO_PASSWORD

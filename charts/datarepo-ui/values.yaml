@@ -14,6 +14,12 @@ proxyPass:
   swagger:  # http://api-service.data-repo:8080/swagger-ui.html
   api:  # http://api-service.data-repo:8080
 
+## Extra environment variables that will be pass onto deployment pods
+env: {}
+
+## Pod annotations
+podAnnotations: {}
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
