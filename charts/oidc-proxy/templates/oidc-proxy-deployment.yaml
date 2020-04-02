@@ -15,6 +15,7 @@ spec:
 {{- include "oidc-proxy.labels" . | nindent 8 }}
         app: {{ include "oidc-proxy.fullname" . }}
         component: {{ include "oidc-proxy.fullname" . }}
+##  dynamically populates environment annotations
       annotations:
 {{ toYaml .Values.podAnnotations | indent 8 }}
     spec:
@@ -41,6 +42,7 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 10
           failureThreshold: 3
+##  dynamically populates environment variables
         env:
         {{- if .Values.env }}
         {{- range $key, $value := .Values.env }}

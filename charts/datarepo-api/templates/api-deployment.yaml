@@ -16,6 +16,7 @@ spec:
 {{- include "datarepo-api.labels" . | nindent 8 }}
         app: {{ include "datarepo-api.fullname" . }}
         component: {{ include "datarepo-api.fullname" . }}
+##  dynamically populates environment annotations
       annotations:
 {{ toYaml .Values.podAnnotations | indent 8 }}
     spec:
@@ -56,6 +57,7 @@ spec:
         ports:
         - containerPort: {{ .Values.image.port }}
         - containerPort: 5005
+##  dynamically populates environment variables
         env:
         {{- if .Values.env }}
         {{- range $key, $value := .Values.env }}
