@@ -20,7 +20,6 @@ fullnameOverride: ""
 ## Pod annotations
 podAnnotations: {}
 
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
