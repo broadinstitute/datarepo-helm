@@ -12,8 +12,11 @@ spec:
   template:
     metadata:
       labels:
+{{- include "oidc-proxy.labels" . | nindent 8 }}
         app: {{ include "oidc-proxy.fullname" . }}
         component: {{ include "oidc-proxy.fullname" . }}
+      annotations:
+{{ toYaml .Values.podAnnotations | indent 8 }}
     spec:
       serviceAccountName: {{ include "oidc-proxy.serviceAccountName" . }}
       containers:
@@ -39,22 +42,12 @@ spec:
           timeoutSeconds: 10
           failureThreshold: 3
         env:
-          - name: PROXY_URL
-            value: {{ .Values.env.proxyUrl | quote }}
-          - name: PROXY_URL2
-            value: {{ .Values.env.proxyUrl2 | quote }}
-          - name: PROXY_URL3
-            value: {{ .Values.env.proxyUrl3 | quote }}
-          - name: LOG_LEVEL
-            value: {{ .Values.env.logLevel | quote }}
-          - name: SERVER_NAME
-            value: {{ .Values.env.serverName | quote }}
-          - name: REMOTE_USER_CLAIM
-            value: {{ .Values.env.remoteUserClaim | quote }}
-          - name: ENABLE_STACKDRIVER
-            value: {{ .Values.env.enableStackdriver | quote }}
-          - name: FILTER2
-            value: {{ .Values.env.filter2 | quote }}
+        {{- if .Values.env }}
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
+        {{- end }}
         volumeMounts:
           - mountPath: /etc/apache2/sites-available/site.conf
             name: siteconf
