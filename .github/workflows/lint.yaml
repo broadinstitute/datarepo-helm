@@ -22,12 +22,12 @@ jobs:
         command: lint
         config: ct.yaml
 
-#    - name: Spin up a Kind cluster for testing
-#      uses: helm/kind-action@v1.0.0-alpha.3
-#      # Only build a Kind cluster if there are chart changes to test.
-#      if: steps.lint.outputs.changed == 'true'
+    - name: Spin up a Kind cluster for testing
+      uses: helm/kind-action@v1.0.0-alpha.3
+      #  Only build a Kind cluster if there are chart changes to test.
+      if: steps.lint.outputs.changed == 'true'
 
-#    - name: Run chart-testing (install)
-#      uses: helm/chart-testing-action@v1.0.0-rc.1
-#      with:
-#        command: install
+    - name: Run chart-testing (install)
+      uses: helm/chart-testing-action@v1.0.0-rc.1
+      with:
+        command: install
