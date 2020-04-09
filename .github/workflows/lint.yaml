@@ -34,6 +34,7 @@ jobs:
         uses: broadinstitute/datarepo-actions@ms-charttester
         with:
           actions_subcommand: 'charttestdeploy'
+          k8_namespaces: temp
 
       - name: "Simple test for chart deployment"
         uses: broadinstitute/datarepo-actions@ms-charttester
@@ -48,6 +49,6 @@ jobs:
 
       - name: "Clean whitelisted Runner IP"
         if: always()
-        uses: broadinstitute/datarepo-actions@0.1.0
+        uses: broadinstitute/datarepo-actions@ms-charttester
         with:
           actions_subcommand: 'gcp_whitelist_clean'
