@@ -1,3 +1,4 @@
+---
 name: HelmChart Testing
 
 on:
@@ -9,25 +10,45 @@ jobs:
   helm-lint-test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Fetch history
-      run: git fetch --prune --unshallow
+      - name: Fetch history
+        run: git fetch --prune --unshallow
 
-    - name: Run chart-testing (Helm lint)
-      id: lint
-      uses: helm/chart-testing-action@v1.0.0-rc.1
-      with:
-        command: lint
-        config: ct.yaml
+      - name: Run chart-testing (Helm lint)
+        id: lint
+        uses: helm/chart-testing-action@v1.0.0-rc.1
+        with:
+          command: lint
+          config: ct.yaml
 
-#    - name: Spin up a Kind cluster for testing
-#      uses: helm/kind-action@v1.0.0-alpha.3
-#      # Only build a Kind cluster if there are chart changes to test.
-#      if: steps.lint.outputs.changed == 'true'
+      - name: "Whitelist Runner IP"
+        uses: broadinstitute/datarepo-actions@0.3.0
+        with:
+          actions_subcommand: 'gcp_whitelist'
+          role_id: ${{ secrets.ROLE_ID }}
+          secret_id: ${{ secrets.SECRET_ID }}
 
-#    - name: Run chart-testing (install)
-#      uses: helm/chart-testing-action@v1.0.0-rc.1
-#      with:
-#        command: install
+      - name: "Deploy chart to temp namespace"
+        uses: broadinstitute/datarepo-actions@0.3.0
+        with:
+          actions_subcommand: 'charttestdeploy'
+          k8_namespaces: temp
+
+      - name: "Simple test for chart deployment"
+        uses: broadinstitute/datarepo-actions@0.3.0
+        with:
+          actions_subcommand: 'testcharts'
+
+      - name: "Delete chart deployment after test"
+        if: always()
+        uses: broadinstitute/datarepo-actions@0.3.0
+        with:
+          actions_subcommand: 'charttestdelete'
+
+      - name: "Clean whitelisted Runner IP"
+        if: always()
+        uses: broadinstitute/datarepo-actions@0.3.0
+        with:
+          actions_subcommand: 'gcp_whitelist_clean'
