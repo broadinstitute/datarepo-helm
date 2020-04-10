@@ -9,6 +9,6 @@ subjects:
   name: {{ template "serviceaccount-psp.serviceAccountName" . }}
 roleRef:
   kind: Role
-  name: "{{ template "serviceaccount-psp.name" . }}-psp-use-pod-security-policy-role"
+  name: "{{ template "serviceaccount-psp.name" . }}-use-pod-security-policy-role"
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
