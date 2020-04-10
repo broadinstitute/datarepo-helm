@@ -2,13 +2,13 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{ template "serviceaccount-psp.name" . }}-psp-use-pod-security-policy"
+  name: "{{ include "serviceaccount-psp.fullname" . }}-psp-use-pod-security-policy"
   namespace: {{ .Release.Namespace }}
 subjects:
 - kind: ServiceAccount
   name: {{ template "serviceaccount-psp.serviceAccountName" . }}
 roleRef:
   kind: Role
-  name: "{{ template "serviceaccount-psp.name" . }}-psp-use-pod-security-policy-role"
+  name: "{{ include "serviceaccount-psp.fullname" . }}-use-pod-security-policy-role"
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
