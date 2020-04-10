@@ -2,7 +2,7 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{ template "serviceaccount-psp.name" . }}-use-pod-security-policy-role"
+  name: "{{ include "serviceaccount-psp.fullname" . }}-use-pod-security-policy-role"
   namespace: {{ .Release.Namespace }}
 rules:
 - apiGroups: ['policy']
