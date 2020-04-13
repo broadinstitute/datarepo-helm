@@ -11,7 +11,7 @@ image:
 
 proxyPass:
   status:   # http://api-service.data-repo:8080/status
-  shutdown: # http://api-service.data-repo:8080/shutdown
+  shutdown:   # http://api-service.data-repo:8080/shutdown
   swagger:  # http://api-service.data-repo:8080/swagger-ui.html
   api:  # http://api-service.data-repo:8080
 
