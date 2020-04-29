@@ -36,12 +36,16 @@ service:
 
 ingress:
   enabled: true
+  podAnnotations: {}
   timeoutSec: 600
-  annotations:
-    globalStaticIpName:
-    ingressAllowHttp: false
-  servicePort: http
-
+  ingressAllowHttp: false
+  hosts: []
+      # - datarepo.example.com
+  paths: /*
+    tls: []
+      # - secretName: datarepo-example-tls
+      #   hosts:
+      #     - datarepo.example.com
 ## create a new secret and key for TLs cert and key
 secretsgeneric:
   tlsKey: ""

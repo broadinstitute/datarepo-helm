@@ -1,24 +1,44 @@
-{{- if .Values.ingress.enabled }}
-{{- $hasCredentials := include "oidc-proxy.hasCredentials" . -}}
+{{- if .Values.ingress.enabled -}}
+{{- $serviceName := include "oidc-proxy.fullname" . -}}
+{{- $servicePort := .Values.service.port -}}
+{{- $paths := .Values.ingress.paths -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ include "oidc-proxy.fullname" . }}
-  labels:
-    {{- include "oidc-proxy.labels" . | nindent 4 }}
+{{- if .Values.ingress.podAnnotations }}
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: {{ .Values.ingress.annotations.globalStaticIpName | quote }}
-    kubernetes.io/ingress.allow-http: {{ .Values.ingress.annotations.ingressAllowHttp | quote }}
-spec:
-  {{ if $hasCredentials -}}
-  tls:
-    - secretName: {{ include "oidc-proxy.secretName" . }}
-  {{ end -}}
-  rules:
-  - http:
-      paths:
-      - path: /*
-        backend:
-          serviceName: {{ include "oidc-proxy.fullname" . }}
-          servicePort: {{ .Values.ingress.servicePort }}
+    kubernetes.io/ingress.allow-http: {{ .Values.ingress.ingressAllowHttp | quote }}
+{{ toYaml .Values.ingress.podAnnotations | indent 8 }}
 {{- end }}
+  name: {{ template "oidc-proxy.fullname" . }}
+  labels:
+    {{- include "datarepo-ui.labels" . | nindent 4 }}
+spec:
+  rules:
+  {{- if .Values.ingress.hosts }}
+  {{- range $host := .Values.ingress.hosts }}
+    - host: {{ $host }}
+      http:
+        paths:
+  {{- range $p := $paths }}
+          - path: {{ $p }}
+            backend:
+              serviceName: {{ $serviceName }}
+              servicePort: {{ $servicePort }}
+  {{- end -}}
+  {{- end -}}
+  {{- else }}
+    - http:
+        paths:
+  {{- range $p := $paths }}
+          - path: {{ $p }}
+            backend:
+              serviceName: {{ $serviceName }}
+              servicePort: {{ $servicePort }}
+  {{- end -}}
+  {{- end -}}
+  {{- if .Values.ingress.tls }}
+  tls:
+{{- toYaml .Values.ingress.tls | nindent 4 }}
+  {{- end -}}
+{{- end -}}
