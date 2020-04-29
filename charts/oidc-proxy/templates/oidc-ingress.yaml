@@ -5,14 +5,14 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-{{- if .Values.ingress.podAnnotations }}
+{{- if .Values.ingress.annotations }}
   annotations:
     kubernetes.io/ingress.allow-http: {{ .Values.ingress.ingressAllowHttp | quote }}
-{{ toYaml .Values.ingress.podAnnotations | indent 8 }}
+{{ toYaml .Values.ingress.annotations | indent 4 }}
 {{- end }}
   name: {{ template "oidc-proxy.fullname" . }}
   labels:
-    {{- include "datarepo-ui.labels" . | nindent 4 }}
+    {{- include "oidc-proxy.labels" . | nindent 4 }}
 spec:
   rules:
   {{- if .Values.ingress.hosts }}
