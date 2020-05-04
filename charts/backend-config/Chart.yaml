@@ -1,6 +1,6 @@
 apiVersion: v2
-name: datarepo
-description: A Helm chart to deploy an entire datarepo
+name: backend-config
+description: A Helm chart for creating Kubernetes backend configs
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -14,9 +14,11 @@ type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.1.2
-appVersion: 0.1.2
+version: 0.1.0
 
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application.
+appVersion: 1.16.0
 keywords:
 - google
 - cloud
@@ -30,25 +32,4 @@ maintainers:
 sources:
 - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
 
-# dependencies
-dependencies:
-- name: datarepo-api
-  version: 0.0.10
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: datarepo-api.enabled
-- name: oidc-proxy
-  version: 0.0.6
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: oidc-proxy.enabled
-- name: datarepo-ui
-  version: 0.0.5
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: datarepo-ui.enabled
-- name: gcloud-sqlproxy
-  version: 0.19.4
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: gcloud-sqlproxy.enabled
-- name: postgresql
-  version: ^7.7.0
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  condition: postgresql.enabled
+home: https://broadinstitute.github.io/datarepo-helm/
