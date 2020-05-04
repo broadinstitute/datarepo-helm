@@ -49,6 +49,11 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 3
           failureThreshold: 2
+        lifecycle:
+          preStop:
+            httpGet:
+              port: 8080
+              path: /shutdown
         volumeMounts:
         {{ if $hasCredentials -}}
         - name: google-cloud-key
