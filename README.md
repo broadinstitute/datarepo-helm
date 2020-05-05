@@ -28,7 +28,8 @@ appVersion: 0.0.10 --> 0.0.11
 ```
 2. Cut PR and assign Smark88
 
-  Locally run the following post action success
+- On merge the github action should have a green checkmark if sucessfully and edit the `index.yaml` in the gh-pages branch
+#####  Locally run the following post action success
 -  `helm repo update`
 -  `helm search repo datarepo-helm`
 
@@ -74,7 +75,7 @@ dependencies:
 Here we bumped the top level umbrella and the underlying datarepo-api chart version from steps 1-2
 The umbrella chart requires `chart.lock` be updated for the action to sucessfully run so run
 `Helm package charts/datarepo --destination .deploy -u`
-This shold edit the checksums in the `chart.lock` file
+This should edit the checksums in the `chart.lock` file
 
 git add .
 `datarepo/chart.lock`
@@ -98,4 +99,10 @@ datarepo-helm/datarepo-api                      0.0.11          0.0.11          
 datarepo-helm/datarepo                          0.1.3           0.1.3           A Helm chart to deploy an entire datarepo         
 ...
 ```
-5. Enjoy your new Chart version and edit your [Datarepo-helm-definitions](https://github.com/broadinstitute/datarepo-helm-definitions) to use your newly deployed chart
+5. Enjoy your new Chart version and edit your [Datarepo-helm-definitions](https://github.com/broadinstitute/datarepo-helm-definitions) to use your newly deployed chart values.
+
+Additional be sure to bump the chart version in your deployment method:
+  - helm command "--version"
+  - argocd
+  - fluxcd
+  - skaffold.yaml
