@@ -24,6 +24,7 @@ jobs:
           config: ct.yaml
 
   simple-deploy-test:
+    timeout-minutes: 20
     if: "!contains( github.event.pull_request.labels.*.name, 'skip-deploy')"
     runs-on: ubuntu-latest
     steps:
