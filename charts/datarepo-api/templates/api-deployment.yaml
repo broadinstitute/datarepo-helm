@@ -30,6 +30,7 @@ spec:
               - key: {{ include "datarepo-api.secretKeyServiceAccount" . }}
                 path: sa-key.json
         {{- end }}
+      terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
         image: {{ if .Values.imageName }}{{ .Values.imageName }}{{ else }}"{{ .Values.image.repository }}:{{ .Values.image.tag }}"{{ end }}
@@ -54,7 +55,6 @@ spec:
             httpGet:
               port: 8080
               path: /shutdown
-        terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
         volumeMounts:
         {{ if $hasCredentials -}}
         - name: google-cloud-key
