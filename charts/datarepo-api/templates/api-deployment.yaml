@@ -30,6 +30,7 @@ spec:
               - key: {{ include "datarepo-api.secretKeyServiceAccount" . }}
                 path: sa-key.json
         {{- end }}
+      terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
         image: {{ if .Values.imageName }}{{ .Values.imageName }}{{ else }}"{{ .Values.image.repository }}:{{ .Values.image.tag }}"{{ end }}
@@ -84,3 +85,15 @@ spec:
         {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/sa-key.json
+# Supply the pod name: used to identify Stairway instances
+        - name: DATAREPO_PODNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+# Share the timeout value between Kubernetes and Datarepo              
+        - name: DATAREPO_SHUTDOWNTIMEOUTSECONDS
+          value: "{{ .Values.shutdownTimeoutSeconds }}"
+# Tell Datarepo is it running in kubernetes          
+        - name: DATAREPO_INKUBERNETES
+          value: "true"
+

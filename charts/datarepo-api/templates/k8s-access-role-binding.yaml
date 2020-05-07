@@ -1,0 +1,16 @@
+{{- if .Values.rbac.create -}}
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: "{{ include "datarepo-api.fullname" . }}-pod-k8s-access-policy"
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "datarepo-api.labels" . | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ template "datarepo-api.serviceAccountName" . }}
+roleRef:
+  kind: Role
+  name: "{{ include "datarepo-api.fullname" . }}-pod-k8s-access-role"
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
