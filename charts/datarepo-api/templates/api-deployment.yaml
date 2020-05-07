@@ -30,6 +30,7 @@ spec:
               - key: {{ include "datarepo-api.secretKeyServiceAccount" . }}
                 path: sa-key.json
         {{- end }}
+      terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
         image: {{ if .Values.imageName }}{{ .Values.imageName }}{{ else }}"{{ .Values.image.repository }}:{{ .Values.image.tag }}"{{ end }}
@@ -54,7 +55,6 @@ spec:
             httpGet:
               port: 8080
               path: /shutdown
-        terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
         volumeMounts:
         {{ if $hasCredentials -}}
         - name: google-cloud-key
@@ -92,7 +92,7 @@ spec:
               fieldPath: metadata.name
 # Share the timeout value between Kubernetes and Datarepo              
         - name: DATAREPO_SHUTDOWNTIMEOUTSECONDS
-          value: {{ .Values.shutdownTimeoutSeconds }}
+          value: "{{ .Values.shutdownTimeoutSeconds }}"
 # Tell Datarepo is it running in kubernetes          
         - name: DATAREPO_INKUBERNETES
           value: "true"
