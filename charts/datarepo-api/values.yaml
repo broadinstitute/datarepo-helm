@@ -4,6 +4,11 @@
 
 replicaCount: 1
 
+# Datarepo and Kubernetes need to share the same shutdown timeout value.
+# It is set here, set in the api-deployment, and made an envvar that
+# overrides an application.properties item in DRmanager
+shutdownTimeoutSeconds: 60
+
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo
   tag: 1ae0923
