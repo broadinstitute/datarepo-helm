@@ -42,6 +42,14 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 10
           failureThreshold: 3
+##  dynamically populates environment variables
+        env:
+        {{- if .Values.env }}
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
+        {{- end }}
         resources:
 {{- toYaml .Values.resources | nindent 10 }}
     {{- if .Values.nodeSelector }}
@@ -56,14 +64,6 @@ spec:
       affinity:
 {{- toYaml .Values.affinity | nindent 8 }}
     {{- end }}
-##  dynamically populates environment variables
-        env:
-        {{- if .Values.env }}
-        {{- range $key, $value := .Values.env }}
-        - name: "{{ $key }}"
-          value: "{{ $value }}"
-        {{- end }}
-        {{- end }}
         volumeMounts:
           - mountPath: /etc/apache2/sites-available/site.conf
             name: siteconf
