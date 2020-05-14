@@ -25,6 +25,21 @@ fullnameOverride: ""
 ## Pod annotations
 podAnnotations: {}
 
+## Node selectors and tolerations for server scheduling to nodes with taints
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+##
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+resources: {}
+#  limits:
+#    cpu: 50m
+#    memory: 64Mi
+#  requests:
+#    cpu: 10m
+#    memory: 32Mi
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false

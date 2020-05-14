@@ -90,10 +90,23 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
-# Share the timeout value between Kubernetes and Datarepo              
+# Share the timeout value between Kubernetes and Datarepo
         - name: DATAREPO_SHUTDOWNTIMEOUTSECONDS
           value: "{{ .Values.shutdownTimeoutSeconds }}"
-# Tell Datarepo is it running in kubernetes          
+# Tell Datarepo is it running in kubernetes
         - name: DATAREPO_INKUBERNETES
           value: "true"
-
+        resources:
+{{- toYaml .Values.resources | nindent 10 }}
+    {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{- toYaml .Values.nodeSelector | nindent 8 }}
+    {{- end }}
+    {{- if .Values.tolerations }}
+      tolerations:
+{{- toYaml .Values.tolerations | nindent 8 }}
+    {{- end }}
+    {{- if .Values.affinity }}
+      affinity:
+{{- toYaml .Values.affinity | nindent 8 }}
+    {{- end }}

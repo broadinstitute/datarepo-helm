@@ -49,6 +49,8 @@ Selector labels
 {{- define "oidc-proxy.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "oidc-proxy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/component: frontend
+app.kubernetes.io/part-of: terra
 {{- end -}}
 
 {{/*
