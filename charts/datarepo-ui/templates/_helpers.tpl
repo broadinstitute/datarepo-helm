@@ -49,6 +49,8 @@ Selector labels
 {{- define "datarepo-ui.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "datarepo-ui.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/component: ui
+app.kubernetes.io/part-of: terra
 {{- end -}}
 
 {{/*
