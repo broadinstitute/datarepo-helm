@@ -50,8 +50,21 @@ spec:
           value: "{{ $value }}"
         {{- end }}
         {{- end }}
+        volumeMounts:
+          - mountPath: /etc/apache2/sites-available/site.conf
+            name: siteconf
+            subPath: site.conf
+      volumes:
+        - name: siteconf
+          configMap:
+            name: {{ template "oidc-proxy.fullname" . }}
+            items:
+              - key: siteconf
+                path: site.conf
+{{- if .Values.resources }}
         resources:
 {{- toYaml .Values.resources | nindent 10 }}
+    {{- end }}
     {{- if .Values.nodeSelector }}
       nodeSelector:
 {{- toYaml .Values.nodeSelector | nindent 8 }}
@@ -64,14 +77,3 @@ spec:
       affinity:
 {{- toYaml .Values.affinity | nindent 8 }}
     {{- end }}
-        volumeMounts:
-          - mountPath: /etc/apache2/sites-available/site.conf
-            name: siteconf
-            subPath: site.conf
-      volumes:
-        - name: siteconf
-          configMap:
-            name: {{ template "oidc-proxy.fullname" . }}
-            items:
-              - key: siteconf
-                path: site.conf
