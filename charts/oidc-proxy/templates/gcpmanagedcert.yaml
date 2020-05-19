@@ -1,0 +1,10 @@
+{{- if .Values.ingress.domainName }}
+---
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  domains:
+    - {{ .Values.ingress.domainName }}
+{{- end }}

@@ -52,6 +52,7 @@ service:
 ingress:
   enabled: true
   annotations: {}
+  domainName: ""
   timeoutSec: 600
   ingressAllowHttp: false
   paths:
