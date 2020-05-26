@@ -54,12 +54,14 @@ jobs:
         uses: broadinstitute/datarepo-actions@ms-newcharttest
         with:
           actions_subcommand: 'testcharts'
+          k8_namespaces: integration-temp
 
       - name: "Delete chart deployment after test"
         if: always()
         uses: broadinstitute/datarepo-actions@ms-newcharttest
         with:
           actions_subcommand: 'charttestdelete'
+          k8_namespaces: integration-temp
 
       - name: "Clean state lock from used Namespace on deploy"
         if: always()
