@@ -569,6 +569,27 @@ entries:
     version: 0.0.2
   datarepo-api:
   - apiVersion: v2
+    appVersion: 0.0.15
+    created: "2020-06-01T15:28:32.160804343Z"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: 3d7b687e612a1d3111d935ae75a4574b8e11849b0863cb6b9bd5983ed2108219
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.15/datarepo-api-0.0.15.tgz
+    version: 0.0.15
+  - apiVersion: v2
     appVersion: 0.0.14
     created: "2020-05-26T14:30:39.506104198Z"
     description: A Helm chart to deploy datarepo api server for Kubernetes
@@ -917,6 +938,30 @@ entries:
     version: 0.0.2
   gcloud-sqlproxy:
   - apiVersion: v2
+    appVersion: "1.17"
+    created: "2020-06-01T15:28:32.238668325Z"
+    description: Google Cloud SQL Proxy
+    digest: 963282fb90c2d583538a3b65c45f69370b34476520e398c0b11ed8c894d4042b
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: monster@broadinstitute.org
+      name: Monster
+    - email: jadeteam@broadinstitute.org
+      name: Jade
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.6/gcloud-sqlproxy-0.19.6.tgz
+    version: 0.19.6
+  - apiVersion: v2
     appVersion: "1.16"
     created: "2020-05-19T18:31:24.250035204Z"
     description: Google Cloud SQL Proxy
@@ -1100,6 +1145,27 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/install-secrets-manager-0.0.1/install-secrets-manager-0.0.1.tgz
     version: 0.0.1
   oidc-proxy:
+  - apiVersion: v2
+    appVersion: 0.0.9
+    created: "2020-06-01T15:28:32.324815105Z"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: 03096362f06a55916591514f1dc4e217d2ca136f2f932aa8b124bad7eff96d11
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.9/oidc-proxy-0.0.9.tgz
+    version: 0.0.9
   - apiVersion: v2
     appVersion: 0.0.8
     created: "2020-05-20T15:38:25.590305152Z"
