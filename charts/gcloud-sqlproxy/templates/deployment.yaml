@@ -1,6 +1,6 @@
 {{- if ne (index .Values.cloudsql.instances 0).instance "instance" }}
 {{- $hasCredentials := include "gcloud-sqlproxy.hasCredentials" . -}}
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "gcloud-sqlproxy.fullname" . }}
@@ -11,9 +11,14 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicasCount }}
+  selector:
+    matchLabels:
+      app: {{ include "gcloud-sqlproxy.fullname" . }}
   template:
     metadata:
+      name: {{ include "gcloud-sqlproxy.fullname" . }}
       labels:
+        app: {{ include "gcloud-sqlproxy.fullname" . }}
         app.kubernetes.io/name: {{ include "gcloud-sqlproxy.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
       annotations:
