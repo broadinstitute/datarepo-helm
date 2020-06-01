@@ -2,7 +2,7 @@
 {{- $serviceName := include "oidc-proxy.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $paths := .Values.ingress.paths -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
