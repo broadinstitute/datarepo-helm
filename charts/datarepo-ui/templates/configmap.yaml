@@ -13,7 +13,7 @@ data:
 
     http {
       server { # simple reverse-proxy
-        listen       80;
+        listen       8080;
 
         # pass the status check through
         location /status {
