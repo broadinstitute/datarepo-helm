@@ -21,7 +21,7 @@ data:
       client_body_temp_path /tmp/client_temp;
 
       server { # simple reverse-proxy
-        listen       8080;
+        listen       {{ .Values.nginxport }};
 
         # pass the status check through
         location /status {

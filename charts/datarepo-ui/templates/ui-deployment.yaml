@@ -27,7 +27,7 @@ spec:
       - name: {{ .Chart.Name }}
         image: {{ if .Values.imageName }}{{ .Values.imageName }}{{ else }}"{{ .Values.image.repository }}:{{ .Values.image.tag }}"{{ end }}
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.nginxport }}
 ##  dynamically populates environment variables
         env:
         {{- if .Values.env }}
@@ -39,7 +39,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /status
-            port: 8080
+            port: {{ .Values.nginxport }}
           initialDelaySeconds: 35
           periodSeconds: 10
           timeoutSeconds: 3
@@ -47,7 +47,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /status
-            port: 8080
+            port: {{ .Values.nginxport }}
           initialDelaySeconds: 45
           periodSeconds: 10
           timeoutSeconds: 3
