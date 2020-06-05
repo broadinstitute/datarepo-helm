@@ -7,12 +7,12 @@ dependencies:
   version: 0.0.9
 - name: datarepo-ui
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.6
+  version: 0.0.7
 - name: gcloud-sqlproxy
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.19.6
 - name: postgresql
   repository: https://kubernetes-charts.storage.googleapis.com/
   version: 7.7.3
-digest: sha256:61b8c38685ca6c9c58bd62ccc54c9a49f344a58ec9b23fee4c0d295306281455
-generated: "2020-06-01T11:33:02.6817-04:00"
+digest: sha256:af3da2dd2c2c360ffe7e7b758ccddb52f170a0321c1c64fd6668fdce7ff8dbb2
+generated: "2020-06-05T12:20:41.266756-04:00"
