@@ -11,7 +11,7 @@ shutdownTimeoutSeconds: 60
 
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo
-  tag: 1ae0923
+  tag: ca9bd61-develop
   pullPolicy: IfNotPresent
   port: 8080
 
