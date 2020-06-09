@@ -692,6 +692,27 @@ entries:
     version: 0.0.2
   datarepo-api:
   - apiVersion: v2
+    appVersion: 0.0.16
+    created: "2020-06-09T18:56:36.308815306Z"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: 46f81db84a5bdd649814c309f7f2abc6b92b07be739405bda0bafb2f23de65da
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.16/datarepo-api-0.0.16.tgz
+    version: 0.0.16
+  - apiVersion: v2
     appVersion: 0.0.15
     created: "2020-06-01T15:28:32.160804343Z"
     description: A Helm chart to deploy datarepo api server for Kubernetes
@@ -1081,6 +1102,30 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.2/datarepo-ui-0.0.2.tgz
     version: 0.0.2
   gcloud-sqlproxy:
+  - apiVersion: v2
+    appVersion: "1.17"
+    created: "2020-06-09T18:56:36.452709395Z"
+    description: Google Cloud SQL Proxy
+    digest: 5e001250e382d1fb1a33f4279aa282e90c40d487b65b0ed2de0d91cf7b04b724
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: monster@broadinstitute.org
+      name: Monster
+    - email: jadeteam@broadinstitute.org
+      name: Jade
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.7/gcloud-sqlproxy-0.19.7.tgz
+    version: 0.19.7
   - apiVersion: v2
     appVersion: "1.17"
     created: "2020-06-01T15:28:32.238668325Z"
