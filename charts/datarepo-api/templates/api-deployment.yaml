@@ -21,6 +21,11 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
     spec:
       serviceAccountName: {{ include "datarepo-api.serviceAccountName" . }}
+      securityContext:
+        runAsUser: 101
+        runAsGroup: 101
+        fsGroup: 101
+        runAsNonRoot: true
       volumes:
         {{- if $hasCredentials }}
         - name: google-cloud-key

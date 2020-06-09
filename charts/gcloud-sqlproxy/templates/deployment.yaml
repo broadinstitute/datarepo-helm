@@ -27,6 +27,11 @@ spec:
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ include "gcloud-sqlproxy.fullname" . }}
       {{- end }}
+      securityContext:
+        runAsUser: 1002
+        runAsGroup: 1002
+        fsGroup: 1002
+        runAsNonRoot: true
       containers:
       - name: sqlproxy
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
