@@ -26,7 +26,7 @@ spec:
         runAsNonRoot: true
       containers:
       - name: {{ .Chart.Name }}
-        image: {{ if .Values.imageName }}{{ .Values.imageName }}{{ else }}"{{ .Values.image.repository }}:{{ .Values.image.tag }}"{{ end }}
+        image: {{ include "datarepo-ui.image" . }} 
         ports:
         - containerPort: {{ .Values.nginxport }}
 ##  dynamically populates environment variables

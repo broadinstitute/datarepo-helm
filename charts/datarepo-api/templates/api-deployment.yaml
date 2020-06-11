@@ -38,7 +38,7 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
-        image: {{ if .Values.imageName }}{{ .Values.imageName }}{{ else }}"{{ .Values.image.repository }}:{{ .Values.image.tag }}"{{ end }}
+        image: {{ include "datarepo-api.image" . }} 
         readinessProbe:
           httpGet:
             path: /status
