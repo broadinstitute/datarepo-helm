@@ -63,3 +63,14 @@ Create the name of the service account to use
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create repository image and imagetag with Terra Values.global.applicationVersion Overrride
+*/}}
+{{- define "datarepo-ui.image" -}}
+{{- if .Values.imageName -}}
+    {{ .Values.imageName }}
+{{- else -}}
+    {{ .Values.image.repository }}:{{ .Values.global.applicationVersion | default .Values.image.tag }}
+{{- end -}}
+{{- end -}}

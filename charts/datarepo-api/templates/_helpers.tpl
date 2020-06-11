@@ -105,3 +105,14 @@ Check if any type of credentials are defined
 {{- define "datarepo-api.hasCredentials" -}}
 {{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey ) -}}
 {{- end -}}
+
+{{/*
+Create repository image and imagetag with Terra Values.global.applicationVersion Overrride
+*/}}
+{{- define "datarepo-api.image" -}}
+{{- if .Values.imageName -}}
+    {{ .Values.imageName }}
+{{- else -}}
+    {{ .Values.image.repository }}:{{ .Values.global.applicationVersion | default .Values.image.tag }}
+{{- end -}}
+{{- end -}}

@@ -1,4 +1,6 @@
-### Required for a full Deployment of a datarepo
+### Required for a full Deployment of a datarepo\
+global:
+  applicationVersion: ""
 ### - datarepo-api
 ### - oidc-proxy
 ### - datarepo-ui

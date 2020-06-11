@@ -1,7 +1,8 @@
 # Default values for datarepo-api.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
+global:
+  applicationVersion: ""
 replicaCount: 1
 
 # Datarepo and Kubernetes need to share the same shutdown timeout value.
