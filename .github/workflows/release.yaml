@@ -1,7 +1,7 @@
 name: Release umbrella chart
 
 on:
-  pull_request:
+  push:
     branches:
       - master
     paths:
@@ -30,3 +30,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -m "Add changes" -a
           git diff
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
