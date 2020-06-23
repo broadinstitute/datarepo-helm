@@ -28,10 +28,6 @@ jobs:
         run: |
           git config --local user.email "robot@jade.team"
           git config --local user.name "GitHub Action"
-          git commit -m "Add changes" -a
+          git commit -m "Added changes" -a
           git diff
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git push
