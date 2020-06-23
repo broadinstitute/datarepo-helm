@@ -1,7 +1,6 @@
 apiVersion: v2
 name: datarepo
 description: A Helm chart to deploy an entire datarepo
-
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
@@ -11,25 +10,20 @@ description: A Helm chart to deploy an entire datarepo
 # a dependency of application charts to inject those utilities and functions into the rendering
 # pipeline. Library charts do not define any templates and therefore cannot be deployed.
 type: application
-
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 version: 0.1.12
 appVersion: 0.1.12
-
 keywords:
 - google
 - cloud
 - datarepo
 - broadinstitute
-
 maintainers:
 - email: smark@broadinstitute.org
   name: smark
-
 sources:
 - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-
 # dependencies
 dependencies:
 - name: datarepo-api
@@ -45,10 +39,14 @@ dependencies:
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: datarepo-ui.enabled
 - name: gcloud-sqlproxy
-  version: 0.19.6
+  version: 0.19.7
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: gcloud-sqlproxy.enabled
 - name: postgresql
   version: ^7.7.0
   repository: https://kubernetes-charts.storage.googleapis.com/
   condition: postgresql.enabled
+- name: create-secret-manager-secret
+  version: 0.0.6
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  condition: create-secret-manager-secret.enabled
