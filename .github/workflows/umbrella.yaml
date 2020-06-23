@@ -1,15 +1,15 @@
-name: Release Indivdual Charts
+name: Release Umbrella Chart for datarepo
 
 on:
   push:
     branches:
       - master
     paths:
-      - '!charts/datarepo/**'
+      - 'charts/datarepo/**'
 
 
 jobs:
-  release:
+  release_datarepo:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

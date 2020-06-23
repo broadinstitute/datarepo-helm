@@ -12,7 +12,7 @@ on:
       - 'charts/oidc-proxy/**'
 
 jobs:
-  release_new_umbrella:
+  release_new_umbrella_push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
