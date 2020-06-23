@@ -18,7 +18,7 @@ version: 0.0.17
 appVersion: 0.0.17
 
 # This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application.
+# incremented each time you make changes to the application
 # appVersion: 1.16.0
 keywords:
 - google
