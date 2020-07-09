@@ -51,6 +51,7 @@ service:
 
 ingress:
   enabled: true
+  frontendConfig: ""
   annotations: {}
   domainName: ""
   timeoutSec: 600

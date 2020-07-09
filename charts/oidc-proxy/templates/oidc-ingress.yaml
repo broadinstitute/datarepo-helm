@@ -2,18 +2,23 @@
 {{- $serviceName := include "oidc-proxy.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $paths := .Values.ingress.paths -}}
+{{- if .Values.ingress.frontendConfig }}
+---
 apiVersion: networking.gke.io/v1beta1.FrontendConfig
 kind: FrontendConfig
 metadata:
-  name: "frontend-ingress"
+  name: {{ .Values.ingress.frontendConfig }}
 spec:
-  sslPolicy: global-ssl-policy
+  sslPolicy: {{ .Values.ingress.frontendConfig }}
+{{- end }}
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    networking.gke.io/v1beta1.FrontendConfig: "frontend-ingress"
+{{- if .Values.ingress.frontendConfig }}
+    networking.gke.io/v1beta1.FrontendConfig: {{ .Values.ingress.frontendConfig | quote }}
+{{- end }}
     kubernetes.io/ingress.allow-http: {{ .Values.ingress.ingressAllowHttp | quote }}
 {{- if .Values.ingress.domainName }}
     networking.gke.io/managed-certificates: {{ .Release.Name }}
