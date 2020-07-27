@@ -120,3 +120,5 @@ oidc-proxy:
 postgresql: # supply your Gcloudsql instance or use this
   enabled: false
 ## https://github.com/helm/charts/tree/master/stable/postgresql
+create-secret-manager-secret:
+  enabled: false
