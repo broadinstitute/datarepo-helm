@@ -38,12 +38,12 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
-        image: {{ include "datarepo-api.image" . }} 
+        image: {{ include "datarepo-api.image" . }}
         readinessProbe:
           httpGet:
             path: /status
             port: {{ .Values.image.port }}
-          initialDelaySeconds: 15
+          initialDelaySeconds: 25
           periodSeconds: 10
           timeoutSeconds: 3
           failureThreshold: 2
@@ -51,7 +51,7 @@ spec:
           httpGet:
             path: /status
             port: {{ .Values.image.port }}
-          initialDelaySeconds: 25
+          initialDelaySeconds: 45
           periodSeconds: 10
           timeoutSeconds: 3
           failureThreshold: 2
