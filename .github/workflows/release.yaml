@@ -33,7 +33,7 @@ jobs:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
 
       - name: "Create new umbrealla chart"
-        uses: broadinstitute/datarepo-umbrella-release-action@0.1.0
+        uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
 
       - name: Commit files
         run: |
