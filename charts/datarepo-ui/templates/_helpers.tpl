@@ -71,6 +71,6 @@ Create repository image and imagetag with Terra Values.global.applicationVersion
 {{- if .Values.imageName -}}
     {{ .Values.imageName }}
 {{- else -}}
-    {{ .Values.image.repository }}:{{ .Values.global.applicationVersion | default .Values.image.tag }}
+    {{ .Values.image.repository }}:{{ .Values.image.tag }}
 {{- end -}}
 {{- end -}}
