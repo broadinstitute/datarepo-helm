@@ -1,108 +1,166 @@
-# datarepo-helm
-A helm repo for Datarepo from Broad Data Science Platforms Group
+# Chart Releaser
 
-## How Do I install the repo
-```
-helm repo add datarepo-helm https://broadinstitute.github.io/datarepo-helm
-helm repo update
-```
-## How Do I Install These Charts?
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CircleCI](https://circleci.com/gh/helm/chart-releaser/tree/master.svg?style=svg)](https://circleci.com/gh/helm/chart-releaser/tree/master)
 
-Just `helm install datarepo-helm/<chart>`. This is the default repository for Helm which is located at https://broadinstitute.github.io/datarepo-helm/ and is installed by default.
+**Helps Turn GitHub Repositories into Helm Chart Repositories**
 
-For more information on using Helm, refer to the [Helm documentation](https://github.com/kubernetes/helm#docs).
+`cr` is a tool designed to help GitHub repos self-host their own chart repos by adding Helm chart artifacts to GitHub Releases named for the chart version and then creating an `index.yaml` file for those releases that can be hosted on GitHub Pages (or elsewhere!).
 
-## Updating Helm Charts via the Chart Releaser action
+## Installation
 
-1. Edit chart and bump `chart.yaml` version
-  - This repo contain a couple of umbrella chart so how many PRs you make will depend on that
+### Binaries (recommended)
 
-#### Example chart bump
-```
-apiVersion: v2
-name: datarepo-api
-description: A Helm chart to deploy datarepo api server for Kubernetes
-type: application
-version: 0.0.10  --> 0.0.11
-appVersion: 0.0.10 --> 0.0.11
-```
-2. Cut PR and assign Smark88
+Download your preferred asset from the [releases page](https://github.com/helm/chart-releaser/releases) and install manually.
 
-- On merge the github action should have a green checkmark if sucessfully and edit the `index.yaml` in the gh-pages branch
-#####  Locally run the following post action success
--  `helm repo update`
--  `helm search repo datarepo-helm`
+### Homebrew
 
-To check for the new charts locally
-```
-▶ helm repo update                       
-Hang tight while we grab the latest from your chart repositories...
-...Successfully got an update from the "datarepo-helm" chart repository
-Update Complete. ⎈ Happy Helming!⎈
-
-                                                                                39m ⚑  
-▶ helm search repo datarepo-helm         
-NAME                                            CHART VERSION   APP VERSION     DESCRIPTION                                       
-datarepo-helm/datarepo-api                      0.0.11          0.0.11          A Helm chart to deploy datarepo api server for ...                  
-datarepo-helm/datarepo                          0.1.3           0.1.3           A Helm chart to deploy an entire datarepo         
-...
+```console
+$ brew tap helm/tap
+$ brew install chart-releaser
 ```
 
-## Optional: Umbrella chart edit
+### Go get (for contributing)
 
-3. If umbrella chart needs bumping like datarepo
-  - merge step 1-2s PR then as that is a dependency of the umbrella
-
-#### Umbrella chart.yaml version bump
+```console
+$ # clone repo to some directory outside GOPATH
+$ git clone https://github.com/helm/chart-releaser
+$ cd chart-releaser
+$ go mod download
+$ go install ./...
 ```
-...
 
-version: 0.1.3 --> 0.1.4
-appVersion: 0.1.3 --> 0.1.4
+### Docker (for Continuous Integration)
 
-...
+Docker images are pushed to the [helmpack/chart-releaser](https://quay.io/repository/helmpack/chart-releaser?tab=tags) Quay container registry. The Docker image is built on top of Alpine and its default entry-point is `cr`. See the [Dockerfile](./Dockerfile) for more details.
 
-# dependencies
-dependencies:
-- name: datarepo-api
-  version: 0.0.10 --> 0.0.11
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: datarepo-api.enabled
+## Usage
 
-...
-...
+Currently, `cr` can create GitHub Releases from a set of charts packaged up into a directory and create an `index.yaml` file for the chart repository from GitHub Releases.
+
+```console
+$ cr --help
+Create Helm chart repositories on GitHub Pages by uploading Chart packages
+and Chart metadata to GitHub Releases and creating a suitable index file
+
+Usage:
+  cr [command]
+
+Available Commands:
+  help        Help about any command
+  index       Update Helm repo index.yaml for the given GitHub repo
+  upload      Upload Helm chart packages to GitHub Releases
+  version     Print version information
+
+Flags:
+      --config string   Config file (default is $HOME/.cr.yaml)
+  -h, --help            help for cr
+
+Use "cr [command] --help" for more information about a command.
 ```
-Here we bumped the top level umbrella and the underlying datarepo-api chart version from steps 1-2
-The umbrella chart requires `chart.lock` be updated for the action to sucessfully run so run
-`Helm package charts/datarepo --destination .deploy -u`
-This should edit the checksums in the `chart.lock` file
 
-git add .
-`datarepo/chart.lock`
-`datarepo/chart.yaml`
+### Create GitHub Releases from Helm Chart Packages
 
-4. Cut a PR for the new umbrella charts
-Locally run the following post action success
-`helm repo update`
-`helm search repo datarepo-helm`
-To check for the new charts locally
+Scans a path for Helm chart packages and creates releases in the specified GitHub repo uploading the packages.
+
+```console
+$ cr upload --help
+Upload Helm chart packages to GitHub Releases
+
+Usage:
+  cr upload [flags]
+
+Flags:
+  -b, --git-base-url string     GitHub Base URL (only needed for private GitHub) (default "https://api.github.com/")
+  -r, --git-repo string         GitHub repository
+  -u, --git-upload-url string   GitHub Upload URL (only needed for private GitHub) (default "https://uploads.github.com/")
+  -h, --help                    help for upload
+  -o, --owner string            GitHub username or organization
+  -p, --package-path string     Path to directory with chart packages (default ".cr-release-packages")
+  -t, --token string            GitHub Auth Token
+
+Global Flags:
+      --config string   Config file (default is $HOME/.cr.yaml)
 ```
-▶ helm repo update                       
-Hang tight while we grab the latest from your chart repositories...
-...Successfully got an update from the "datarepo-helm" chart repository
-Update Complete. ⎈ Happy Helming!⎈
 
-                                                                              39m ⚑  
-▶ helm search repo datarepo-helm         
-NAME                                            CHART VERSION   APP VERSION     DESCRIPTION                                       
-datarepo-helm/datarepo-api                      0.0.11          0.0.11          A Helm chart to deploy datarepo api server for ...                  
-datarepo-helm/datarepo                          0.1.3           0.1.3           A Helm chart to deploy an entire datarepo         
-...
+### Create the Repository Index from GitHub Releases
+
+Once uploaded you can create an `index.yaml` file that can be hosted on GitHub Pages (or elsewhere).
+
+```console
+$ cr index --help
+Update a Helm chart repository index.yaml file based on a the
+given GitHub repository's releases.
+
+Usage:
+  cr index [flags]
+
+Flags:
+  -c, --charts-repo string      The URL to the charts repository
+  -b, --git-base-url string     GitHub Base URL (only needed for private GitHub) (default "https://api.github.com/")
+  -r, --git-repo string         GitHub repository
+  -u, --git-upload-url string   GitHub Upload URL (only needed for private GitHub) (default "https://uploads.github.com/")
+  -h, --help                    help for index
+  -i, --index-path string       Path to index file (default ".cr-index/index.yaml")
+  -o, --owner string            GitHub username or organization
+  -p, --package-path string     Path to directory with chart packages (default ".cr-release-packages")
+  -t, --token string            GitHub Auth Token (only needed for private repos)
+
+Global Flags:
+      --config string   Config file (default is $HOME/.cr.yaml)
 ```
-5. Enjoy your new Chart version and edit your [Datarepo-helm-definitions](https://github.com/broadinstitute/datarepo-helm-definitions) to use your newly deployed chart values.
 
-Additional be sure to bump the chart version in your deployment method:
-  - helm command "--version"
-  - argocd
-  - fluxcd
-  - skaffold.yaml
+## Configuration
+
+`cr` is a command-line application.
+All command-line flags can also be set via environment variables or config file.
+Environment variables must be prefixed with `CR_`.
+Underscores must be used instead of hyphens.
+
+CLI flags, environment variables, and a config file can be mixed.
+The following order of precedence applies:
+
+1. CLI flags
+1. Environment variables
+1. Config file
+
+### Examples
+
+The following example show various ways of configuring the same thing:
+
+#### CLI
+
+    cr upload --owner myaccount --git-repo helm-charts --package-path .deploy --token 123456789
+
+#### Environment Variables
+
+    export CR_OWNER=myaccount
+    export CR_GIT_REPO=helm-charts
+    export CR_PACKAGE_PATH=.deploy
+    export CR_TOKEN="123456789"
+    export CR_GIT_BASE_URL="https://api.github.com/"
+    export CR_GIT_UPLOAD_URL="https://uploads.github.com/"
+
+    cr upload
+
+#### Config File
+
+`config.yaml`:
+
+```yaml
+owner: myaccount
+git-repo: helm-charts
+package-path: .deploy
+token: 123456789
+git-base-url: https://api.github.com/
+git-upload-url: https://uploads.github.com/
+```
+
+#### Config Usage
+
+    cr upload --config config.yaml
+
+
+`cr` supports any format [Viper](https://github.com/spf13/viper) can read, i. e. JSON, TOML, YAML, HCL, and Java properties files.
+
+Notice that if no config file is specified, `cr.yaml` (or any of the supported formats) is loaded from the current directory, `$HOME/.cr`, or `/etc/cr`, in that order, if found.
