@@ -51,7 +51,7 @@ spec:
         {{- end }}
         {{- end }}
         volumeMounts:
-          {{ - if .Values.tcell.tcellSecret }}
+          {{- if or .Values.tcell.tcellSecret .Values.tcell.tcellSecretKey }}
           - mountPath: /etc/apache2/tcell_agent.config
             name: tcell
             subPath: tcell_agent.config
@@ -60,7 +60,7 @@ spec:
             name: siteconf
             subPath: site.conf
       volumes:
-        {{ - if .Values.tcell.tcellSecret }}
+        {{- if or .Values.tcell.tcellSecret .Values.tcell.tcellSecretKey }}
         - name: tcell
           secret:
             secretName: {{ .Values.tcel.tcellSecret }}
