@@ -63,9 +63,9 @@ spec:
         {{- if or .Values.tcell.tcellSecret .Values.tcell.tcellSecretKey }}
         - name: tcell
           secret:
-            secretName: {{ .Values.tcel.tcellSecret }}
+            secretName: {{ .Values.tcell.tcellSecret }}
             items:
-            - key: {{ .Values.tcel.tcellSecretKey }}
+            - key: {{ .Values.tcell.tcellSecretKey }}
               path: tcell_agent.config
         {{- end }}
         - name: siteconf
