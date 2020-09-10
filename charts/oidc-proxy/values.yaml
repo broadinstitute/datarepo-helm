@@ -12,6 +12,11 @@ image:
 ## Extra environment variables that will be pass onto deployment pods
 env: {}
 
+## TCELL
+tcell:
+  tcellSecret: ""
+  tcellSecretKey: ""
+
 ## Pod annotations
 podAnnotations: {}
 

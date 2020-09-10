@@ -51,16 +51,30 @@ spec:
         {{- end }}
         {{- end }}
         volumeMounts:
+          {{- if or .Values.tcell.tcellSecret .Values.tcell.tcellSecretKey }}
+          - mountPath: /etc/apache2/tcell_agent.config
+            name: tcell
+            subPath: tcell_agent.config
+          {{- end }}
           - mountPath: /etc/apache2/sites-available/site.conf
             name: siteconf
             subPath: site.conf
       volumes:
+        {{- if or .Values.tcell.tcellSecret .Values.tcell.tcellSecretKey }}
+        - name: tcell
+          secret:
+            secretName: {{ .Values.tcel.tcellSecret }}
+            items:
+            - key: {{ .Values.tcel.tcellSecretKey }}
+              path: tcell_agent.config
+        {{- end }}
         - name: siteconf
           configMap:
             name: {{ template "oidc-proxy.fullname" . }}
             items:
               - key: siteconf
                 path: site.conf
+
 {{- if .Values.resources }}
         resources:
 {{- toYaml .Values.resources | nindent 10 }}
