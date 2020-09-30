@@ -55,7 +55,8 @@ spec:
           failureThreshold: 3
         volumeMounts:
           - name: nginxconf
-            mountPath: /etc/nginx/
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
       volumes:
         - name: nginxconf
           configMap:
