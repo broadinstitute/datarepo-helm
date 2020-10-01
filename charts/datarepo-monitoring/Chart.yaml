@@ -38,7 +38,7 @@ dependencies:
   version: 0.1.2
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: gcp-managed-cert.enabled
-- name: prometheus-operator
-  version: 9.3.2
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  condition: prometheus-operator.enabled
+- name: kube-prometheus-stack
+  version: 9.4.5
+  repository: https://prometheus-community.github.io/helm-charts/
+  condition: kube-prometheus-stack.enabled
