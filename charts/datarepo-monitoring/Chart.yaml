@@ -33,7 +33,11 @@ dependencies:
 - name: backend-config
   version: 0.1.0
   repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: datarepo-helm/backend-config.enabled
+  condition: backend-config.enabled
+- name: gcp-managed-cert
+  version: 0.1.2
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  condition: gcp-managed-cert.enabled
 - name: prometheus-operator
   version: 9.3.2
   repository: https://kubernetes-charts.storage.googleapis.com/

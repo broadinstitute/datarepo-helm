@@ -4,5 +4,8 @@ create-secret-manager-secret:
 backend-config:
   enabled: false
 
+gcp-managed-cert:
+  enabled: false
+
 prometheus-operator:
   enabled: false
