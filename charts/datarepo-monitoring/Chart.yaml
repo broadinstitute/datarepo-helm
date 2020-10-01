@@ -1,0 +1,40 @@
+apiVersion: v2
+name: datarepo-monitoring
+description: A Helm chart to deploy an entire datarepo-monitoring stack
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version
+version: 0.0.1
+appVersion: 0.0.1
+keywords:
+- google
+- cloud
+- datarepo
+- broadinstitute
+maintainers:
+- email: smark@broadinstitute.org
+  name: smark
+sources:
+- https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+# dependencies
+dependencies:
+- name: create-secret-manager-secret
+  version: 0.0.6
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  condition: create-secret-manager-secret.enabled
+- name: backend-config
+  version: 0.1.0
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  condition: datarepo-helm/backend-config.enabled
+- name: prometheus-operator
+  version: 9.3.2
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  condition: prometheus-operator.enabled
