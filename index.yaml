@@ -190,31 +190,6 @@ entries:
   - apiVersion: v2
     appVersion: 0.1.19
     created: "2020-09-30T19:34:38.928719107Z"
-    dependencies:
-    - condition: datarepo-api.enabled
-      name: datarepo-api
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.19
-    - condition: oidc-proxy.enabled
-      name: oidc-proxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.11
-    - condition: datarepo-ui.enabled
-      name: datarepo-ui
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.10
-    - condition: gcloud-sqlproxy.enabled
-      name: gcloud-sqlproxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.19.7
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: ^7.7.0
-    - condition: create-secret-manager-secret.enabled
-      name: create-secret-manager-secret
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.6
     description: A Helm chart to deploy an entire datarepo
     digest: 917f61d754772700ddd2f19f7999d73064c846e3efa95045d8edeab6e5de793a
     keywords:
@@ -228,38 +203,12 @@ entries:
     name: datarepo
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.19/datarepo-0.1.19.tgz
     version: 0.1.19
   - apiVersion: v2
     appVersion: 0.1.18
     created: "2020-09-10T15:50:13.085716985Z"
-    dependencies:
-    - condition: datarepo-api.enabled
-      name: datarepo-api
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.19
-    - condition: oidc-proxy.enabled
-      name: oidc-proxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.11
-    - condition: datarepo-ui.enabled
-      name: datarepo-ui
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.9
-    - condition: gcloud-sqlproxy.enabled
-      name: gcloud-sqlproxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.19.7
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: ^7.7.0
-    - condition: create-secret-manager-secret.enabled
-      name: create-secret-manager-secret
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.6
     description: A Helm chart to deploy an entire datarepo
     digest: 2968140a371f8aff9c6ad6be2abfb1f14f7291be429467533c24a43dc8fff518
     keywords:
@@ -273,38 +222,12 @@ entries:
     name: datarepo
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.18/datarepo-0.1.18.tgz
     version: 0.1.18
   - apiVersion: v2
     appVersion: 0.1.17
     created: "2020-09-10T14:14:59.823133317Z"
-    dependencies:
-    - condition: datarepo-api.enabled
-      name: datarepo-api
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.19
-    - condition: oidc-proxy.enabled
-      name: oidc-proxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.10
-    - condition: datarepo-ui.enabled
-      name: datarepo-ui
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.9
-    - condition: gcloud-sqlproxy.enabled
-      name: gcloud-sqlproxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.19.7
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: ^7.7.0
-    - condition: create-secret-manager-secret.enabled
-      name: create-secret-manager-secret
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.6
     description: A Helm chart to deploy an entire datarepo
     digest: a2bbea5d5e6437b2dc687a4081c81e0cd0c42524bc0a3581c2ab73f8e0ec231d
     keywords:
@@ -318,38 +241,12 @@ entries:
     name: datarepo
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.17/datarepo-0.1.17.tgz
     version: 0.1.17
   - apiVersion: v2
     appVersion: 0.1.16
     created: "2020-09-09T00:09:44.792485933Z"
-    dependencies:
-    - condition: datarepo-api.enabled
-      name: datarepo-api
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.19
-    - condition: oidc-proxy.enabled
-      name: oidc-proxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.9
-    - condition: datarepo-ui.enabled
-      name: datarepo-ui
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.9
-    - condition: gcloud-sqlproxy.enabled
-      name: gcloud-sqlproxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.19.7
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: ^7.7.0
-    - condition: create-secret-manager-secret.enabled
-      name: create-secret-manager-secret
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.6
     description: A Helm chart to deploy an entire datarepo
     digest: c07de0b496fc939c53a4858c1b423b0a60254f7395cc0738d9b5dd275cb7d8b0
     keywords:
@@ -363,38 +260,12 @@ entries:
     name: datarepo
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.16/datarepo-0.1.16.tgz
     version: 0.1.16
   - apiVersion: v2
     appVersion: 0.1.15
     created: "2020-08-10T18:11:30.863810188Z"
-    dependencies:
-    - condition: datarepo-api.enabled
-      name: datarepo-api
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.18
-    - condition: oidc-proxy.enabled
-      name: oidc-proxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.9
-    - condition: datarepo-ui.enabled
-      name: datarepo-ui
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.9
-    - condition: gcloud-sqlproxy.enabled
-      name: gcloud-sqlproxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.19.7
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: ^7.7.0
-    - condition: create-secret-manager-secret.enabled
-      name: create-secret-manager-secret
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.6
     description: A Helm chart to deploy an entire datarepo
     digest: 31c86e747c26cb9431c2334708d033b886d3c5e542a1d7eff957c459026203a0
     keywords:
@@ -408,38 +279,12 @@ entries:
     name: datarepo
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.15/datarepo-0.1.15.tgz
     version: 0.1.15
   - apiVersion: v2
     appVersion: 0.1.14
     created: "2020-08-06T21:00:52.54088731Z"
-    dependencies:
-    - condition: datarepo-api.enabled
-      name: datarepo-api
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.18
-    - condition: oidc-proxy.enabled
-      name: oidc-proxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.9
-    - condition: datarepo-ui.enabled
-      name: datarepo-ui
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.8
-    - condition: gcloud-sqlproxy.enabled
-      name: gcloud-sqlproxy
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.19.7
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: ^7.7.0
-    - condition: create-secret-manager-secret.enabled
-      name: create-secret-manager-secret
-      repository: https://broadinstitute.github.io/datarepo-helm/
-      version: 0.0.6
     description: A Helm chart to deploy an entire datarepo
     digest: 7a7650e183b99e2016ea213ac6deb94eb35dd9302b795e902bd62899b7a55bc0
     keywords:
@@ -453,7 +298,6 @@ entries:
     name: datarepo
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.14/datarepo-0.1.14.tgz
     version: 0.1.14
@@ -885,7 +729,6 @@ entries:
     name: datarepo-api
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.19/datarepo-api-0.0.19.tgz
     version: 0.0.19
@@ -906,7 +749,6 @@ entries:
     name: datarepo-api
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.18/datarepo-api-0.0.18.tgz
     version: 0.0.18
@@ -1234,7 +1076,6 @@ entries:
     name: datarepo-ui
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.10/datarepo-ui-0.0.10.tgz
     version: 0.0.10
@@ -1255,7 +1096,6 @@ entries:
     name: datarepo-ui
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.9/datarepo-ui-0.0.9.tgz
     version: 0.0.9
@@ -1514,6 +1354,15 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.3/gcloud-sqlproxy-0.19.3.tgz
     version: 0.19.3
+  gcp-managed-cert:
+  - apiVersion: v2
+    created: "2020-10-01T15:52:13.661484-04:00"
+    description: Chart for creating gcp managed certs
+    digest: a0d6e3e9d523865f34509b601cbe2523475a734da66408ad0e10f0a00a8ebdef
+    name: gcp-managed-cert
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcp-managed-cert-0.1.2/gcp-managed-cert-0.1.2.tgz
+    version: 0.1.2
   install-secrets-manager:
   - apiVersion: v2
     appVersion: 1.0.2
@@ -1644,7 +1493,6 @@ entries:
     name: oidc-proxy
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.11/oidc-proxy-0.0.11.tgz
     version: 0.0.11
@@ -1665,7 +1513,6 @@ entries:
     name: oidc-proxy
     sources:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    type: application
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.10/oidc-proxy-0.0.10.tgz
     version: 0.0.10
