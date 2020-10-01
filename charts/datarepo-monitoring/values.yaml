@@ -1,0 +1,8 @@
+create-secret-manager-secret:
+  enabled: false
+
+backend-config:
+  enabled: false
+
+prometheus-operator:
+  enabled: false
