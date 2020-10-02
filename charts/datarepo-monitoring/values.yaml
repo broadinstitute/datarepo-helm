@@ -1,0 +1,11 @@
+create-secret-manager-secret:
+  enabled: false
+
+backend-config:
+  enabled: false
+
+gcp-managed-cert:
+  enabled: false
+
+prometheus-operator:
+  enabled: false
