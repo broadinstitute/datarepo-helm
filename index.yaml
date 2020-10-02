@@ -1356,6 +1356,27 @@ entries:
     version: 0.19.3
   gcp-managed-cert:
   - apiVersion: v2
+    appVersion: 0.1.3
+    created: "2020-10-02T15:10:38.486348019Z"
+    description: Chart for creating gcp managed certs
+    digest: d35a6a3598772019918f82aa2f15636b6e3d809ac3a4bc63032c22730429afc9
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: gcp-managed-cert
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcp-managed-cert-0.1.3/gcp-managed-cert-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2020-10-01T15:52:13.661484-04:00"
     description: Chart for creating gcp managed certs
     digest: a0d6e3e9d523865f34509b601cbe2523475a734da66408ad0e10f0a00a8ebdef
