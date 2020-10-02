@@ -10,5 +10,5 @@ grafana-gcp-managed-cert:
 prometheus-gcp-managed-cert:
   enabled: false
 
-prometheus-operator:
+kube-prometheus-stack:
   enabled: false
