@@ -10,6 +10,7 @@ on:
       - 'charts/create-secret-manager-secret/**'
       - 'charts/gcloud-sqlproxy/**'
       - 'charts/oidc-proxy/**'
+      - 'charts/gcp-managed-cert/**'
 
 jobs:
   release_new_umbrella_push:
