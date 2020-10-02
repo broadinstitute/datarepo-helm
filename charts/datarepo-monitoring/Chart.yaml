@@ -35,9 +35,15 @@ dependencies:
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: backend-config.enabled
 - name: gcp-managed-cert
+  alias: grafana-gcp-managed-cert
   version: 0.1.2
   repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: gcp-managed-cert.enabled
+  condition: grafana-gcp-managed-cert.enabled
+- name: gcp-managed-cert
+  alias: prometheus-gcp-managed-cert
+  version: 0.1.2
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  condition: prometheus-gcp-managed-cert.enabled
 - name: kube-prometheus-stack
   version: 9.4.5
   repository: https://prometheus-community.github.io/helm-charts/
