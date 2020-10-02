@@ -7,12 +7,12 @@ dependencies:
   version: 0.1.0
 - name: gcp-managed-cert
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.1.2
+  version: 0.1.3
 - name: gcp-managed-cert
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.1.2
+  version: 0.1.3
 - name: kube-prometheus-stack
   repository: https://prometheus-community.github.io/helm-charts/
   version: 9.4.5
-digest: sha256:c39a1a713b552c4efdfe955a95c2bbe25c4708d0e7d7c956cfee97bad5c38b5d
-generated: "2020-10-02T10:35:51.470691-04:00"
+digest: sha256:d9b8a33cd6d9a80f41664466454c4866c8c075747516787672c20f23ec669645
+generated: "2020-10-02T11:15:03.454081-04:00"
