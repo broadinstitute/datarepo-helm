@@ -4,7 +4,10 @@ create-secret-manager-secret:
 backend-config:
   enabled: false
 
-gcp-managed-cert:
+grafana-gcp-managed-cert:
+  enabled: false
+
+prometheus-gcp-managed-cert:
   enabled: false
 
 prometheus-operator:
