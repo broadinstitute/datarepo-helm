@@ -17,8 +17,12 @@ spec:
         component: {{ include "oidc-proxy.fullname" . }}
 ##  dynamically populates environment annotations
       annotations:
-        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      {{- if .Values.replicaCount }}
+        checksum/configmap: {{ include (print .Template.BasePath "/configmap.yaml") . | sha256sum }}
+        {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
+        {{- end }}
+      {{- end }}
     spec:
       serviceAccountName: {{ include "oidc-proxy.serviceAccountName" . }}
       containers:
