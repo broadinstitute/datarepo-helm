@@ -16,6 +16,7 @@ spec:
         component: {{ include "datarepo-ui.fullname" . }}
 ##  dynamically populates environment annotations
       annotations:
+        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
     spec:
       serviceAccountName: {{ include "datarepo-ui.serviceAccountName" . }}
@@ -26,7 +27,7 @@ spec:
         runAsNonRoot: true
       containers:
       - name: {{ .Chart.Name }}
-        image: {{ include "datarepo-ui.image" . }} 
+        image: {{ include "datarepo-ui.image" . }}
         ports:
         - containerPort: {{ .Values.nginxport }}
 ##  dynamically populates environment variables
