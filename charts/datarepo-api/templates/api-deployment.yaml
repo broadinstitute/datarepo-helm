@@ -18,7 +18,12 @@ spec:
         component: {{ include "datarepo-api.fullname" . }}
 ##  dynamically populates environment annotations
       annotations:
+        {{ if .Values.secretsgeneric.datarepoPassword -}}
+        checksum/secrets: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        {{- if .Values.podAnnotations }}
 {{ toYaml .Values.podAnnotations | indent 8 }}
+        {{- end }}
+      {{- end }}
     spec:
       serviceAccountName: {{ include "datarepo-api.serviceAccountName" . }}
       securityContext:
