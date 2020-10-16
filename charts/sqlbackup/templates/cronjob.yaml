@@ -21,24 +21,24 @@ spec:
             command: ["/bin/sh", "-c", "/opt/script/backup.sh"]
             volumeMounts:
               {{- if or .Values.existingSecret .Values.existingSecretKey }}
-              - name: "{{ include "sqlbackup.fullname" . }}-backup"
+              - name: "{{ include "sqlbackup.fullname" . }}-backup-sa"
                 mountPath: /secrets/
                 readOnly: true
               {{- end }}
-              - name: "{{ include "sqlbackup.fullname" . }}-backup"
+              - name: "{{ include "sqlbackup.fullname" . }}-backup-script"
                 mountPath: /opt/script/backup.sh
                 subPath: backup.sh
                 readOnly: false
           volumes:
             {{- if or .Values.existingSecret .Values.existingSecretKey }}
-            - name: "{{ include "sqlbackup.fullname" . }}-backup"
+            - name: "{{ include "sqlbackup.fullname" . }}-backup-sa"
               secret:
                 secretName: {{ .Values.existingSecret }}
                 items:
                   - key: {{ .Values.existingSecretKey }}
                     path: existingSecret
             {{- end }}
-            - name: "{{ include "sqlbackup.fullname" . }}-backup"
+            - name: "{{ include "sqlbackup.fullname" . }}-backup-script"
               configMap:
                 name: {{ include "sqlbackup.fullname" . }}
                 items:
@@ -59,7 +59,7 @@ metadata:
   annotations:
     checksum/configmap: {{ include (print .Template.BasePath "/configmap.yaml") . | sha256sum }}
 spec:
-  schedule: {{ .Values.backupCronJob.schedule }}
+  schedule: {{ .Values.cleanupCronJob.schedule }}
   jobTemplate:
     spec:
       template:
@@ -71,24 +71,24 @@ spec:
             command: ["/bin/sh", "-c", "/opt/script/cleanup.sh"]
             volumeMounts:
               {{- if or .Values.existingSecret .Values.existingSecretKey }}
-              - name: "{{ include "sqlbackup.fullname" . }}-cleanup"
+              - name: "{{ include "sqlbackup.fullname" . }}-cleanup-sa"
                 mountPath: /secrets/
                 readOnly: true
               {{- end }}
-              - name: "{{ include "sqlbackup.fullname" . }}-cleanup"
+              - name: "{{ include "sqlbackup.fullname" . }}-cleanup-script"
                 mountPath: /opt/script/cleanup.sh
                 subPath: cleanup.sh
                 readOnly: false
           volumes:
             {{- if or .Values.existingSecret .Values.existingSecretKey }}
-            - name: "{{ include "sqlbackup.fullname" . }}-cleanup"
+            - name: "{{ include "sqlbackup.fullname" . }}-cleanup-sa"
               secret:
                 secretName: {{ .Values.existingSecret }}
                 items:
                   - key: {{ .Values.existingSecretKey }}
                     path: existingSecret
             {{- end }}
-            - name: "{{ include "sqlbackup.fullname" . }}-cleanup"
+            - name: "{{ include "sqlbackup.fullname" . }}-cleanup-script"
               configMap:
                 name: {{ include "sqlbackup.fullname" . }}
                 items:

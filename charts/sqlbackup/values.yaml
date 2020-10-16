@@ -4,7 +4,7 @@ create-secret-manager-secret:
 
 image:
   repository: google/cloud-sdk
-  version: slim
+  version: alpine
   pullPolicy: IfNotPresent
 serviceAccount:
   # Specifies whether a service account should be created
@@ -20,6 +20,7 @@ rbac:
 googleProjectId: ""
 # google sql instance name
 sqlInstanceName: ""
+googleServiceAccount: ""
 
 backupRetention: 90
 

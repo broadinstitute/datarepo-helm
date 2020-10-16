@@ -68,11 +68,11 @@ Back up script
 {{- define "backup" }}
 #!/bin/bash
 set -e
-  {{- if or .Values.existingSecret .Values.existingSecretKey }}
-gcloud auth activate-service-account {{ .Values.sqlInstanceName }} --key-file=/secrets/existingSecret
+  {{- if or .Values.existingSecret .Values.existingSecretKey .Values.googleServiceAccount }}
+gcloud auth activate-service-account {{ .Values.googleServiceAccount }} --key-file=/secrets/existingSecret
   {{- end }}
 gcloud sql backups create --async --instance \
-  {{ .Values.sqlInstanceName }} --description \"$(date '+%Y%m%d')\" --project {{ .Values.googleProjectId }}
+  {{ .Values.sqlInstanceName }} --description "$(date '+%Y%m%d')" --project {{ .Values.googleProjectId }}
 {{- end -}}
 
 {{/*
@@ -82,16 +82,17 @@ Clean up script
 {{- define "cleanup" }}
 #!/bin/bash
 set -e
-  {{- if or .Values.existingSecret .Values.existingSecretKey }}
-gcloud auth activate-service-account {{ .Values.sqlInstanceName }} --key-file=/secrets/existingSecret
+  {{- if or .Values.existingSecret .Values.existingSecretKey .Values.googleServiceAccount }}
+gcloud auth activate-service-account {{ .Values.googleServiceAccount }} --key-file=/secrets/existingSecret
   {{- end }}
-apt-get -qq install jq -y > /dev/null
+apk add jq
 
-removaldate=$(date \'+%Y%m%d\' -d \"+{{ .Values.backupRetention }} days ago\")
-backups=$(gcloud sql backups list --instance {{ .Values.sqlInstanceName }} --project {{ .Values.googleProjectId }} \
-            --format json | jq  -r \'.[]| select (.| has(\"description\"))| select(.description < env.removaldate)\')
+# removaldate must be environment var for jq env.removaldate
+export removaldate=$(date -d @$(( $(date +"%s") - 86400 * {{ .Values.backupRetention }})) +"%Y%m%d")
+export backups=$(gcloud sql backups list --instance {{ .Values.sqlInstanceName }} --project {{ .Values.googleProjectId }} \
+            --format json | jq  -r '.[]| select (.| has("description"))| select(.description < env.removaldate)')
 
-for i in $(echo \"${backups}\" | jq -r \'.id\');
+for i in $(echo "${backups}" | jq -r '.id');
   do gcloud sql backups delete $i --instance {{ .Values.sqlInstanceName }} --project {{ .Values.googleProjectId }} --quiet;
 done
 {{- end -}}
