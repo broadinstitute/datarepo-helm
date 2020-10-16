@@ -1,4 +1,4 @@
-name: Release chart
+name: Release chart non dr chart
 
 on:
   push:
@@ -14,7 +14,7 @@ on:
       - '!charts/oidc-proxy/**'
 
 jobs:
-  release_new_umbrella_push:
+  release_non_dr_chart:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

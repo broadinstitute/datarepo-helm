@@ -15,7 +15,7 @@ on:
       - '!.github/**'
 
 jobs:
-  release_new_umbrella_push:
+  release_new_umbrella_dr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
