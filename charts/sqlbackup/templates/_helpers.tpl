@@ -67,6 +67,7 @@ Back up script
 */}}
 {{- define "backup" }}
 #!/bin/bash
+set -e
   {{- if or .Values.existingSecret .Values.existingSecretKey }}
 gcloud auth activate-service-account {{ .Values.sqlInstanceName }} --key-file=/secrets/existingSecret
   {{- end }}
@@ -80,6 +81,7 @@ Clean up script
 
 {{- define "cleanup" }}
 #!/bin/bash
+set -e
   {{- if or .Values.existingSecret .Values.existingSecretKey }}
 gcloud auth activate-service-account {{ .Values.sqlInstanceName }} --key-file=/secrets/existingSecret
   {{- end }}
