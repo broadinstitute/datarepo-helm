@@ -1,4 +1,4 @@
-name: Release chart
+name: Release chart Datarepo chart
 
 on:
   push:
@@ -6,12 +6,13 @@ on:
       - master
     paths:
       - 'charts/datarepo-api/**'
-      - 'charts/datarepo-monitoring/**'
       - 'charts/datarepo-ui/**'
       - 'charts/create-secret-manager-secret/**'
       - 'charts/gcloud-sqlproxy/**'
       - 'charts/oidc-proxy/**'
       - 'charts/gcp-managed-cert/**'
+      - '!charts/**'
+      - '!.github/**'
 
 jobs:
   release_new_umbrella_push:
@@ -30,7 +31,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.0.0-rc.2
+        uses: helm/chart-releaser-action@v1.0.0
         env:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
 
@@ -41,6 +42,6 @@ jobs:
         run: |
           git config --local user.email "robot@jade.team"
           git config --local user.name "GitHub Action"
-          git commit -m "Added changes" -a
+          git commit -m "Added changes datarepo charts" -a
           git diff
           git push
