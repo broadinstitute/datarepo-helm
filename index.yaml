@@ -893,6 +893,27 @@ entries:
     version: 0.0.2
   datarepo-api:
   - apiVersion: v2
+    appVersion: 0.0.21
+    created: "2020-10-16T14:56:16.621147979Z"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: c3f1e8f4469b5906d4716982381522b7040903533f269cc23eea34c51c5a1239
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.21/datarepo-api-0.0.21.tgz
+    version: 0.0.21
+  - apiVersion: v2
     appVersion: 0.0.20
     created: "2020-10-14T18:03:22.816429923Z"
     description: A Helm chart to deploy datarepo api server for Kubernetes
@@ -1304,6 +1325,27 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-monitoring-0.0.1/datarepo-monitoring-0.0.1.tgz
     version: 0.0.1
   datarepo-ui:
+  - apiVersion: v2
+    appVersion: 0.0.12
+    created: "2020-10-16T14:56:16.718299998Z"
+    description: A Helm chart to deploy datarepo ui server for Kubernetes
+    digest: 9ec600c263678d3331f5670486486c615c5d581f35dbf8ac69ea6184ff38b75c
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-ui
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.12/datarepo-ui-0.0.12.tgz
+    version: 0.0.12
   - apiVersion: v2
     appVersion: 0.0.11
     created: "2020-10-14T18:03:22.912189665Z"
@@ -1807,6 +1849,27 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/install-secrets-manager-0.0.1/install-secrets-manager-0.0.1.tgz
     version: 0.0.1
   oidc-proxy:
+  - apiVersion: v2
+    appVersion: 0.0.13
+    created: "2020-10-16T14:56:16.816701625Z"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: d8a72393dc3ff0ca2c24396635ec0f49d5a92e5ef5725386529a685b598e5bf4
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.13/oidc-proxy-0.0.13.tgz
+    version: 0.0.13
   - apiVersion: v2
     appVersion: 0.0.12
     created: "2020-10-14T18:03:23.014903432Z"
