@@ -5,13 +5,13 @@ on:
     branches:
       - master
     paths:
-      - 'charts/**'
       - '!.github/**'
       - '!charts/datarepo-api/**'
       - '!charts/datarepo-ui/**'
       - '!charts/create-secret-manager-secret/**'
       - '!charts/gcloud-sqlproxy/**'
       - '!charts/oidc-proxy/**'
+      - 'charts/**'
 
 jobs:
   release_non_dr_chart:
