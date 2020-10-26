@@ -46,7 +46,7 @@ spec:
         image: {{ include "datarepo-api.image" . }}
         readinessProbe:
           httpGet:
-            path: /status
+            path: /actuator/health/readiness
             port: {{ .Values.image.port }}
           initialDelaySeconds: 45
           periodSeconds: 10
@@ -54,7 +54,7 @@ spec:
           failureThreshold: 2
         livenessProbe:
           httpGet:
-            path: /status
+            path: /actuator/health/liveness
             port: {{ .Values.image.port }}
           initialDelaySeconds: 60
           periodSeconds: 10
