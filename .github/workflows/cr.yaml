@@ -6,6 +6,8 @@ on:
       - master
     paths:
       - '!charts/datarepo/**'
+      - '!.github/**'
+      - '!README.md'
 
 
 jobs:
@@ -21,6 +23,6 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.0.0-rc.2
+        uses: helm/chart-releaser-action@v1.1.0
         env:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
