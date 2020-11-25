@@ -12,8 +12,8 @@ description: A Helm chart to deploy an entire datarepo
 type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version
-version: 0.1.27
-appVersion: 0.1.27
+version: 0.1.28
+appVersion: 0.1.28
 keywords:
 - google
 - cloud
@@ -42,10 +42,6 @@ dependencies:
   version: 0.19.7
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: gcloud-sqlproxy.enabled
-- name: postgresql
-  version: ^7.7.0
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  condition: postgresql.enabled
 - name: create-secret-manager-secret
   version: 0.0.6
   repository: https://broadinstitute.github.io/datarepo-helm/

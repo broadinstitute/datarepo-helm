@@ -11,11 +11,8 @@ dependencies:
 - name: gcloud-sqlproxy
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.19.7
-- name: postgresql
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 7.7.3
 - name: create-secret-manager-secret
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.6
-digest: sha256:7c71f61ea9593d2f16fe4d16317ae8399e82052a8d1e1e6f6de61e26abbec2ea
-generated: "2020-11-25T13:33:20.450803-05:00"
+digest: sha256:5794a2c37d1b0d736f4476f25f257d90d16932262799ba00bd58c14b6a149e7c
+generated: "2020-11-25T14:05:12.113632-05:00"
