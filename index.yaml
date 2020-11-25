@@ -189,7 +189,7 @@ entries:
   datarepo:
   - apiVersion: v2
     appVersion: 0.1.27
-    created: "2020-11-25T13:37:18.819121-05:00"
+    created: "2020-11-25T13:40:31.850915-05:00"
     description: A Helm chart to deploy an entire datarepo
     digest: cd00a057c0a89ac69dfde9d58b0b793d8710c914d9be59a09d02ca34f23ba22a
     keywords:
