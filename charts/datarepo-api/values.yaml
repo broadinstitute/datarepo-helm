@@ -9,6 +9,8 @@ replicaCount: 1
 # It is set here, set in the api-deployment, and made an envvar that
 # overrides an application.properties item in DRmanager
 shutdownTimeoutSeconds: 60
+readinessInitialDelaySeconds: 90
+livenessInitialDelaySeconds: 90
 
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo

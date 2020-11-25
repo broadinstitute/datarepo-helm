@@ -48,7 +48,7 @@ spec:
           httpGet:
             path: /actuator/health/readiness
             port: {{ .Values.image.port }}
-          initialDelaySeconds: 45
+          initialDelaySeconds: {{ .Values.readinessInitialDelaySeconds }}
           periodSeconds: 10
           timeoutSeconds: 3
           failureThreshold: 2
@@ -56,7 +56,7 @@ spec:
           httpGet:
             path: /actuator/health/liveness
             port: {{ .Values.image.port }}
-          initialDelaySeconds: 60
+          initialDelaySeconds: {{ .Values.livenessInitialDelaySeconds }}
           periodSeconds: 10
           timeoutSeconds: 3
           failureThreshold: 2
