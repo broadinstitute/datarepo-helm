@@ -45,3 +45,9 @@ jobs:
 
       - name: "Create new umbrealla chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
+
+      - name: Trigger action to run chart-releaser for  datarepo umbrella
+        uses: broadinstitute/workflow-dispatch@v1
+        with:
+          workflow: Release helm charts
+          token: ${{ secrets.WORKFLOW_DISPATCH }}
