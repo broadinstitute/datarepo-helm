@@ -1,0 +1,80 @@
+name: Integration Chart Promotion
+env:
+  charts: gcloud-sqlproxy datarepo-api datarepo-ui oidc-proxy
+
+on:
+  workflow_dispatch: {}
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  indivdual_chart_promotion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 'Checkout jade-data-repo repo'
+        uses: actions/checkout@v2
+        with:
+          repository: 'databiosphere/jade-data-repo'
+          token: ${{ secrets.CR_TOKEN }}
+          path: jade-data-repo
+          persist-credentials: false
+
+      - name: "Find latest version chart version"
+        id: chartversion
+        run: |
+          for i in $(echo ${{ env.charts }})
+          do
+            echo "::set-output name=$i-version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq yq read charts/$i/Chart.yaml version)"
+          done
+
+      - name: "Find and replace datarepo-api chartVersion version in integration action"
+        uses: docker://mikefarah/yq:latest
+        with:
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].name.with.helm_datarepo_api_chart_version ${{ steps.chartversion.outputs.datarepo-api-version }}
+
+      - name: "Find and replace datarepo-ui chartVersion version in integration action"
+        uses: docker://mikefarah/yq:latest
+        with:
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].name.with.helm_datarepo_ui_chart_version ${{ steps.chartversion.outputs.datarepo-ui-version }}
+
+      - name: "Find and replace gcloud-sqlproxy chartVersion version in integration action"
+        uses: docker://mikefarah/yq:latest
+        with:
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].name.with.helm_gcloud_sqlproxy_chart_version ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
+
+      - name: "Find and replace oidc-proxy chartVersion version in integration action"
+        uses: docker://mikefarah/yq:latest
+        with:
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].name.with.helm_oidc_proxy_chart_version ${{ steps.chartversion.outputs.oidc-proxy-version }}
+
+      - name: debug
+        uses: docker://mikefarah/yq:latest
+        with:
+          args: yq r jade-data-repo/.github/workflows/int-and-connected-test-run.yml
+
+
+#      - name: Create pull request
+#        uses: broadinstitute/create-pull-request@v3.5.0 # forked from peter-evans/create-pull-request
+#        id: create-pr
+#        with:
+#          token: ${{ secrets.CR_TOKEN }}
+#          path: jade-data-repo
+#          commit-message: "Datarepo Integration mutli chart version update: \n \
+#            gcloud-sqlproxy-version: ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }} \n \
+#            datarpeo-api-version: ${{ steps.chartversion.outputs.datarpeo-api-version }} \n \
+#            datarpeo-ui-version: ${{ steps.chartversion.outputs.datarpeo-ui-version }} \n \
+#            oidc-proxy-version: ${{ steps.chartversion.outputs.oidc-proxy-version }}"
+#          committer: datarepo-bot <noreply@github.com>
+#          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+#          title: "Datarepo helm integraton chart version update"
+#          branch: "version-update/${{ steps.chartversion.outputs.version }}"
+#          body: |
+#            Update versions in **${{ steps.chartversion.outputs.version }}**.
+#            *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
+#          labels: "helm,datarepo,version-update,skip-ci"

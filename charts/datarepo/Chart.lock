@@ -4,7 +4,7 @@ dependencies:
   version: 0.0.23
 - name: oidc-proxy
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.13
+  version: 0.0.14
 - name: datarepo-ui
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.12
@@ -14,5 +14,5 @@ dependencies:
 - name: create-secret-manager-secret
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.6
-digest: sha256:5794a2c37d1b0d736f4476f25f257d90d16932262799ba00bd58c14b6a149e7c
-generated: "2020-11-25T14:05:12.113632-05:00"
+digest: sha256:c03bb6965c28fb75a8e75ee51fce149cf4f7162642b1435f6d49b7c95e201174
+generated: "2020-12-03T21:56:19.64431552Z"
