@@ -2,7 +2,7 @@
 name: Alpha Chart Promotion
 on:
   workflow_dispatch: {}
-  pull_request:
+  push:
     branches:
       - master
 
@@ -42,9 +42,9 @@ jobs:
           commit-message: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
           committer: datarepo-bot <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: "Datarepo version update: ${{ steps.chartversion.outputs.version }}"
+          title: "Datarepo helm chart version update: ${{ steps.chartversion.outputs.version }}"
           branch: "version-update/${{ steps.chartversion.outputs.version }}"
           body: |
             Update versions in **${{ steps.chartversion.outputs.version }}**.
             *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
-          labels: "helm,datarepo,automerge,version-update"
+          labels: "helm,datarepo,automerge,version-update,skip-ci"
