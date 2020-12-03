@@ -46,6 +46,15 @@ jobs:
       - name: "Create new umbrealla chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
 
+      - name: Commit files
+        run: |
+          git config --local user.email "robot@jade.team"
+          git config --local user.name "GitHub Action"
+          git commit -m "Added changes datarepo charts" -a
+          git diff
+          git push
+          sleep 5
+
       - name: Trigger action to run chart-releaser for  datarepo umbrella
         uses: broadinstitute/workflow-dispatch@v1
         with:
