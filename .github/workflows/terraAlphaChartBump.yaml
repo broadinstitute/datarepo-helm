@@ -34,6 +34,7 @@ jobs:
           args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml env.chartVersion ${{ steps.chartversion.outputs.version }}
 
       - name: Create pull request
+        uses: broadinstitute/create-pull-request@v3.5.0 # forked from peter-evans/create-pull-request
         id: create-pr
         with:
           token: ${{ secrets.CR_TOKEN }}
