@@ -1,7 +1,7 @@
 
 name: Alpha Chart Promotion
 on:
-  dispatch: {}
+  workflow_dispatch: {}
   pull_request:
     branches:
       - master
@@ -20,35 +20,30 @@ jobs:
         with:
           repository: 'databiosphere/jade-data-repo'
           token: ${{ secrets.CR_TOKEN }}
-          path: terra-helmfile
+          path: jade-data-repo
           persist-credentials: false
 
       - name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
         id: chartversion
+        run: |
+          echo "::set-output name=version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq yq read charts/datarepo/Chart.yaml version)"
+
+      - name: "Find and replace Datarepo chartVersion version in alpha action"
         uses: docker://mikefarah/yq:latest
         with:
-          args: yq read charts/datarepo/Chart.yaml version
+          args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml env.chartVersion ${{ steps.chartversion.outputs.version }}
 
-      - name: "echo outputs"
-        run: |
-          echo ${{ steps.chartversion.output }}
-
-#      - name: "Find and replace Datarepo chartVersion version in alpha action"
-#        uses: docker://mikefarah/yq:latest
-#        with:
-#          args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml version ${{ steps.chartversion }}
-
-#      - name: Create pull request
-#        id: create-pr
-#        with:
-#          token: ${{ secrets.TERRA_HELMFILE_TOKEN }}
-#          path: terra-helmfile
-#          commit-message: "Datarepo version update: ${{ steps.apiprevioustag.outputs.tag }}"
-#          committer: datarepo-bot <noreply@github.com>
-#          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-#          title: "Datarepo version update: ${{ steps.apiprevioustag.outputs.tag }}"
-#          branch: "version-update/${{ steps.apiprevioustag.outputs.tag }}"
-#          body: |
-#            Update versions in **${{ steps.apiprevioustag.outputs.tag }}**.
-#            *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
-#          labels: "broadbot,datarepo,automerge,version-update"
+      - name: Create pull request
+        id: create-pr
+        with:
+          token: ${{ secrets.CR_TOKEN }}
+          path: jade-data-repo
+          commit-message: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
+          committer: datarepo-bot <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: "Datarepo version update: ${{ steps.chartversion.outputs.version }}"
+          branch: "version-update/${{ steps.chartversion.outputs.version }}"
+          body: |
+            Update versions in **${{ steps.chartversion.outputs.version }}**.
+            *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
+          labels: "helm,datarepo,automerge,version-update"
