@@ -5,6 +5,11 @@ on:
   push:
     branches:
       - master
+    paths:
+      - '!charts/**'
+      - '!.github/**'
+      - '!README.md'
+      - 'charts/datarepo/**'
 
 jobs:
   alpha_chart_promotion:
