@@ -22,7 +22,7 @@ data:
     Header unset X-Frame-Options
     Header always set X-Frame-Options SAMEORIGIN
     Header always set Access-Control-Allow-Origin *
-    Header always set Access-Control-Allow-Headers DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Accept,Referer
+    Header always set Access-Control-Allow-Headers DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Accept,Referer,X-App-Id,Origin
     Header always set Access-Control-Allow-Methods GET,POST,DELETE,PUT,PATCH,OPTIONS,HEAD
 
     ProxyTimeout ${PROXY_TIMEOUT}
