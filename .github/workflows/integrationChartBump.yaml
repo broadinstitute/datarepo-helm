@@ -1,9 +1,8 @@
-name: Integration Chart Promotion
+name: ${{ matrix.repo }} - Integration Chart Promotion
 env:
   charts: gcloud-sqlproxy datarepo-api datarepo-ui oidc-proxy
 
 on:
-  pull_request:
   workflow_dispatch: {}
 
 jobs:
