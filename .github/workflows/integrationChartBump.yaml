@@ -58,22 +58,22 @@ jobs:
         with:
           args: yq r jade-data-repo/.github/workflows/int-and-connected-test-run.yml
 
-#      - name: Create pull request
-#        uses: broadinstitute/create-pull-request@v3.5.0 # forked from peter-evans/create-pull-request
-#        id: create-pr
-#        with:
-#          token: ${{ secrets.CR_TOKEN }}
-#          path: jade-data-repo
-#          commit-message: "Datarepo Integration mutli chart version update"
-#          committer: datarepo-bot <noreply@github.com>
-#          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-#          title: "Datarepo helm integraton chart version update"
-#          branch: "version-update/int-version-update-${{ env.GITHUB_RUN_ID }}"
-#          body: |
-#            gcloud-sqlproxy-version: ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
-#            datarpeo-api-version: ${{ steps.chartversion.outputs.datarpeo-api-version }}
-#            datarpeo-ui-version: ${{ steps.chartversion.outputs.datarpeo-ui-version }}
-#            oidc-proxy-version: ${{ steps.chartversion.outputs.oidc-proxy-version }}
-#            Update versions in **${{ steps.chartversion.outputs.version }}**.
-#            *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
-#          labels: "helm,datarepo,version-update,skip-ci"
+      - name: Create pull request
+        uses: broadinstitute/create-pull-request@v3.5.0  #forked from peter-evans/create-pull-request
+        id: create-pr
+        with:
+          token: ${{ secrets.CR_TOKEN }}
+          path: jade-data-repo
+          commit-message: "Datarepo Integration mutli chart version update"
+          committer: datarepo-bot <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: "Datarepo helm integraton chart version update"
+          branch: "version-update/int-version-update-${{ env.GITHUB_RUN_ID }}"
+          body: |
+            gcloud-sqlproxy-version: ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
+            datarpeo-api-version: ${{ steps.chartversion.outputs.datarpeo-api-version }}
+            datarpeo-ui-version: ${{ steps.chartversion.outputs.datarpeo-ui-version }}
+            oidc-proxy-version: ${{ steps.chartversion.outputs.oidc-proxy-version }}
+            Update versions in **${{ steps.chartversion.outputs.version }}**.
+            *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
+          labels: "helm,datarepo,version-update,skip-ci"
