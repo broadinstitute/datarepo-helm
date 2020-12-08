@@ -68,7 +68,7 @@ jobs:
           committer: datarepo-bot <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Datarepo helm integraton chart version update"
-          branch: "version-update/${{ steps.chartversion.outputs.version }}"
+          branch: "version-update/int-version-update-${{ env.GITHUB_RUN_ID }}"
           body: |
             gcloud-sqlproxy-version: ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
             datarpeo-api-version: ${{ steps.chartversion.outputs.datarpeo-api-version }}
