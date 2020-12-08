@@ -33,22 +33,22 @@ jobs:
       - name: "Find and replace datarepo-api chartVersion version in integration action"
         uses: docker://mikefarah/yq:latest
         with:
-          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].with.helm_datarepo_api_chart_version ${{ steps.chartversion.outputs.datarepo-api-version }}
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps.(name==Deploy to cluster with Helm).with.helm_datarepo_api_chart_version ${{ steps.chartversion.outputs.datarepo-api-version }}
 
       - name: "Find and replace datarepo-ui chartVersion version in integration action"
         uses: docker://mikefarah/yq:latest
         with:
-          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].with.helm_datarepo_ui_chart_version ${{ steps.chartversion.outputs.datarepo-ui-version }}
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps.(name==Deploy to cluster with Helm).with.helm_datarepo_ui_chart_version ${{ steps.chartversion.outputs.datarepo-ui-version }}
 
       - name: "Find and replace gcloud-sqlproxy chartVersion version in integration action"
         uses: docker://mikefarah/yq:latest
         with:
-          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].with.helm_gcloud_sqlproxy_chart_version ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps.(name==Deploy to cluster with Helm).with.helm_gcloud_sqlproxy_chart_version ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
 
       - name: "Find and replace oidc-proxy chartVersion version in integration action"
         uses: docker://mikefarah/yq:latest
         with:
-          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps[4].with.helm_oidc_proxy_chart_version ${{ steps.chartversion.outputs.oidc-proxy-version }}
+          args: yq w -i jade-data-repo/.github/workflows/int-and-connected-test-run.yml jobs.deploy_test_integration.steps.(name==Deploy to cluster with Helm).with.helm_oidc_proxy_chart_version ${{ steps.chartversion.outputs.oidc-proxy-version }}
 
       - name: print new chart
         uses: docker://mikefarah/yq:latest
