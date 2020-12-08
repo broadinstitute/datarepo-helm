@@ -1,4 +1,4 @@
-name: ${{ matrix.repo }} - Integration Chart Promotion
+name: Integration Chart Promotion
 env:
   charts: gcloud-sqlproxy datarepo-api datarepo-ui oidc-proxy
 
