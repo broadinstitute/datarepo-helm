@@ -66,3 +66,9 @@ jobs:
         with:
           workflow: Alpha Chart Promotion
           token: ${{ secrets.WORKFLOW_DISPATCH }}
+
+      - name: Trigger action to run alpha chart promotion
+        uses: broadinstitute/workflow-dispatch@v1
+        with:
+          workflow: Integration Chart Promotion
+          token: ${{ secrets.WORKFLOW_DISPATCH }}
