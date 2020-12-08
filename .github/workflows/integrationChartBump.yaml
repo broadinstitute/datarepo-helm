@@ -71,9 +71,8 @@ jobs:
           branch: "version-update/int-version-update-${{ env.GITHUB_RUN_ID }}"
           body: |
             gcloud-sqlproxy-version: ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
-            datarpeo-api-version: ${{ steps.chartversion.outputs.datarpeo-api-version }}
-            datarpeo-ui-version: ${{ steps.chartversion.outputs.datarpeo-ui-version }}
+            datarpeo-api-version: ${{ steps.chartversion.outputs.datarepo-api-version }}
+            datarpeo-ui-version: ${{ steps.chartversion.outputs.datarepo-ui-version }}
             oidc-proxy-version: ${{ steps.chartversion.outputs.oidc-proxy-version }}
-            Update versions in **${{ steps.chartversion.outputs.version }}**.
             *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
           labels: "helm,datarepo,version-update,skip-ci"
