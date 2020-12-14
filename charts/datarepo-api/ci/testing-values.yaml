@@ -1,0 +1,7 @@
+# overrides an application.properties item in DRmanager
+shutdownTimeoutSeconds: 10
+readinessInitialDelaySeconds: 15
+livenessInitialDelaySeconds: 20
+
+image:
+  tag: 1.0.180

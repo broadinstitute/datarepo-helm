@@ -1,0 +1,10 @@
+chart-dir:
+  - charts
+excluded-charts:
+  - datarepo
+  - create-secret-manager-secret
+  - sqlbackup
+namespace: integration-temp
+charts:
+  - charts/gcloud-sqlproxy
+#  - charts/datarepo-api

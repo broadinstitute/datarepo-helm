@@ -4,7 +4,7 @@ name: Helm Chart Lint
 on: pull_request
 
 jobs:
-  lint-test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,6 +21,12 @@ jobs:
         with:
           python-version: 3.7
 
+      - name: add helm repo for umbrella
+        run: |
+          helm repo add datarepo-helm https://broadinstitute.github.io/datarepo-helm
+          helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+          helm repo update
+
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.0.1
 
@@ -33,14 +39,4 @@ jobs:
           fi
 
       - name: Run chart-testing (lint)
-        run: ct lint
-
-#      - name: Create kind cluster
-#        uses: helm/kind-action@v1.0.0
-#        if: steps.list-changed.outputs.changed == 'true'
-
-#      - name: Test Kind Cluster
-#        run: kubectl cluster-info
-
-#      - name: Run chart-testing (install)
-#        run: ct install --debug
+        run: ct lint --config .github/lint-config.yaml

@@ -1,0 +1,7 @@
+secrets:
+- secretName: "default"    ## name of kubeSecret
+  nameSpace: default
+  vals:
+  - kubeSecretKey: "key"    ## name of kubeSecretKey
+    encoding: "fake"     ## if secret is base64 already use this flagg
+    vaultKey:  "fake"
