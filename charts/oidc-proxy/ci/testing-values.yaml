@@ -1,0 +1,19 @@
+fullnameOverride: test-oidc-proxy
+env:
+  PROXY_URL: http://test-datarepo-ui.integration-temp:8080/
+  PROXY_URL2: http://test-datarepo-api.integration-temp:8080/api
+  PROXY_URL3: http://test-datarepo-api.integration-temp:8080/register
+  LOG_LEVEL: debug
+  SERVER_NAME: jade.datarepo-integration.broadinstitute.org
+  REMOTE_USER_CLAIM: sub
+  ENABLE_STACKDRIVER: yes
+  FILTER2: AddOutputFilterByType DEFLATE application/json text/plain text/html application/javascript application/x-javascript
+ingress:
+  enabled: false
+service:
+  type: ClusterIP
+serviceAccount:
+  create: true
+rbac:
+  create: true
+  pspEnabled: true

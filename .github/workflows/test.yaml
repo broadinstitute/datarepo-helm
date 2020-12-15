@@ -5,6 +5,7 @@ env:
   GOOGLE_CLOUD_PROJECT: broad-jade-integration
   K8_CLUSTER: integration-master
   GOOGLE_ZONE: us-central1
+  NAMESPACE: integration-temp
 
 on: pull_request
 
@@ -30,6 +31,7 @@ jobs:
         run: |
           helm repo add datarepo-helm https://broadinstitute.github.io/datarepo-helm
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+          helm repo add bitnami https://charts.bitnami.com/bitnami
           helm repo update
 
       - name: Set up chart-testing
@@ -82,18 +84,28 @@ jobs:
           gcloud container clusters get-credentials ${{ env.K8_CLUSTER }} --zone ${{ env.GOOGLE_ZONE }}
           gcloud info
 
-      - name: Run chart-testing (lint)
+      - name: supporting postgres chart
+        run: |
+          helm upgrade test bitnami/postgresql -f .github/postgres-values.yaml --install -n ${{ env.NAMESPACE }} --create-namespace
+
+      - name: Run chart-testing (test)
         if: success()
-        run: ct install --config .github/test-config.yaml
+        run: ct install --config .github/test-config.yaml --namespace ${{ env.NAMESPACE }} --debug
+
+      - name: delete supporting postgres chart
+        if: always()
+        run: |
+          helm delete test -n ${{ env.NAMESPACE }}
+          kubectl delete pvc -n ${{ env.NAMESPACE }} --all
+          kubectl delete namespace ${{ env.NAMESPACE }}
 
       - name: clean whitelist
         if: always()
         run: |
           CUR_IPS=$(gcloud container clusters describe ${{ env.K8_CLUSTER }} --zone ${{ env.GOOGLE_ZONE }} --format json | \
             jq -r '[.masterAuthorizedNetworksConfig.cidrBlocks[] | .cidrBlock]')
-          echo "cur_ip: $CUR_IPS"
-          RUNNER_IP=$(echo ${{ steps.ips.outputs.RUNNER_IP }} | jq -r '.[0]')
-          echo "runner: $RUNNER_IP"
+          RUNNER_IP=$(curl 'https://api.ipify.org/?format=text' | xargs printf '[ "%s/32" ]')
+          RUNNER_IP=$(echo ${RUNNER_IP}| jq -r '.[0]')
           RESTORE_IPS=$(printf '%s\n' $CUR_IPS | jq -r --arg RUNNER_IP "$RUNNER_IP" '. - [ $RUNNER_IP ] | unique | join(",")')
 
           gcloud container clusters update ${{ env.K8_CLUSTER }} \

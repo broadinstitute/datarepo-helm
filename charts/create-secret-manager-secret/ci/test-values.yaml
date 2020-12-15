@@ -1,7 +1,8 @@
+---
 secrets:
-- secretName: "default"    ## name of kubeSecret
-  nameSpace: default
-  vals:
-  - kubeSecretKey: "key"    ## name of kubeSecretKey
-    encoding: "fake"     ## if secret is base64 already use this flagg
-    vaultKey:  "fake"
+  - secretName: testsecret
+    vals:
+      - kubeSecretKey: testsecret
+        path: secret/dsde/datarepo/integration/testsecret
+        encoding: base64
+        vaultKey: key
