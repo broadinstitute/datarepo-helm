@@ -7,12 +7,6 @@ excluded-charts:
   - charts/cron-job
   - charts/datarepomonitoring
   - charts/gcp-managed-cert
-charts:
-  - charts/backend-config
-  - charts/create-secret-manager-secret
-  - charts/datarepo
-#  - charts/datarepo-api
-##  - charts/datarepo-ui
-  - charts/gcloud-sqlproxy
-##  - charts/oidc-proxy
-  - charts/serviceaccount-psp
+  - charts/datarepo-api
+  - charts/datarepo-ui
+  - charts/oidc-proxy
