@@ -87,6 +87,17 @@ jobs:
       - name: supporting postgres chart
         run: |
           helm upgrade test bitnami/postgresql -f .github/postgres-values.yaml --install -n ${{ env.NAMESPACE }} --create-namespace
+          waitfordeployment () {
+            if kubectl get statefulsets.apps -n ${{ env.NAMESPACE }} test-postgresql -o jsonpath="{.status}" | grep unavailable; then
+              sleep 10
+              echo "pod unavailable waiting 10 seconds..."
+              waitfordeployment
+            else
+              pod=$(kubectl get statefulsets.apps -n ${{ env.NAMESPACE }} test-postgresql -o jsonpath="{..metadata.name}")
+              echo "${pod} has been deploy and in ready state"
+              sleep 5
+            fi
+          }
 
       - name: Run chart-testing (test)
         if: success()
