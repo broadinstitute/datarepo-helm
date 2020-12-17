@@ -1,0 +1,7 @@
+all: true
+chart-dir:
+  - charts
+excluded-charts:
+  - datarepo
+  - create-secret-manager-secret
+  - sqlbackup

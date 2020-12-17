@@ -1,0 +1,7 @@
+serviceAccount:
+  create: true
+  name: test
+rbac:
+  # Specifies whether a psp should be created
+  create: true
+  pspEnabled: false

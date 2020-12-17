@@ -1,0 +1,18 @@
+namespace: integration-temp
+chart-dir:
+  - charts
+excluded-charts:
+  - charts/sqlbackup
+  - charts/install-secrets-manager
+  - charts/cron-job
+  - charts/datarepomonitoring
+  - charts/gcp-managed-cert
+  - charts/datarepo-api
+  - charts/datarepo-ui
+  - charts/oidc-proxy
+charts:
+  - charts/backend-config
+  - charts/create-secret-manager-secret
+  - charts/datarepo
+  - charts/gcloud-sqlproxy
+  - charts/serviceaccount-psp
