@@ -101,7 +101,6 @@ jobs:
           helm delete test -n ${{ env.NAMESPACE }}
           kubectl delete pvc -n ${{ env.NAMESPACE }} --all
           kubectl delete namespace ${{ env.NAMESPACE }}
-          kubectl get podsecuritypolicies.policy | grep "test-datarepo" | awk '{print $1}'| xargs kubectl delete podsecuritypolicies.policy
 
       - name: clean whitelist
         if: always()
