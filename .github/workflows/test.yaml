@@ -92,8 +92,9 @@ jobs:
             'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
 
       - name: Run chart-testing (test)
+        id: test
         if: success()
-        run: ct install --config .github/test-config.yaml --namespace ${{ env.NAMESPACE }} --debug
+        run: ct install --config .github/test-config.yaml --namespace ${{ env.NAMESPACE }}
 
       - name: delete supporting postgres chart
         if: always()
@@ -115,3 +116,21 @@ jobs:
             --zone ${{ env.GOOGLE_ZONE }} \
             --enable-master-authorized-networks \
             --master-authorized-networks ${RESTORE_IPS}
+
+      - name: Outputs
+        uses: actions/github-script@0.9.0
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = `#### ${{ matrix.environment }} - Helm Chart Test 📖\`${{ steps.test.outcome }}\`
+            <details><summary>Show Test</summary>
+            \`\`\`${process.steps.validate.outputs.stdout}\`\`\`
+            </details>
+            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`Workflow: \`${{ github.workflow }}\`*`;
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
