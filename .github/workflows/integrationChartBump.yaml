@@ -43,27 +43,27 @@ jobs:
           done
 
       - name: "Find and replace datarepo-api chartVersion version in integration action"
-        uses: docker://mikefarah/yq:latest
+        uses: docker://mikefarah/yq:3
         with:
           args: yq w -i ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }} "jobs.${{ matrix.jobname }}.steps.(name==Deploy to cluster with Helm).with.helm_datarepo_api_chart_version" ${{ steps.chartversion.outputs.datarepo-api-version }}
 
       - name: "Find and replace datarepo-ui chartVersion version in integration action"
-        uses: docker://mikefarah/yq:latest
+        uses: docker://mikefarah/yq:3
         with:
           args: yq w -i ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }} "jobs.${{ matrix.jobname }}.steps.(name==Deploy to cluster with Helm).with.helm_datarepo_ui_chart_version" ${{ steps.chartversion.outputs.datarepo-ui-version }}
 
       - name: "Find and replace gcloud-sqlproxy chartVersion version in integration action"
-        uses: docker://mikefarah/yq:latest
+        uses: docker://mikefarah/yq:3
         with:
           args: yq w -i ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }} "jobs.${{ matrix.jobname }}.steps.(name==Deploy to cluster with Helm).with.helm_gcloud_sqlproxy_chart_version" ${{ steps.chartversion.outputs.gcloud-sqlproxy-version }}
 
       - name: "Find and replace oidc-proxy chartVersion version in integration action"
-        uses: docker://mikefarah/yq:latest
+        uses: docker://mikefarah/yq:3
         with:
           args: yq w -i ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }} "jobs.${{ matrix.jobname }}.steps.(name==Deploy to cluster with Helm).with.helm_oidc_proxy_chart_version" ${{ steps.chartversion.outputs.oidc-proxy-version }}
 
       - name: print new chart
-        uses: docker://mikefarah/yq:latest
+        uses: docker://mikefarah/yq:3
         with:
           args: yq r ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }}
 
