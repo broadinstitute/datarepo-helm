@@ -31,7 +31,7 @@ spec:
         - containerPort: 80
         readinessProbe:
           httpGet:
-            path: /status
+            path: /actuator/health/readiness
             port: 80
           initialDelaySeconds: 35
           periodSeconds: 10
@@ -39,7 +39,7 @@ spec:
           failureThreshold: 3
         livenessProbe:
           httpGet:
-            path: /status
+            path: /actuator/health/liveness
             port: 80
           initialDelaySeconds: 45
           periodSeconds: 10

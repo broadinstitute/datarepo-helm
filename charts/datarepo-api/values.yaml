@@ -35,13 +35,11 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 
-resources: {}
-#  limits:
-#    cpu: 50m
-#    memory: 64Mi
-#  requests:
-#    cpu: 10m
-#    memory: 32Mi
+resources:
+  limits:
+    memory: 3072Mi
+  requests:
+    memory: 2560Mi
 
 serviceAccount:
   # Specifies whether a service account should be created
