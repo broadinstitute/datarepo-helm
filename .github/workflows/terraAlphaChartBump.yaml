@@ -31,7 +31,7 @@ jobs:
       - name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
         id: chartversion
         run: |
-          echo "::set-output name=version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq yq read charts/datarepo/Chart.yaml version)"
+          echo "::set-output name=version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq:3 yq read charts/datarepo/Chart.yaml version)"
 
       - name: "Find and replace Datarepo chartVersion version in alpha action"
         uses: docker://mikefarah/yq:3
