@@ -37,7 +37,7 @@ affinity: {}
 
 resources:
   limits:
-    memory: 2560Mi
+    memory: 3072Mi
   requests:
     memory: 2560Mi
 
