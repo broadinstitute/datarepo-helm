@@ -72,7 +72,6 @@ spec:
         {{ end -}}
         ports:
         - containerPort: {{ .Values.image.port }}
-        - containerPort: 5005
 ##  dynamically populates environment variables
         env:
         {{- if .Values.env }}
