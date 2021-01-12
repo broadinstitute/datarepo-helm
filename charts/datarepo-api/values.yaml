@@ -42,6 +42,7 @@ resources:
     memory: 2560Mi
 
 serviceAccount:
+  annotations: {}
   # Specifies whether a service account should be created
   create: false
   # The name of the service account to use.
