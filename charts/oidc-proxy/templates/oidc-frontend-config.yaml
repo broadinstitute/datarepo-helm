@@ -1,0 +1,14 @@
+{{- if .Values.ingress.sslPolicy }}
+---
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: {{ template "oidc-proxy.fullname" . }}
+  labels:
+    {{- include "oidc-proxy.labels" . | nindent 4 }}
+spec:
+  sslPolicy: {{ .Values.ingress.sslPolicy }}
+  redirectToHttps:
+    enabled: true
+    responseCodeName: "301"
+{{- end -}}
