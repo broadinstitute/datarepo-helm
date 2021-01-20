@@ -42,7 +42,7 @@ spec:
         {{- end }}
         readinessProbe:
           httpGet:
-            path: /actuator/health/readiness
+            path: /status
             port: {{ .Values.nginxport }}
           initialDelaySeconds: 35
           periodSeconds: 10
@@ -50,7 +50,7 @@ spec:
           failureThreshold: 3
         livenessProbe:
           httpGet:
-            path: /actuator/health/liveness
+            path: /status
             port: {{ .Values.nginxport }}
           initialDelaySeconds: 45
           periodSeconds: 10
