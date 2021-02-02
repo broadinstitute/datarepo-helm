@@ -61,6 +61,8 @@ jobs:
           workflow: Release helm charts
           token: ${{ secrets.WORKFLOW_DISPATCH }}
 
+      - run: sleep 2
+
       - name: Trigger action to run alpha chart promotion
         uses: broadinstitute/workflow-dispatch@v1
         with:
