@@ -14,7 +14,7 @@ livenessInitialDelaySeconds: 90
 
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo
-  tag: ca9bd61-develop
+  tag: 1.2.0
   pullPolicy: IfNotPresent
   port: 8080
 
