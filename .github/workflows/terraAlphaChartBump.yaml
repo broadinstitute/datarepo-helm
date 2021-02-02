@@ -2,14 +2,6 @@
 name: Alpha Chart Promotion
 on:
   workflow_dispatch: {}
-  push:
-    branches:
-      - master
-    paths:
-      - '!charts/**'
-      - '!.github/**'
-      - '!README.md'
-      - 'charts/datarepo/**'
 
 jobs:
   alpha_chart_promotion:
