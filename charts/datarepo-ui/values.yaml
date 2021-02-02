@@ -8,7 +8,7 @@ replicaCount: 1
 
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo-ui
-  tag: 0.0.91
+  tag: 0.0.195
   pullPolicy: IfNotPresent
 
 # nginx listen port for server
