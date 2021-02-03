@@ -9,6 +9,7 @@ on:
       - '!.github/**'
       - '!README.md'
       - '!charts/datarepo-api/**'
+      - '!charts/datarepo/**'
       - '!charts/datarepo-ui/**'
       - '!charts/create-secret-manager-secret/**'
       - '!charts/gcloud-sqlproxy/**'
