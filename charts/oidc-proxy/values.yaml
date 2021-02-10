@@ -60,7 +60,7 @@ ingress:
   annotations: {}
   domainName: ""
   timeoutSec: 600
-  ingressAllowHttp: false
+  ingressAllowHttp: true
   paths:
     - /*
   hosts: []
