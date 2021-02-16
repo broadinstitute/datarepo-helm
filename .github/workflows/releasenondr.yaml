@@ -6,6 +6,7 @@ on:
     branches:
       - master
     paths:
+      - 'charts/**'
       - '!.github/**'
       - '!README.md'
       - '!charts/datarepo-api/**'
@@ -14,7 +15,6 @@ on:
       - '!charts/create-secret-manager-secret/**'
       - '!charts/gcloud-sqlproxy/**'
       - '!charts/oidc-proxy/**'
-      - 'charts/**'
 
 jobs:
   release_non_dr_chart:
