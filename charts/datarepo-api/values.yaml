@@ -4,43 +4,35 @@
 global:
   applicationVersion: ""
 replicaCount: 1
-
 # Datarepo and Kubernetes need to share the same shutdown timeout value.
 # It is set here, set in the api-deployment, and made an envvar that
 # overrides an application.properties item in DRmanager
 shutdownTimeoutSeconds: 60
 readinessInitialDelaySeconds: 90
 livenessInitialDelaySeconds: 90
-
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo
-  tag: 1.2.0
+  tag: 1.18.0
   pullPolicy: IfNotPresent
   port: 8080
-
 ## Extra environment variables that will be pass onto deployment pods
 env: {}
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
 ## Pod annotations
 podAnnotations: {}
-
 ## Node selectors and tolerations for server scheduling to nodes with taints
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 ##
 nodeSelector: {}
 tolerations: []
 affinity: {}
-
 resources:
   limits:
     memory: 3072Mi
   requests:
     memory: 2560Mi
-
 serviceAccount:
   annotations: {}
   # Specifies whether a service account should be created
@@ -48,28 +40,23 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
-
 rbac:
   # Specifies whether a psp should be created
   create: false
-
 service:
   port: 8080
   type: ClusterIP
-
 ## create new secrets
 secretsgeneric:
   datarepoPassword: ""
   stairwayPassword: ""
   serivceAccountCredentialFileJson: ""
-
 ## Specify an existing secret holding the cloud-sql database credentials
 existingSecretDB: ""
 ## The key in the existing secret that stores the Datarepo DB credentials
 existingDatarepoDbSecretKey: ""
 ## The key in the existing secret that stores the stairway DB credentials
 existingStairwayDbSecretKey: ""
-
 ## Specify an existing secret holding the cloud-sql service account credentials
 existingSecretSA: ""
 ## The key in the existing secret that stores the GCP Service account credentials
