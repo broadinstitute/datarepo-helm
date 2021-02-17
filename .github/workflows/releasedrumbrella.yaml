@@ -23,19 +23,19 @@ jobs:
 
       - name: Trigger action to run chart-releaser for  datarepo umbrella
         if: github.event.pull_request.merged == true
-        uses: broadinstitute/workflow-dispatch@v1
+        uses: broadinstitute/workflow-dispatch@v1.1
         with:
           workflow: Release helm charts
           token: ${{ secrets.WORKFLOW_DISPATCH }}
 
       - name: Trigger action to run alpha chart promotion
-        uses: broadinstitute/workflow-dispatch@v1
+        uses: broadinstitute/workflow-dispatch@v1.1
         with:
           workflow: Alpha Chart Promotion
           token: ${{ secrets.WORKFLOW_DISPATCH }}
 
       - name: Trigger action to run alpha chart promotion
-        uses: broadinstitute/workflow-dispatch@v1
+        uses: broadinstitute/workflow-dispatch@v1.1
         with:
           workflow: Integration Chart Promotion
           token: ${{ secrets.WORKFLOW_DISPATCH }}
