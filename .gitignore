@@ -1,3 +1,4 @@
 .deploy
 charts/datarepo/charts/*
-
+.cr-release-packages
+.cr-index
