@@ -1,6 +1,7 @@
 name: Release chart Datarepo chart
 
 on:
+  workflow_dispatch: {}
   push:
     branches:
       - master
