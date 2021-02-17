@@ -55,7 +55,7 @@ jobs:
           committer: datarepo-bot <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: "Datarepo umbrella version update"
-          branch: "version-update/datarepo-version-update-${{ env.GITHUB_RUN_ID }}"
+          branch: "version-update/datarepo-version-update-${{ github.run_id }}"
           body: |
             *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
           labels: "helm,datarepo,version-update,automerge"
