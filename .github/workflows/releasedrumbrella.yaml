@@ -20,7 +20,6 @@ jobs:
           persist-credentials: true
           token: ${{ secrets.CR_TOKEN }}
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
-          persist-credentials: false
 
       - name: Trigger action to run chart-releaser for  datarepo umbrella
         if: github.event.pull_request.merged == true
