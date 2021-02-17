@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: automerge
-        uses: "broadinstitute/automerge-action@v0.8.5" # Forked from pascalgn/automerge-action
+        uses: "broadinstitute/automerge-action@v0.12.0" # Forked from pascalgn/automerge-action
         env:
           GITHUB_TOKEN: "${{ secrets.WORKFLOW_DISPATCH }}" # Intentionally merge as the GH actions user, which unlike Broadbot is not a repo admin
                                                       # This means status checks have to pass before the merge can occur.
