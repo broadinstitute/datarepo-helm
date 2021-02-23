@@ -50,7 +50,7 @@ jobs:
           git config --global user.name broadbot
           echo "[INFO] git add all"
           cd ${GITHUB_WORKSPACE}/jade-data-repo
-          git add jade-data-repo/.github/workflows/alpha-promotion.yaml
+          git add .github/workflows/alpha-promotion.yaml
           echo "[INFO] commit w/ msg: $COMMIT_MESSAGE"
           git commit -m "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
           echo "[INFO] git push $DESTINATION_BRANCH"
