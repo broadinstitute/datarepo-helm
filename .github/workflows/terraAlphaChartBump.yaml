@@ -19,19 +19,17 @@ jobs:
           token: ${{ secrets.BROADBOT_TOKEN }}
           path: jade-data-repo
 
-      - name: "Run Connected test via Gradle"
-        uses: broadinstitute/datarepo-actions@0.36.0
-        with:
-          actions_subcommand: 'chartversion'
-          pgport: ${{ job.services.postgres.ports[5432] }}
-          test_to_run: 'testConnected'
-          role_id: ${{ secrets.ROLE_ID }}
-          secret_id: ${{ secrets.SECRET_ID }}
+      #- name: "Run Connected test via Gradle"
+      #  uses: broadinstitute/datarepo-actions@sh-dr-1510-chart-version
+      #  with:
+      #    actions_subcommand: 'chartversion'
+      #    role_id: ${{ secrets.ROLE_ID }}
+      #    secret_id: ${{ secrets.SECRET_ID }}
 
-      #- name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
-      #  id: chartversion
-      #  run: |
-      #    echo "::set-output name=version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq:3 yq read datarepo-helm/charts/datarepo/Chart.yaml version)"
+      - name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
+        id: chartversion
+        run: |
+          echo "::set-output name=version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq:3 yq read datarepo-helm/charts/datarepo/Chart.yaml version)"
 
       - name: "Find and replace Datarepo chartVersion version in alpha action"
         uses: docker://mikefarah/yq:3
@@ -51,6 +49,7 @@ jobs:
           echo "[INFO] git config name $GITHUB_USERNAME"
           git config --global user.name broadbot
           echo "[INFO] git add all"
+          cd ${GITHUB_WORKSPACE}/jade-data-repo
           git add jade-data-repo/.github/workflows/alpha-promotion.yaml
           echo "[INFO] commit w/ msg: $COMMIT_MESSAGE"
           git commit -m "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
