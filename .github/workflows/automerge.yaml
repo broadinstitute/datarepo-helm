@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: automerge
-        uses: "broadinstitute/automerge-action@v0.12.0" # Forked from pascalgn/automerge-action
+        uses: "broadinstitute/automerge-action@v0.8.5" # Forked from pascalgn/automerge-action
         env:
           # merges even if checks have not passed & reviews not completed
           GITHUB_TOKEN: "${{ secrets.BROADBOT_TOKEN }}"
