@@ -31,7 +31,7 @@ jobs:
       - name: "Find and replace Datarepo chartVersion version in alpha action"
         uses: docker://mikefarah/yq:3
         with:
-          args: yq w -i ${MODIFIED_REPO}/${MODIFIED_FILEPATH} env.chartVersion ${{ steps.chartversion.outputs.version }}
+          args: yq w -i $MODIFIED_REPO/$MODIFIED_FILEPATH env.chartVersion ${{ steps.chartversion.outputs.version }}
 
       - name: "Merge changes to jade-data-repo"
         env:
@@ -40,16 +40,16 @@ jobs:
           COMMIT_MESSAGE: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
         run: |
           #TODO: pull this into datarepo-actions repo
-          echo "[INFO] git config email to ${GITHUB_EMAIL}"
-          git config --global user.email "${GITHUB_EMAIL}"
-          echo "[INFO] git config name ${GITHUB_USERNAME}"
-          git config --global user.name "${GITHUB_USERNAME}"
-          echo "[INFO] git add file ${MODIFIED_FILEPATH}"
-          git add ${MODIFIED_FILEPATH}
-          echo "[INFO] commit w/ msg: ${COMMIT_MESSAGE}"
-          git commit -m ${COMMIT_MESSAGE}"
-          echo "[INFO] git push ${DESTINATION_BRANCH}"
-          git push origin ${DESTINATION_BRANCH}
+          echo "[INFO] git config email to $GITHUB_EMAIL"
+          git config --global user.email "$GITHUB_EMAIL"
+          echo "[INFO] git config name $GITHUB_USERNAME"
+          git config --global user.name "$GITHUB_USERNAME"
+          echo "[INFO] git add file $MODIFIED_FILEPATH"
+          git add $MODIFIED_FILEPATH
+          echo "[INFO] commit w/ msg: $COMMIT_MESSAGE"
+          git commit -m $COMMIT_MESSAGE"
+          echo "[INFO] git push $DESTINATION_BRANCH"
+          git push origin $DESTINATION_BRANCH
           echo "[INFO] post push"
           commit=$(git rev-parse HEAD)
           echo "[INFO] commit: $commit"
