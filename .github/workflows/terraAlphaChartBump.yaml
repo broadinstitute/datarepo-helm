@@ -10,7 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
           path: datarepo-helm
 
       - name: 'Checkout jade-data-repo repo'
@@ -20,10 +19,19 @@ jobs:
           token: ${{ secrets.BROADBOT_TOKEN }}
           path: jade-data-repo
 
-      - name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
-        id: chartversion
-        run: |
-          echo "::set-output name=version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq:3 yq read datarepo-helm/charts/datarepo/Chart.yaml version)"
+      - name: "Run Connected test via Gradle"
+        uses: broadinstitute/datarepo-actions@0.36.0
+        with:
+          actions_subcommand: 'chartversion'
+          pgport: ${{ job.services.postgres.ports[5432] }}
+          test_to_run: 'testConnected'
+          role_id: ${{ secrets.ROLE_ID }}
+          secret_id: ${{ secrets.SECRET_ID }}
+
+      #- name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
+      #  id: chartversion
+      #  run: |
+      #    echo "::set-output name=version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq:3 yq read datarepo-helm/charts/datarepo/Chart.yaml version)"
 
       - name: "Find and replace Datarepo chartVersion version in alpha action"
         uses: docker://mikefarah/yq:3
