@@ -34,8 +34,6 @@ jobs:
           GITHUB_EMAIL: "broadbot@broadinstitute.org"
           GITHUB_USERNAME: "broadbot"
           COMMIT_MESSAGE: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
-          MODIFIED_REPO: jade-data-repo
-          MODIFIED_FILEPATH: .github/workflows/alpha-promotion.yaml
           DESTINATION_BRANCH: develop
         run: |
           #TODO: pull this into datarepo-actions repo
@@ -43,8 +41,8 @@ jobs:
           git config --global user.email "$GITHUB_EMAIL"
           echo "[INFO] git config name $GITHUB_USERNAME"
           git config --global user.name "$GITHUB_USERNAME"
-          echo "[INFO] git add file $MODIFIED_FILEPATH"
-          git add $MODIFIED_FILEPATH
+          echo "[INFO] git add all"
+          git add .
           echo "[INFO] commit w/ msg: $COMMIT_MESSAGE"
           git commit -m $COMMIT_MESSAGE"
           echo "[INFO] git push $DESTINATION_BRANCH"
