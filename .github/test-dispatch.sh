@@ -2,7 +2,7 @@
 BRANCH=$(git branch --show-current)
 TOKEN=$(cat $HOME/.gh_token)
 REPO="broadinstitute/datarepo-helm"
-WORKFLOW="terraAlphaChartBump.yaml"
+WORKFLOW="integrationChartBump.yaml"
 
 curl -H "Accept: application/vnd.github.everest-preview+json" \
     -H "Authorization: token ${TOKEN}" \
