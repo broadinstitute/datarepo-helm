@@ -40,7 +40,10 @@ jobs:
         run: |
           for i in $(echo ${{ env.charts }})
           do
-            echo "::set-output name=$i-version::$(docker run --rm -v ${PWD}:/workdir mikefarah/yq yq read datarepo-helm/charts/$i/Chart.yaml version)"
+            val=$(docker run --rm -v ${PWD}:/workdir mikefarah/yq:3 yq read datarepo-helm/charts/$i/Chart.yaml 'version')"
+            echo "New $i version $val"
+            echo "::set-output name=$i-version::val
+            
           done
 
       - name: "Find and replace datarepo-api chartVersion version in integration action"
