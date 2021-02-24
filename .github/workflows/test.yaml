@@ -102,7 +102,7 @@ jobs:
         if: always()
         run: |
           helm delete test -n ${{ env.NAMESPACE }}
-          kubectl get podsecuritypolicies.policy | grep test| awk '{print $1}' | xargs kubectl delete podsecuritypolicies.policy
+#          kubectl get podsecuritypolicies.policy | grep test| awk '{print $1}' | xargs kubectl delete podsecuritypolicies.policy
           kubectl delete pvc -n ${{ env.NAMESPACE }} --all
           kubectl delete namespace ${{ env.NAMESPACE }}
 
