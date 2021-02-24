@@ -26,6 +26,7 @@ jobs:
         with:
           fetch-depth: 0
           path: datarepo-helm
+          token: ${{ secrets.BROADBOT_TOKEN }}
 
       - name: 'Checkout ${{ matrix.repo }} repo'
         uses: actions/checkout@v2
@@ -33,7 +34,6 @@ jobs:
           repository: 'databiosphere/${{ matrix.repo }}'
           token: ${{ secrets.BROADBOT_TOKEN }}
           path: ${{ matrix.repo }}
-          persist-credentials: false
 
       - name: "Find latest version chart version"
         id: chartversion
