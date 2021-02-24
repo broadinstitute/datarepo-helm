@@ -27,10 +27,10 @@ jobs:
       - name: "Find and replace Datarepo chartVersion version in alpha action"
         uses: docker://mikefarah/yq:3
         with:
-          args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml env.chartVersion ${{ steps.chartversion.outputs.version }}
+          args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml env.chartVersion 0.1.58
 
       - name: "Merge using new merge action"
         uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
         env:
-          COMMIT_MESSAGE: 'Datarepo chart version update: ${{ steps.chartversion.outputs.version }}'
+          COMMIT_MESSAGE: 'Datarepo chart version update: 0.1.58'
           SWITCH_DIRECTORIES: "true"
