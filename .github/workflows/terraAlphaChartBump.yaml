@@ -10,6 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           path: datarepo-helm
 
       - name: 'Checkout jade-data-repo repo'
