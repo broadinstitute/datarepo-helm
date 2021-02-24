@@ -33,5 +33,5 @@ jobs:
       - name: "[jade-data-repo] Merge Changes"
         uses: broadinstitute/datarepo-actions/actions/merger@0.38.0
         env:
-          COMMIT_MESSAGE: 'Datarepo chart version update: ${{ steps.chartversion.outputs.version }}'
+          COMMIT_MESSAGE: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
           SWITCH_DIRECTORIES: "true"
