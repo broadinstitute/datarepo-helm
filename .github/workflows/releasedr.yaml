@@ -48,7 +48,7 @@ jobs:
         uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
 
       - name: "Merge using new merge action"
-        uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
+        uses: broadinstitute/datarepo-actions/actions/merger@0.38.0
         env:
           COMMIT_MESSAGE: "Datarepo umbrella chart update"
           GITHUB_REPO: datarepo-helm
