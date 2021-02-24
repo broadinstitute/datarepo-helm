@@ -19,12 +19,8 @@ jobs:
           token: ${{ secrets.BROADBOT_TOKEN }}
           path: jade-data-repo
 
-      #- name: "Run Connected test via Gradle"
-      #  uses: broadinstitute/datarepo-actions@sh-dr-1510-chart-version
-      #  with:
-      #    actions_subcommand: 'chartversion'
-      #    role_id: ${{ secrets.ROLE_ID }}
-      #    secret_id: ${{ secrets.SECRET_ID }}
+      - name: "Test"
+        uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
 
       - name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
         id: chartversion
@@ -36,25 +32,24 @@ jobs:
         with:
           args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml env.chartVersion ${{ steps.chartversion.outputs.version }}
 
-      - name: "Merge changes to jade-data-repo"
-        env:
-          GITHUB_EMAIL: "broadbot@broadinstitute.org"
-          GITHUB_USERNAME: "broadbot"
-          COMMIT_MESSAGE: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
-          DESTINATION_BRANCH: develop
-        run: |
-          #TODO: pull this into datarepo-actions repo
-          echo "[INFO] git config email to $GITHUB_EMAIL"
-          git config --global user.email broadbot@broadinstitute.org
-          echo "[INFO] git config name $GITHUB_USERNAME"
-          git config --global user.name broadbot
-          echo "[INFO] git add all"
-          cd ${GITHUB_WORKSPACE}/jade-data-repo
-          git add .github/workflows/alpha-promotion.yaml
-          echo "[INFO] commit w/ msg: $COMMIT_MESSAGE"
-          git commit -m "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
-          echo "[INFO] git push $DESTINATION_BRANCH"
-          git push origin develop
-          echo "[INFO] post push"
-          commit=$(git rev-parse HEAD)
-          echo "[INFO] commit: $commit"
+      # - name: "Merge changes to jade-data-repo"
+      #   env:
+      #     GITHUB_EMAIL: "broadbot@broadinstitute.org"
+      #     COMMIT_MESSAGE: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
+      #     DESTINATION_BRANCH: develop
+      #   run: |
+      #     TODO: pull this into datarepo-actions repo
+      #     echo "[INFO] git config email to $GITHUB_EMAIL"
+      #     git config --global user.email broadbot@broadinstitute.org
+      #     echo "[INFO] git config name $GITHUB_USERNAME"
+      #     git config --global user.name broadbot
+      #     echo "[INFO] git add all"
+      #     cd ${GITHUB_WORKSPACE}/jade-data-repo
+      #     git add jade-data-repo/.github/workflows/alpha-promotion.yaml
+      #     echo "[INFO] commit w/ msg: $COMMIT_MESSAGE"
+      #     git commit -m "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
+      #     echo "[INFO] git push $DESTINATION_BRANCH"
+      #     git push origin develop
+      #     echo "[INFO] post push"
+      #     commit=$(git rev-parse HEAD)
+      #     echo "[INFO] commit: $commit"
