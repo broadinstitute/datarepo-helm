@@ -31,8 +31,8 @@ jobs:
 
       - name: "Merge using new merge action"
         uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
-        with:
-          commit_msg: 'Datarepo chart version update: ${{ steps.chartversion.outputs.version }}'
+        env:
+          COMMIT_MESSAGE: 'Datarepo chart version update: ${{ steps.chartversion.outputs.version }}'
 
       # - name: "Merge changes to jade-data-repo"
       #   env:
