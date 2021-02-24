@@ -47,7 +47,7 @@ jobs:
       - name: "Create new umbrealla chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
 
-      - name: "Merge using new merge action"
+      - name: "[datarepo-helm] Merge in changes to umbrella chart"
         uses: broadinstitute/datarepo-actions/actions/merger@0.38.0
         env:
           COMMIT_MESSAGE: "Datarepo umbrella chart update"
