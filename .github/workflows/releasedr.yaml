@@ -26,6 +26,7 @@ jobs:
           persist-credentials: true
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
           token: "${{ secrets.BROADBOT_TOKEN }}" #otherwise merge will fail
+          ref: master
 
       - name: Configure Git
         run: |
