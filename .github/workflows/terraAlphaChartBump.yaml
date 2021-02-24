@@ -33,25 +33,3 @@ jobs:
         uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
         env:
           COMMIT_MESSAGE: 'Datarepo chart version update: ${{ steps.chartversion.outputs.version }}'
-
-      # - name: "Merge changes to jade-data-repo"
-      #   env:
-      #     GITHUB_EMAIL: "broadbot@broadinstitute.org"
-      #     COMMIT_MESSAGE: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
-      #     DESTINATION_BRANCH: develop
-      #   run: |
-      #     TODO: pull this into datarepo-actions repo
-      #     echo "[INFO] git config email to $GITHUB_EMAIL"
-      #     git config --global user.email broadbot@broadinstitute.org
-      #     echo "[INFO] git config name $GITHUB_USERNAME"
-      #     git config --global user.name broadbot
-      #     echo "[INFO] git add all"
-      #     cd ${GITHUB_WORKSPACE}/jade-data-repo
-      #     git add jade-data-repo/.github/workflows/alpha-promotion.yaml
-      #     echo "[INFO] commit w/ msg: $COMMIT_MESSAGE"
-      #     git commit -m "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
-      #     echo "[INFO] git push $DESTINATION_BRANCH"
-      #     git push origin develop
-      #     echo "[INFO] post push"
-      #     commit=$(git rev-parse HEAD)
-      #     echo "[INFO] commit: $commit"
