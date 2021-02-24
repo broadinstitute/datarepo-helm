@@ -33,3 +33,4 @@ jobs:
         uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
         env:
           COMMIT_MESSAGE: 'Datarepo chart version update: ${{ steps.chartversion.outputs.version }}'
+          SWITCH_DIRECTORIES: "true"

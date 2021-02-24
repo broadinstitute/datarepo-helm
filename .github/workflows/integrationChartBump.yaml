@@ -76,3 +76,4 @@ jobs:
         env:
           COMMIT_MESSAGE: "Datarepo Integration mutli chart version update"
           GITHUB_REPO: ${{ matrix.repo }}
+          SWITCH_DIRECTORIES: "true"
