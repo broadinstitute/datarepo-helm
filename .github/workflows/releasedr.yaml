@@ -26,6 +26,7 @@ jobs:
           persist-credentials: true
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
           token: "${{ secrets.BROADBOT_TOKEN }}" #otherwise merge will fail
+          path: datarepo-helm
 
       - name: Configure Git
         run: |
@@ -52,6 +53,7 @@ jobs:
           COMMIT_MESSAGE: "Datarepo umbrella chart update"
           GITHUB_REPO: datarepo-helm
           MERGE_BRANCH: master
+          SWITCH_DIRECTORIES: "true"
 
       - name: Check outputs
         run: |
