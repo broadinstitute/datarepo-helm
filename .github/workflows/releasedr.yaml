@@ -25,7 +25,7 @@ jobs:
         with:
           persist-credentials: true
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
-          token: "${{ secrets.CR_TOKEN }}"
+          token: "${{ secrets.BROADBOT_TOKEN }}" #otherwise merge will fail
 
       - name: Configure Git
         run: |
@@ -46,19 +46,12 @@ jobs:
       - name: "Create new umbrealla chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
 
-      - name: Create pull request
-        uses: broadinstitute/create-pull-request@v3.5.0  #forked from peter-evans/create-pull-request
-        id: create-pr
-        with:
-          token: ${{ secrets.CR_TOKEN }}
-          commit-message: "Datarepo umbrella chart update"
-          committer: datarepo-bot <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          title: "Datarepo umbrella version update"
-          branch: "version-update/datarepo-version-update-${{ github.run_id }}"
-          body: |
-            *Note: This PR was opened by the [update-env GitHub Actions workflow](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).*
-          labels: "helm,datarepo,version-update,automerge"
+      - name: "Merge using new merge action"
+        uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
+        env:
+          COMMIT_MESSAGE: "Datarepo umbrella chart update"
+          GITHUB_REPO: datarepo-helm
+          MERGE_BRANCH: master
 
       - name: Check outputs
         run: |
