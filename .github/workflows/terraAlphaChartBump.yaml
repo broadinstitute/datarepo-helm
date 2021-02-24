@@ -19,9 +19,6 @@ jobs:
           token: ${{ secrets.BROADBOT_TOKEN }}
           path: jade-data-repo
 
-      - name: "Test"
-        uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
-
       - name: "Find latest version of Datarepo chart version in datarepo/Chart.yaml"
         id: chartversion
         run: |
@@ -31,6 +28,9 @@ jobs:
         uses: docker://mikefarah/yq:3
         with:
           args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml env.chartVersion ${{ steps.chartversion.outputs.version }}
+
+      - name: "Merge using new merge action"
+        uses: broadinstitute/datarepo-actions/actions/merger@sh-dr-1510-chart-version
 
       # - name: "Merge changes to jade-data-repo"
       #   env:
