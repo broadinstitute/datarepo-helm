@@ -31,6 +31,7 @@ jobs:
       - name: 'Checkout ${{ matrix.repo }} repo'
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           repository: 'databiosphere/${{ matrix.repo }}'
           token: ${{ secrets.BROADBOT_TOKEN }}
           path: ${{ matrix.repo }}
