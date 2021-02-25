@@ -16,6 +16,7 @@ jobs:
       - name: 'Checkout jade-data-repo repo'
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           repository: 'databiosphere/jade-data-repo'
           token: ${{ secrets.BROADBOT_TOKEN }}
           path: jade-data-repo
