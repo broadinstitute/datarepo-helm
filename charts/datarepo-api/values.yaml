@@ -30,9 +30,9 @@ tolerations: []
 affinity: {}
 resources:
   limits:
-    memory: 3072Mi
-  requests:
     memory: 2560Mi
+  requests:
+    memory: 1536Mi
 serviceAccount:
   annotations: {}
   # Specifies whether a service account should be created
