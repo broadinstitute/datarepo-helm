@@ -20,6 +20,7 @@ data:
       proxy_temp_path /tmp/proxy_temp;
       client_body_temp_path /tmp/client_temp;
       include /etc/nginx/mime.types;
+      server_tokens off;
 
       server { # simple reverse-proxy
         listen       {{ .Values.nginxport }};
