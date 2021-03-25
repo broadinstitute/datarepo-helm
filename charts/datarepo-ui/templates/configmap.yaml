@@ -25,6 +25,9 @@ data:
       server { # simple reverse-proxy
         listen       {{ .Values.nginxport }};
 
+        # add a Content-Security-Policy
+        add_header Content-Security-Policy "default-src 'self';";
+
         # pass the status check through
         location /status {
             proxy_pass {{ .Values.proxyPass.status }};
