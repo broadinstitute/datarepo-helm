@@ -25,8 +25,15 @@ data:
       server { # simple reverse-proxy
         listen       {{ .Values.nginxport }};
 
-        # add a Content-Security-Policy
-        add_header Content-Security-Policy "default-src 'self';";
+        # add a Content-Security-Policy, with some variables to make formatting nice
+        set $DEFAULT "default-src 'self'";
+        set $SCRIPT "script-src 'self' 'unsafe-inline' apis.google.com *.gstatic.com *.broadinstitute.org";
+        set $STYLE "style-src 'self' 'unsafe-inline' fonts.googleapis.com";
+        set $IMG "img-src 'self' lh3.googleusercontent.com";
+        set $FONT "font-src 'self' fonts.googleapis.com fonts.gstatic.com";
+        set $CONNECT "connect-src 'self' *.broadinstitute.org account.google.com";
+        set $FRAME "frame-src 'self' accounts.google.com";
+        add_header Content-Security-Policy "${DEFAULT}; ${SCRIPT}; ${STYLE}; ${IMG}; ${FONT}; ${CONNECT}; ${FRAME}";
 
         # pass the status check through
         location /status {
