@@ -7,12 +7,12 @@ dependencies:
   version: 0.0.20
 - name: datarepo-ui
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.41
+  version: 0.0.43
 - name: gcloud-sqlproxy
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.19.7
 - name: create-secret-manager-secret
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.6
-digest: sha256:3e453d3af5f1fbc8dc583f312b1b0600f513256907c9226949d6fa75fbcf08f0
-generated: "2021-03-26T12:43:44.685144519Z"
+digest: sha256:7f811424b80865b79e9cbe301b3ecdbd95ceacbe585289ec489f46eb7d549672
+generated: "2021-03-29T20:54:39.700659308Z"
