@@ -21,7 +21,14 @@ data:
 
     Header unset X-Frame-Options
     Header always set X-Frame-Options SAMEORIGIN
-    Header always set Access-Control-Allow-Origin *
+    <If "-n '${CORS_REGEX}'">
+        SetEnvIf Origin ${CORS_REGEX} ORIGIN_SUB_DOMAIN=$0
+        Header add Access-Control-Allow-Origin "%{ORIGIN_SUB_DOMAIN}e" env=ORIGIN_SUB_DOMAIN
+        Header merge Vary Origin
+    </If>
+    <Else>
+        Header always set Access-Control-Allow-Origin *
+    </Else>
     Header always set Access-Control-Allow-Headers DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Accept,Referer,X-App-Id,Origin
     Header always set Access-Control-Allow-Methods GET,POST,DELETE,PUT,PATCH,OPTIONS,HEAD
     Header always set X-Content-Type-Options nosniff

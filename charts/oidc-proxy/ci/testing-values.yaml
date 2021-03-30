@@ -5,6 +5,7 @@ env:
   PROXY_URL3: http://test-datarepo-api.integration-temp:8080/ga4gh
   PROXY_PATH3: /ga4gh
   LOG_LEVEL: debug
+  CORS_REGEX: "http(s)?://(www\.)?(.+\.broadinstitute\.org|.+\envs-terra\.bio|.+\.terra\.bio|.+\.appspot\.com|localhost)$"
   SERVER_NAME: jade.datarepo-integration.broadinstitute.org
   REMOTE_USER_CLAIM: sub
   ENABLE_STACKDRIVER: yes
