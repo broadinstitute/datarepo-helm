@@ -14,8 +14,6 @@ gcloud-sqlproxy:
 datarepo-api:
   enabled: true
   fullnameOverride: test-datarepo-api
-  image:
-    tag: 1.0.180
   shutdownTimeoutSeconds: 3
   readinessInitialDelaySeconds: 15
   livenessInitialDelaySeconds: 20
