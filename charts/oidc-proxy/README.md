@@ -1,7 +1,7 @@
 # oidc-proxy
 
 ## Chart Details
-This chart deploys a datarepo ui into a Kubernetes namespace
+This chart deploys a datarepo oidc server into a Kubernetes namespace
 
 ## Installing the Chart
 
