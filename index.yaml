@@ -6330,6 +6330,27 @@ entries:
   oidc-proxy:
   - apiVersion: v2
     appVersion: 0.0.19
+    created: "2021-04-14T20:54:07.562911599Z"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: 06e70e87c173f0cc06e6681560cd41c4041e514cac3e0f99c0e70475d9d5ec3d
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.21/oidc-proxy-0.0.21.tgz
+    version: 0.0.21
+  - apiVersion: v2
+    appVersion: 0.0.19
     created: "2021-03-08T20:57:52.196372005Z"
     description: A Helm chart to deploy datarepo oidc server for Kubernetes
     digest: be09fcde54bb4e218c13db3f166f86cdd0515594ddc606226780ab626631029d
