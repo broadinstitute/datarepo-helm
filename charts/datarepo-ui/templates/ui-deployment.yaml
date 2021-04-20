@@ -40,22 +40,6 @@ spec:
           value: "{{ $value }}"
         {{- end }}
         {{- end }}
-        readinessProbe:
-          httpGet:
-            path: /status
-            port: {{ .Values.nginxport }}
-          initialDelaySeconds: 35
-          periodSeconds: 10
-          timeoutSeconds: 3
-          failureThreshold: 3
-        livenessProbe:
-          httpGet:
-            path: /status
-            port: {{ .Values.nginxport }}
-          initialDelaySeconds: 45
-          periodSeconds: 10
-          timeoutSeconds: 3
-          failureThreshold: 3
         volumeMounts:
           - name: nginxconf
             mountPath: /etc/nginx/nginx.conf
