@@ -183,6 +183,47 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    appVersion: 0.1.115
+    created: "2021-04-22T20:36:31.988889864Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.73
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.22
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.65
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.7
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    description: A Helm chart to deploy an entire datarepo
+    digest: 2afe61e70de703bb10e0bcd1d3a78f989400db00b7d656cbc3038d2c38172473
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.115/datarepo-0.1.115.tgz
+    version: 0.1.115
+  - apiVersion: v2
     appVersion: 0.1.114
     created: "2021-04-22T20:10:52.952894848Z"
     dependencies:
