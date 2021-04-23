@@ -69,9 +69,9 @@ Back up script
 #!/bin/bash
 set -e
   {{- if or .Values.existingSecret .Values.existingSecretKey .Values.googleServiceAccount }}
-gcloud auth activate-service-account {{ .Values.googleServiceAccount }} --key-file=/secrets/existingSecret
+/usr/local/google-cloud-sdk/bin/gcloud auth activate-service-account {{ .Values.googleServiceAccount }} --key-file=/secrets/existingSecret
   {{- end }}
-gcloud sql backups create --async --instance \
+/usr/local/google-cloud-sdk/bin/gcloud sql backups create --async --instance \
   {{ .Values.sqlInstanceName }} --description "$(date '+%Y%m%d')" --project {{ .Values.googleProjectId }}
 {{- end -}}
 
@@ -83,16 +83,15 @@ Clean up script
 #!/bin/bash
 set -e
   {{- if or .Values.existingSecret .Values.existingSecretKey .Values.googleServiceAccount }}
-gcloud auth activate-service-account {{ .Values.googleServiceAccount }} --key-file=/secrets/existingSecret
+/usr/local/google-cloud-sdk/bin/gcloud auth activate-service-account {{ .Values.googleServiceAccount }} --key-file=/secrets/existingSecret
   {{- end }}
-apk add jq
 
 # removaldate must be environment var for jq env.removaldate
 export removaldate=$(date -d @$(( $(date +"%s") - 86400 * {{ .Values.backupRetention }})) +"%Y%m%d")
-export backups=$(gcloud sql backups list --instance {{ .Values.sqlInstanceName }} --project {{ .Values.googleProjectId }} \
+export backups=$(/usr/local/google-cloud-sdk/bin/gcloud sql backups list --instance {{ .Values.sqlInstanceName }} --project {{ .Values.googleProjectId }} \
             --format json | jq  -r '.[]| select (.| has("description"))| select(.description < env.removaldate)')
 
 for i in $(echo "${backups}" | jq -r '.id');
-  do gcloud sql backups delete $i --instance {{ .Values.sqlInstanceName }} --project {{ .Values.googleProjectId }} --quiet;
+  do /usr/local/google-cloud-sdk/bin/gcloud sql backups delete $i --instance {{ .Values.sqlInstanceName }} --project {{ .Values.googleProjectId }} --quiet;
 done
 {{- end -}}
