@@ -40,6 +40,26 @@ spec:
           value: "{{ $value }}"
         {{- end }}
         {{- end }}
+        livenessProbe:
+          exec:
+            command:
+              - /bin/sh
+              - -c
+              - "[ -f /tmp/nginx.pid ] && ps -A | grep nginx"
+          initialDelaySeconds: 35
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+              - /bin/sh
+              - -c
+              - "[ -f /tmp/nginx.pid ] && ps -A | grep nginx"
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
         volumeMounts:
           - name: nginxconf
             mountPath: /etc/nginx/nginx.conf
