@@ -7844,6 +7844,33 @@ entries:
   sqlbackup:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2021-04-26T15:41:44.200294264Z"
+    dependencies:
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    description: A Helm chart to setup psql backups for a desinated time frame
+    digest: 81d389615c0b5e3a71964121b1e230134690f317e3170f4c22b1582c84d63519
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - psql
+    - backup
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: sqlbackup
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/sqlbackup-0.0.2/sqlbackup-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2020-10-16T16:41:53.700473689Z"
     description: A Helm chart to setup psql backups for a desinated time frame
     digest: 47ed034501ef09a79e4d6e5dd12196f1be79b96644d0711514768deac58e115e
