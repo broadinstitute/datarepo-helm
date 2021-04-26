@@ -5837,6 +5837,27 @@ entries:
     version: 0.0.1
   datarepo-ui:
   - apiVersion: v2
+    appVersion: 0.50.0
+    created: "2021-04-26T17:18:34.273062655Z"
+    description: A Helm chart to deploy datarepo ui server for Kubernetes
+    digest: 291fd08ad910a9de42f130c0383fe4ebcb681a63e7a5dbca093732a1994c9396
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-ui
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.68/datarepo-ui-0.0.68.tgz
+    version: 0.0.68
+  - apiVersion: v2
     appVersion: 0.49.0
     created: "2021-04-23T19:28:33.39692336Z"
     description: A Helm chart to deploy datarepo ui server for Kubernetes
