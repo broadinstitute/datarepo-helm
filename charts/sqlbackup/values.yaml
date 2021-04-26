@@ -3,8 +3,8 @@ create-secret-manager-secret:
   enabled: false
 
 image:
-  repository: google/cloud-sdk
-  version: alpine
+  repository: broadinstitute/dsde-toolbox
+  version: master
   pullPolicy: IfNotPresent
 serviceAccount:
   # Specifies whether a service account should be created
