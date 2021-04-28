@@ -96,7 +96,9 @@ jobs:
       - name: Run chart-testing (test)
         id: test
         if: success()
-        run: ct install --config .github/test-config.yaml --namespace ${{ env.NAMESPACE }}
+        run: |
+          kubectl get all -n ${{ env.NAMESPACE }}
+          ct install --config .github/test-config.yaml --namespace ${{ env.NAMESPACE }}
 
       - name: delete supporting postgres chart
         if: always()
