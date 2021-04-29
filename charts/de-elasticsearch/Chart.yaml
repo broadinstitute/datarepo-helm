@@ -3,6 +3,9 @@ name: de-elasticsearch
 description: A Helm chart for elastic search in data explorer
 type: application
 version: 0.1.0
+maintainers:
+  - email: tjiang@broadinstitute.org
+    name: tjiang
 dependencies:
   - name: elasticsearch
     version: 7.10.2
