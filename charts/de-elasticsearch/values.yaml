@@ -15,7 +15,7 @@ elasticsearch:
   imageTag: "7.10.2"
   imagePullPolicy: "IfNotPresent"
 
-  # We'll probsbly want to tweak this, leaving as default for now,
+  # We'll probably want to tweak this, leaving as default for now,
   # see here https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
   # for documentation on configuring resources
   resources:
@@ -28,7 +28,7 @@ elasticsearch:
 
   # will most likely want to increase this, see https://kubernetes.io/docs/concepts/storage/persistent-volumes/
   volumeClaimTemplate:
-    accessModes: [ "ReadWriteOnce" ]
+    accessModes: ["ReadWriteOnce"]
     resources:
       requests:
         storage: 30Gi
