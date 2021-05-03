@@ -14,5 +14,6 @@ charts:
   - charts/backend-config
   - charts/create-secret-manager-secret
   - charts/datarepo
+  - charts/de-elasticsearch
   - charts/gcloud-sqlproxy
   - charts/serviceaccount-psp
