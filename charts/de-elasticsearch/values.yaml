@@ -1,0 +1,59 @@
+elasticsearch:
+  clusterName: "oss"
+  nodeGroup: "master"
+
+  # See here for default elastic search node roles:
+  # https://github.com/elastic/helm-charts/blob/2f26d502ea35352649d02b8e56ccabec6c6af1ab/elasticsearch/values.yaml#L11
+  # Elasticsearch roles that will be applied to this nodeGroup
+  # These will be set as environment variables. E.g. node.master=true
+  # see here for documentation on roles, they're important for scaling!:
+  # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html
+
+  replicas: 3
+
+  image: "docker.elastic.co/elasticsearch/elasticsearch-oss"
+  imageTag: "7.10.2"
+  imagePullPolicy: "IfNotPresent"
+
+  # We'll probably want to tweak this, leaving as default for now,
+  # see here https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+  # for documentation on configuring resources
+  resources:
+    requests:
+      cpu: "1000m"
+      memory: "2Gi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+
+  # will most likely want to increase this, see https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+  volumeClaimTemplate:
+    accessModes: ["ReadWriteOnce"]
+    resources:
+      requests:
+        storage: 30Gi
+
+  rbac:
+    create: true
+
+  podSecurityPolicy:
+    create: true
+    spec:
+      privileged: true
+      fsGroup:
+        rule: RunAsAny
+      runAsUser:
+        rule: RunAsAny
+      seLinux:
+        rule: RunAsAny
+      supplementalGroups:
+        rule: RunAsAny
+      volumes:
+        - secret
+        - configMap
+        - persistentVolumeClaim
+        - emptyDir
+
+  # we may want a custom node pool here
+  nodeSelector: {}
+  tolerations: []
