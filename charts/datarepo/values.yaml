@@ -86,6 +86,9 @@ datarepo-ui:
   ##  rbac:
   ##    create: true
 
+de-elasticsearch:
+  enabled: false
+
 oidc-proxy:
   enabled: false ## if true uncomment below
   ##  env:
@@ -122,3 +125,4 @@ postgresql: # supply your Gcloudsql instance or use this
 ## https://github.com/helm/charts/tree/master/stable/postgresql
 create-secret-manager-secret:
   enabled: false
+
