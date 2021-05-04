@@ -1,4 +1,5 @@
 ---
+# todo: delete, it's duplicated in umbrella chart
 fullnameOverride: test-datarepo-ui
 image:
   tag: 0.0.168

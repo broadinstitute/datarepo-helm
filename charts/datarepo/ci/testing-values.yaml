@@ -17,8 +17,8 @@ datarepo-api:
   image:
     tag: 1.0.180
   shutdownTimeoutSeconds: 3
-  readinessInitialDelaySeconds: 15
-  livenessInitialDelaySeconds: 20
+  readinessInitialDelaySeconds: 30
+  livenessInitialDelaySeconds: 40
   env:
     GOOGLE_PROJECTID: broad-jade-integration
     GOOGLE_SINGLEDATAPROJECTID: broad-jade-integration-data
@@ -78,3 +78,7 @@ oidc-proxy:
   rbac:
     create: true
     pspEnabled: true
+
+de-elasticsearch:
+  enabled: true
+  fullnameOverride: test-de-elasticsearch

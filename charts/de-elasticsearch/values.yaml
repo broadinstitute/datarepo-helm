@@ -9,7 +9,9 @@ elasticsearch:
   # see here for documentation on roles, they're important for scaling!:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html
 
-  replicas: 3
+  replicas: 1
+
+  esJavaOpts: "-Xmx250m -Xms250m"
 
   image: "docker.elastic.co/elasticsearch/elasticsearch-oss"
   imageTag: "7.10.2"
@@ -20,11 +22,11 @@ elasticsearch:
   # for documentation on configuring resources
   resources:
     requests:
-      cpu: "1000m"
-      memory: "2Gi"
+      cpu: "250m"
+      memory: "64Mi"
     limits:
-      cpu: "1000m"
-      memory: "2Gi"
+      cpu: "500m"
+      memory: "128Mi"
 
   # will most likely want to increase this, see https://kubernetes.io/docs/concepts/storage/persistent-volumes/
   volumeClaimTemplate:

@@ -8,6 +8,7 @@ This chart will do the following:
   - [datarepo-ui](https://github.com/broadinstitute/datarepo-helm/tree/master/charts/datarepo-ui)
   - [oidc-proxy](https://github.com/broadinstitute/datarepo-helm/tree/master/charts/oidc-proxy)
   - [gcloud-sqlproxy](https://github.com/broadinstitute/datarepo-helm/tree/master/charts/gcloud-sqlproxy)
+  - [de-elasticsearch](https://github.com/broadinstitute/datarepo-helm/tree/master/charts/de-elasticsearch)  
   - [Postgresql](https://github.com/helm/charts/tree/master/stable/postgresql)
 
 ## Prerequisite
