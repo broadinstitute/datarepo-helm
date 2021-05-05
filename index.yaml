@@ -183,6 +183,47 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    appVersion: 0.1.129
+    created: "2021-05-05T18:39:51.053145008Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.79
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.22
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.75
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.7
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    description: A Helm chart to deploy an entire datarepo
+    digest: 3949738a1de07ef21f27a9701d8115e18f60a6cb630f24adca7864daa5223644
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.129/datarepo-0.1.129.tgz
+    version: 0.1.129
+  - apiVersion: v2
     appVersion: 0.1.128
     created: "2021-05-04T20:15:46.927672781Z"
     dependencies:
@@ -7866,6 +7907,23 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepomonitoring-0.0.2/datarepomonitoring-0.0.2.tgz
     version: 0.0.2
+  de-elasticsearch:
+  - apiVersion: v2
+    created: "2021-05-05T18:39:51.19933672Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.2
+    description: A Helm chart for elastic search in data explorer
+    digest: a35ab50ce415f7b1e29ccd7a3d765573e369110840545c2a7fe517f4694ba26f
+    maintainers:
+    - email: tjiang@broadinstitute.org
+      name: tjiang
+    name: de-elasticsearch
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/de-elasticsearch-0.1.1/de-elasticsearch-0.1.1.tgz
+    version: 0.1.1
   gcloud-sqlproxy:
   - apiVersion: v2
     appVersion: "1.17"
