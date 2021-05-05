@@ -12,8 +12,8 @@ description: A Helm chart to deploy an entire datarepo
 type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version
-version: 0.1.128
-appVersion: 0.1.128
+version: 0.1.129
+appVersion: 0.1.129
 keywords:
 - google
 - cloud
