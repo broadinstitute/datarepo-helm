@@ -36,10 +36,10 @@ elasticsearch:
         storage: 30Gi
 
   rbac:
-    create: true
+    create: false
 
   podSecurityPolicy:
-    create: true
+    create: false
     spec:
       privileged: true
       fsGroup:
