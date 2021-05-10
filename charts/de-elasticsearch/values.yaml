@@ -9,7 +9,7 @@ elasticsearch:
   # see here for documentation on roles, they're important for scaling!:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html
 
-  replicas: 1
+  replicas: 3
 
   esJavaOpts: "-Xmx250m -Xms250m"
 
@@ -22,10 +22,10 @@ elasticsearch:
   # for documentation on configuring resources
   resources:
     requests:
-      cpu: "250m"
+      cpu: "2"
       memory: "8Gi"
     limits:
-      cpu: "500m"
+      cpu: "2"
       memory: "8Gi"
 
   # will most likely want to increase this, see https://kubernetes.io/docs/concepts/storage/persistent-volumes/
