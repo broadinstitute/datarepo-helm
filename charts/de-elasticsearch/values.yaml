@@ -23,10 +23,10 @@ elasticsearch:
   resources:
     requests:
       cpu: "250m"
-      memory: "80000Gi"
+      memory: "8Gi"
     limits:
       cpu: "500m"
-      memory: "80000Gi"
+      memory: "8Gi"
 
   # will most likely want to increase this, see https://kubernetes.io/docs/concepts/storage/persistent-volumes/
   volumeClaimTemplate:
@@ -37,11 +37,9 @@ elasticsearch:
 
   rbac:
     create: true
-    name: "lkjgkhd"
 
   podSecurityPolicy:
     create: true
-    name: "ljkglh"
     spec:
       privileged: true
       fsGroup:
