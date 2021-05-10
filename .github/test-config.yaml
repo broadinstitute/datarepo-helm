@@ -10,10 +10,10 @@ excluded-charts:
   - charts/datarepo-api
   - charts/datarepo-ui
   - charts/oidc-proxy
-charts:
-  - charts/backend-config
-  - charts/create-secret-manager-secret
-  - charts/datarepo
   - charts/de-elasticsearch
   - charts/gcloud-sqlproxy
+  - charts/create-secret-manager-secret
+charts:
+  - charts/backend-config
+  - charts/datarepo
   - charts/serviceaccount-psp
