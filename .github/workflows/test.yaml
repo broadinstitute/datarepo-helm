@@ -104,6 +104,7 @@ jobs:
         run: |
           helm delete test -n ${{ env.NAMESPACE }}
           kubectl delete pvc -n ${{ env.NAMESPACE }} --all
+          kubectl delete namespace ${{ env.NAMESPACE }}
 
       - name: clean whitelist
         if: always()
