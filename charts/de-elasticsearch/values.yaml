@@ -33,9 +33,11 @@ elasticsearch:
         storage: 30Gi
 
   rbac:
+    name: "k;jgkfdf"
     create: true
 
   podSecurityPolicy:
+    name: "k;jgkf"
     create: true
     spec:
       privileged: true
