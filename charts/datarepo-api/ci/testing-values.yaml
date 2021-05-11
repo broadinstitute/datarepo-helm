@@ -3,9 +3,6 @@
 image:
   tag: 1.0.180
 fullnameOverride: test-datarepo-api
-shutdownTimeoutSeconds: 3
-readinessInitialDelaySeconds: 0
-livenessInitialDelaySeconds: 0
 env:
   GOOGLE_PROJECTID: broad-jade-integration
   GOOGLE_SINGLEDATAPROJECTID: broad-jade-integration-data
