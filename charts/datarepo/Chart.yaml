@@ -46,9 +46,7 @@ dependencies:
   version: 0.0.6
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: create-secret-manager-secret.enabled
-  # uncomment after cloud deployment of just de-elasticsearch completes,
-  # and updates the chart.lock and index.yaml
-#- name: de-elasticsearch
-#  version: 0.1.0
-#  repository: https://broadinstitute.github.io/datarepo-helm/
-#  condition: de-elasticsearch.enabled
+- name: de-elasticsearch
+  version: 0.1.1
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  condition: de-elasticsearch.enabled

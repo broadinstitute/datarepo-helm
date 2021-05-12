@@ -10,7 +10,6 @@ elasticsearch:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html
 
   replicas: 3
-
   image: "docker.elastic.co/elasticsearch/elasticsearch-oss"
   imageTag: "7.10.2"
   imagePullPolicy: "IfNotPresent"

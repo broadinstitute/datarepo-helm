@@ -14,5 +14,8 @@ dependencies:
 - name: create-secret-manager-secret
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.6
-digest: sha256:bce2c3b1619efe9970ed70652160ec15a1a155d670a92ec01a75b515e5cd4560
-generated: "2021-05-12T16:53:45.191547452Z"
+- name: de-elasticsearch
+  repository: https://broadinstitute.github.io/datarepo-helm/
+  version: 0.1.1
+digest: sha256:5830dea246f09a0186be023585ef88cef8f9d0c52579f690cf99ae4573a2f150
+generated: "2021-05-12T14:01:31.341844-04:00"

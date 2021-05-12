@@ -34,6 +34,7 @@ jobs:
           helm repo add datarepo-helm https://broadinstitute.github.io/datarepo-helm
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
           helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add elastic https://helm.elastic.co
           helm repo update
 
       - name: Set up chart-testing

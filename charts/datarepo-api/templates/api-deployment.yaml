@@ -51,6 +51,7 @@ spec:
           initialDelaySeconds: {{ .Values.readinessInitialDelaySeconds }}
           periodSeconds: 10
           timeoutSeconds: 3
+          ## todo: increase this?
           failureThreshold: 2
         livenessProbe:
           httpGet:
