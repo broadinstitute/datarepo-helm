@@ -1,8 +1,0 @@
----
-secrets:
-  - secretName: testsecret
-    vals:
-      - kubeSecretKey: testsecret
-        path: secret/dsde/datarepo/integration/testsecret
-        encoding: base64
-        vaultKey: key
