@@ -44,6 +44,14 @@ spec:
       containers:
       - name: {{ include "datarepo-api.fullname" . }}
         image: {{ include "datarepo-api.image" . }}
+        startupProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: {{ .Values.image.port }}
+          initialDelaySeconds: {{ .Values.startupInitialDelaySeconds }}
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 60
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness
@@ -51,7 +59,6 @@ spec:
           initialDelaySeconds: {{ .Values.readinessInitialDelaySeconds }}
           periodSeconds: 10
           timeoutSeconds: 3
-          ## todo: increase this?
           failureThreshold: 2
         livenessProbe:
           httpGet:
