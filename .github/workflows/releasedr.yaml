@@ -45,7 +45,7 @@ jobs:
         uses: helm/chart-releaser-action@v1.2.1
         env:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
-          CR_SKIP_EXISTING: "true"
+          CR_SKIP_EXISTING: "false"
 
       - name: "Create new umbrealla chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
