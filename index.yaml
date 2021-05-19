@@ -25,7 +25,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.0.6
     created: "2020-06-22T14:57:16.224817-04:00"
-    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager CRD
+    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager
+      CRD
     digest: 41ce0a714625c4a5686510213bf729fabc44118ff41045f1d0cd6b74fa7cab8c
     home: https://broadinstitute.github.io/datarepo-helm/
     keywords:
@@ -46,7 +47,8 @@ entries:
     version: 0.0.6
   - apiVersion: v2
     created: "2020-01-22T14:15:10.44888-05:00"
-    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager CRD
+    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager
+      CRD
     digest: cb5c67450f928dfc63575d3a249598235d2a046558551d01bcedf5753cae0d8b
     keywords:
     - google
@@ -66,7 +68,8 @@ entries:
     version: 0.0.5
   - apiVersion: v2
     created: "2020-01-09T15:19:52.240798-05:00"
-    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager CRD
+    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager
+      CRD
     digest: 944d328f24a7e7e81091c14e859f653cca9fa9f08a9e04846104b244da7d4a2d
     keywords:
     - google
@@ -86,7 +89,8 @@ entries:
     version: 0.0.4
   - apiVersion: v2
     created: "2020-01-09T14:37:39.433065-05:00"
-    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager CRD
+    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager
+      CRD
     digest: 3c531c6c8e5cd6b1a101de220e2fec7a001d053fe4d417bf7629d624274e6178
     keywords:
     - google
@@ -106,7 +110,8 @@ entries:
     version: 0.0.3
   - apiVersion: v2
     created: "2020-01-09T14:26:57.476948-05:00"
-    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager CRD
+    description: A Helm chart for Vault to Kubernetes secrets using the secerts-manager
+      CRD
     digest: 509574423f62e2a3d7fc7911cde199d08a2c1fe9018e4d5b14235bd982e15cd1
     keywords:
     - google
@@ -182,6 +187,51 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/cron-job-0.0.1/cron-job-0.0.1.tgz
     version: 0.0.1
   datarepo:
+  - apiVersion: v2
+    appVersion: 0.1.134
+    created: "2021-05-19T02:14:48.206949156Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.83
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.22
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.75
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.7
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    - condition: de-elasticsearch.enabled
+      name: de-elasticsearch
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.1.1
+    description: A Helm chart to deploy an entire datarepo
+    digest: 46bf9ab67c688d3033e76b1136eb7cc56f54f3426fc2c19a592beee8827f13bc
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.134/datarepo-0.1.134.tgz
+    version: 0.1.134
   - apiVersion: v2
     appVersion: 0.1.133
     created: "2021-05-12T16:54:43.459710576Z"
@@ -5102,6 +5152,27 @@ entries:
     version: 0.0.2
   datarepo-api:
   - apiVersion: v2
+    appVersion: 1.77.0
+    created: "2021-05-19T02:14:48.336918222Z"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: 60143bdd4f33975ceb15fb1d816a81d0d85b1989689619962451d2f3fd3f5aba
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.88/datarepo-api-0.0.88.tgz
+    version: 0.0.88
+  - apiVersion: v2
     appVersion: 1.74.0
     created: "2021-05-12T16:53:11.158261067Z"
     description: A Helm chart to deploy datarepo api server for Kubernetes
@@ -6702,6 +6773,27 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-monitoring-0.0.1/datarepo-monitoring-0.0.1.tgz
     version: 0.0.1
   datarepo-ui:
+  - apiVersion: v2
+    appVersion: 0.57.0
+    created: "2021-05-19T02:14:48.458318186Z"
+    description: A Helm chart to deploy datarepo ui server for Kubernetes
+    digest: 6dd4bf7d0c92538b41447190e6b0e0a54a77a2f8a19dbc9ad3d187aaaaa62c30
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-ui
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.76/datarepo-ui-0.0.76.tgz
+    version: 0.0.76
   - apiVersion: v2
     appVersion: 0.56.0
     created: "2021-04-30T22:20:45.697668326Z"
@@ -8857,7 +8949,8 @@ entries:
   - apiVersion: v2
     appVersion: 0.0.3
     created: "2020-04-10T16:36:13.524128617Z"
-    description: A Helm chart to deploy a service accout and psp roles for Kubernetes namespace
+    description: A Helm chart to deploy a service accout and psp roles for Kubernetes
+      namespace
     digest: 2b1abb46d4f098aa8038a41cdf4cb9d45edfe9ccfb1974a1d7a4cce951b92b66
     home: https://broadinstitute.github.io/datarepo-helm/
     keywords:
@@ -8876,7 +8969,8 @@ entries:
     version: 0.0.3
   - apiVersion: v2
     created: "2019-12-11T14:21:20.093353-05:00"
-    description: A Helm chart to deploy a service accout and psp roles for Kubernetes namespace
+    description: A Helm chart to deploy a service accout and psp roles for Kubernetes
+      namespace
     digest: ba5394fc9ea8627f8d9eaec7cad357f6803fc16850eb7b1ad10968d61583786d
     keywords:
     - google
@@ -8961,4 +9055,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2019-12-11T14:21:19.24677-05:00"
+generated: "2021-05-19T02:14:48.712429381Z"
