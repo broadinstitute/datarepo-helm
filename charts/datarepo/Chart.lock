@@ -7,7 +7,7 @@ dependencies:
   version: 0.0.22
 - name: datarepo-ui
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.76
+  version: 0.0.77
 - name: gcloud-sqlproxy
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.19.7
@@ -17,5 +17,5 @@ dependencies:
 - name: de-elasticsearch
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.1.1
-digest: sha256:e55571ab4ef1030f247ebc5fdebc50ad65473dfc7bbd9d02ff0cc346bffe839b
-generated: "2021-05-21T20:52:42.828559401Z"
+digest: sha256:70936ddd00609965c1bb80e84db0ea884064b9bc1b1f1e2eedfcce4d615d948d
+generated: "2021-05-24T16:43:31.648920854Z"
