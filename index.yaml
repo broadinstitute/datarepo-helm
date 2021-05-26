@@ -188,6 +188,51 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    appVersion: 0.1.143
+    created: "2021-05-26T23:54:22.19273303Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.94
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.22
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.77
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.7
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    - condition: de-elasticsearch.enabled
+      name: de-elasticsearch
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.1.1
+    description: A Helm chart to deploy an entire datarepo
+    digest: d415dc7dcbdef0475966bce83b70e1a0695029b8b32ffe7d6dda7e2e2ee50c3c
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.143/datarepo-0.1.143.tgz
+    version: 0.1.143
+  - apiVersion: v2
     appVersion: 0.1.142
     created: "2021-05-26T21:45:32.803401011Z"
     dependencies:
@@ -9517,4 +9562,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2021-05-26T23:52:58.374923807Z"
+generated: "2021-05-26T23:54:22.196581267Z"
