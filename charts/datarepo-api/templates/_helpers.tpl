@@ -86,6 +86,13 @@ Generate existingServiceAccountSecretKey key name in the secret
 {{- end -}}
 
 {{/*
+Generate existingApplicationSecretSecretKey key name in the secret
+*/}}
+{{- define "datarepo-api.secretKeyApplicationSecret" -}}
+{{ default "application-secret" .Values.existingApplicationSecretSecretKey }}
+{{- end -}}
+
+{{/*
 Generate the secret name for DB
 */}}
 {{- define "datarepo-api.secretNameDB" -}}
@@ -100,10 +107,17 @@ Generate the secret name for SA
 {{- end -}}
 
 {{/*
+Generate the secret name for Azure
+*/}}
+{{- define "datarepo-api.secretNameAzure" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingSecretAzure }}
+{{- end -}}
+
+{{/*
 Check if any type of credentials are defined
 */}}
 {{- define "datarepo-api.hasCredentials" -}}
-{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey ) -}}
+{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingSecretAzure .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey .Values.existingApplicationSecretSecretKey ) -}}
 {{- end -}}
 
 {{/*

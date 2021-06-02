@@ -99,6 +99,11 @@ spec:
             secretKeyRef:
               name: {{ include "datarepo-api.secretNameDB" . }}
               key: {{ include "datarepo-api.secretKeyStairwayDb" . }}
+        - name: AZURE_CREDENTIALS_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "datarepo-api.secretNameAzure" . }}
+              key: {{ include "datarepo-api.secretKeyApplicationSecret" . }}
         {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/sa-key.json

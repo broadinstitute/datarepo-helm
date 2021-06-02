@@ -52,6 +52,7 @@ secretsgeneric:
   datarepoPassword: ""
   stairwayPassword: ""
   serivceAccountCredentialFileJson: ""
+  applicationSecret: ""
 ## Specify an existing secret holding the cloud-sql database credentials
 existingSecretDB: ""
 ## The key in the existing secret that stores the Datarepo DB credentials
@@ -62,3 +63,7 @@ existingStairwayDbSecretKey: ""
 existingSecretSA: ""
 ## The key in the existing secret that stores the GCP Service account credentials
 existingServiceAccountSecretKey: ""
+## Specify an existing secret holding the Azure credentials
+existingSecretAzure: ""
+## The key in the existing secret that stores the Azure application secret
+existingApplicationSecretSecretKey: ""
