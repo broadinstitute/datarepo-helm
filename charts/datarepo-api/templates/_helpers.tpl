@@ -89,7 +89,7 @@ Generate existingServiceAccountSecretKey key name in the secret
 Generate existingRBSSecretKey key name in the secret
 */}}
 {{- define "datarepo-api.secretKeyRBS" -}}
-{{ default "application-secret" .Values.existingRBSSecretKey }}
+{{ default "rbs-credential-file-json" .Values.existingRBSSecretKey }}
 {{- end -}}
 
 {{/*
