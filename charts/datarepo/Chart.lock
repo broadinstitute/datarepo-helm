@@ -1,7 +1,7 @@
 dependencies:
 - name: datarepo-api
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.105
+  version: 0.0.106
 - name: oidc-proxy
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.22
@@ -17,5 +17,5 @@ dependencies:
 - name: de-elasticsearch
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.1.1
-digest: sha256:23ec7677af64a11b793b6e9a8c22d042ae231ae83f39ddee27ec73c840331854
-generated: "2021-06-09T19:13:29.203898825Z"
+digest: sha256:192e8de1dbadc8505d4183db2a42a91db537209c312b7fd065bcf21df5d2b317
+generated: "2021-06-10T12:54:36.520552784Z"
