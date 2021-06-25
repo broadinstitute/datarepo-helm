@@ -7,6 +7,17 @@ create-secret-manager-secret:
           path: secret/dsde/datarepo/integration/sa-key-b64
           encoding: base64
           vaultKey: sa
+    - secretName: test-azure
+      vals:
+        - kubeSecretKey: applicationsecret
+          path: secret/dsde/datarepo/integration/helm-azure-integration
+          vaultKey: applicationsecret
+    - secretName: test-rbs-sa
+      vals:
+        - kubeSecretKey: rbsserviceaccount
+          path: secret/dsde/terra/kernel/integration/tools/buffer/client-sa
+          encoding: base64
+          vaultKey: key
 
 gcloud-sqlproxy:
   enabled: false
@@ -28,6 +39,11 @@ datarepo-api:
     DB_DATAREPO_URI: jdbc:postgresql://test-postgresql.integration-temp:5432/datarepo
     DATAREPO_DNSNAME: jade-temp.datarepo-integration.broadinstitute.org
     IT_JADE_API_URL: https://jade-temp.datarepo-integration.broadinstitute.org
+    AZURE_CREDENTIALS_APPLICATIONID: 22cb243c-f1a5-43d8-8f12-6566bcce6542
+    AZURE_CREDENTIALS_HOMETENANTID: fad90753-2022-4456-9b0a-c7e5b934e408
+    RBS_ENABLED: true
+    RBS_POOL_ID: datarepo_v1
+    RBS_INSTANCE_URL: https://buffer.tools.integ.envs.broadinstitute.org
   serviceAccount:
     create: true
   rbac:
@@ -38,6 +54,10 @@ datarepo-api:
   existingStairwayDbSecretKey: "postgresql-password"
   existingSecretSA: "test-sa"
   existingServiceAccountSecretKey: "datareposerviceaccount"
+  existingSecretAzure: "test-azure"
+  existingApplicationSecretSecretKey: "applicationsecret"
+  existingSecretRBS: "test-rbs-sa"
+  existingRBSSecretKey: "rbsserviceaccount"
 
 datarepo-ui:
   enabled: true

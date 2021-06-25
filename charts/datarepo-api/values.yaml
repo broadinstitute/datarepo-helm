@@ -53,6 +53,7 @@ secretsgeneric:
   stairwayPassword: ""
   serivceAccountCredentialFileJson: ""
   applicationSecret: ""
+  rbsCredentialFileJson: ""
 ## Specify an existing secret holding the cloud-sql database credentials
 existingSecretDB: ""
 ## The key in the existing secret that stores the Datarepo DB credentials
@@ -67,3 +68,7 @@ existingServiceAccountSecretKey: ""
 existingSecretAzure: ""
 ## The key in the existing secret that stores the Azure application secret
 existingApplicationSecretSecretKey: ""
+## Specify an existing secret holding the RBS service account credentials
+existingSecretRBS: ""
+## The key in the existing secret that stores the RBS service account credentials
+existingRBSSecretKey: ""
