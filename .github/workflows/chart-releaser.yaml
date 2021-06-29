@@ -5,7 +5,10 @@ on:
 
 jobs:
   release_chart:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -31,3 +34,17 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
           CR_SKIP_EXISTING: "true"
+
+      - name: "Notify Slack"
+        if: always()
+        uses: broadinstitute/action-slack@v3.8.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }} # required to work with job field
+        with:
+          status: ${{ job.status }}
+          fields: job,repo,message
+          channel: "#jade-alerts"
+          username: "Data Repo tests"
+          text: "Release Helm Charts"
