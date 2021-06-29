@@ -45,6 +45,6 @@ jobs:
         with:
           status: ${{ job.status }}
           fields: job,repo,message
-          channel: "#jade-alerts"
-          username: "Data Repo tests"
+          channel: "#jade-spam"
+          username: "datarepo-helm actions"
           text: "Release Helm Charts"
