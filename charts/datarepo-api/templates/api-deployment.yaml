@@ -5,7 +5,7 @@ metadata:
   name: {{ include "datarepo-api.fullname" . }}
   labels:
     {{- include "datarepo-api.labels" . | nindent 4 }}
-adfadsf$%$d" # testing lint failure
+
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
