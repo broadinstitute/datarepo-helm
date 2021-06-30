@@ -5,6 +5,7 @@ metadata:
   name: {{ include "datarepo-api.fullname" . }}
   labels:
     {{- include "datarepo-api.labels" . | nindent 4 }}
+
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
