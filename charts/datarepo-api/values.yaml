@@ -54,6 +54,8 @@ secretsgeneric:
   serivceAccountCredentialFileJson: ""
   applicationSecret: ""
   rbsCredentialFileJson: ""
+  synapseUser: ""
+  synapsePassword: ""
 ## Specify an existing secret holding the cloud-sql database credentials
 existingSecretDB: ""
 ## The key in the existing secret that stores the Datarepo DB credentials
