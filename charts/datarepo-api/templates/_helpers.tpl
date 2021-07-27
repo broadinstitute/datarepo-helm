@@ -128,10 +128,24 @@ Generate the secret name for RBS
 {{- end -}}
 
 {{/*
+Generate the secret name for Synapse Admin User
+*/}}
+{{- define "datarepo-api.secretNameSynapseUser" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingSecretSynapseUser }}
+{{- end -}}
+
+{{/*
+Generate the secret name for Synapse Admin Password
+*/}}
+{{- define "datarepo-api.secretNameSynapsePassword" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingSecretSynapsePassword }}
+{{- end -}}
+
+{{/*
 Check if any type of credentials are defined
 */}}
 {{- define "datarepo-api.hasCredentials" -}}
-{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingSecretAzure .Values.existingSecretRBS .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey .Values.existingApplicationSecretSecretKey .Values.existingRBSSecretKey) -}}
+{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingSecretAzure .Values.existingSecretRBS .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey .Values.existingApplicationSecretSecretKey .Values.existingRBSSecretKey .Values.existingSecretSynapseUser .Values.existingSecretSynapsePassword) -}}
 {{- end -}}
 
 {{/*

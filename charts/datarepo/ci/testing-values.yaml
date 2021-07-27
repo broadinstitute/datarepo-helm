@@ -18,6 +18,18 @@ create-secret-manager-secret:
           path: secret/dsde/terra/kernel/integration/tools/buffer/client-sa
           encoding: base64
           vaultKey: key
+    - secretName: test-synapse-user
+      vals:
+        - kubeSecretKey: synapse-us-east-sql-admin-user
+          path: dsde/datarepo/dev/helm-azure
+          encoding: base64
+          vaultKey: key
+    - secretName: test-synapse-password
+      vals:
+        - kubeSecretKey: synapse-us-east-sql-admin-password
+          path: dsde/datarepo/dev/helm-azure
+          encoding: base64
+          vaultKey: key
 
 gcloud-sqlproxy:
   enabled: false
@@ -58,6 +70,8 @@ datarepo-api:
   existingApplicationSecretSecretKey: "applicationsecret"
   existingSecretRBS: "test-rbs-sa"
   existingRBSSecretKey: "rbsserviceaccount"
+  existingSecretSynapseUser: "test-synapse-user"
+  existingSecretSynapsePassword: "test-synapse-password"
 
 datarepo-ui:
   enabled: true
