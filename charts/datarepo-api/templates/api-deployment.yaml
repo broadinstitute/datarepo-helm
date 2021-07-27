@@ -86,10 +86,6 @@ spec:
           mountPath: /var/secrets/google/
         - name: rbs-key
           mountPath: /var/secrets/rbs/
-        - name: synapse-user-key
-          mountPath: /var/secrets/azure/synapse/user/
-        - name: synapse-password-key
-          mountPath: /var/secrets/azure/synapse/password/
         {{ end -}}
         ports:
         - containerPort: {{ .Values.image.port }}
@@ -120,12 +116,12 @@ spec:
         - name: AZURE_SYNAPSE_SQLADMINUSER
           valueFrom:
             secretKeyRef:
-              name: {{ include "datarepo-api.secretNameSynapseUser" . }}
+              name: {{ include "datarepo-api.secretNameAzure" . }}
               key: {{ include "datarepo-api.secretKeySynapseUser" . }}
         - name: AZURE_SYNAPSE_SQLADMINPASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ include "datarepo-api.secretNameSynapsePassword" . }}
+              name: {{ include "datarepo-api.secretNameAzure" . }}
               key: {{ include "datarepo-api.secretKeySynapsePassword" . }}
         {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS
