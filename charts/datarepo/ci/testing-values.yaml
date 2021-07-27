@@ -12,12 +12,16 @@ create-secret-manager-secret:
         - kubeSecretKey: applicationsecret
           path: secret/dsde/datarepo/integration/helm-azure-integration
           vaultKey: applicationsecret
-        # - kubeSecretKey: synapse-us-east-sql-admin-user
-        #   path: dsde/datarepo/integration/helm-azure-integration
-        #   vaultKey: synapse-us-east-sql-admin-user
-        # - kubeSecretKey: synapse-us-east-sql-admin-password
-        #   path: dsde/datarepo/integration/helm-azure-integration
-        #   vaultKey: synapse-us-east-sql-admin-password
+    - secretName: test-synapse-user
+      vals:
+        - kubeSecretKey: synapse-us-east-sql-admin-user
+          path: dsde/datarepo/integration/helm-azure-integration
+          vaultKey: synapse-us-east-sql-admin-user
+    - secretName: test-synapse-password
+      vals:
+        - kubeSecretKey: synapse-us-east-sql-admin-password
+          path: dsde/datarepo/integration/helm-azure-integration
+          vaultKey: synapse-us-east-sql-admin-password
     - secretName: test-rbs-sa
       vals:
         - kubeSecretKey: rbsserviceaccount
@@ -62,8 +66,8 @@ datarepo-api:
   existingServiceAccountSecretKey: "datareposerviceaccount"
   existingSecretAzure: "test-azure"
   existingApplicationSecretSecretKey: "applicationsecret"
-  # existingSynapseUserSecretKey: "synapse-us-east-sql-admin-user"
-  # existingSynapsePasswordSecretKey: "synapse-us-east-sql-admin-password"
+  existingSynapseUserSecretKey: "test-synapse-user"
+  existingSynapsePasswordSecretKey: "test-synapse-password"
   existingSecretRBS: "test-rbs-sa"
   existingRBSSecretKey: "rbsserviceaccount"
 
