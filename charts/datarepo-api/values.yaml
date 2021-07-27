@@ -68,11 +68,11 @@ existingServiceAccountSecretKey: ""
 existingSecretAzure: ""
 ## The key in the existing secret that stores the Azure application secret
 existingApplicationSecretSecretKey: ""
-## Specify an existing secret holding the RBS service account credentials
-existingSecretRBS: ""
-## The key in the existing secret that stores the RBS service account credentials
-existingRBSSecretKey: ""
 ## The key in the existing secret that stores the azure synapse admin user name
 existingSynapseUserSecretKey: ""
 ## The key in the existing secret that stores the azure synapse admin password
 existingSynapsePasswordSecretKey: ""
+## Specify an existing secret holding the RBS service account credentials
+existingSecretRBS: ""
+## The key in the existing secret that stores the RBS service account credentials
+existingRBSSecretKey: ""
