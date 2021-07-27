@@ -73,6 +73,6 @@ existingSecretRBS: ""
 ## The key in the existing secret that stores the RBS service account credentials
 existingRBSSecretKey: ""
 ## The key in the existing secret that stores the azure synapse admin user name
-existingSecretSynapseUser: ""
+existingSynapseUserSecretKey: ""
 ## The key in the existing secret that stores the azure synapse admin password
-existingSecretSynapsePassword: ""
+existingSynapsePasswordSecretKey: ""
