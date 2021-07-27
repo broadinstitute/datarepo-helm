@@ -13,10 +13,10 @@ create-secret-manager-secret:
           path: secret/dsde/datarepo/integration/helm-azure-integration
           vaultKey: applicationsecret
         - kubeSecretKey: synapse-us-east-sql-admin-user
-          path: dsde/datarepo/dev/helm-azure
+          path: dsde/datarepo/integration/helm-azure-integration
           vaultKey: synapse-us-east-sql-admin-user
         - kubeSecretKey: synapse-us-east-sql-admin-password
-          path: dsde/datarepo/dev/helm-azure
+          path: dsde/datarepo/integration/helm-azure-integration
           vaultKey: synapse-us-east-sql-admin-password
     - secretName: test-rbs-sa
       vals:
