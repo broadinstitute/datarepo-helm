@@ -32,7 +32,7 @@ jobs:
         uses: broadinstitute/workflow-dispatch@v1
         with:
           workflow: Release helm charts
-          token: ${{ secrets.WORKFLOW_DISPATCH }}
+          token: ${{ secrets.BROADBOT_TOKEN }}
 
       - name: "Notify Slack"
         if: always()

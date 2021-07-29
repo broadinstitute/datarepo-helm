@@ -26,19 +26,19 @@ jobs:
         uses: broadinstitute/workflow-dispatch@v1.1
         with:
           workflow: Release helm charts
-          token: ${{ secrets.WORKFLOW_DISPATCH }}
+          token: ${{ secrets.BROADBOT_TOKEN }}
 
       - name: Trigger action to run alpha chart promotion
         uses: broadinstitute/workflow-dispatch@v1.1
         with:
           workflow: Alpha Chart Promotion
-          token: ${{ secrets.WORKFLOW_DISPATCH }}
+          token: ${{ secrets.BROADBOT_TOKEN }}
 
       - name: Trigger action to run alpha chart promotion
         uses: broadinstitute/workflow-dispatch@v1.1
         with:
           workflow: Integration Chart Promotion
-          token: ${{ secrets.WORKFLOW_DISPATCH }}
+          token: ${{ secrets.BROADBOT_TOKEN }}
 
       - name: "Notify Slack"
         if: always()
