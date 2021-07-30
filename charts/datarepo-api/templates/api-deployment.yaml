@@ -113,6 +113,16 @@ spec:
             secretKeyRef:
               name: {{ include "datarepo-api.secretNameAzure" . }}
               key: {{ include "datarepo-api.secretKeyApplicationSecret" . }}
+        - name: AZURE_SYNAPSE_SQLADMINUSER
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "datarepo-api.secretNameAzure" . }}
+              key: {{ include "datarepo-api.secretKeySynapseUser" . }}
+        - name: AZURE_SYNAPSE_SQLADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "datarepo-api.secretNameAzure" . }}
+              key: {{ include "datarepo-api.secretKeySynapsePassword" . }}
         {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/sa-key.json
