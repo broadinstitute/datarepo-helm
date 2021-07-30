@@ -100,6 +100,20 @@ Generate existing key name in the secret
 {{- end -}}
 
 {{/*
+Generate exisiting key name in the secret for the synapse user
+*/}}
+{{- define "datarepo-api.secretKeySynapseUser" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingSynapseUserSecretKey }}
+{{- end -}}
+
+{{/*
+Generate exisiting key name in the secret for the synapse password
+*/}}
+{{- define "datarepo-api.secretKeySynapsePassword" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingSynapsePasswordSecretKey }}
+{{- end -}}
+
+{{/*
 Generate the secret name for DB
 */}}
 {{- define "datarepo-api.secretNameDB" -}}
@@ -131,7 +145,7 @@ Generate the secret name for RBS
 Check if any type of credentials are defined
 */}}
 {{- define "datarepo-api.hasCredentials" -}}
-{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingSecretAzure .Values.existingSecretRBS .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey .Values.existingApplicationSecretSecretKey .Values.existingRBSSecretKey) -}}
+{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingSecretAzure .Values.existingSecretRBS .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey .Values.existingApplicationSecretSecretKey .Values.existingRBSSecretKey .Values.existingSynapseUserSecretKey .Values.existingSynapsePasswordSecretKey) -}}
 {{- end -}}
 
 {{/*
