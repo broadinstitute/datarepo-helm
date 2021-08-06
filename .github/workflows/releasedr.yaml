@@ -47,7 +47,7 @@ jobs:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
           CR_SKIP_EXISTING: "true"
 
-      - name: "Create new umbrealla chart"
+      - name: "Create new umbrella chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
 
       - name: "[datarepo-helm] Merge in changes to umbrella chart"
