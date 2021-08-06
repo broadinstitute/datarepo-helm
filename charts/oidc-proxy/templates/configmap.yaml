@@ -24,7 +24,7 @@ data:
     Header always set Access-Control-Allow-Headers DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Accept,Referer,X-App-Id,Origin
     Header always set Access-Control-Allow-Methods GET,POST,DELETE,PUT,PATCH,OPTIONS,HEAD
     Header always set X-Content-Type-Options nosniff
-    Header always set Strict-Transport-Security max-age=31536000; includeSubDomains
+    Header always set Strict-Transport-Security max-age=31536000;includeSubDomains
 
     # If CORS_REGEX environment variable is set, match the domains in the regex
     # to set the Access-Control-Allow-Origin. Domains not in the regex will be
