@@ -17,6 +17,8 @@ proxyPass:
   # http://api-service.data-repo:8080/shutdown
   swagger:
   # http://api-service.data-repo:8080/swagger-ui.html
+  introspect:
+  # http://api-service.data-repo:8080/introspect
   api:
   # http://api-service.data-repo:8080
 ## Extra environment variables that will be pass onto deployment pods

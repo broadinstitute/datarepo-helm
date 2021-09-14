@@ -50,7 +50,12 @@ data:
             proxy_pass {{ .Values.proxyPass.swagger }};
         }
 
-        location ~ (configuration|ga4gh|webjars|api-docs|swagger-resources) {
+        # get introspection working
+        location /introspect {
+            proxy_pass {{ .Values.proxyPass.introspect }};
+        }
+
+        location ~ (configuration|ga4gh|webjars|api-docs|swagger-resources|introspect) {
             proxy_pass {{ .Values.proxyPass.api }};
         }
 
