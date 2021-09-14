@@ -44,7 +44,6 @@ data:
     Header merge Vary Origin
 
     ProxyTimeout ${PROXY_TIMEOUT}
-    OIDCOAuthTokenIntrospectionInterval 60
 
     <VirtualHost _default_:${HTTPD_PORT}>
         ServerAdmin ${SERVER_ADMIN}
@@ -111,3 +110,8 @@ data:
             ${FILTER3}
         </Location>
     </VirtualHost>
+
+  oauth2conf: |-
+    OAuth2TokenVerify metadata https://tdrb2ctest.b2clogin.com/tdrb2ctest.onmicrosoft.com/B2C_1A_SIGNUP_SIGNIN/v2.0/.well-known/openid-configuration metadata.ssl_verify=true&verify.iat=skip
+    OAuth2TokenVerify introspect ${PROXY_URL}introspect introspect.ssl_verify=false&verify.iat=skip
+

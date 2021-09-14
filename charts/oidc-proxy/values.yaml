@@ -5,9 +5,12 @@
 replicaCount: 1
 
 image:
-  repository: broadinstitute/openidc-proxy
-  version: bernick_tcell
-  pullPolicy: IfNotPresent
+#  repository: broadinstitute/openidc-proxy
+#  version: bernick_tcell
+#  pullPolicy: IfNotPresent
+  repository: gcr.io/broad-jade-dev/oauth2-proxy
+  version: mod_oauth2_poc
+  pullPolicy: Always
 
 ## Extra environment variables that will be pass onto deployment pods
 env: {}
