@@ -12,12 +12,14 @@ data:
     ServerTokens ProductOnly
     TraceEnable off
 
-    LogFormat "%h %l %u \"%{OIDC_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
-    LogFormat "%{X-Forwarded-For}i %l %u \"%{OIDC_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" proxy
+    LogFormat "%h %l %u \"%{OAUTH2_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%{X-Forwarded-For}i %l %u \"%{OAUTH2_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" proxy
     SetEnvIf X-Forwarded-For "^.*\..*\..*\..*" forwarded
     CustomLog "/dev/stdout" combined env=!forwarded
     CustomLog "/dev/stdout" proxy env=forwarded
     LogLevel ${LOG_LEVEL}
+
+    AddType application/x-httpd-php .php
 
     Header unset X-Frame-Options
     Header always set X-Frame-Options SAMEORIGIN
@@ -54,10 +56,29 @@ data:
         RewriteCond  %{HTTP:X-Forwarded-Proto} !https
         RewriteCond %{REQUEST_URI}  !^/(version|status) [NC]
 
+        DocumentRoot /app
+
         ErrorLog /dev/stdout
         CustomLog "/dev/stdout" combined
 
-        <Location ${PROXY_PATH}>
+        <Directory "/app">
+            # disable mod_rewrite
+            RewriteEngine off
+
+            AllowOverride All
+            Options -Indexes
+
+            Order allow,deny
+            Allow from all
+        </Directory>
+
+        <Location /introspect/>
+            RewriteEngine off
+            Require all granted
+            AuthType None
+        </Location>
+
+        <LocationMatch "^${PROXY_PATH}(?!introspect)">
             RewriteCond %{REQUEST_METHOD} OPTIONS
             RewriteRule ^(.*)$ $1 [R=204,L]
 
@@ -72,7 +93,7 @@ data:
             ProxyPassReverse ${PROXY_URL}
 
             ${FILTER}
-        </Location>
+        </LocationMatch>
 
         <Location ${PROXY_PATH2}>
             RewriteEngine On
@@ -85,6 +106,10 @@ data:
 
             ${AUTH_TYPE2}
             ${AUTH_REQUIRE2}
+
+            RequestHeader set oidc_claim_email "expr=%{HTTP:OAUTH2_CLAIM_email}"
+            RequestHeader set oidc_claim_user_id "expr=%{HTTP:OAUTH2_CLAIM_sub}"
+            RequestHeader set oidc_access_token "expr=%{HTTP:OAUTH2_CLAIM_access_token}"
 
             ProxyPass ${PROXY_URL2}
             ProxyPassReverse ${PROXY_URL2}
@@ -113,5 +138,5 @@ data:
 
   oauth2conf: |-
     OAuth2TokenVerify metadata https://tdrb2ctest.b2clogin.com/tdrb2ctest.onmicrosoft.com/B2C_1A_SIGNUP_SIGNIN/v2.0/.well-known/openid-configuration metadata.ssl_verify=true&verify.iat=skip
-    OAuth2TokenVerify introspect ${PROXY_URL}introspect introspect.ssl_verify=false&verify.iat=skip
+    OAuth2TokenVerify introspect http://127.0.0.1/introspect/ introspect.ssl_verify=false&verify.iat=skip
 
