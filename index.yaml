@@ -11227,6 +11227,27 @@ entries:
     version: 0.0.2
   datarepo-api:
   - apiVersion: v2
+    appVersion: 1.203.0
+    created: "2021-10-22T15:38:05.114943532Z"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: 9a98bcad41b35498cc1ad9db00455887d0f0b18ad9c5e32e9a40a1842180bfe9
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.207/datarepo-api-0.0.207.tgz
+    version: 0.0.207
+  - apiVersion: v2
     appVersion: 1.202.0
     created: "2021-10-21T19:06:31.375466299Z"
     description: A Helm chart to deploy datarepo api server for Kubernetes
@@ -18280,4 +18301,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2021-10-22T13:54:03.232544134Z"
+generated: "2021-10-22T15:38:05.122827817Z"
