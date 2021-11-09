@@ -133,11 +133,17 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: TERRA_COMMON_KUBERNETES_PODNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
 # Share the timeout value between Kubernetes and Datarepo
         - name: DATAREPO_SHUTDOWNTIMEOUTSECONDS
           value: "{{ .Values.shutdownTimeoutSeconds }}"
 # Tell Datarepo is it running in kubernetes
         - name: DATAREPO_INKUBERNETES
+          value: "true"
+        - name: TERRA_COMMON_KUBERNETES_INKUBERNETES
           value: "true"
 {{- if .Values.resources }}
         resources:
