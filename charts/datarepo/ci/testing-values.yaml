@@ -32,10 +32,8 @@ datarepo-api:
   enabled: true
   fullnameOverride: test-datarepo-api
   image:
-    tag: 1.143.0
+    tag: 1.233.0
   env:
-    GOOGLE_PROJECTID: broad-jade-integration
-    GOOGLE_SINGLEDATAPROJECTID: broad-jade-integration-data
     GOOGLE_ALLOWREUSEEXISTINGBUCKETS: true
     GOOGLE_ALLOWREUSEEXISTINGPROJECTS: true
     DB_DATAREPO_USERNAME: drmanager
