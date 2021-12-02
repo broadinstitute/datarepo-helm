@@ -51,13 +51,3 @@ app.kubernetes.io/name: {{ include "frontend-config.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "frontend-config.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "frontend-config.fullname" .) .Values.serviceAccount.name }}
-{{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
-{{- end -}}
-{{- end -}}
