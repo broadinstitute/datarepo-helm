@@ -19841,6 +19841,28 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/de-elasticsearch-0.1.1/de-elasticsearch-0.1.1.tgz
     version: 0.1.1
+  frontend-config:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2021-12-02T21:44:39.622550952Z"
+    description: A Helm chart for creating Kubernetes frontend configs
+    digest: 424dd721c3c7f8364163383f6b02d1c25bf4fbd25c55cb4b8d0dd7b7b9e8ec68
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: nmalfroy@broadinstitute.org
+      name: nmalfroy
+    name: frontend-config
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/frontend-config-0.1.0/frontend-config-0.1.0.tgz
+    version: 0.1.0
   gcloud-sqlproxy:
   - apiVersion: v2
     appVersion: "1.17"
@@ -20674,4 +20696,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2021-12-02T21:38:12.593109967Z"
+generated: "2021-12-02T21:44:39.629884007Z"
