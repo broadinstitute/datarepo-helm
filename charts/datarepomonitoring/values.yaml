@@ -4,6 +4,9 @@ create-secret-manager-secret:
 backend-config:
   enabled: false
 
+frontend-config:
+  enabled: false
+
 grafana-gcp-managed-cert:
   enabled: false
 
