@@ -21,8 +21,9 @@ spec:
         app: {{ include "gcloud-sqlproxy.fullname" . }}
         app.kubernetes.io/name: {{ include "gcloud-sqlproxy.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-      annotations:
-{{ toYaml .Values.podAnnotations | indent 8 }}
+      {{- if .Values.podAnnotations }}
+      annotations: {{ toYaml .Values.podAnnotations | nindent 8 }}
+      {{- end }}
     spec:
       {{- if .Values.rbac.create }}
       serviceAccountName: {{ include "gcloud-sqlproxy.fullname" . }}
