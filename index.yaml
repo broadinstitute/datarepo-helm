@@ -13702,6 +13702,27 @@ entries:
     version: 0.0.2
   datarepo-api:
   - apiVersion: v2
+    appVersion: 1.259.0
+    created: "2021-12-16T22:13:36.997974278Z"
+    description: A Helm chart to deploy datarepo api server for Kubernetes
+    digest: b29550db989e4ecaf54049794ea86dc72eadcf86c104fa60f7b98522523bc12e
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-api
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.262/datarepo-api-0.0.262.tgz
+    version: 0.0.262
+  - apiVersion: v2
     appVersion: 1.258.0
     created: "2021-12-16T21:09:32.673376784Z"
     description: A Helm chart to deploy datarepo api server for Kubernetes
@@ -21193,22 +21214,6 @@ entries:
     version: 0.0.2
   de-elasticsearch:
   - apiVersion: v2
-    created: "2021-12-16T22:12:59.751506885Z"
-    dependencies:
-    - name: elasticsearch
-      repository: https://helm.elastic.co
-      version: 7.10.2
-    description: A Helm chart for elastic search in data explorer
-    digest: c46b02feb5c129f25b59fb9c9b0983e0a0ccc37fc396a0508a7e2f3f1499b626
-    maintainers:
-    - email: tjiang@broadinstitute.org
-      name: tjiang
-    name: de-elasticsearch
-    type: application
-    urls:
-    - https://github.com/broadinstitute/datarepo-helm/releases/download/de-elasticsearch-0.1.2/de-elasticsearch-0.1.2.tgz
-    version: 0.1.2
-  - apiVersion: v2
     created: "2021-05-05T18:39:51.19933672Z"
     dependencies:
     - name: elasticsearch
@@ -22079,4 +22084,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2021-12-16T22:12:59.7625315Z"
+generated: "2021-12-16T22:13:37.008129832Z"
