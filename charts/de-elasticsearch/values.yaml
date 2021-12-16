@@ -10,8 +10,8 @@ elasticsearch:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html
 
   replicas: 3
-  image: "docker.elastic.co/elasticsearch/elasticsearch-oss"
-  imageTag: "7.10.2"
+  image: "gcr.io/broad-dsp-gcr-public/elasticsearch/elasticsearch-oss"
+  imageTag: "7.10.2-patched"
   imagePullPolicy: "IfNotPresent"
 
   # We'll probably want to tweak this, leaving as default for now,
