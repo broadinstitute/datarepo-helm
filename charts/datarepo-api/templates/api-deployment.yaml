@@ -145,6 +145,12 @@ spec:
           value: "true"
         - name: TERRA_COMMON_KUBERNETES_INKUBERNETES
           value: "true"
+        - name: TERRA_COMMON_KUBERNETES_POD_NAME_FILTER
+          value: "datarepo-api"
+        - name: TERRA_COMMON_TRACING_STACKDRIVER_EXPORT_ENABLED
+          value: "false"
+        - name: OPENCENCUS_SPRING_ENABLED
+          value: "false"
 {{- if .Values.resources }}
         resources:
 {{- toYaml .Values.resources | nindent 10 }}
