@@ -10,7 +10,7 @@ elasticsearch:
   # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html
 
   replicas: 3
-  image: "gcr.io/broad-dsp-gcr-public/elasticsearch/elasticsearch-oss"
+  image: "us.gcr.io/broad-dsp-gcr-public/elasticsearch/elasticsearch-oss"
   imageTag: "7.10.2-patched"
   imagePullPolicy: "IfNotPresent"
 
