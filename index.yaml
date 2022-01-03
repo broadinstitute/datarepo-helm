@@ -21481,6 +21481,22 @@ entries:
     version: 0.0.2
   de-elasticsearch:
   - apiVersion: v2
+    created: "2022-01-03T20:04:35.66394469Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.10.2
+    description: A Helm chart for elastic search in data explorer
+    digest: bb52b8568f2b81b2f40ff2bd484ab5798bb1d947239377685f9d5cb167b10799
+    maintainers:
+    - email: tjiang@broadinstitute.org
+      name: tjiang
+    name: de-elasticsearch
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/de-elasticsearch-0.1.4/de-elasticsearch-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
     created: "2021-12-17T15:12:30.742105113Z"
     dependencies:
     - name: elasticsearch
@@ -22367,4 +22383,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2021-12-20T17:59:27.408016748Z"
+generated: "2022-01-03T20:04:35.677342508Z"
