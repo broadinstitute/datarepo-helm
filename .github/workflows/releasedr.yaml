@@ -48,7 +48,7 @@ jobs:
           CR_SKIP_EXISTING: "true"
 
       - name: "Create new umbrella chart"
-        uses: broadinstitute/datarepo-umbrella-release-action@0.2.0
+        uses: broadinstitute/datarepo-umbrella-release-action@0.3.0
 
       - name: "[datarepo-helm] Merge in changes to umbrella chart"
         uses: broadinstitute/datarepo-actions/actions/merger@0.57.0
