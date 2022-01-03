@@ -2,7 +2,7 @@ apiVersion: v2
 name: de-elasticsearch
 description: A Helm chart for elastic search in data explorer
 type: application
-version: 0.1.3
+version: 0.1.4
 maintainers:
   - email: tjiang@broadinstitute.org
     name: tjiang
