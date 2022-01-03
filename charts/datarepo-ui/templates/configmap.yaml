@@ -40,11 +40,6 @@ data:
             proxy_pass {{ .Values.proxyPass.status }};
         }
 
-        # pass the shutdown through, too
-        location /shutdown {
-            proxy_pass {{ .Values.proxyPass.shutdown }};
-        }
-
         # get swagger working
         location /swagger-ui.html {
             proxy_pass {{ .Values.proxyPass.swagger }};

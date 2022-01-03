@@ -72,7 +72,6 @@ datarepo-ui:
     tag: 0.73.0
   proxyPass:
     status: http://test-datarepo-api.integration-temp:8080/status
-    shutdown: http://test-datarepo-api.integration-temp:8080/shutdown
     swagger: http://test-datarepo-api.integration-temp:8080/swagger-ui.html
     api: http://test-datarepo-api.integration-temp:8080
   serviceAccount:
