@@ -16,6 +16,6 @@ dependencies:
   version: 0.0.6
 - name: de-elasticsearch
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.1.3
-digest: sha256:fd467636326926b43b0dcac1d4654b0ed6179933d6085f7c4a149bb7f6c03bc6
-generated: "2022-01-04T14:50:44.740111511Z"
+  version: 0.1.4
+digest: sha256:15a4cba322df2b5ac2712222177539e6cffab37c21577072c569959e640fec84
+generated: "2022-01-04T10:45:52.990233-05:00"

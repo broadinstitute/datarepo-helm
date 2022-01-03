@@ -47,6 +47,6 @@ dependencies:
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: create-secret-manager-secret.enabled
 - name: de-elasticsearch
-  version: 0.1.3
+  version: 0.1.4
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: de-elasticsearch.enabled
