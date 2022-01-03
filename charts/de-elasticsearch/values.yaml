@@ -11,7 +11,7 @@ elasticsearch:
 
   replicas: 3
   image: "us.gcr.io/broad-dsp-gcr-public/elasticsearch/elasticsearch-oss"
-  imageTag: "7.10.2-patched"
+  imageTag: "7.10.2-log4j-2.17.1"
   imagePullPolicy: "IfNotPresent"
 
   # We'll probably want to tweak this, leaving as default for now,
