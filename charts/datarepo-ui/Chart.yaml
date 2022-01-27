@@ -2,8 +2,8 @@ apiVersion: v2
 name: datarepo-ui
 description: A Helm chart to deploy datarepo ui server for Kubernetes
 type: application
-version: 0.0.121
-appVersion: 0.101.0
+version: 0.0.122
+appVersion: 0.102.0
 keywords:
   - google
   - cloud
