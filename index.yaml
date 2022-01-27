@@ -188,6 +188,51 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    appVersion: 0.1.359
+    created: "2022-01-27T19:54:08.205213067Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.284
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.25
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.123
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.7
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    - condition: de-elasticsearch.enabled
+      name: de-elasticsearch
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.1.4
+    description: A Helm chart to deploy an entire datarepo
+    digest: 6a9d287f5bf98ff7bd3476c92dabdc9b94a4faffad088c74f9aaa223ce889eae
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.359/datarepo-0.1.359.tgz
+    version: 0.1.359
+  - apiVersion: v2
     appVersion: 0.1.358
     created: "2022-01-27T14:45:02.654391837Z"
     dependencies:
@@ -24204,4 +24249,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2022-01-27T19:52:18.549940724Z"
+generated: "2022-01-27T19:54:08.215891378Z"
