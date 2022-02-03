@@ -46,6 +46,7 @@ data:
 
     ProxyTimeout ${PROXY_TIMEOUT}
     OIDCOAuthTokenIntrospectionInterval 60
+    OIDCCacheEncrypt On
 
     <VirtualHost _default_:${HTTPD_PORT}>
         ServerAdmin ${SERVER_ADMIN}
