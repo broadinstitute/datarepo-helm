@@ -12,8 +12,8 @@ description: A Helm chart to deploy an entire datarepo
 type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version
-version: 0.1.375
-appVersion: 0.1.375
+version: 0.1.376
+appVersion: 0.1.376
 keywords:
 - google
 - cloud
@@ -27,7 +27,7 @@ sources:
 # dependencies
 dependencies:
 - name: datarepo-api
-  version: 0.0.295
+  version: 0.0.296
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: datarepo-api.enabled
 - name: oidc-proxy
