@@ -90,7 +90,7 @@ jobs:
       - name: supporting postgres chart
         timeout-minutes: 3
         run: |
-          helm upgrade test bitnami/postgresql -f .github/postgres-values.yaml --install -n ${{ env.NAMESPACE }} --create-namespace
+          helm upgrade test bitnami/postgresql -f .github/postgres-values.yaml --install -n ${{ env.NAMESPACE }} --create-namespace --version 10.16.1
           while [[ $(kubectl get pods -l app.kubernetes.io/name=postgresql -n ${{ env.NAMESPACE }} -o \
             'jsonpath={..status.conditions[?(@.type=="Ready")].status}') != "True" ]]; do echo "waiting for pod" && sleep 1; done
 
