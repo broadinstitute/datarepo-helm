@@ -46,7 +46,11 @@ data:
 
     ProxyTimeout ${PROXY_TIMEOUT}
     OIDCOAuthTokenIntrospectionInterval 60
-    OIDCCacheEncrypt On
+    # Enabling cache encryption via 'OIDCCacheEncrypt On' has two side effects:
+    # 1. it reduces key size to avoid "could not construct cache key since key size is too large" cache errors
+    # 2. it causes intermittent duplicate requests between the proxy and the underlying app
+    # the latter side effect is too dangerous, so cache encryption is off
+    OIDCCacheEncrypt Off
 
     <VirtualHost _default_:${HTTPD_PORT}>
         ServerAdmin ${SERVER_ADMIN}
