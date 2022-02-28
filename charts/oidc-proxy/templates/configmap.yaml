@@ -63,6 +63,7 @@ data:
         RewriteEngine On
         RewriteCond  %{HTTP:X-Forwarded-Proto} !https
         RewriteCond %{REQUEST_URI}  !^/(version|status) [NC]
+        SSLProxyEngine on
 
         ErrorLog /dev/stdout
         CustomLog "/dev/stdout" combined
@@ -118,5 +119,13 @@ data:
             ProxyPassReverse ${PROXY_URL3}
 
             ${FILTER3}
+        </Location>
+
+        # Bigquery redirect logic.  Note: we are not authorizing the request since that is handled by the bigquery API
+        # This is here to work around CORS rules that are enforced by the BigQuery APIs.  This makes it so that ours are
+        # used instead.
+        <Location /bigquery>
+            ProxyPass https://bigquery.googleapis.com/bigquery
+            ProxyPassReverse https://bigquery.googleapis.com/bigquery
         </Location>
     </VirtualHost>
