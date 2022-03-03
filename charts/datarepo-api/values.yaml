@@ -79,7 +79,7 @@ existingSecretRBS: ""
 ## The key in the existing secret that stores the RBS service account credentials
 existingRBSSecretKey: ""
 
-# Sherlock is DSP's internal tool for tracking service deployments across all of terra and 
+# Sherlock is DSP's internal tool for tracking service deployments across all of terra and
 # extracting metric data from them. https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance
 sherlock:
   # This will only be enabled in environments managed by argocd
