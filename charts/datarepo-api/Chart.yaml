@@ -12,7 +12,7 @@ description: A Helm chart to deploy datarepo api server for Kubernetes
 type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.0.307
+version: 0.0.308
 appVersion: 1.303.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application
@@ -32,5 +32,5 @@ dependencies:
   # For Collecting Accelerate metrics from data repo in dsp-grafana dashboards
   - name: sherlock-reporter
     condition: sherlock.enabled
-    version: 0.5.0
+    version: 0.6.0
     repository: 'https://terra-helm.storage.googleapis.com'

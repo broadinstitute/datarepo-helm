@@ -2,7 +2,7 @@ apiVersion: v2
 name: datarepo-ui
 description: A Helm chart to deploy datarepo ui server for Kubernetes
 type: application
-version: 0.0.134
+version: 0.0.135
 appVersion: 0.113.0
 keywords:
   - google
@@ -19,5 +19,5 @@ dependencies:
   # For collecting accelerate metrics from data repo in dsp-grafana dashboards
   - name: sherlock-reporter
     condition: sherlock.enabled
-    version: 0.5.0
+    version: 0.6.0
     repository: 'https://terra-helm.storage.googleapis.com'
