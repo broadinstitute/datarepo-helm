@@ -13,7 +13,7 @@ livenessInitialDelaySeconds: 10
 startupInitialDelaySeconds: 15
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo
-  tag: 1.303.0
+  tag: 1.304.0
   pullPolicy: IfNotPresent
   port: 8080
 ## Extra environment variables that will be pass onto deployment pods
@@ -78,7 +78,6 @@ existingSynapsePasswordSecretKey: ""
 existingSecretRBS: ""
 ## The key in the existing secret that stores the RBS service account credentials
 existingRBSSecretKey: ""
-
 # Sherlock is DSP's internal tool for tracking service deployments across all of terra and
 # extracting metric data from them. https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance
 sherlock:
@@ -89,7 +88,6 @@ sherlock:
   appImageName: gcr.io/broad-jade-dev/jade-data-repo
   appName: datarepo-api
   sherlockImageTag: v0.0.19
-
   vault:
     # client certificate credentials used to authenticate to sherlock
     pathPrefix: secret/suitable/sherlock/prod
