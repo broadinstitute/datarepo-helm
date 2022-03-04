@@ -47,3 +47,18 @@ rbac:
 service:
   type: ClusterIP
   port: 8080
+
+# Sherlock is DSP's internal tool for tracking service deployments across all of terra and
+# extracting metric data from them. https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance
+sherlock:
+  # This will only be enabled in environments managed by argocd
+  enabled: false
+  # The library chart used here does not have access to .Values.image.repository
+  # thus a small amount of duplication is required here
+  appImageName: gcr.io/broad-jade-dev/jade-data-repo-ui
+  appName: datarepo-ui
+  sherlockImageTag: v0.0.19
+
+  vault:
+    # client certificate credentials used to authenticate to sherlock
+    pathPrefix: secret/suitable/sherlock/prod
