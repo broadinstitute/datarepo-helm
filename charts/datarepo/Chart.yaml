@@ -13,8 +13,8 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version
 
-version: 0.1.397
-appVersion: 0.1.397
+version: 0.1.398
+appVersion: 0.1.398
 keywords:
 - google
 - cloud
