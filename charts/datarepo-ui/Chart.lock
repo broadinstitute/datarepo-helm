@@ -1,0 +1,6 @@
+dependencies:
+- name: sherlock-reporter
+  repository: https://terra-helm.storage.googleapis.com
+  version: 0.5.0
+digest: sha256:25e4880857ea09128ee5543c1c036ca7dea0abc6c67535f4f3d6a0716b80edf3
+generated: "2022-03-04T14:33:24.396227687Z"
