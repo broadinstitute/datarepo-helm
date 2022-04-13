@@ -12,12 +12,14 @@ data:
     ServerTokens ProductOnly
     TraceEnable off
 
-    LogFormat "%h %l %u \"%{OIDC_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
-    LogFormat "%{X-Forwarded-For}i %l %u \"%{OIDC_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" proxy
+    LogFormat "%h %l %u \"%{OAUTH2_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{Origin}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%{X-Forwarded-For}i %l %u \"%{OAUTH2_CLAIM_email}i\" \"%{X-App-ID}i\" [%{%FT%T}t.%{msec_frac}t%{%z}t] %D %X \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" proxy
     SetEnvIf X-Forwarded-For "^.*\..*\..*\..*" forwarded
     CustomLog "/dev/stdout" combined env=!forwarded
     CustomLog "/dev/stdout" proxy env=forwarded
     LogLevel ${LOG_LEVEL}
+    
+    AddType application/x-httpd-php .php
 
     Header unset X-Frame-Options
     Header always set X-Frame-Options SAMEORIGIN
@@ -68,7 +70,24 @@ data:
         ErrorLog /dev/stdout
         CustomLog "/dev/stdout" combined
 
-        <Location ${PROXY_PATH}>
+        DocumentRoot /app
+        
+        <Directory "/app">
+          AllowOverride All
+          Options -Indexes
+          
+          Order allow,deny
+          Allow from all
+        </Directory>
+
+        <Location /introspect/>
+            RewriteEngine off
+            Require all granted
+            AuthType None
+        </Location>
+    
+        <LocationMatch "^(?!/introspect/)(${PROXY_PATH})(.*)">
+            RewriteEngine On
             RewriteCond %{REQUEST_METHOD} OPTIONS
             RewriteRule ^(.*)$ $1 [R=204,L]
 
@@ -79,11 +98,11 @@ data:
             ${AUTH_TYPE}
             ${AUTH_REQUIRE}
 
-            ProxyPass ${PROXY_URL}
+            ProxyPassMatch ${PROXY_URL}$2
             ProxyPassReverse ${PROXY_URL}
 
             ${FILTER}
-        </Location>
+        </LocationMatch>
 
         <Location ${PROXY_PATH2}>
             RewriteEngine On
@@ -95,7 +114,24 @@ data:
             </Limit>
 
             ${AUTH_TYPE2}
-            ${AUTH_REQUIRE2}
+            <RequireAll>
+              <RequireAll>
+                ${AUTH_REQUIRE2}
+              </RequireAll>
+              <RequireAll>
+                # Note: we need to reference %{REMOTE_USER} to ensure that this expression is evaluated _after_ the authentication has happened
+                # %{REMOTE_USER} != %{REMOTE_USER} will never evaluate to true but will ensure that the expression is evaluated at the correct time
+                # An example expression can look like:
+                # Require expr "%{REMOTE_USER} != %{REMOTE_USER} || %{HTTP:OAUTH2_CLAIM_email} =~ /.gserviceaccount.com$/"
+                Require expr "%{REMOTE_USER} != %{REMOTE_USER} || ('${ENVIRONMENT}' in {'dev', 'alpha', 'perf', 'staging', 'prod'} && (${ALLOW_EXPRESSION}))"
+              </RequireAll>
+            </RequireAll>
+
+
+            RequestHeader set oidc_claim_email "expr=%{HTTP:OAUTH2_CLAIM_email}"
+            RequestHeader set oidc_claim_user_id "expr=%{HTTP:OAUTH2_CLAIM_sub}"
+            RequestHeader set oidc_access_token "expr=%{HTTP:OAUTH2_CLAIM_access_token}"
+            RequestHeader set oidc_claim_expires_in "expr=%{HTTP:OAUTH2_CLAIM_exp}"
 
             ProxyPass ${PROXY_URL2}
             ProxyPassReverse ${PROXY_URL2}
@@ -113,7 +149,23 @@ data:
             </Limit>
 
             ${AUTH_TYPE3}
-            ${AUTH_REQUIRE3}
+            <RequireAll>
+              <RequireAll>
+                ${AUTH_REQUIRE3}
+              </RequireAll>
+              <RequireAll>
+                # Note: we need to reference %{REMOTE_USER} to ensure that this expression is evaluated _after_ the authentication has happened
+                # %{REMOTE_USER} != %{REMOTE_USER} will never evaluate to true but will ensure that the expression is evaluated at the correct time
+                # An example expression can look like:
+                # Require expr "%{REMOTE_USER} != %{REMOTE_USER} || %{HTTP:OAUTH2_CLAIM_email} =~ /.gserviceaccount.com$/"
+                Require expr "%{REMOTE_USER} != %{REMOTE_USER} || ('${ENVIRONMENT}' in {'dev', 'alpha', 'perf', 'staging', 'prod'} && (${ALLOW_EXPRESSION}))"
+              </RequireAll>
+            </RequireAll>
+
+            RequestHeader set oidc_claim_email "expr=%{HTTP:OAUTH2_CLAIM_email}"
+            RequestHeader set oidc_claim_user_id "expr=%{HTTP:OAUTH2_CLAIM_sub}"
+            RequestHeader set oidc_access_token "expr=%{HTTP:OAUTH2_CLAIM_access_token}"
+            RequestHeader set oidc_claim_expires_in "expr=%{HTTP:OAUTH2_CLAIM_exp}"
 
             ProxyPass ${PROXY_URL3}
             ProxyPassReverse ${PROXY_URL3}
@@ -128,4 +180,14 @@ data:
             ProxyPass https://bigquery.googleapis.com/bigquery
             ProxyPassReverse https://bigquery.googleapis.com/bigquery
         </Location>
+    
+        # Oauth proxying logic.  This allows sending unauthed oauth requests through to the back end
+        <Location /oauth2>
+            ProxyPass ${PROXY_URL}oauth2
+            ProxyPassReverse ${PROXY_URL}oauth2
+        </Location>
     </VirtualHost>
+
+  oauth2conf: |-
+    OAuth2TokenVerify metadata {{ .Values.oidc.b2cMetadataEndpoint }} metadata.ssl_verify=true&verify.iat=skip
+    OAuth2TokenVerify introspect http://127.0.0.1/introspect/ introspect.ssl_verify=false&verify.iat=skip
