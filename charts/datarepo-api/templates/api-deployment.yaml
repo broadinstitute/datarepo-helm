@@ -1,4 +1,5 @@
 {{- $hasCredentials := include "datarepo-api.hasCredentials" . -}}
+{{- $hasOauthClientSecret := include "datarepo-api.hasOauthClientSecret" . -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -123,6 +124,13 @@ spec:
             secretKeyRef:
               name: {{ include "datarepo-api.secretNameAzure" . }}
               key: {{ include "datarepo-api.secretKeySynapsePassword" . }}
+        {{ end -}}
+        {{ if $hasOauthClientSecret -}}
+        - name: OIDC_CLIENTSECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "datarepo-api.secretNameOauth" . }}
+              key: {{ include "datarepo-api.secretKeyOauthClientSecret" . }}
         {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/sa-key.json

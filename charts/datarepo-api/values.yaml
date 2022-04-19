@@ -78,6 +78,11 @@ existingSynapsePasswordSecretKey: ""
 existingSecretRBS: ""
 ## The key in the existing secret that stores the RBS service account credentials
 existingRBSSecretKey: ""
+## Specify an existing secret holding the Oauth service account credentials
+existingSecretNameOauth: ""
+## The key in the existing secret that stores the Oauth client secret
+existingOauthClientSecretSecretKey: ""
+
 # Sherlock is DSP's internal tool for tracking service deployments across all of terra and
 # extracting metric data from them. https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance
 sherlock:

@@ -100,14 +100,14 @@ Generate existing key name in the secret
 {{- end -}}
 
 {{/*
-Generate exisiting key name in the secret for the synapse user
+Generate existing key name in the secret for the synapse user
 */}}
 {{- define "datarepo-api.secretKeySynapseUser" -}}
 {{ default (include "datarepo-api.fullname" .) .Values.existingSynapseUserSecretKey }}
 {{- end -}}
 
 {{/*
-Generate exisiting key name in the secret for the synapse password
+Generate existing key name in the secret for the synapse password
 */}}
 {{- define "datarepo-api.secretKeySynapsePassword" -}}
 {{ default (include "datarepo-api.fullname" .) .Values.existingSynapsePasswordSecretKey }}
@@ -157,4 +157,25 @@ Create repository image and imagetag with Terra Values.global.applicationVersion
 {{- else -}}
     {{ .Values.image.repository }}:{{ .Values.global.applicationVersion | default .Values.image.tag }}
 {{- end -}}
+{{- end -}}
+
+{{/*
+Generate the secret name for OAuth
+*/}}
+{{- define "datarepo-api.secretNameOauth" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingSecretNameOauth }}
+{{- end -}}
+
+{{/*
+Generate existing key name in the Oauth secret for the Oauth client secret
+*/}}
+{{- define "datarepo-api.secretKeyOauthClientSecret" -}}
+{{ default (include "datarepo-api.fullname" .) .Values.existingOauthClientSecretSecretKey }}
+{{- end -}}
+
+{{/*
+Check if the oauth client secret is defined
+*/}}
+{{- define "datarepo-api.hasOauthClientSecret" -}}
+{{ and .Values.existingSecretNameOauth .Values.existingOauthClientSecretSecretKey -}}
 {{- end -}}
