@@ -13,7 +13,7 @@ livenessInitialDelaySeconds: 10
 startupInitialDelaySeconds: 15
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo
-  tag: 1.334.0
+  tag: 1.335.0
   pullPolicy: IfNotPresent
   port: 8080
 ## Extra environment variables that will be pass onto deployment pods
@@ -82,7 +82,6 @@ existingRBSSecretKey: ""
 existingSecretNameOauth: ""
 ## The key in the existing secret that stores the Oauth client secret
 existingOauthClientSecretSecretKey: ""
-
 # Sherlock is DSP's internal tool for tracking service deployments across all of terra and
 # extracting metric data from them. https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance
 sherlock:
