@@ -53,10 +53,24 @@ spec:
           value: "{{ $value }}"
         {{- end }}
         {{- end }}
+        {{- if .Values.tcell.enabled }}
+        - name: TCELL_AGENT_APP_ID
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.tcell.tcellSecret }}
+              key: app-id
+        - name: TCELL_AGENT_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.tcell.tcellSecret }}
+              key: api-key
+        - name: ENABLE_TCELL
+          value: 'yes'
+        {{- end }}
         volumeMounts:
-          {{- if or .Values.tcell.tcellSecret .Values.tcell.tcellSecretKey }}
+          {{- if .Values.tcell.enabled }}
           - mountPath: /etc/apache2/tcell_agent.config
-            name: tcell
+            name: tcellconf
             subPath: tcell_agent.config
           {{- end }}
           - mountPath: /etc/apache2/sites-available/site.conf
@@ -66,14 +80,6 @@ spec:
             name: oauth2conf
             subPath: oauth2.conf
       volumes:
-        {{- if or .Values.tcell.tcellSecret .Values.tcell.tcellSecretKey }}
-        - name: tcell
-          secret:
-            secretName: {{ .Values.tcell.tcellSecret }}
-            items:
-            - key: {{ .Values.tcell.tcellSecretKey }}
-              path: tcell_agent.config
-        {{- end }}
         - name: siteconf
           configMap:
             name: {{ template "oidc-proxy.fullname" . }}
@@ -86,6 +92,14 @@ spec:
             items:
               - key: oauth2conf
                 path: oauth2.conf
+        {{- if .Values.tcell.enabled }}
+        - name: tcellconf
+          configMap:
+            name: {{ template "oidc-proxy.fullname" . }}
+            items:
+              - key: tcellconf
+                path: tcell_agent.config
+        {{- end }}
 
 {{- if .Values.resources }}
         resources:
