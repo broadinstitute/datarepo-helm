@@ -16,8 +16,10 @@ env: {}
 
 ## TCELL
 tcell:
+  enabled: false
+  ## Note: the secret must contain an app-id value and an api-key value
   tcellSecret: ""
-  tcellSecretKey: ""
+  host_identifier: ""
 
 ## Pod annotations
 podAnnotations: {}
