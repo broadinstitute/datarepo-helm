@@ -25834,6 +25834,32 @@ entries:
     version: 0.0.1
   datarepo-ui:
   - apiVersion: v2
+    appVersion: 0.125.0
+    created: "2022-04-25T21:22:08.452735536Z"
+    dependencies:
+    - condition: sherlock.enabled
+      name: sherlock-reporter
+      repository: https://terra-helm.storage.googleapis.com
+      version: 0.6.0
+    description: A Helm chart to deploy datarepo ui server for Kubernetes
+    digest: 647164d1b58181d5c8bd40bd9cca8dae5fe79898a8f668a16ef67ec0b10a6294
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-ui
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.149/datarepo-ui-0.0.149.tgz
+    version: 0.0.149
+  - apiVersion: v2
     appVersion: 0.124.0
     created: "2022-04-19T17:29:26.128056865Z"
     dependencies:
@@ -29274,6 +29300,27 @@ entries:
     version: 0.0.1
   oidc-proxy:
   - apiVersion: v2
+    appVersion: 0.0.33
+    created: "2022-04-25T21:22:08.649104814Z"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: 48281c7dd9fcdfc5c0fc4cffa6995ca2e325fb0705743d42a44119f499e2d0c3
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.33/oidc-proxy-0.0.33.tgz
+    version: 0.0.33
+  - apiVersion: v2
     appVersion: 0.0.32
     created: "2022-04-13T19:56:16.116647952Z"
     description: A Helm chart to deploy datarepo oidc server for Kubernetes
@@ -30013,4 +30060,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2022-04-21T18:58:21.146300466Z"
+generated: "2022-04-25T21:22:08.662907504Z"
