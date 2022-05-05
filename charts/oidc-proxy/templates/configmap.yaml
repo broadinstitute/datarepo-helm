@@ -193,6 +193,11 @@ data:
             ProxyPass ${PROXY_URL}oauth2
             ProxyPassReverse ${PROXY_URL}oauth2
         </Location>
+
+        <Location /googlesheets>
+          ProxyPass https://sheets.googleapis.com
+          ProxyPassReverse https://sheets.googleapis.com
+        </Location>
     </VirtualHost>
 
   oauth2conf: |-
