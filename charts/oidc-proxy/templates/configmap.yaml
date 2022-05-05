@@ -188,16 +188,17 @@ data:
             ProxyPassReverse https://bigquery.googleapis.com/bigquery
         </Location>
     
+        <Location /googlesheets>
+          ProxyPass https://sheets.googleapis.com
+          ProxyPassReverse https://sheets.googleapis.com
+        </Location>
+
         # Oauth proxying logic.  This allows sending unauthed oauth requests through to the back end
         <Location /oauth2>
             ProxyPass ${PROXY_URL}oauth2
             ProxyPassReverse ${PROXY_URL}oauth2
         </Location>
 
-        <Location /googlesheets>
-          ProxyPass https://sheets.googleapis.com
-          ProxyPassReverse https://sheets.googleapis.com
-        </Location>
     </VirtualHost>
 
   oauth2conf: |-
