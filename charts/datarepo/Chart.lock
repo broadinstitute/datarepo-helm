@@ -17,5 +17,8 @@ dependencies:
 - name: de-elasticsearch
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.1.4
+- name: postgres
+  repository: https://terra-helm.storage.googleapis.com/
+  version: 0.26.0
 digest: sha256:d4f39d758fbd2f614aa2c79e1a06edc929eda512db60dec4b009c854e8d7ae00
 generated: "2022-05-16T21:50:45.095308268Z"
