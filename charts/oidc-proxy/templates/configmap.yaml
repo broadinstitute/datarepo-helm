@@ -140,6 +140,8 @@ data:
         </Location>
 
         <Location ${PROXY_PATH3}>
+            RewriteEngine Off
+
             ${AUTH_TYPE3}
             <RequireAll>
               <RequireAll>
