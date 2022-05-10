@@ -142,6 +142,13 @@ data:
         <Location ${PROXY_PATH3}>
             RewriteEngine Off
 
+            # DRS OPTIONS endpoints can be accessed without any authentication.
+            # DRS POST endpoints typically use Passport auth, so the user does not need to pass through B2C login.
+            <Limit OPTIONS POST>
+                ${AUTH_TYPE}
+                ${AUTH_REQUIRE}
+            </Limit>
+
             ${AUTH_TYPE3}
             <RequireAll>
               <RequireAll>
@@ -168,28 +175,10 @@ data:
         </Location>
 
         # DRS GetServiceInfo endpoint can be accessed without any authentication.
-        # TODO: do we benefit from a more aggressive regex here?
         <Location ${PROXY_PATH3}/drs/v1/service-info>
             ${AUTH_TYPE}
             ${AUTH_REQUIRE}
         </Location>
-
-        # DRS OptionsObject endpoint can be accessed without any authentication.
-        # DRS PostObject endpoint will use Passport auth, so the user does not need to pass through B2C login.
-        <LocationMatch "^${PROXY_PATH3}/drs/v1/objects/([^\/]+)$">
-            <Limit OPTIONS POST>
-                ${AUTH_TYPE}
-                ${AUTH_REQUIRE}
-            </Limit>
-        </LocationMatch>
-
-        # DRS PostAccessUrl endpoint will use Passport auth, so the user does not need to pass through B2C login.
-        <LocationMatch "^${PROXY_PATH3}/drs/v1/objects/([^\/]+)/access/([^\/]+)$">
-            <Limit POST>
-                ${AUTH_TYPE}
-                ${AUTH_REQUIRE}
-            </Limit>
-        </LocationMatch>
 
         # Bigquery redirect logic.  Note: we are not authorizing the request since that is handled by the bigquery API
         # This is here to work around CORS rules that are enforced by the BigQuery APIs.  This makes it so that ours are
