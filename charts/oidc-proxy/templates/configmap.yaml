@@ -189,7 +189,9 @@ data:
     </VirtualHost>
 
   oauth2conf: |-
-    OAuth2TokenVerify metadata {{ .Values.oidc.b2cMetadataEndpoint }} metadata.ssl_verify=true&verify.iat=skip
+    {{- range .Values.ingress.b2cMetadataEndpoints }}
+    OAuth2TokenVerify metadata {{ . }} metadata.ssl_verify=true&verify.iat=skip
+    {{- end}}
     OAuth2TokenVerify introspect http://127.0.0.1/introspect/ introspect.ssl_verify=false&verify.iat=skip
 
   {{- if .Values.tcell.enabled }}
@@ -207,3 +209,5 @@ data:
       ]
     }
   {{- end }}
+  enableallowmethods: |-
+    LoadModule allowmethods_module /usr/lib/apache2/modules/mod_allowmethods.so
