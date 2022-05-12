@@ -99,7 +99,7 @@ jobs:
       - name: Run chart-testing (test)
         id: test
         if: success()
-        run: ct install --debug --print-config --config .github/test-config.yaml --namespace ${{ env.NAMESPACE }}
+        run: ct install --debug --print-config --config .github/test-config.yaml --namespace ${{ env.NAMESPACE }} --helm-extra-args "--timeout 100s"
 
       - name: delete supporting postgres chart
         if: always()
