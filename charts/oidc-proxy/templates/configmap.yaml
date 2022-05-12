@@ -140,12 +140,13 @@ data:
         </Location>
 
         <Location ${PROXY_PATH3}>
-            RewriteEngine On
-            RewriteCond %{REQUEST_METHOD} OPTIONS
-            RewriteRule ^(.*)$ $1 [R=204,L]
+            RewriteEngine Off
 
-            <Limit OPTIONS>
-                Require all granted
+            # DRS OPTIONS endpoints can be accessed without any authentication.
+            # DRS POST endpoints typically use Passport auth, so the user does not need to pass through B2C login.
+            <Limit OPTIONS POST>
+                ${AUTH_TYPE}
+                ${AUTH_REQUIRE}
             </Limit>
 
             ${AUTH_TYPE3}
@@ -171,6 +172,12 @@ data:
             ProxyPassReverse ${PROXY_URL3}
 
             ${FILTER3}
+        </Location>
+
+        # DRS GetServiceInfo endpoint can be accessed without any authentication.
+        <Location ${PROXY_PATH3}/drs/v1/service-info>
+            ${AUTH_TYPE}
+            ${AUTH_REQUIRE}
         </Location>
 
         # Bigquery redirect logic.  Note: we are not authorizing the request since that is handled by the bigquery API
