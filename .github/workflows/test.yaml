@@ -7,7 +7,8 @@ env:
   GOOGLE_ZONE: us-central1
   NAMESPACE: integration-temp
 
-on: pull_request
+on:
+  workflow_dispatch: {}
 
 jobs:
   test:
