@@ -216,5 +216,3 @@ data:
       ]
     }
   {{- end }}
-  enableallowmethods: |-
-    LoadModule allowmethods_module /usr/lib/apache2/modules/mod_allowmethods.so
