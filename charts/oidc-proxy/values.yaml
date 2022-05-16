@@ -79,7 +79,7 @@ ingress:
     - https://terradevb2c.b2clogin.com/terradevb2c.onmicrosoft.com/B2C_1A_SIGNUP_SIGNIN_TDR/v2.0/.well-known/openid-configuration
     - https://tdrb2ctest.b2clogin.com/tdrb2ctest.onmicrosoft.com/B2C_1A_SIGNUP_SIGNIN_TDR/v2.0/.well-known/openid-configuration
 
-# 
+#
 # New fields by DevOps
 #
 
