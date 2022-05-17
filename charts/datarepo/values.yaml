@@ -120,8 +120,10 @@ oidc-proxy:
   ##      faketlscert
   ##      -----END CERTIFICATE-----
 
-postgresql: # supply your Gcloudsql instance or use this
+# enable local postgres chart deployment (rather than external cloudsql)
+postgres: 
   enabled: false
+
 ## https://github.com/helm/charts/tree/master/stable/postgresql
 create-secret-manager-secret:
   enabled: false
