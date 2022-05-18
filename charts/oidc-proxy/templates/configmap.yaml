@@ -193,6 +193,11 @@ data:
           ProxyPassReverse https://sheets.googleapis.com
         </Location>
 
+        <Location /drive>
+          ProxyPass https://www.googleapis.com/drive
+          ProxyPassReverse https://www.googleapis.com/drive
+        </Location>
+
         # Oauth proxying logic.  This allows sending unauthed oauth requests through to the back end
         <Location /oauth2>
             ProxyPass ${PROXY_URL}oauth2
