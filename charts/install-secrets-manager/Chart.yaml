@@ -30,6 +30,7 @@ keywords:
 
 maintainers:
 - email: dsp-devops@broadinstitute.org
+  name: DevOps
 
 sources:
 - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
