@@ -25,6 +25,17 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 
 {{/*
+Name for the psp used by deployments in this chart
+*/}}
+{{- define "oidc-proxy.psp.name" -}}
+{{- if .Values.rbac.namespacePrefix -}}
+{{ .Release.Namespace }}-{{ include "oidc-proxy.fullname" . }}-pod-running-policy
+{{- else -}}
+{{ include "oidc-proxy.fullname" . }}-pod-running-policy
+{{- end -}}
+{{- end -}}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "oidc-proxy.chart" -}}

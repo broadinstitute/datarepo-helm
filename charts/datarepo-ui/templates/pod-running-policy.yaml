@@ -2,7 +2,7 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: "{{ include "datarepo-ui.fullname" . }}-pod-running-policy"
+  name: {{ include "datarepo-api.psp.name" . | quote }}
   namespace: {{ .Release.Namespace }}
   labels:
     name: podsecuritypolicy
