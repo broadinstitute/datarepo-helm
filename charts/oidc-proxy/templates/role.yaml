@@ -11,5 +11,5 @@ rules:
   resources: ['podsecuritypolicies']
   verbs: ["use"]
   resourceNames:
-    - "{{ include "oidc-proxy.fullname" . }}-oidc-pod-running-policy"
+    - {{ include "oidc-proxy.psp.name" . | quote }}
 {{- end }}

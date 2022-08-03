@@ -2,7 +2,7 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: "{{ include "oidc-proxy.fullname" . }}-oidc-pod-running-policy"
+  name: {{ include "oidc-proxy.psp.name" . | quote }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "oidc-proxy.labels" . | nindent 4 }}

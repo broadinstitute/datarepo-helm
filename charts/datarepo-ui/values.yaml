@@ -44,6 +44,8 @@ serviceAccount:
 rbac:
   # Specifies whether a psp should be created
   create: true
+  # If true, prefix the psp with the release's namespace. (Used to prevent conflicts in BEEs)
+  namespacePrefix: false
 service:
   type: ClusterIP
   port: 8080

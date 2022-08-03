@@ -11,5 +11,5 @@ rules:
   resources: ['podsecuritypolicies']
   verbs: ["use"]
   resourceNames:
-    - "{{ include "datarepo-ui.fullname" . }}-pod-running-policy"
+    - {{ include "datarepo-ui.psp.name" . | quote }}
 {{- end }}
