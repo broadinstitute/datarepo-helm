@@ -33776,6 +33776,30 @@ entries:
   gcloud-sqlproxy:
   - apiVersion: v2
     appVersion: "1.17"
+    created: "2022-08-08T20:48:50.064626042Z"
+    description: Google Cloud SQL Proxy
+    digest: 902888dca1608daca78e069295efef83486538685d3d11d627789a69775ff310
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: monster@broadinstitute.org
+      name: Monster
+    - email: jadeteam@broadinstitute.org
+      name: Jade
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.8/gcloud-sqlproxy-0.19.8.tgz
+    version: 0.19.8
+  - apiVersion: v2
+    appVersion: "1.17"
     created: "2020-06-09T18:56:36.452709395Z"
     description: Google Cloud SQL Proxy
     digest: 5e001250e382d1fb1a33f4279aa282e90c40d487b65b0ed2de0d91cf7b04b724
@@ -34058,6 +34082,27 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/install-secrets-manager-0.0.1/install-secrets-manager-0.0.1.tgz
     version: 0.0.1
   oidc-proxy:
+  - apiVersion: v2
+    appVersion: 0.0.38
+    created: "2022-08-08T20:48:50.192697429Z"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: db845e248d89a63473eb787c063baa01a82caf6c7147ee9779f86e4de44201f2
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.38/oidc-proxy-0.0.38.tgz
+    version: 0.0.38
   - apiVersion: v2
     appVersion: 0.0.36
     created: "2022-08-04T13:53:24.720663348Z"
@@ -34903,4 +34948,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-05T18:36:11.501347857Z"
+generated: "2022-08-08T20:48:50.207167583Z"
