@@ -211,6 +211,7 @@ data:
     OAuth2TokenVerify metadata {{ . }} metadata.ssl_verify=true&verify.iat=skip
     {{- end}}
     OAuth2TokenVerify metadata https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration metadata.ssl_verify=true&verify.exp=required&verify.iat=skip
+    OAuth2TokenVerify metadata https://accounts.google.com/.well-known/openid-configuration metadata.ssl_verify=true&verify.exp=required&verify.iat=skip
     OAuth2TokenVerify introspect http://127.0.0.1/introspect/ introspect.ssl_verify=false&verify.iat=skip
 
   {{- if .Values.tcell.enabled }}
