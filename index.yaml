@@ -33455,6 +33455,32 @@ entries:
     version: 0.0.1
   datarepo-ui:
   - apiVersion: v2
+    appVersion: 0.163.0
+    created: "2022-10-21T12:53:22.679847633Z"
+    dependencies:
+    - condition: sherlock.enabled
+      name: sherlock-reporter
+      repository: https://terra-helm.storage.googleapis.com
+      version: 0.6.0
+    description: A Helm chart to deploy datarepo ui server for Kubernetes
+    digest: a31c56de7242c43a3ff6713bdb94f2afbbda9d8c68b9cb35d31030f3d0e408d2
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo-ui
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.185/datarepo-ui-0.0.185.tgz
+    version: 0.0.185
+  - apiVersion: v2
     appVersion: 0.162.0
     created: "2022-10-20T22:37:56.114522436Z"
     dependencies:
@@ -38765,4 +38791,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-20T22:39:57.622897743Z"
+generated: "2022-10-21T12:53:22.698074849Z"
