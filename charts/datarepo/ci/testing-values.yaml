@@ -64,6 +64,7 @@ datarepo-api:
   existingSynapsePasswordSecretKey: "synapse-us-east-sql-admin-password"
   existingSecretRBS: "test-rbs-sa"
   existingRBSSecretKey: "rbsserviceaccount"
+  existingSentryDSNSecretKey: ""
 
 datarepo-ui:
   enabled: true
