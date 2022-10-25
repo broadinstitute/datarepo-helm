@@ -58,6 +58,7 @@ secretsgeneric:
   rbsCredentialFileJson: ""
   synapseUser: ""
   synapsePassword: ""
+  sentryDSN: ""
 ## Specify an existing secret holding the cloud-sql database credentials
 existingSecretDB: ""
 ## The key in the existing secret that stores the Datarepo DB credentials
@@ -84,6 +85,8 @@ existingRBSSecretKey: ""
 existingSecretNameOauth: ""
 ## The key in the existing secret that stores the Oauth client secret
 existingOauthClientSecretSecretKey: ""
+## The key in the existing secret that stores Sentry DNS
+existingSentryDSNSecretKey: ""
 # Sherlock is DSP's internal tool for tracking service deployments across all of terra and
 # extracting metric data from them. https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance
 sherlock:

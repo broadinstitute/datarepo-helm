@@ -124,7 +124,12 @@ spec:
             secretKeyRef:
               name: {{ include "datarepo-api.secretNameAzure" . }}
               key: {{ include "datarepo-api.secretKeySynapsePassword" . }}
-        {{ end -}}
+        - name: SENTRY_DSN
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "datarepo-api.secretNameSentry" . }}
+              key: {{ include "datarepo-api.secretKeySentryDSN" . }}
+        {{ end -}} 
         {{ if $hasOauthClientSecret -}}
         - name: OIDC_CLIENTSECRET
           valueFrom:
