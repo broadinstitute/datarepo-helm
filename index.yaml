@@ -188,6 +188,55 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    appVersion: 0.1.586
+    created: "2022-11-22T21:48:12.265025784Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.430
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.39
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.205
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.8
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    - condition: de-elasticsearch.enabled
+      name: de-elasticsearch
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.1.4
+    - condition: postgres.enabled
+      name: postgres
+      repository: https://terra-helm.storage.googleapis.com/
+      version: 0.26.0
+    description: A Helm chart to deploy an entire datarepo
+    digest: c8adb1610bc5ad60658eae1dd4111a6a4a4a79daa3b589135e4e6ed4bc662429
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.1.586/datarepo-0.1.586.tgz
+    version: 0.1.586
+  - apiVersion: v2
     appVersion: 0.1.585
     created: "2022-11-22T18:33:11.221201603Z"
     dependencies:
@@ -41041,4 +41090,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2022-11-22T21:46:07.191731944Z"
+generated: "2022-11-22T21:48:12.282349707Z"
