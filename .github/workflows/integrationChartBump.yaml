@@ -73,7 +73,7 @@ jobs:
           args: yq r ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }}
 
       - name: "[${{ matrix.repo }}] Merge multi chart version update"
-        uses: broadinstitute/datarepo-actions/actions/merger@0.57.0
+        uses: broadinstitute/datarepo-actions/actions/merger@0.65.0
         env:
           COMMIT_MESSAGE: "Datarepo Integration mutli chart version update"
           GITHUB_REPO: ${{ matrix.repo }}

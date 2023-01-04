@@ -32,7 +32,7 @@ jobs:
           args: yq w -i jade-data-repo/.github/workflows/alpha-promotion.yaml env.chartVersion ${{ steps.chartversion.outputs.version }}
 
       - name: "[jade-data-repo] Merge Changes"
-        uses: broadinstitute/datarepo-actions/actions/merger@0.57.0
+        uses: broadinstitute/datarepo-actions/actions/merger@0.65.0
         env:
           COMMIT_MESSAGE: "Datarepo chart version update: ${{ steps.chartversion.outputs.version }}"
           SWITCH_DIRECTORIES: "true"
