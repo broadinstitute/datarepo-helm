@@ -16,6 +16,11 @@ rbac:
   # Specifies whether a psp should be created
   create: false
 
+podSecurityPolicy:
+ # defaulting to true for backwards compatibility with old versions where PSP creation was coupled to
+ # rbac.create
+  create: true
+
 ## create new secrets
 secretsgeneric:
   roleId: ""
