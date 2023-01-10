@@ -1,4 +1,5 @@
 {{- if .Values.rbac.create -}}
+{{- if .Values.podSecurityPolicy.create -}}
 ---
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
@@ -21,6 +22,7 @@ spec:
     rule: RunAsAny
   volumes:
   - '*'
+{{- end }}
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
@@ -31,11 +33,13 @@ metadata:
     app: {{ .Chart.Name }}
     {{- include "install-secrets-manager.labels" . | nindent 4 }}
 rules:
+{{- if .Values.podSecurityPolicy.create }}
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']
   verbs: ["use"]
   resourceNames:
     - "{{ include "install-secrets-manager.fullname" . }}-pod-running-policy"
+{{- end }}
 - apiGroups:
   - ""
   resources:
