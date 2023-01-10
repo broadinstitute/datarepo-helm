@@ -26,7 +26,7 @@ jobs:
         with:
           persist-credentials: true
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
-          token: "${{ secrets.CR_TOKEN }}"
+          token: "${{ secrets.BROADBOT_TOKEN }}"
 
       - name: Trigger action to run chart-releaser
         uses: broadinstitute/workflow-dispatch@v1
