@@ -12,7 +12,7 @@ jobs:
         with:
           persist-credentials: true
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
-          token: "${{ secrets.CR_TOKEN }}"
+          token: "${{ secrets.BROADBOT_TOKEN }}"
 
       - name: Configure Git
         run: |
@@ -31,7 +31,7 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.2.1
         env:
-          CR_TOKEN: "${{ secrets.CR_TOKEN }}"
+          CR_TOKEN: "${{ secrets.BROADBOT_TOKEN }}"
           CR_SKIP_EXISTING: "true"
 
       - name: "Notify Slack"
