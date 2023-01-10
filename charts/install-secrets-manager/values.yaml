@@ -18,7 +18,7 @@ rbac:
 
 podSecurityPolicy:
  # defaulting to true for backwards compatibility with old versions where PSP creation was coupled to
- # rbac.create 
+ # rbac.create
   create: true
 
 ## create new secrets
