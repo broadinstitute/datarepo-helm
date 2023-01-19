@@ -12,8 +12,8 @@ description: A Helm chart to deploy datarepo api server for Kubernetes
 type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
-version: 0.0.442
-appVersion: 1.439.0
+version: 0.0.443
+appVersion: 1.440.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application
 # appVersion: 1.16.0
@@ -29,7 +29,7 @@ sources:
   - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
 home: https://broadinstitute.github.io/datarepo-helm/
 dependencies:
-  # For Collecting Accelerate metrics from data repo in dsp-grafana dashboards
+  # For collecting Accelerate metrics from data repo in dsp-grafana dashboards
   - name: sherlock-reporter
     condition: sherlock.enabled
     version: 0.6.0
