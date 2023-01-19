@@ -29,7 +29,7 @@ sources:
   - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
 home: https://broadinstitute.github.io/datarepo-helm/
 dependencies:
-  # For Collecting Accelerate metrics from data repo in dsp-grafana dashboards
+  # For collecting Accelerate metrics from data repo in dsp-grafana dashboards
   - name: sherlock-reporter
     condition: sherlock.enabled
     version: 0.6.0
