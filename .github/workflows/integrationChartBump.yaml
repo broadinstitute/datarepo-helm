@@ -22,14 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           path: datarepo-helm
           token: ${{ secrets.BROADBOT_TOKEN }}
 
       - name: 'Checkout ${{ matrix.repo }} repo'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           repository: 'databiosphere/${{ matrix.repo }}'
