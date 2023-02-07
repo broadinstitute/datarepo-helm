@@ -30,8 +30,6 @@ jobs:
   release_helm_charts:
     needs: release_non_dr_chart
     uses: ./.github/workflows/chart-releaser.yaml
-    with:
-      notify-slack: false
     secrets: inherit
 
   notify_slack:

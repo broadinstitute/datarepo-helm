@@ -3,8 +3,16 @@ env:
   charts: gcloud-sqlproxy datarepo-api datarepo-ui oidc-proxy
 
 on:
-  workflow_dispatch: {}
-  workflow_call: {}
+  workflow_dispatch:
+    inputs:
+      notify-slack:
+        default: true
+        type: boolean
+  workflow_call:
+    inputs:
+      notify-slack:
+        default: false
+        type: boolean
 
 jobs:
   indivdual_chart_promotion:
@@ -81,7 +89,7 @@ jobs:
       #     SWITCH_DIRECTORIES: "true"
 
       - name: "Notify Slack"
-        if: ${{ github.event_name != 'workflow_call' && always() }} # workflow_call has own slack notification
+        if: ${{ inputs.notify-slack && always() }}
         uses: broadinstitute/action-slack@v3.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

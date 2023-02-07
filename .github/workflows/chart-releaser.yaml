@@ -9,7 +9,7 @@ on:
   workflow_call:
     inputs:
       notify-slack:
-        default: true
+        default: false
         type: boolean
 
 jobs:
