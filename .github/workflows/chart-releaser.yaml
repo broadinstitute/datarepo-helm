@@ -1,7 +1,11 @@
 name: Release helm charts
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      notify-slack:
+        default: true
+        type: boolean
   workflow_call:
     inputs:
       notify-slack:
