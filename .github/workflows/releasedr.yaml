@@ -1,6 +1,7 @@
 name: Create chart Datarepo chart
 
 on:
+  workflow_call: {}
   workflow_dispatch: {}
   push:
     branches:

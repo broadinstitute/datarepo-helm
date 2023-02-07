@@ -2,6 +2,7 @@ name: Release helm charts
 
 on:
   workflow_dispatch: {}
+  workflow_call: {}
 
 jobs:
   release_chart:
