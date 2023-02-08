@@ -1,7 +1,16 @@
 
 name: Alpha Chart Promotion
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      notify-slack:
+        default: true
+        type: boolean
+  workflow_call:
+    inputs:
+      notify-slack:
+        default: false
+        type: boolean
 
 jobs:
   alpha_chart_promotion:
@@ -38,8 +47,8 @@ jobs:
           SWITCH_DIRECTORIES: "true"
 
       - name: "Notify Slack"
-        if: always()
-        uses: broadinstitute/action-slack@v3.8.0
+        if: ${{ inputs.notify-slack && always() }}
+        uses: broadinstitute/action-slack@v3.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

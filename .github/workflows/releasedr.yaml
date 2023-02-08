@@ -1,7 +1,16 @@
 name: Create chart Datarepo chart
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      notify-slack:
+        default: true
+        type: boolean
+  workflow_call:
+    inputs:
+      notify-slack:
+        default: false
+        type: boolean
   push:
     branches:
       - master
@@ -64,8 +73,8 @@ jobs:
           MERGE_BRANCH: master
 
       - name: "Notify Slack"
-        if: always()
-        uses: broadinstitute/action-slack@v3.8.0
+        if: ${{ (github.event_name == 'push' && always()) || (inputs.notify-slack && always()) }} # workflow_call has own slack notification
+        uses: broadinstitute/action-slack@v3.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

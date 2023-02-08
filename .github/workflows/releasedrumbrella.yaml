@@ -21,28 +21,29 @@ jobs:
           persist-credentials: true
           token: ${{ secrets.BROADBOT_TOKEN }}
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
-
-      - name: Trigger action to run chart-releaser for  datarepo umbrella
-        uses: broadinstitute/workflow-dispatch@v1.1
-        with:
-          workflow: Release helm charts
-          token: ${{ secrets.BROADBOT_TOKEN }}
-
-      - name: Trigger action to run alpha chart promotion
-        uses: broadinstitute/workflow-dispatch@v1.1
-        with:
-          workflow: Alpha Chart Promotion
-          token: ${{ secrets.BROADBOT_TOKEN }}
-
-      - name: Trigger action to run alpha chart promotion
-        uses: broadinstitute/workflow-dispatch@v1.1
-        with:
-          workflow: Integration Chart Promotion
-          token: ${{ secrets.BROADBOT_TOKEN }}
-
+  release_umbrella_helm_charts:
+    needs: release_new_umbrella_dr
+    uses: ./.github/workflows/chart-releaser.yaml
+    secrets: inherit
+  alpha_chart_promotion:
+    needs: release_new_umbrella_dr
+    uses: ./.github/workflows/terraAlphaChartBump.yaml
+    secrets: inherit
+  integration_chart_promotion:
+    needs: release_new_umbrella_dr
+    uses: ./.github/workflows/integrationChartBump.yaml
+    secrets: inherit
+  notify_slack:
+    needs:
+      - release_new_umbrella_dr
+      - release_umbrella_helm_charts
+      - alpha_chart_promotion
+      - integration_chart_promotion
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
       - name: "Notify Slack"
-        if: always()
-        uses: broadinstitute/action-slack@v3.8.0
+        uses: broadinstitute/action-slack@v3.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
