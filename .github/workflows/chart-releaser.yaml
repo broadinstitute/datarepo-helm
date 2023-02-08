@@ -37,14 +37,12 @@ jobs:
           helm repo add terra-helm https://terra-helm.storage.googleapis.com
           helm repo update
 
-      # - name: Run chart-releaser
-      #   uses: helm/chart-releaser-action@v1.5.0
-      #   env:
-      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      #     CR_SKIP_EXISTING: "true"
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.5.0
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_SKIP_EXISTING: "true"
 
-      - name: "test"
-        run: echo ${{ github.event_name }}
       - name: "Notify Slack"
         if: ${{ inputs.notify-slack && always() }}
         uses: broadinstitute/action-slack@v3.15.0

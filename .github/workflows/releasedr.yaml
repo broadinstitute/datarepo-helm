@@ -51,26 +51,26 @@ jobs:
           helm repo add terra-helm https://terra-helm.storage.googleapis.com
           helm repo update
 
-      # - name: Run chart-releaser
-      #   uses: helm/chart-releaser-action@v1.5.0
-      #   env:
-      #     CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      #     CR_SKIP_EXISTING: "true"
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.5.0
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_SKIP_EXISTING: "true"
 
-      # - name: Pause between chart release and creation of new umbrella chart
-      #   id: wait
-      #   run: |
-      #     sleep 30
+      - name: Pause between chart release and creation of new umbrella chart
+        id: wait
+        run: |
+          sleep 30
 
-      # - name: "Create new umbrella chart"
-      #   uses: broadinstitute/datarepo-umbrella-release-action@0.3.0
+      - name: "Create new umbrella chart"
+        uses: broadinstitute/datarepo-umbrella-release-action@0.3.0
 
-      # - name: "[datarepo-helm] Merge in changes to umbrella chart"
-      #   uses: broadinstitute/datarepo-actions/actions/merger@0.66.0
-      #   env:
-      #     COMMIT_MESSAGE: "Datarepo umbrella chart update"
-      #     GITHUB_REPO: datarepo-helm
-      #     MERGE_BRANCH: master
+      - name: "[datarepo-helm] Merge in changes to umbrella chart"
+        uses: broadinstitute/datarepo-actions/actions/merger@0.66.0
+        env:
+          COMMIT_MESSAGE: "Datarepo umbrella chart update"
+          GITHUB_REPO: datarepo-helm
+          MERGE_BRANCH: master
 
       - name: "Notify Slack"
         if: ${{ (github.event_name == 'push' && always()) || (inputs.notify-slack && always()) }} # workflow_call has own slack notification
