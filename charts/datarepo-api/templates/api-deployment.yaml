@@ -8,7 +8,11 @@ metadata:
     {{- include "datarepo-api.labels" . | nindent 4 }}
 
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ if (($.Values).global).replicasOffline | default false -}}
+      0
+    {{- else -}}
+      {{ .Values.replicaCount }}
+    {{- end }}
   selector:
     matchLabels:
       component: {{ include "datarepo-api.fullname" . }}
