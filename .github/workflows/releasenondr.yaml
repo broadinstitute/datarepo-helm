@@ -27,15 +27,15 @@ jobs:
           persist-credentials: true
           fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
           token: "${{ secrets.BROADBOT_TOKEN }}"
-  # release_helm_charts:
-  #   needs: release_non_dr_chart
-  #   uses: ./.github/workflows/chart-releaser.yaml
-  #   secrets: inherit
+  release_helm_charts:
+    needs: release_non_dr_chart
+    uses: ./.github/workflows/chart-releaser.yaml
+    secrets: inherit
 
   notify_slack:
     needs:
       - release_non_dr_chart
-      # - release_helm_charts
+      - release_helm_charts
     runs-on: ubuntu-latest
     if: always()
     steps:
