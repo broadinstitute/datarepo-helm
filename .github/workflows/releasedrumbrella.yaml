@@ -49,7 +49,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           MATRIX_CONTEXT: ${{ toJson(matrix) }} # required to work with job field
         with:
-          status: ${{ job.status }}
+          status: ${{ contains(needs.*.result, 'failure') && 'failure' || 'success' }}
           fields: job,repo,message
           channel: "#jade-spam"
           username: "datarepo-helm actions"
