@@ -5,7 +5,11 @@ metadata:
   labels:
     {{- include "oidc-proxy.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ if (($.Values).global).replicasOffline | default false -}}
+      0
+    {{- else -}}
+      {{ .Values.replicaCount }}
+    {{- end }}
   selector:
     matchLabels:
       component: {{ include "oidc-proxy.fullname" . }}

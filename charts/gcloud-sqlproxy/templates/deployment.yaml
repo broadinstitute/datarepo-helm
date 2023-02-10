@@ -10,7 +10,11 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.replicasCount }}
+  replicas: {{ if (($.Values).global).replicasOffline | default false -}}
+      0
+    {{- else -}}
+      {{ .Values.replicasCount }}
+    {{- end }}
   selector:
     matchLabels:
       app: {{ include "gcloud-sqlproxy.fullname" . }}
