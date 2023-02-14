@@ -33,16 +33,15 @@ data:
     # to set the Access-Control-Allow-Origin. Domains not in the regex will be
     # denied.
     <If "-n osenv('CORS_REGEX')">
-        SetEnvIf Origin "${CORS_REGEX}" ORIGIN_SUB_DOMAIN=$0
+        SetEnvIf Origin "${CORS_REGEX}" ORIGIN_SUB_DOMAIN=*
     </If>
-    # If no CORS_REGEX environment variable is set, echo the Origin domain back
-    # in the Access-Control-Allow-Origin header.
+    # If no CORS_REGEX environment variable is set and the Origin header is set, set the Access-Control-Allow-Origin
+    # header to *.
     <Else>
-        SetEnvIf Origin "(.+)" ORIGIN_SUB_DOMAIN=$0
+        SetEnvIf Origin "(.+)" ORIGIN_SUB_DOMAIN=*
     </Else>
     # CORS header will ONLY be set if the Origin header was sent. The browser
     # does NOT set the Origin header on GETs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin
-    # Due to this change Access-Control-Allow-Origin '*' is never set.
     Header always set Access-Control-Allow-Origin %{ORIGIN_SUB_DOMAIN}e env=ORIGIN_SUB_DOMAIN
     Header merge Vary Origin
 
