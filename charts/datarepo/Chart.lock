@@ -7,7 +7,7 @@ dependencies:
   version: 0.0.41
 - name: datarepo-ui
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.229
+  version: 0.0.230
 - name: gcloud-sqlproxy
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.19.9
@@ -20,5 +20,5 @@ dependencies:
 - name: postgres
   repository: https://terra-helm.storage.googleapis.com/
   version: 0.26.0
-digest: sha256:4ade65c2e419ba84bc1cb064efcba93ee62689d547232026343e6bfe1710c3ec
-generated: "2023-03-15T21:25:44.068963904Z"
+digest: sha256:a4e5236351ec2080a2610a0f266b4192bdb5bc238a6243cd7d67f52b316f3881
+generated: "2023-03-16T21:41:03.665970636Z"
