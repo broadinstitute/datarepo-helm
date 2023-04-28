@@ -21,11 +21,11 @@ jobs:
         id: parent-chart
         uses: mikefarah/yq@v4.33.3
         with:
-          cmd: echo "version=$(yq r charts/datarepo/Chart.yaml 'version')" >> $GITHUB_OUTPUT
+          cmd: echo "version=$(yq 'version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
       - name: "demo bump umbrella"
         run: |-
-          wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/v4.33.3/yq_linux_amd64"
+          wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/3.2.1/yq_linux_amd64"
           chmod +x /usr/local/bin/yq
           umbrella_version=$(yq r charts/datarepo/Chart.yaml 'version')
           a=(`echo $umbrella_version | sed 's/\./ /g'`)
@@ -40,7 +40,7 @@ jobs:
         id: new-chart
         uses: mikefarah/yq@v4.33.3
         with:
-          cmd: echo "version=$(yq r charts/datarepo/Chart.yaml 'version')" >> $GITHUB_OUTPUT
+          cmd: echo "version=$(yq 'version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
 #       - name: "report umbrella chart to sherlock"
 #         uses: broadinstitute/sherlock/.github/workflows/client-report-app-version.yaml@main
