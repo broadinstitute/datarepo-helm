@@ -19,26 +19,26 @@ jobs:
 
       - name: "Get current umbrella chart version"
         id: parent-chart
-        uses: mikefarah/yq@v4.27.3
+        uses: mikefarah/yq@v4.33.3
         with:
           cmd: echo "version=$(yq r charts/datarepo/Chart.yaml 'version')" >> $GITHUB_OUTPUT
 
       - name: "demo bump umbrella"
-        uses: mikefarah/yq@v4.27.3
-        with:
-          cmd: |-
-            umbrella_version=$(yq r charts/datarepo/Chart.yaml 'version')
-            a=(`echo $umbrella_version | sed 's/\./ /g'`)
-            ((a[2]++))
-            printf "increase patch: ${a[2]}\n\n"
-            new_umbrella_version="${a[0]}.${a[1]}.${a[2]}"
+        run: |-
+          wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/v4.33.3/yq_linux_amd64"
+          chmod +x /usr/local/bin/yq
+          umbrella_version=$(yq r charts/datarepo/Chart.yaml 'version')
+          a=(`echo $umbrella_version | sed 's/\./ /g'`)
+          ((a[2]++))
+          printf "increase patch: ${a[2]}\n\n"
+          new_umbrella_version="${a[0]}.${a[1]}.${a[2]}"
 
-            yq w -i charts/datarepo/Chart.yaml 'version' "${new_umbrella_version}"
-            yq w -i charts/datarepo/Chart.yaml 'appVersion' "${new_umbrella_version}"
+          yq w -i charts/datarepo/Chart.yaml 'version' "${new_umbrella_version}"
+          yq w -i charts/datarepo/Chart.yaml 'appVersion' "${new_umbrella_version}"
 
       - name: "Get new umbrella chart version"
         id: new-chart
-        uses: mikefarah/yq@v4.27.3
+        uses: mikefarah/yq@v4.33.3
         with:
           cmd: echo "version=$(yq r charts/datarepo/Chart.yaml 'version')" >> $GITHUB_OUTPUT
 
