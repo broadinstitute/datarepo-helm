@@ -40,10 +40,11 @@ jobs:
         with:
           cmd: echo "version=$(yq r charts/datarepo/Chart.yaml 'version')" >> $GITHUB_OUTPUT
 
-      - name: "report umbrella chart to sherlock"
-        uses: broadinstitute/sherlock/.github/workflows/client-report-app-version.yaml@main
-        with:
-          new-version: ${{ steps.new-chart.outputs.version }}
-          parent-chart-version: ${{ steps.parent-chart.outputs.version }}
-          chart-name: "datarepo"
-          use-sherlock-prod: false
+#       - name: "report umbrella chart to sherlock"
+#         uses: broadinstitute/sherlock/.github/workflows/client-report-app-version.yaml@main
+#         with:
+#           new-version: ${{ steps.new-chart.outputs.version }}
+#           parent-chart-version: ${{ steps.parent-chart.outputs.version }}
+#           chart-name: "datarepo"
+#           use-sherlock-prod: false
+# 
