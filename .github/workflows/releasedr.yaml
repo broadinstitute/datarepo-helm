@@ -29,6 +29,9 @@ on:
 jobs:
   release_new_umbrella_dr:
     runs-on: ubuntu-latest
+    outputs:
+      new-version: ${{ steps.new-chart.outputs.version }}
+      parent-chart-version: ${{ steps.parent-chart.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -62,8 +65,20 @@ jobs:
         run: |
           sleep 30
 
+      - name: "Get current umbrella chart version"
+        id: parent-chart
+        uses: mikefarah/yq@v4.33.3
+        with:
+          cmd: echo "version=$(yq '.version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
+
       - name: "Create new umbrella chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.3.0
+
+      - name: "Get new umbrella chart version"
+        id: new-chart
+        uses: mikefarah/yq@v4.33.3
+        with:
+          cmd: echo "version=$(yq '.version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
       - name: "[datarepo-helm] Merge in changes to umbrella chart"
         uses: broadinstitute/datarepo-actions/actions/merger@0.66.0
@@ -85,3 +100,14 @@ jobs:
           channel: "#jade-spam"
           username: "datarepo-helm actions"
           text: "Create Datarepo Chart"
+  report-chart-to-sherlock:
+    permissions:
+      contents: "read"
+      id-token: "write"
+    name: "report umbrella chart to sherlock"
+    needs: [release_new_umbrella_dr]
+    uses: broadinstitute/sherlock/.github/workflows/client-report-chart-version.yaml@main
+    with:
+      new-version: ${{ needs.release_new_umbrella_dr.outputs.new-version }}
+      parent-chart-version: ${{ needs.release_new_umbrella_dr.outputs.parent-chart-version }}
+      chart-name: "datarepo"
