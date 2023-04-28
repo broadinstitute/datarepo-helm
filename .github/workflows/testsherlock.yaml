@@ -5,9 +5,9 @@ on: pull_request
 jobs:
   release_new_umbrella_dr:
     runs-on: ubuntu-latest
-    permissions:
-      contents: "read"
-      id-token: "write"
+    outputs:
+      new-version: ${{ steps.new-chart.outputs.version }}
+      parent-chart-version: ${{ steps.parent-chart.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -46,11 +46,15 @@ jobs:
         run: |-
           echo ${{ steps.new-chart.outputs.version }}
           echo ${{ steps.parent-chart.outputs.version }}
-
-      - name: "report umbrella chart to sherlock"
-        uses: broadinstitute/sherlock/.github/workflows/client-report-chart-version.yaml@main
-        with:
-          new-version: ${{ steps.new-chart.outputs.version }}
-          parent-chart-version: ${{ steps.parent-chart.outputs.version }}
-          chart-name: "datarepo"
-          use-sherlock-prod: false
+  report-chart-to-sherlock:
+    permissions:
+      contents: "read"
+      id-token: "write"
+    name: "report umbrella chart to sherlock"
+    needs: [release_new_umbrella_dr]
+    uses: broadinstitute/sherlock/.github/workflows/client-report-chart-version.yaml@main
+    with:
+      new-version: ${{ needs.release_new_umbrella_dr.outputs.new-version }}
+      parent-chart-version: ${{ needs.release_new_umbrella_dr.outputs.parent-chart-version }}
+      chart-name: "datarepo"
+      use-sherlock-prod: false
