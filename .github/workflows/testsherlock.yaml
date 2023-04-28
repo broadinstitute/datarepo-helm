@@ -1,7 +1,6 @@
 name: Test datarepo chart reporting
 
-on:
-  pull_request:
+on: pull_request
 
 jobs:
   release_new_umbrella_dr:
