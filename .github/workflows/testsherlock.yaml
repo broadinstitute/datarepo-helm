@@ -1,0 +1,50 @@
+name: Test datarepo chart reporting
+
+on:
+  pull_request:
+
+jobs:
+  release_new_umbrella_dr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: "read"
+      id-token: "write"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
+          fetch-depth: 0   # otherwise, you will failed to push refs to dest repo
+          token: "${{ secrets.BROADBOT_TOKEN }}" #otherwise merge will fail
+          ref: master
+
+      - name: "Get current umbrella chart version"
+        id: parent-chart
+        uses: mikefarah/yq@v4.27.3
+        with:
+          cmd: echo "version=$(yq r charts/datarepo/Chart.yaml 'version')" >> $GITHUB_OUTPUT
+
+      - name: "demo bump umbrella"
+        run: |-
+          umbrella_version=$(yq r charts/datarepo/Chart.yaml 'version')
+          a=(`echo $umbrella_version | sed 's/\./ /g'`)
+          ((a[2]++))
+          printf "increase patch: ${a[2]}\n\n"
+          new_umbrella_version="${a[0]}.${a[1]}.${a[2]}"
+
+          yq w -i charts/datarepo/Chart.yaml 'version' "${new_umbrella_version}"
+          yq w -i charts/datarepo/Chart.yaml 'appVersion' "${new_umbrella_version}"
+
+      - name: "Get new umbrella chart version"
+        id: new-chart
+        uses: mikefarah/yq@v4.27.3
+        with:
+          cmd: echo "version=$(yq r charts/datarepo/Chart.yaml 'version')" >> $GITHUB_OUTPUT
+
+      - name: "report umbrella chart to sherlock"
+        uses: broadinstitute/sherlock/.github/workflows/client-report-app-version.yaml@main
+        with:
+          new-version: ${{ steps.new-chart.outputs.version }}
+          parent-chart-version: ${{ steps.parent-chart.outputs.version }}
+          chart-name: "datarepo"
+          use-sherlock-prod: false
