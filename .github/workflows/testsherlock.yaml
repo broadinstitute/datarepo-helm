@@ -21,7 +21,7 @@ jobs:
         id: parent-chart
         uses: mikefarah/yq@v4.33.3
         with:
-          cmd: echo "version=$(yq 'version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
+          cmd: echo "version=$(yq '.version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
       - name: "demo bump umbrella"
         run: |-
@@ -40,7 +40,7 @@ jobs:
         id: new-chart
         uses: mikefarah/yq@v4.33.3
         with:
-          cmd: echo "version=$(yq 'version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
+          cmd: echo "version=$(yq '.version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
 #       - name: "report umbrella chart to sherlock"
 #         uses: broadinstitute/sherlock/.github/workflows/client-report-app-version.yaml@main
