@@ -42,6 +42,11 @@ jobs:
         with:
           cmd: echo "version=$(yq '.version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
+      - name: "check outputs"
+        run: |-
+          echo ${{ steps.new-chart.outputs.version }}
+          echo ${{ steps.parent-chart.outputs.version }}
+
 #       - name: "report umbrella chart to sherlock"
 #         uses: broadinstitute/sherlock/.github/workflows/client-report-app-version.yaml@main
 #         with:
