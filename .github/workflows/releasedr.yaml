@@ -74,6 +74,10 @@ jobs:
       - name: "Create new umbrella chart"
         uses: broadinstitute/datarepo-umbrella-release-action@0.3.0
 
+      # This step expects the previous datarepo-umbrella-release-action to
+      # edit the code downloaded in Checkout step on the runner filesystem
+      # and bump the umbrella chart version. So while parent-step code is identical
+      # new-chart will resolve to an updated chart version.
       - name: "Get new umbrella chart version"
         id: new-chart
         uses: mikefarah/yq@v4.33.3
