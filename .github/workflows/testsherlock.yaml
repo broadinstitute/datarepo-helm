@@ -6,7 +6,7 @@ jobs:
   release_new_umbrella_dr:
     runs-on: ubuntu-latest
     outputs:
-      new-version: ${{ steps.new-chart.outputs.version }}
+      new-version: ${{ steps.parent-chart.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
