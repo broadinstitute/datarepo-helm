@@ -115,3 +115,17 @@ jobs:
       new-version: ${{ needs.release_new_umbrella_dr.outputs.new-version }}
       parent-chart-version: ${{ needs.release_new_umbrella_dr.outputs.parent-chart-version }}
       chart-name: "datarepo"
+  # sets the new umbrella chart version in the datarepo-latest terra template in sherlock.
+  set-chart-version-in-datarepo-latest:
+    uses: broadinstitute/sherlock/.github/workflows/client-set-environment-chart-version.yaml@main
+    needs:
+      - release_new_umbrella_dr
+      - report-chart-to-sherlock
+    with:
+      new-version: ${{ needs.release_new_umbrella_dr.outputs.new-version }}
+      chart-name: 'datarepo'
+      environment-name: 'datarepo-latest'
+    secrets:
+      sync-git-token: ${{ secrets.BROADBOT_TOKEN }}
+    permissions:
+      id-token: 'write'
