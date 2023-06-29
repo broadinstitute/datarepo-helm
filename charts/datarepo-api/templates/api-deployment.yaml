@@ -128,6 +128,11 @@ spec:
             secretKeyRef:
               name: {{ include "datarepo-api.secretNameAzure" . }}
               key: {{ include "datarepo-api.secretKeySynapsePassword" . }}
+        - name: AZURE_SYNAPSE_ENCRYPTIONKEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "datarepo-api.secretNameAzure" . }}
+              key: {{ include "datarepo-api.secretKeySynapseEncryptionKey" . }}
         {{ end -}}
         {{ if $hasOauthClientSecret -}}
         - name: OIDC_CLIENTSECRET

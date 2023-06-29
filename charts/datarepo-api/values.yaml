@@ -58,6 +58,7 @@ secretsgeneric:
   rbsCredentialFileJson: ""
   synapseUser: ""
   synapsePassword: ""
+  synapseEncryptionKey: ""
 ## Specify an existing secret holding the cloud-sql database credentials
 existingSecretDB: ""
 ## The key in the existing secret that stores the Datarepo DB credentials
@@ -76,6 +77,8 @@ existingApplicationSecretSecretKey: ""
 existingSynapseUserSecretKey: ""
 ## The key in the existing secret that stores the azure synapse admin password
 existingSynapsePasswordSecretKey: ""
+## The key in the existing secret that stores the azure synapse encryption key
+existingSynapseEncryptionKeySecretKey: ""
 ## Specify an existing secret holding the RBS service account credentials
 existingSecretRBS: ""
 ## The key in the existing secret that stores the RBS service account credentials
