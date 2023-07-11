@@ -11,8 +11,6 @@ keywords:
 - sql
 - sqlproxy
 maintainers:
-- email: monster@broadinstitute.org
-  name: Monster
 - email: jadeteam@broadinstitute.org
   name: Jade
 name: gcloud-sqlproxy
