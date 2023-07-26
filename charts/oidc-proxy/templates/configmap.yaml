@@ -66,6 +66,10 @@ data:
         RewriteCond %{REQUEST_URI}  !^/(version|status) [NC]
         SSLProxyEngine on
 
+        # Note: we need to set AllowEncodedSlashes to NoDecode to allow the encoded slashes in the DRS object ID to pass
+        # through to the service.
+        AllowEncodedSlashes NoDecode
+    
         ErrorLog /dev/stdout
         CustomLog "/dev/stdout" combined
 
@@ -167,7 +171,9 @@ data:
             RequestHeader set oidc_access_token "expr=%{HTTP:OAUTH2_CLAIM_access_token}"
             RequestHeader set oidc_claim_expires_in "expr=%{HTTP:OAUTH2_CLAIM_exp}"
 
-            ProxyPass ${PROXY_URL3}
+            # nocanon ensures that any encoded slashes in the DRS object ID are passed through to the service as is and not encoded further
+            # E.g. without that flag, foo%2Fbar would be passed through as foo%252Fbar (the % would be encoded as %25)
+            ProxyPass ${PROXY_URL3} nocanon
             ProxyPassReverse ${PROXY_URL3}
 
             ${FILTER3}
