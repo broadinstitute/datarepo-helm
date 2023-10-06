@@ -23,6 +23,8 @@ nameOverride: ""
 fullnameOverride: ""
 ## Pod annotations
 podAnnotations: {}
+## Deployment annotations
+deploymentAnnotations: {}
 ## Node selectors and tolerations for server scheduling to nodes with taints
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 ##
