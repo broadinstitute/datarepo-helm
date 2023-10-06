@@ -6,7 +6,9 @@ metadata:
   name: {{ include "datarepo-api.fullname" . }}
   labels:
     {{- include "datarepo-api.labels" . | nindent 4 }}
-
+  {{- if .Values.deploymentAnnotations }}
+  annotations: {{- .Values.deploymentAnnotations | toYaml | nindent 4 }}
+  {{- end }}
 spec:
   replicas: {{ if (($.Values).global).replicasOffline | default false -}}
       0
