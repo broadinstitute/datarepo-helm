@@ -104,28 +104,30 @@ jobs:
           channel: "#jade-spam"
           username: "datarepo-helm actions"
           text: "Create Datarepo Chart"
+
   report-chart-to-sherlock:
-    permissions:
-      contents: "read"
-      id-token: "write"
-    name: "report umbrella chart to sherlock"
+    name: Report Chart Version to DevOps
     needs: [release_new_umbrella_dr]
     uses: broadinstitute/sherlock/.github/workflows/client-report-chart-version.yaml@main
     with:
       new-version: ${{ needs.release_new_umbrella_dr.outputs.new-version }}
       parent-chart-version: ${{ needs.release_new_umbrella_dr.outputs.parent-chart-version }}
-      chart-name: "datarepo"
-  # sets the new umbrella chart version in the datarepo-latest terra template in sherlock.
-  set-chart-version-in-datarepo-latest:
+      chart-name: datarepo
+    permissions:
+      contents: read
+      id-token: write
+
+  set-chart-version-in-dev:
+    name: Set Chart Version in Dev
     uses: broadinstitute/sherlock/.github/workflows/client-set-environment-chart-version.yaml@main
     needs:
       - release_new_umbrella_dr
       - report-chart-to-sherlock
     with:
       new-version: ${{ needs.release_new_umbrella_dr.outputs.new-version }}
-      chart-name: 'datarepo'
-      environment-name: 'datarepo-latest'
+      chart-name: datarepo
+      environment-name: dev
     secrets:
       sync-git-token: ${{ secrets.BROADBOT_TOKEN }}
     permissions:
-      id-token: 'write'
+      id-token: write
