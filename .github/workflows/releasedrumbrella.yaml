@@ -25,10 +25,6 @@ jobs:
     needs: release_new_umbrella_dr
     uses: ./.github/workflows/chart-releaser.yaml
     secrets: inherit
-  alpha_chart_promotion:
-    needs: release_new_umbrella_dr
-    uses: ./.github/workflows/terraAlphaChartBump.yaml
-    secrets: inherit
   integration_chart_promotion:
     needs: release_new_umbrella_dr
     uses: ./.github/workflows/integrationChartBump.yaml
@@ -37,7 +33,6 @@ jobs:
     needs:
       - release_new_umbrella_dr
       - release_umbrella_helm_charts
-      - alpha_chart_promotion
       - integration_chart_promotion
     runs-on: ubuntu-latest
     if: always()
