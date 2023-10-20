@@ -33,7 +33,6 @@ jobs:
     needs:
       - release_new_umbrella_dr
       - release_umbrella_helm_charts
-      - alpha_chart_promotion
       - integration_chart_promotion
     runs-on: ubuntu-latest
     if: always()
