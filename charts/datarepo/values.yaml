@@ -86,9 +86,6 @@ datarepo-ui:
   ##  rbac:
   ##    create: true
 
-de-elasticsearch:
-  enabled: false
-
 oidc-proxy:
   enabled: false ## if true uncomment below
   ##  env:
@@ -121,7 +118,7 @@ oidc-proxy:
   ##      -----END CERTIFICATE-----
 
 # enable local postgres chart deployment (rather than external cloudsql)
-postgres: 
+postgres:
   enabled: false
 
 ## https://github.com/helm/charts/tree/master/stable/postgresql

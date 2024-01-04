@@ -15,7 +15,6 @@ on:
       - '!charts/create-secret-manager-secret/**'
       - '!charts/gcloud-sqlproxy/**'
       - '!charts/oidc-proxy/**'
-      - '!charts/de-elasticsearch/**'
 
 jobs:
   release_non_dr_chart:

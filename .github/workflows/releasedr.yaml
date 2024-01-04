@@ -24,7 +24,6 @@ on:
       - 'charts/gcloud-sqlproxy/**'
       - 'charts/oidc-proxy/**'
       - 'charts/gcp-managed-cert/**'
-      - 'charts/de-elasticsearch/**'
 
 jobs:
   release_new_umbrella_dr:

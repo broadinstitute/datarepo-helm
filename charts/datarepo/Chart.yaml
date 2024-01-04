@@ -15,6 +15,8 @@ type: application
 
 version: 0.1.815
 appVersion: 0.1.815
+version: 0.2.0
+appVersion: 0.2.0
 keywords:
 - google
 - cloud
@@ -47,10 +49,6 @@ dependencies:
   version: 0.0.6
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: create-secret-manager-secret.enabled
-- name: de-elasticsearch
-  version: 0.1.4
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: de-elasticsearch.enabled
 - name: postgres
   version: 0.26.0
   repository: https://terra-helm.storage.googleapis.com/
