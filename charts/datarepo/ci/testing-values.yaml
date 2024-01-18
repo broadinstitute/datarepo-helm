@@ -101,7 +101,3 @@ oidc-proxy:
   rbac:
     create: true
     pspEnabled: true
-
-de-elasticsearch:
-  enabled: true
-  fullnameOverride: test-de-elasticsearch

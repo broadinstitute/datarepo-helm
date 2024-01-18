@@ -12,7 +12,6 @@ excluded-charts:
   - charts/oidc-proxy
   - charts/gcloud-sqlproxy
   - charts/create-secret-manager-secret
-  - charts/de-elasticsearch
 charts:
   - charts/backend-config
   - charts/datarepo

@@ -13,8 +13,8 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version
 
-version: 0.1.834
-appVersion: 0.1.834
+version: 0.2.0
+appVersion: 0.2.0
 keywords:
 - google
 - cloud
@@ -47,10 +47,6 @@ dependencies:
   version: 0.0.6
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: create-secret-manager-secret.enabled
-- name: de-elasticsearch
-  version: 0.1.4
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  condition: de-elasticsearch.enabled
 - name: postgres
   version: 0.26.0
   repository: https://terra-helm.storage.googleapis.com/
