@@ -71,7 +71,7 @@ jobs:
           cmd: echo "version=$(yq '.version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
       - name: "Create new umbrella chart"
-        uses: broadinstitute/datarepo-umbrella-release-action@0.3.0
+        uses: broadinstitute/datarepo-umbrella-release-action@0.4.0
 
       # This step expects the previous datarepo-umbrella-release-action to
       # edit the code downloaded in Checkout step on the runner filesystem
