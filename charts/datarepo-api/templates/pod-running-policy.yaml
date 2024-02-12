@@ -1,4 +1,4 @@
-{{- if .Values.rbac.create }}
+{{- if .Values.pspEnabled }}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:

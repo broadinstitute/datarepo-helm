@@ -48,6 +48,7 @@ rbac:
   create: false
   # If true, prefix the psp with the release's namespace. (Used to prevent conflicts in BEEs)
   namespacePrefix: false
+pspEnabled: true
 service:
   port: 8080
   type: ClusterIP
