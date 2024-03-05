@@ -9,3 +9,5 @@ secrets:
 #  - kubeSecretKey:  ## name of kubeSecretKey
 #    path:  ## vault path
 #    vaultKey:  ## vault key name
+
+esoSecrets: []
