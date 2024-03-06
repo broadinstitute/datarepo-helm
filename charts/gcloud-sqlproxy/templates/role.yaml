@@ -13,7 +13,7 @@ rules:
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "watch", "list"]
-{{- if .Values.rbac.pspEnabled -}}
+{{- if .Values.rbac.pspEnabled }}
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']
   verbs: ["use"]

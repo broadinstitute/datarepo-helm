@@ -16,4 +16,4 @@ maintainers:
 name: gcloud-sqlproxy
 sources:
 - https://github.com/broadinstitute/datarepo-helm
-version: 0.19.10
+version: 0.19.11
