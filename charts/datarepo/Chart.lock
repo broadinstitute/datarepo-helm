@@ -10,12 +10,12 @@ dependencies:
   version: 0.0.317
 - name: gcloud-sqlproxy
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.19.10
+  version: 0.19.11
 - name: create-secret-manager-secret
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.6
 - name: postgres
   repository: https://terra-helm.storage.googleapis.com/
   version: 0.26.0
-digest: sha256:ea1df5725e59a88ffd2f7b0eb8a846751aa82bbfc3cbce29a4e43a2c3cba77e2
-generated: "2024-03-06T14:39:54.734724966Z"
+digest: sha256:d1dd2e912291fbf800a0da71a7f9b0b6ba5d1bd68f9c8efaccfa3c3618a36689
+generated: "2024-03-06T15:06:25.364717998Z"
