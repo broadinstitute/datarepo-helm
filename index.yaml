@@ -61863,6 +61863,28 @@ entries:
   gcloud-sqlproxy:
   - apiVersion: v2
     appVersion: "1.17"
+    created: "2024-03-06T15:05:19.805176647Z"
+    description: Google Cloud SQL Proxy
+    digest: a8e0ae4dbc9225ed54a0fe9067e440aa029fabecaf60976193d121d344a7aef8
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: jadeteam@broadinstitute.org
+      name: Jade
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.11/gcloud-sqlproxy-0.19.11.tgz
+    version: 0.19.11
+  - apiVersion: v2
+    appVersion: "1.17"
     created: "2024-03-06T14:38:49.237706165Z"
     description: Google Cloud SQL Proxy
     digest: c778e4c16dbee78aa879e2971b34d6cc349be5c85f5d014a8ce35a399e44cc52
@@ -63189,4 +63211,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2024-03-06T14:40:47.523630283Z"
+generated: "2024-03-06T15:05:19.810159299Z"
