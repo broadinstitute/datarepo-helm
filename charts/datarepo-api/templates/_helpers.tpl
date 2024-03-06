@@ -25,17 +25,6 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 
 {{/*
-Name for the psp used by deployments in this chart
-*/}}
-{{- define "datarepo-api.psp.name" -}}
-{{- if .Values.rbac.namespacePrefix -}}
-{{ .Release.Namespace }}-{{ include "datarepo-api.fullname" . }}-pod-running-policy
-{{- else -}}
-{{ include "datarepo-api.fullname" . }}-pod-running-policy
-{{- end -}}
-{{- end -}}
-
-{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "datarepo-api.chart" -}}
