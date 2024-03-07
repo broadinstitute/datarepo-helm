@@ -17,7 +17,6 @@ externalSecrets:
 # - secretName:               ## name of kubeSecret
 #   data:
 #     - secretKey:            ## name of kubeSecretKey
-#       remoteRef:
-#         key:                ## key name
-#         property:           ## description of secret
-#         decodingStrategy:   ## how to decode secret
+#       key:                ## key name
+#       property:           ## description of secret
+#       decodingStrategy:   ## how to decode secret
