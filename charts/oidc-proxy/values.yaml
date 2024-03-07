@@ -7,7 +7,7 @@ replicaCount: 1
 ## Versions can be found here:
 ## https://github.com/broadinstitute/openidc-terra-proxy/tags
 image:
-  repository: us.gcr.io/broad-dsp-gcr-public/httpd-terra-proxy
+  repository: us.gcr.io/broad-dsp-gcr-public/openidc-terra-proxy
   version: v0.1.18
   pullPolicy: IfNotPresent
 
