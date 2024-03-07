@@ -62307,6 +62307,27 @@ entries:
     version: 0.0.1
   oidc-proxy:
   - apiVersion: v2
+    appVersion: 0.0.43
+    created: "2024-03-07T21:31:26.298247609Z"
+    description: A Helm chart to deploy datarepo oidc server for Kubernetes
+    digest: 50ecc44812a5205e98d401dea0432a06362263302f282657329ba512bfac074d
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: oidc-proxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/oidc-proxy-0.0.43/oidc-proxy-0.0.43.tgz
+    version: 0.0.43
+  - apiVersion: v2
     appVersion: 0.0.42
     created: "2023-07-26T17:51:44.790328478Z"
     description: A Helm chart to deploy datarepo oidc server for Kubernetes
@@ -63256,4 +63277,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2024-03-06T15:07:19.96806422Z"
+generated: "2024-03-07T21:31:26.300611609Z"
