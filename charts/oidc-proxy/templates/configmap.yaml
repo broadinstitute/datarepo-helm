@@ -46,15 +46,6 @@ data:
     Header merge Vary Origin
 
     ProxyTimeout ${PROXY_TIMEOUT}
-    OIDCOAuthTokenIntrospectionInterval 60
-    # Enabling cache encryption via 'OIDCCacheEncrypt On' has two side effects:
-    # 1. it reduces key size to avoid "could not construct cache key since key size is too large" cache errors
-    # 2. it causes intermittent duplicate requests between the proxy and the underlying app
-    # the latter side effect is too dangerous, so cache encryption is off
-    OIDCCacheEncrypt Off
-    # Use GET for the introspection endpoint to avoid a performance issue with POST requests.
-    # See https://broadworkbench.atlassian.net/browse/PROD-634
-    OIDCOAuthIntrospectionEndpointMethod GET
 
     <VirtualHost _default_:${HTTPD_PORT}>
         ServerAdmin ${SERVER_ADMIN}
