@@ -59,7 +59,6 @@ cloudsql:
 
 rbac:
   create: false
-  pspEnabled: true
 
 ## Specifies service type and option to enable internal LoadBalancer
 ## If service.internalLB is true, service.type should be: LoadBalancer

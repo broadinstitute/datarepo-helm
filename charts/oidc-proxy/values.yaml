@@ -50,12 +50,6 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 
-rbac:
-  # Specifies whether a psp should be created
-  create: false
-  # If true, prefix the psp with the release's namespace. (Used to prevent conflicts in BEEs)
-  namespacePrefix: false
-
 service:
   type: NodePort
   port: 80
