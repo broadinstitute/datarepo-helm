@@ -151,6 +151,27 @@ entries:
     version: 0.0.1
   cron-job:
   - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2024-03-13T15:19:06.875940353Z"
+    description: A Helm chart for Kubernetes
+    digest: 821b38d9cc32967424ff92c40b2e4ea45290810d8e0fa4af1aeb73d22d61599b
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: cron-job
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/cron-job-0.0.3/cron-job-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2020-01-27T15:22:18.689566-05:00"
     description: A Helm chart for Kubernetes
     digest: fb3bd01d2bb3d6d4ae51b04bb4e26cb1bdd0cb1d04927e6375bccd88275f8e31
@@ -62450,6 +62471,28 @@ entries:
   gcloud-sqlproxy:
   - apiVersion: v2
     appVersion: "1.17"
+    created: "2024-03-13T15:19:06.99774499Z"
+    description: Google Cloud SQL Proxy
+    digest: 1ccc93fccd5f3235efcc217d9ccbda54b0b26bef3e2990b36fee03d023216b92
+    home: https://cloud.google.com/sql/docs/postgres/sql-proxy
+    keywords:
+    - google
+    - cloud
+    - postgresql
+    - mysql
+    - sql
+    - sqlproxy
+    maintainers:
+    - email: jadeteam@broadinstitute.org
+      name: Jade
+    name: gcloud-sqlproxy
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/gcloud-sqlproxy-0.19.13/gcloud-sqlproxy-0.19.13.tgz
+    version: 0.19.13
+  - apiVersion: v2
+    appVersion: "1.17"
     created: "2024-03-12T19:38:01.139223609Z"
     description: Google Cloud SQL Proxy
     digest: 79570689b11dc6e6cc25f8b82c93cf1ae55dce2966cfdb212fab64183130a2dc
@@ -62710,6 +62753,30 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/gcp-managed-cert-0.1.2/gcp-managed-cert-0.1.2.tgz
     version: 0.1.2
   install-secrets-manager:
+  - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2024-03-13T15:19:07.140163974Z"
+    description: A Helm chart for Kubernetes
+    digest: b4ed666b5283637e28ae58e7373265c7da8a70a962a9bac9d19d43ee10ec586d
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - secrets
+    - secrets-manager
+    maintainers:
+    - email: dsp-devops@broadinstitute.org
+      name: DevOps
+    name: install-secrets-manager
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    - https://github.com/tuenti/secrets-manager
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/install-secrets-manager-0.0.11/install-secrets-manager-0.0.11.tgz
+    version: 0.0.11
   - apiVersion: v2
     appVersion: 1.0.2
     created: "2023-01-10T20:32:08.233780022Z"
@@ -63754,6 +63821,28 @@ entries:
     version: 0.0.2
   serviceaccount-psp:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2024-03-13T15:19:07.281217227Z"
+    description: A Helm chart to deploy a service accout and psp roles for Kubernetes
+      namespace
+    digest: f7cc32adcb37023baeadb75cd1cafe34af74bad9b50868430bc64f71cb4c1505
+    home: https://broadinstitute.github.io/datarepo-helm/
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: serviceaccount-psp
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/serviceaccount-psp-0.0.4/serviceaccount-psp-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2020-04-10T16:36:13.524128617Z"
     description: A Helm chart to deploy a service accout and psp roles for Kubernetes
@@ -63794,6 +63883,33 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/serviceaccount-psp-0.0.2/serviceaccount-psp-0.0.2.tgz
     version: 0.0.2
   sqlbackup:
+  - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2024-03-13T15:19:07.38787329Z"
+    dependencies:
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.6
+    description: A Helm chart to setup psql backups for a desinated time frame
+    digest: 490d84c8e25651ee3744563130f22c045a4705e6806f13849a8fbc3c9b781a2f
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    - psql
+    - backup
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: sqlbackup
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/sqlbackup-0.0.3/sqlbackup-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2021-04-26T15:41:44.200294264Z"
@@ -63862,4 +63978,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2024-03-13T04:16:10.89172363Z"
+generated: "2024-03-13T15:19:07.390312514Z"
