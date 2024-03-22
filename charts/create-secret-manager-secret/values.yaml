@@ -7,3 +7,5 @@ externalSecrets:
 #       key:                  ## key name
 #       property:             ## description of secret
 #       decodingStrategy:     ## how to decode secret
+
+k8sSecretSrc: "gsm"
