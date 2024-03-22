@@ -12,7 +12,6 @@ secrets:
 
 externalSecrets:
   secrets: []
-  refreshInterval: "5m"
 
 # - secretName:               ## name of kubeSecret
 #   data:
