@@ -9,3 +9,13 @@ secrets:
 #  - kubeSecretKey:  ## name of kubeSecretKey
 #    path:  ## vault path
 #    vaultKey:  ## vault key name
+
+externalSecrets:
+  secrets: []
+
+# - secretName:               ## name of kubeSecret
+#   data:
+#     - secretKey:            ## name of kubeSecretKey
+#       key:                  ## key name
+#       property:             ## description of secret
+#       decodingStrategy:     ## how to decode secret
