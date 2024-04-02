@@ -29,6 +29,6 @@ sources:
 # dependencies
 dependencies:
 - name: create-secret-manager-secret
-  version: 0.0.6
+  version: 0.0.7
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: create-secret-manager-secret.enabled
