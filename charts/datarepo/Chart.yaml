@@ -13,8 +13,8 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version
 
-version: 0.2.70
-appVersion: 0.2.70
+version: 0.2.71
+appVersion: 0.2.71
 keywords:
 - google
 - cloud
@@ -44,7 +44,7 @@ dependencies:
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: gcloud-sqlproxy.enabled
 - name: create-secret-manager-secret
-  version: 0.0.6
+  version: 0.0.7
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: create-secret-manager-secret.enabled
 - name: postgres
