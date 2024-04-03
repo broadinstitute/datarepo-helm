@@ -73,14 +73,14 @@ spec:
         {{- end }}
         volumeMounts:
           {{- if .Values.tcell.enabled }}
-          - mountPath: /etc/apache2/tcell_agent.config
+          - mountPath: /etc/httpd/tcell_agent.config
             name: tcellconf
             subPath: tcell_agent.config
           {{- end }}
-          - mountPath: /etc/apache2/sites-available/site.conf
+          - mountPath: /etc/httpd/conf.d/site.conf
             name: siteconf
             subPath: site.conf
-          - mountPath: /etc/apache2/mods-enabled/oauth2.conf
+          - mountPath: /etc/httpd/conf.d/oauth2.conf
             name: oauth2conf
             subPath: oauth2.conf
       volumes:

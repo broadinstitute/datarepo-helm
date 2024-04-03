@@ -6,7 +6,7 @@ global:
 replicaCount: 1
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo-ui
-  tag: 0.290.0
+  tag: 0.299.0
   pullPolicy: IfNotPresent
   # nginx listen port for server
 nginxport: 8080
@@ -41,11 +41,6 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
-rbac:
-  # Specifies whether a psp should be created
-  create: true
-  # If true, prefix the psp with the release's namespace. (Used to prevent conflicts in BEEs)
-  namespacePrefix: false
 service:
   type: ClusterIP
   port: 8080

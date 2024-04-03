@@ -1,6 +1,6 @@
 {{- if .Values.backupCronJob.enabled }}
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: "{{ include "sqlbackup.fullname" . }}-backup"
@@ -50,7 +50,7 @@ spec:
 {{- end -}}
 {{- if .Values.cleanupCronJob.enabled }}
 ---
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: "{{ include "sqlbackup.fullname" . }}-cleanup"

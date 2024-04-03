@@ -7,8 +7,8 @@ replicaCount: 1
 ## Versions can be found here:
 ## https://github.com/broadinstitute/openidc-terra-proxy/tags
 image:
-  repository: us.gcr.io/broad-dsp-gcr-public/openidc-terra-proxy
-  version: v0.1.12
+  repository: us.gcr.io/broad-dsp-gcr-public/httpd-terra-proxy
+  version: v0.1.18
   pullPolicy: IfNotPresent
 
 ## Extra environment variables that will be pass onto deployment pods
@@ -49,12 +49,6 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
-
-rbac:
-  # Specifies whether a psp should be created
-  create: false
-  # If true, prefix the psp with the release's namespace. (Used to prevent conflicts in BEEs)
-  namespacePrefix: false
 
 service:
   type: NodePort
