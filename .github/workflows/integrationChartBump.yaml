@@ -1,6 +1,6 @@
 name: Integration Chart Promotion
 env:
-  charts: gcloud-sqlproxy datarepo-api datarepo-ui oidc-proxy create-secret-manager-secret
+  charts: gcloud-sqlproxy datarepo-api datarepo-ui oidc-proxy
 
 on:
   workflow_dispatch:
@@ -75,11 +75,6 @@ jobs:
         uses: docker://mikefarah/yq:3
         with:
           args: yq w -i ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }} "jobs.${{ matrix.jobname }}.steps.(name==Deploy to cluster with Helm).with.helm_oidc_proxy_chart_version" ${{ steps.chartversion.outputs.oidc-proxy-version }}
-
-      - name: "Find and replace create-secret-manager-secret chartVersion version in integration action"
-        uses: docker://mikefarah/yq:3
-        with:
-          args: yq w -i ${{ matrix.repo }}/.github/workflows/${{ matrix.filename }} "jobs.${{ matrix.jobname }}.steps.(name==Deploy to cluster with Helm).with.helm_create_secret_manager_secret_chart_version" ${{ steps.chartversion.outputs.create-secret-manager-secret-version }}
 
       - name: print new chart
         uses: docker://mikefarah/yq:3
