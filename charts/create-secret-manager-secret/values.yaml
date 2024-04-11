@@ -1,15 +1,3 @@
-secrets:
-
-# - secretName:     ## name of kubeSecret
-#  nameSpace: ""
-#  vals:
-#  - kubeSecretKey: ""    ## name of kubeSecretKey
-#    encoding: ""     ## if secret is base64 already use this flagg
-#    vaultKey:  ""   ## vault key name
-#  - kubeSecretKey:  ## name of kubeSecretKey
-#    path:  ## vault path
-#    vaultKey:  ## vault key name
-
 externalSecrets:
   secrets: []
 
@@ -19,3 +7,5 @@ externalSecrets:
 #       key:                  ## key name
 #       property:             ## description of secret
 #       decodingStrategy:     ## how to decode secret
+
+k8sSecretSrc: "gsm"
