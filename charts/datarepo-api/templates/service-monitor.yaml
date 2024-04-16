@@ -16,7 +16,7 @@ spec:
     matchLabels:
       {{- include "datarepo-api.selectorLabels" . | nindent 6 }}
   endpoints:
-    - port: {{ .Values.service.port }}
+    - port: http
       interval: {{ .Values.prometheus.scrape.interval }}
       path: {{ .Values .prometheus.scrape.path }}
       scheme: {{ .Values.prometheus.scrape.scheme }}
