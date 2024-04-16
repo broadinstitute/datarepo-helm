@@ -99,3 +99,17 @@ sherlock:
   vault:
     # client certificate credentials used to authenticate to sherlock
     pathPrefix: secret/suitable/sherlock/prod
+
+prometheus:
+  # -- configuration for scraping TDR metrics provided via Spring Actuator
+  scrape:
+    # -- whether to enable scraping of metrics
+    enabled: false
+    # -- the interval at which to scrape metrics
+    interval: 15s
+    # -- the path to scrape metrics from
+    path: /actuator/prometheus
+    # -- the scheme to use for scraping
+    scheme: http
+    # -- the timeout for scraping
+    timeout: 10s
