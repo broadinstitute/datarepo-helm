@@ -1,0 +1,25 @@
+{{/* Service Monitor is a custom kubernetes resource that defines how Prometheus should scrape metrics from a service
+ It also automatically includes information such as  k8s namespace and deployment name etc in the metric labels */}}
+{{- if ((.Values.prometheus).scrape).enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "datarepo-api.fullname" . }}-prometheus-scrape-servicemonitor
+  labels: 
+    {{- include "datarepo-api.labels" . | nindent 4 }}
+spec:
+  jobLabel: {{ include "datarepo-api.fullname" . }}-prometheus-scrape-job
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      {{- include "datarepo-api.selectorLabels" . | nindent 6 }}
+  endpoints:
+    - port: http
+      interval: {{ .Values.prometheus.scrape.interval }}
+      path: {{ .Values .prometheus.scrape.path }}
+      scheme: {{ .Values.prometheus.scrape.scheme }}
+      scrapeTimeout: {{ .Values.prometheus.scrape.timeout }}
+      honorLabels: true
+{{- end }}
