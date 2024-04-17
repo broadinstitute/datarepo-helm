@@ -18,7 +18,7 @@ spec:
   endpoints:
     - port: http
       interval: {{ .Values.prometheus.scrape.interval }}
-      path: {{ .Values .prometheus.scrape.path }}
+      path: {{ .Values.prometheus.scrape.path }}
       scheme: {{ .Values.prometheus.scrape.scheme }}
       scrapeTimeout: {{ .Values.prometheus.scrape.timeout }}
       honorLabels: true
