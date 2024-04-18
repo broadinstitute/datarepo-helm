@@ -1,16 +1,8 @@
 name: Create chart Datarepo chart
 
 on:
-  workflow_dispatch:
-    inputs:
-      notify-slack:
-        default: true
-        type: boolean
-  workflow_call:
-    inputs:
-      notify-slack:
-        default: false
-        type: boolean
+  workflow_dispatch: {}
+  workflow_call: {}
   push:
     branches:
       - master
@@ -90,20 +82,6 @@ jobs:
           GITHUB_REPO: datarepo-helm
           MERGE_BRANCH: master
 
-      - name: "Notify Slack"
-        if: ${{ (github.event_name == 'push' && always()) || (inputs.notify-slack && always()) }} # workflow_call has own slack notification
-        uses: broadinstitute/action-slack@v3.15.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          MATRIX_CONTEXT: ${{ toJson(matrix) }} # required to work with job field
-        with:
-          status: ${{ job.status }}
-          fields: job,repo,message
-          channel: "#jade-spam"
-          username: "datarepo-helm actions"
-          text: "Create Datarepo Chart"
-
   report-chart-to-sherlock:
     name: Report Chart Version to DevOps
     needs: [release_new_umbrella_dr]
@@ -128,5 +106,14 @@ jobs:
       environment-name: dev
     secrets:
       sync-git-token: ${{ secrets.BROADBOT_TOKEN }}
+    permissions:
+      id-token: write
+
+  report-workflow:
+    uses: broadinstitute/sherlock/.github/workflows/client-report-workflow.yaml@main
+    with:
+      relates-to-chart-releases: 'datarepo-dev'
+      notify-slack-channels-upon-workflow-failure: ${{ vars.SLACK_NOTIFICATION_CHANNELS }}
+      notify-slack-channels-upon-workflow-retry: ${{ vars.SLACK_NOTIFICATION_CHANNELS }}
     permissions:
       id-token: write
