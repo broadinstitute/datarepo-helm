@@ -3,16 +3,8 @@ env:
   charts: gcloud-sqlproxy datarepo-api datarepo-ui oidc-proxy create-secret-manager-secret
 
 on:
-  workflow_dispatch:
-    inputs:
-      notify-slack:
-        default: true
-        type: boolean
-  workflow_call:
-    inputs:
-      notify-slack:
-        default: false
-        type: boolean
+  workflow_dispatch: {}
+  workflow_call: {}
 
 jobs:
   indivdual_chart_promotion:
@@ -89,20 +81,6 @@ jobs:
       - name: "[${{ matrix.repo }}] Merge multi chart version update"
         uses: broadinstitute/datarepo-actions/actions/merger@0.73.0
         env:
-          COMMIT_MESSAGE: "Datarepo Integration mutli chart version update"
+          COMMIT_MESSAGE: "Datarepo Integration multi chart version update"
           GITHUB_REPO: ${{ matrix.repo }}
           SWITCH_DIRECTORIES: "true"
-
-      - name: "Notify Slack"
-        if: ${{ inputs.notify-slack && always() }}
-        uses: broadinstitute/action-slack@v3.15.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          MATRIX_CONTEXT: ${{ toJson(matrix) }} # required to work with job field
-        with:
-          status: ${{ job.status }}
-          fields: job,repo,message
-          channel: "#jade-spam"
-          username: "datarepo-helm actions"
-          text: "Integration Chart Promotion"

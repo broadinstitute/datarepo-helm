@@ -1,16 +1,8 @@
 name: Release helm charts
 
 on:
-  workflow_dispatch:
-    inputs:
-      notify-slack:
-        default: true
-        type: boolean
-  workflow_call:
-    inputs:
-      notify-slack:
-        default: false
-        type: boolean
+  workflow_dispatch: {}
+  workflow_call: {}
 
 jobs:
   release_chart:
@@ -42,17 +34,3 @@ jobs:
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           CR_SKIP_EXISTING: "true"
-
-      - name: "Notify Slack"
-        if: ${{ inputs.notify-slack && always() }}
-        uses: broadinstitute/action-slack@v3.15.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          MATRIX_CONTEXT: ${{ toJson(matrix) }} # required to work with job field
-        with:
-          status: ${{ job.status }}
-          fields: job,repo,message
-          channel: "#jade-spam"
-          username: "datarepo-helm actions"
-          text: "Release Helm Charts"
