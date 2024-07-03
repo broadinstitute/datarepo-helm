@@ -76,7 +76,7 @@ jobs:
           cmd: echo "version=$(yq '.version' charts/datarepo/Chart.yaml)" >> $GITHUB_OUTPUT
 
       - name: "[datarepo-helm] Merge in changes to umbrella chart"
-        uses: broadinstitute/datarepo-actions/actions/merger@0.73.0
+        uses: broadinstitute/datarepo-actions/actions/merger@0.74.0
         env:
           COMMIT_MESSAGE: "Datarepo umbrella chart update"
           GITHUB_REPO: datarepo-helm
