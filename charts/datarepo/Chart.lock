@@ -1,7 +1,7 @@
 dependencies:
 - name: datarepo-api
   repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.707
+  version: 0.0.708
 - name: oidc-proxy
   repository: https://broadinstitute.github.io/datarepo-helm/
   version: 0.0.44
@@ -17,5 +17,5 @@ dependencies:
 - name: postgres
   repository: https://terra-helm.storage.googleapis.com/
   version: 0.40.0
-digest: sha256:63dfcda033b999ca5890b038b99b0e0a6af66a3a72cb096da4643069e23f251b
-generated: "2024-07-15T13:43:04.893250499Z"
+digest: sha256:6ba1851f7e60f3bc66edb878fdc903e1b84963b42cd89fe611c2f8101622dc23
+generated: "2024-07-15T14:02:36.969806153Z"
