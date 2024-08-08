@@ -18,12 +18,12 @@ data:
     CustomLog "/dev/stdout" combined env=!forwarded
     CustomLog "/dev/stdout" proxy env=forwarded
     LogLevel ${LOG_LEVEL}
-    
+
     AddType application/x-httpd-php .php
 
     Header unset X-Frame-Options
     Header always set X-Frame-Options SAMEORIGIN
-    Header always set Access-Control-Allow-Headers DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Accept,Referer,X-App-Id,Origin
+    Header always set Access-Control-Allow-Headers DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization,Accept,Referer,X-App-Id,Origin,x-transaction-id
     Header always set Access-Control-Allow-Methods GET,POST,DELETE,PUT,PATCH,OPTIONS,HEAD
     Header always set X-Content-Type-Options nosniff
     Header always set Strict-Transport-Security max-age=31536000;includeSubDomains
@@ -60,16 +60,16 @@ data:
         # Note: we need to set AllowEncodedSlashes to NoDecode to allow the encoded slashes in the DRS object ID to pass
         # through to the service.
         AllowEncodedSlashes NoDecode
-    
+
         ErrorLog /dev/stdout
         CustomLog "/dev/stdout" combined
 
         DocumentRoot /app
-        
+
         <Directory "/app">
           AllowOverride All
           Options -Indexes
-          
+
           Order allow,deny
           Allow from all
         </Directory>
@@ -79,7 +79,7 @@ data:
             Require all granted
             AuthType None
         </Location>
-    
+
         <LocationMatch "^(?!/introspect/)(${PROXY_PATH})(.*)">
             RewriteEngine On
             RewriteCond %{REQUEST_METHOD} OPTIONS
@@ -183,7 +183,7 @@ data:
             ProxyPass https://bigquery.googleapis.com/bigquery
             ProxyPassReverse https://bigquery.googleapis.com/bigquery
         </Location>
-    
+
         <Location /googlesheets>
           ProxyPass https://sheets.googleapis.com
           ProxyPassReverse https://sheets.googleapis.com
