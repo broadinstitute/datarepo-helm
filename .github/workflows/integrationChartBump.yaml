@@ -11,10 +11,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - app: datarepo-api
-            repo: "jade-data-repo"
-            filename: "int-and-connected-test-run.yml"
-            jobname: "deploy_test_integration"
           - app: datarepo-ui
             repo: "jade-data-repo-ui"
             filename: "test-e2e.yml"
