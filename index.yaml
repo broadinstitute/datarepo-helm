@@ -257,6 +257,51 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    appVersion: 0.2.241
+    created: "2024-09-17T18:40:55.709181649Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.763
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.44
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.368
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.13
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.8
+    - condition: postgres.enabled
+      name: postgres
+      repository: https://terra-helm.storage.googleapis.com/
+      version: 0.40.0
+    description: A Helm chart to deploy an entire datarepo
+    digest: 4a7499c7ff5e44e26985730ee4802e21d9074fbdd795fa975926f12c8338b2cd
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.2.241/datarepo-0.2.241.tgz
+    version: 0.2.241
+  - apiVersion: v2
     appVersion: 0.2.240
     created: "2024-09-17T14:10:53.333359851Z"
     dependencies:
@@ -77161,4 +77206,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2024-09-17T18:38:48.597630219Z"
+generated: "2024-09-17T18:40:55.713591953Z"
