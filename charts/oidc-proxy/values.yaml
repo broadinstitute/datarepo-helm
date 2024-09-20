@@ -14,13 +14,6 @@ image:
 ## Extra environment variables that will be pass onto deployment pods
 env: {}
 
-## TCELL
-tcell:
-  enabled: false
-  ## Note: the secret must contain an app-id value and an api-key value
-  tcellSecret: ""
-  host_identifier: ""
-
 ## Pod annotations
 podAnnotations: {}
 
