@@ -8,7 +8,7 @@ replicaCount: 1
 ## https://github.com/broadinstitute/openidc-terra-proxy/tags
 image:
   repository: us.gcr.io/broad-dsp-gcr-public/httpd-terra-proxy
-  version: v0.1.18
+  version: v0.1.19
   pullPolicy: IfNotPresent
 
 ## Extra environment variables that will be pass onto deployment pods
