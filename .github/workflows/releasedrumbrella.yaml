@@ -25,10 +25,6 @@ jobs:
     needs: release_new_umbrella_dr
     uses: ./.github/workflows/chart-releaser.yaml
     secrets: inherit
-  integration_chart_promotion:
-    needs: release_new_umbrella_dr
-    uses: ./.github/workflows/integrationChartBump.yaml
-    secrets: inherit
   report-workflow:
     uses: broadinstitute/sherlock/.github/workflows/client-report-workflow.yaml@main
     with:
