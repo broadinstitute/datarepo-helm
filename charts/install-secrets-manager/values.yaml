@@ -1,0 +1,29 @@
+image:
+  repository: us.gcr.io/broad-dsp-gcr-public/secrets-manager
+  version: v1.0.2
+
+vaultLocation:      ## http://vault:8200
+vaultVersion: kv2
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+rbac:
+  # Specifies whether role bindings should be created
+  create: false
+
+## create new secrets
+secretsgeneric:
+  roleId: ""
+  secretId: ""
+
+## Specify an existing secret holding the RoleID and SecretId credentials
+existingSecret: ""
+## The key in the existing secret that stores the RoleID
+existingRoleIdKey: ""
+## The key in the existing secret that stores the SecretId credentials
+existingSecretIdKey: ""

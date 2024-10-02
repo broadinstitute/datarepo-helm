@@ -1,0 +1,34 @@
+{{- if .Values.rbac.create -}}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "install-secrets-manager.fullname" . }}
+  labels:
+    app: {{ .Chart.Name }}
+    {{- include "install-secrets-manager.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: "{{ include "install-secrets-manager.fullname" . }}-clusterrole"
+subjects:
+  - kind: ServiceAccount
+    name: {{ template "install-secrets-manager.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "install-secrets-manager.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Chart.Name }}
+    {{- include "install-secrets-manager.labels" . | nindent 4 }}
+subjects:
+- kind: ServiceAccount
+  name: {{ template "install-secrets-manager.serviceAccountName" . }}
+roleRef:
+  kind: Role
+  name: "{{ include "install-secrets-manager.fullname" . }}-role"
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
