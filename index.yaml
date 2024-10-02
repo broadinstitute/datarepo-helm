@@ -1252,26 +1252,6 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-api-0.0.2/datarepo-api-0.0.2.tgz
     version: 0.0.2
-  datarepo-monitoring:
-  - apiVersion: v2
-    appVersion: 0.0.1
-    created: "2020-10-02T19:07:55.879482405Z"
-    description: A Helm chart to deploy an entire datarepo-monitoring stack
-    digest: 77a97c4f0f7d8471d9fd327c356e6204557e259dfb9f84204fce27bb231f72e4
-    keywords:
-    - google
-    - cloud
-    - datarepo
-    - broadinstitute
-    maintainers:
-    - email: smark@broadinstitute.org
-      name: smark
-    name: datarepo-monitoring
-    sources:
-    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    urls:
-    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-monitoring-0.0.1/datarepo-monitoring-0.0.1.tgz
-    version: 0.0.1
   datarepo-ui:
   - apiVersion: v2
     appVersion: 0.0.12
@@ -1488,26 +1468,6 @@ entries:
     - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-ui-0.0.2/datarepo-ui-0.0.2.tgz
-    version: 0.0.2
-  datarepomonitoring:
-  - apiVersion: v2
-    appVersion: 0.0.2
-    created: "2020-10-13T15:58:37.102417188Z"
-    description: A Helm chart to deploy an entire datarepomonitoring stack
-    digest: 0ff7baccfb4d6539ff0ef1496965c10991d9af0d836a16cfeb1e44c76acfae5a
-    keywords:
-    - google
-    - cloud
-    - datarepo
-    - broadinstitute
-    maintainers:
-    - email: smark@broadinstitute.org
-      name: smark
-    name: datarepomonitoring
-    sources:
-    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
-    urls:
-    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepomonitoring-0.0.2/datarepomonitoring-0.0.2.tgz
     version: 0.0.2
   gcloud-sqlproxy:
   - apiVersion: v2
