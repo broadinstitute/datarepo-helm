@@ -25,7 +25,6 @@ jobs:
         run: |
           helm repo add datarepo-helm https://broadinstitute.github.io/datarepo-helm
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-          helm repo add elastic https://helm.elastic.co
           helm repo add terra-helm https://terra-helm.storage.googleapis.com
           helm repo update
 
