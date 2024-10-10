@@ -1,8 +1,0 @@
----
-apiVersion: networking.gke.io/v1beta1
-kind: ManagedCertificate
-metadata:
-  name: {{ template "gcp-managed-cert.fullname" . }}
-spec:
-  domains:
-    - {{ .Values.domainName }}

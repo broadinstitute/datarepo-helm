@@ -1,6 +1,0 @@
-dependencies:
-- name: create-secret-manager-secret
-  repository: https://broadinstitute.github.io/datarepo-helm/
-  version: 0.0.6
-digest: sha256:d607415c36fd201b66b1184d30590df169a4d5a263ed033c2eebf34f88a9db90
-generated: "2020-10-15T14:45:59.05445-04:00"
