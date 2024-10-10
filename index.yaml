@@ -257,6 +257,51 @@ entries:
     version: 0.0.1
   datarepo:
   - apiVersion: v2
+    appVersion: 0.2.259
+    created: "2024-10-10T13:58:03.041722851Z"
+    dependencies:
+    - condition: datarepo-api.enabled
+      name: datarepo-api
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.773
+    - condition: oidc-proxy.enabled
+      name: oidc-proxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.44
+    - condition: datarepo-ui.enabled
+      name: datarepo-ui
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.375
+    - condition: gcloud-sqlproxy.enabled
+      name: gcloud-sqlproxy
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.19.13
+    - condition: create-secret-manager-secret.enabled
+      name: create-secret-manager-secret
+      repository: https://broadinstitute.github.io/datarepo-helm/
+      version: 0.0.8
+    - condition: postgres.enabled
+      name: postgres
+      repository: https://terra-helm.storage.googleapis.com/
+      version: 0.40.0
+    description: A Helm chart to deploy an entire datarepo
+    digest: 6ff37be06edcb12e5e92882ab6c2e41db9237a7dcb4acaf102a10b28906a623b
+    keywords:
+    - google
+    - cloud
+    - datarepo
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: datarepo
+    sources:
+    - https://github.com/broadinstitute/datarepo-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/datarepo-helm/releases/download/datarepo-0.2.259/datarepo-0.2.259.tgz
+    version: 0.2.259
+  - apiVersion: v2
     appVersion: 0.2.258
     created: "2024-10-09T14:28:22.40286268Z"
     dependencies:
@@ -78387,4 +78432,4 @@ entries:
     urls:
     - https://github.com/broadinstitute/datarepo-helm/releases/download/vault-secrets-0.0.1/vault-secrets-0.0.1.tgz
     version: 0.0.1
-generated: "2024-10-10T13:55:53.50901035Z"
+generated: "2024-10-10T13:58:03.047292276Z"
