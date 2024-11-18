@@ -86,15 +86,12 @@ The following tables lists the configurable parameters of the Datarepo-api chart
 | `secretsgeneric.synapseUser`                           | Azure synapse admin username                                                    | `nil`                                                         |
 | `secretsgeneric.synapsePassword`                       | Azure synapse admin password                                                    | `nil`                                                         |
 | `secretsgeneric.synapseEncryptionKey`                  | Azure synapse encryption key                                                    | `nil`                                                         |
-| `secretsgeneric.rbsCredentialFileJson`                 | RBS service account JSON                                                        | `nil`                                                         |
 | `existingSecretDB`                                     | Name of an existing secret you would like to use registry                       | `nil`                                                         |
 | `existingDatarepoDbSecretKey`                          | The key in the existing secret that stores the Datarepo DB credentials          | `nil`                                                         |
 | `existingStairwayDbSecretKey`                          | The key in the existing secret that stores the stairway DB credentials          | `nil`                                                         |
 | `existingServiceAccountSecretKey`                      | The key in the existing secret that stores the GCP Service account credentials  | `nil`                                                         |
 | `existingSecretAzure`                                  | Name of an existing secret that store Azure information                         | `nil`                                                         |
 | `existingApplicationSecretSecretKey`                   | The key in the existing secret that stores the Azure application secret         | `nil`                                                         |
-| `existingSecretRBS`                                    | Name of an existing secret that stores the RBS service account credentials      | `nil`                                                         |
-| `existingRBSSecretKey`                                 | The key in the existing secret that stores the RBS service account credentials  | `nil`                                                         |
 | `existingSynapseUserSecretKey`                         | The key in the existing secret that stores the azure synapse sql admin username | `nil`                                                         |
 | `existingSynapsePasswordSecretKey`                     | The key in the existing secret that stores the azure synapse sql admin password | `nil`                                                         |
 | `existingSynapseEncryptionKeySecretKey`                | The key in the existing secret that stores the azure synapse sql encryption key | `nil`                                                         |

@@ -47,12 +47,6 @@ spec:
             items:
               - key: {{ include "datarepo-api.secretKeyServiceAccount" . }}
                 path: sa-key.json
-        - name: rbs-key
-          secret:
-            secretName: {{ include "datarepo-api.secretNameRBS" . }}
-            items:
-              - key: {{ include "datarepo-api.secretKeyRBS" . }}
-                path: sa-key.json
         {{- end }}
       terminationGracePeriodSeconds: {{ .Values.shutdownTimeoutSeconds }}
       containers:
@@ -91,8 +85,6 @@ spec:
         {{ if $hasCredentials -}}
         - name: google-cloud-key
           mountPath: /var/secrets/google/
-        - name: rbs-key
-          mountPath: /var/secrets/rbs/
         {{ end -}}
         ports:
         - containerPort: {{ .Values.image.port }}
@@ -145,8 +137,6 @@ spec:
         {{ end -}}
         - name: GOOGLE_APPLICATION_CREDENTIALS
           value: /var/secrets/google/sa-key.json
-        - name: RBS_CLIENT_CREDENTIAL_FILE_PATH
-          value: /var/secrets/rbs/sa-key.json
 # Supply the pod name: used to identify Stairway instances
         - name: DATAREPO_PODNAME
           valueFrom:
