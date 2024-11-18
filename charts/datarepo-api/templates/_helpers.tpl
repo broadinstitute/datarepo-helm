@@ -86,13 +86,6 @@ Generate existingServiceAccountSecretKey key name in the secret
 {{- end -}}
 
 {{/*
-Generate existingRBSSecretKey key name in the secret
-*/}}
-{{- define "datarepo-api.secretKeyRBS" -}}
-{{ default "rbs-credential-file-json" .Values.existingRBSSecretKey }}
-{{- end -}}
-
-{{/*
 Generate existing key name in the secret
 */}}
 {{- define "datarepo-api.secretKeyApplicationSecret" -}}
@@ -140,13 +133,6 @@ Generate the secret name for Azure
 */}}
 {{- define "datarepo-api.secretNameAzure" -}}
 {{ default (include "datarepo-api.fullname" .) .Values.existingSecretAzure }}
-{{- end -}}
-
-{{/*
-Generate the secret name for RBS
-*/}}
-{{- define "datarepo-api.secretNameRBS" -}}
-{{ default (include "datarepo-api.fullname" .) .Values.existingSecretRBS }}
 {{- end -}}
 
 {{/*

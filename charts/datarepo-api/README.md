@@ -93,8 +93,6 @@ The following tables lists the configurable parameters of the Datarepo-api chart
 | `existingServiceAccountSecretKey`                      | The key in the existing secret that stores the GCP Service account credentials  | `nil`                                                         |
 | `existingSecretAzure`                                  | Name of an existing secret that store Azure information                         | `nil`                                                         |
 | `existingApplicationSecretSecretKey`                   | The key in the existing secret that stores the Azure application secret         | `nil`                                                         |
-| `existingSecretRBS`                                    | Name of an existing secret that stores the RBS service account credentials      | `nil`                                                         |
-| `existingRBSSecretKey`                                 | The key in the existing secret that stores the RBS service account credentials  | `nil`                                                         |
 | `existingSynapseUserSecretKey`                         | The key in the existing secret that stores the azure synapse sql admin username | `nil`                                                         |
 | `existingSynapsePasswordSecretKey`                     | The key in the existing secret that stores the azure synapse sql admin password | `nil`                                                         |
 | `existingSynapseEncryptionKeySecretKey`                | The key in the existing secret that stores the azure synapse sql encryption key | `nil`                                                         |

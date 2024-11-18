@@ -54,7 +54,6 @@ secretsgeneric:
   stairwayPassword: ""
   serivceAccountCredentialFileJson: ""
   applicationSecret: ""
-  rbsCredentialFileJson: ""
   synapseUser: ""
   synapsePassword: ""
   synapseEncryptionKey: ""
@@ -78,10 +77,6 @@ existingSynapseUserSecretKey: ""
 existingSynapsePasswordSecretKey: ""
 ## The key in the existing secret that stores the azure synapse encryption key
 existingSynapseEncryptionKeySecretKey: ""
-## Specify an existing secret holding the RBS service account credentials
-existingSecretRBS: ""
-## The key in the existing secret that stores the RBS service account credentials
-existingRBSSecretKey: ""
 ## Specify an existing secret holding the Oauth service account credentials
 existingSecretNameOauth: ""
 ## The key in the existing secret that stores the Oauth client secret
