@@ -86,7 +86,6 @@ The following tables lists the configurable parameters of the Datarepo-api chart
 | `secretsgeneric.synapseUser`                           | Azure synapse admin username                                                    | `nil`                                                         |
 | `secretsgeneric.synapsePassword`                       | Azure synapse admin password                                                    | `nil`                                                         |
 | `secretsgeneric.synapseEncryptionKey`                  | Azure synapse encryption key                                                    | `nil`                                                         |
-| `secretsgeneric.rbsCredentialFileJson`                 | RBS service account JSON                                                        | `nil`                                                         |
 | `existingSecretDB`                                     | Name of an existing secret you would like to use registry                       | `nil`                                                         |
 | `existingDatarepoDbSecretKey`                          | The key in the existing secret that stores the Datarepo DB credentials          | `nil`                                                         |
 | `existingStairwayDbSecretKey`                          | The key in the existing secret that stores the stairway DB credentials          | `nil`                                                         |

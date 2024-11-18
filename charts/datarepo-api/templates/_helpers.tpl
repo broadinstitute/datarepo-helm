@@ -139,7 +139,7 @@ Generate the secret name for Azure
 Check if any type of credentials are defined
 */}}
 {{- define "datarepo-api.hasCredentials" -}}
-{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingSecretAzure .Values.existingSecretRBS .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey .Values.existingApplicationSecretSecretKey .Values.existingRBSSecretKey .Values.existingSynapseUserSecretKey .Values.existingSynapsePasswordSecretKey .Values.existingSynapseEncryptionKeySecretKey) -}}
+{{ or .Values.secretsgeneric.datarepoPassword ( or .Values.existingSecretDB .Values.existingSecretSA .Values.existingSecretAzure .Values.existingDatarepoDbSecretKey .Values.existingStairwayDbSecretKey .Values.existingServiceAccountSecretKey .Values.existingApplicationSecretSecretKey .Values.existingSynapseUserSecretKey .Values.existingSynapsePasswordSecretKey .Values.existingSynapseEncryptionKeySecretKey) -}}
 {{- end -}}
 
 {{/*
