@@ -90,8 +90,8 @@ spec:
         - containerPort: {{ .Values.image.port }}
 ##  dynamically populates environment variables
         env:
-          - name: LIQUIBASE_ANALYTICS_ENABLED
-            value: "false"
+        - name: LIQUIBASE_ANALYTICS_ENABLED
+          value: "false"
         {{- if .Values.env }}
         {{- range $key, $value := .Values.env }}
         - name: "{{ $key }}"
