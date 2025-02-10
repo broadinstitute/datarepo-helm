@@ -13,7 +13,7 @@ livenessInitialDelaySeconds: 10
 startupInitialDelaySeconds: 15
 image:
   repository: gcr.io/broad-jade-dev/jade-data-repo
-  tag: 2.225.0
+  tag: 2.226.0
   pullPolicy: IfNotPresent
   port: 8080
 ## Extra environment variables that will be pass onto deployment pods
