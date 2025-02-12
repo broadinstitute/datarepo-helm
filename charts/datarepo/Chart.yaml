@@ -13,8 +13,8 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version
 
-version: 0.2.352
-appVersion: 0.2.352
+version: 0.2.353
+appVersion: 0.2.353
 keywords:
 - google
 - cloud
@@ -28,7 +28,7 @@ sources:
 # dependencies
 dependencies:
 - name: datarepo-api
-  version: 0.0.832
+  version: 0.0.833
   repository: https://broadinstitute.github.io/datarepo-helm/
   condition: datarepo-api.enabled
 - name: oidc-proxy
